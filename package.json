@@ -9,18 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.92.3",
+    "@reduxjs/toolkit": "^2.0.1",
     "@types/node": "20.10.4",
     "@types/react": "18.2.45",
     "@types/react-dom": "18.2.17",
     "axios": "^1.6.2",
     "eslint": "8.55.0",
     "eslint-config-next": "14.0.4",
+    "framer-motion": "^10.16.16",
+    "gsap": "^3.12.3",
     "i18next": "^23.7.9",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
     "node-telegram-bot-api": "^0.64.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.5.3",
+    "react-redux": "^9.0.4",
+    "sass": "^1.69.5",
     "typescript": "5.3.3"
   },
   "devDependencies": {
