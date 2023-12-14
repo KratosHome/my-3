@@ -1,0 +1,46 @@
+.container-trusted-by {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  span {
+    text-align: right;
+  }
+
+  .container-reviews {
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid #A1AAD9;
+    background: linear-gradient(112deg, rgba(43, 43, 193, 0.12) 17.01%, rgba(15, 15, 103, 0.04) 88.71%);
+    backdrop-filter: blur(10px);
+    padding: 50px 20px 20px 50px;
+    height: 100%;
+
+    .quotes {
+      position: absolute;
+      color: var(--border, #606686);
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      font-family: var(--font-consolas);
+      font-size: 80px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%;
+      letter-spacing: 3.2px;
+      top: 30px;
+      left: 10px;
+    }
+
+    .wrapper-reviews {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      .reviews {
+        max-height: 60%;
+        overflow: auto;
+      }
+    }
+  }
+}

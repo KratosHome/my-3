@@ -1,14 +1,16 @@
 import HeroSection from "@/components/HeroSection/HeroSection";
-import {fetchReviews} from "@/api/date";
+import WrapperRequest from "@/components/WrapperRequest/WrapperRequest";
 
 
-export default async function Home() {
-    const reviews = await fetchReviews()
+export default function Home() {
 
     return (
         <main>
             <section id="section1">
-                <HeroSection />
+                <HeroSection/>
+            </section>
+            <section>
+                <WrapperRequest/>
             </section>
         </main>
     )
