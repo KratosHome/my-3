@@ -1,8 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+    experimental: {
+        appDir: true,
+    },
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/ua',
+                permanent: true,
+            },
+        ]
+    },
 }
 
 module.exports = nextConfig

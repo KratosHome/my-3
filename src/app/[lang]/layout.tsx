@@ -1,4 +1,5 @@
 import './globals.css'
+import {Locale} from "../../../i18n.config";
 
 export const metadata = {
   title: 'Create Next App',
@@ -9,6 +10,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
+  params: { lang: Locale }
 }) {
   return (
     <html lang="en">
