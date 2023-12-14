@@ -33,7 +33,6 @@ export default function NavBar({navigation}: any) {
                     </ul>
                     <div className="nav-bar-toggle">
                         <LanguageChange/>
-                        <ThemeChange/>
                     </div>
                 </div>
             </nav>

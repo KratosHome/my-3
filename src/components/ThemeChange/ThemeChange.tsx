@@ -1,12 +1,11 @@
 "use client"
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import React, { useLayoutEffect} from 'react';
 import "./ThemeChange.scss";
 import {motion} from 'framer-motion';
 import gsap from 'gsap';
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "@/store/store";
 import {toggleTheme} from "@/store/themeSlice/themeSlice";
-import Image from "next/image";
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 
 const ThemeChange = () => {
@@ -63,19 +62,19 @@ const ThemeChange = () => {
                             <g id="Property 1=Sun">
                                 <path id="Ellipse 363"
                                       d="M7.28451 10.3333C7.10026 10.8546 7 11.4156 7 12C7 14.7614 9.23858 17 12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C11.4156 7 10.8546 7.10026 10.3333 7.28451"
-                                      stroke="white" stroke-linecap="round"/>
-                                <path id="Vector" d="M12 2V4" stroke="white" stroke-linecap="round"/>
-                                <path id="Vector_2" d="M12 20V22" stroke="white" stroke-linecap="round"/>
-                                <path id="Vector_3" d="M4 12L2 12" stroke="white" stroke-linecap="round"/>
-                                <path id="Vector_4" d="M22 12L20 12" stroke="white" stroke-linecap="round"/>
+                                      stroke="white" strokeLinecap="round"/>
+                                <path id="Vector" d="M12 2V4" stroke="white" strokeLinecap="round"/>
+                                <path id="Vector_2" d="M12 20V22" stroke="white" strokeLinecap="round"/>
+                                <path id="Vector_3" d="M4 12L2 12" stroke="white" strokeLinecap="round"/>
+                                <path id="Vector_4" d="M22 12L20 12" stroke="white" strokeLinecap="round"/>
                                 <path id="Vector_5" d="M19.7778 4.22217L17.5558 6.25375" stroke="white"
-                                      stroke-linecap="round"/>
+                                      strokeLinecap="round"/>
                                 <path id="Vector_6" d="M4.22217 4.22217L6.44418 6.25375" stroke="white"
-                                      stroke-linecap="round"/>
+                                      strokeLinecap="round"/>
                                 <path id="Vector_7" d="M6.44434 17.5557L4.22211 19.7779" stroke="white"
-                                      stroke-linecap="round"/>
+                                      strokeLinecap="round"/>
                                 <path id="Vector_8" d="M19.7778 19.7778L17.5558 17.5555" stroke="white"
-                                      stroke-linecap="round"/>
+                                      strokeLinecap="round"/>
                             </g>
                         </svg>
                     )}

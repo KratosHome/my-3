@@ -1,7 +1,6 @@
 'use client'
-import React, {FC, HTMLAttributes, AnchorHTMLAttributes, useState} from 'react';
+import React, {FC, HTMLAttributes, AnchorHTMLAttributes} from 'react';
 import {motion, useAnimation} from 'framer-motion';
-import PulseComponent from "@/components/UIA/PulseComponent/PulseComponent";
 
 type ButtonType = HTMLAttributes<HTMLElement> & AnchorHTMLAttributes<HTMLAnchorElement> & {
     children: React.ReactNode;

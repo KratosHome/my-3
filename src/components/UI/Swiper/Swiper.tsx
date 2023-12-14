@@ -85,7 +85,7 @@ const Swiper: FC<swiperTypes> = ({
 
 
     const onSwipe = (e: any, {offset}: any) => {
-        let direction = offset.x > 0 ? 'right' : 'left';
+      //  let direction = offset.x > 0 ? 'right' : 'left';
         let newPosition = slidePosition + offset.x;
         newPosition = Math.min(newPosition, 0);
         newPosition = Math.max(newPosition, -constraint);
