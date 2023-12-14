@@ -1,0 +1,49 @@
+.container-background-main {
+    height: 80px;
+
+  .inner-container {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    background-image: url('/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 130vh;
+    margin-left: calc(var(--index) * -2);
+    margin-right: calc(var(--index) * -2);
+  }
+
+  .container-nav {
+    padding-top: 20px;
+    display: flex;
+
+    > div {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      li {
+        padding: 0 5px;
+      }
+    }
+
+    .nav-bar-toggle {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 10px;
+
+      @media screen and (max-width: 768px) {
+
+      }
+    }
+  }
+}
+
