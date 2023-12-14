@@ -9,8 +9,9 @@ export const metadata = {
 }
 
 export default async function RootLayout({
-                                       children,
-                                   }: {
+                                             children,
+                                             params
+                                         }: {
     children: React.ReactNode
     params: { lang: Locale }
 }) {
