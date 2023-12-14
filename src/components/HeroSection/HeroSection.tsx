@@ -28,9 +28,7 @@ const HeroSection = ({navigation}: any) => {
                     layoutId={"hireMe1"}
                 />
             </div>
-            <Swim className="computer">
-                <ComputersCanvas/>
-            </Swim>
+
         </div>
     );
 };
