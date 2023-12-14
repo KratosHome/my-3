@@ -1,0 +1,27 @@
+.container-3d {
+  height: 100vh;
+  margin-top: calc(var(--index) * 4);
+  position: relative;
+
+  .wrapper-hire-me {
+    position: absolute;
+    z-index: 2;
+    @media screen and (max-width: 768px) {
+      top: 40%;
+      left: 50%;
+      transform: translate(-40%, -50%);
+    }
+  }
+
+  .computer {
+    position: absolute;
+    height: 100%;
+    width: 95vw;
+    top: 20vh;
+    left: 0;
+    right: 0;
+    @media(max-width: 768px) {
+      top: 50vh;
+    }
+  }
+}

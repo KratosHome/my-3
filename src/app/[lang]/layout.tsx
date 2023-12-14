@@ -7,17 +7,17 @@ import ReduxProvider from "@/app/[lang]/provider";
 import localFont from 'next/font/local'
 
 const JetBrainsMono = localFont({
-    src: '/fonts/webfonts/JetBrainsMono-Light.woff2',
+    src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
     variable: '--font-jetbrains-mono',
 });
 
 const consolas = localFont({
-    src: '/fonts/consolas/consolas.ttf',
+    src: '../fonts/consolas/consolas.ttf',
     variable: '--font-consolas',
 });
 
 const JetBrainsMonoBold = localFont({
-    src: '/fonts/webfonts/JetBrainsMono-Bold.woff2',
+    src: '../fonts/webfonts/JetBrainsMono-Bold.woff2',
     variable: '--font-jetbrains-mono-bold',
 });
 
