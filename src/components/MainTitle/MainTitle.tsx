@@ -2,8 +2,11 @@
 import React, {useState, useEffect} from 'react';
 import './MainTitle.scss';
 import {Typewriter} from 'react-simple-typewriter';
+import {usePathname} from "next/navigation";
 
-const MainTitle = ({navigation}: any) => {
+const MainTitle = () => {
+    const pathName = usePathname();
+
     const [showReactText, setShowReactText] = useState(false);
 
     const [showDevText, setShowDevText] = useState(false);
@@ -57,7 +60,7 @@ const MainTitle = ({navigation}: any) => {
                     />
                 )}
             </h1>
-            <h2>{navigation.mainH2}</h2>
+            <h2>{pathName === "/ua" ? "Код як мистецтво: Інженерія, що дарує функціональну красу" : "Code as Art: Engineering Functional Beauty"}</h2>
         </div>
     );
 };

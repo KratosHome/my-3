@@ -10,12 +10,24 @@ import FormHireMe from "@/components/FormHireMe/FormHireMe";
 import {usePathname} from "next/navigation";
 import SocialLicks from "@/components/SocialLicks/SocialLicks";
 
-const HeroSection = ({navigation}: any) => {
+const HeroSection = () => {
     const pathName = usePathname();
 
     return (
         <div className="container-3d">
-
+            <SocialLicks/>
+            <MainTitle/>
+            <div className="wrapper-hire-me">
+                <MyModal
+                    childrenOpen={
+                        <Button>
+                            {pathName === "/ua" ? "Найняти мене" : "Hire me"}
+                        </Button>
+                    }
+                    childrenModal={<FormHireMe/>}
+                    layoutId={"hireMe1"}
+                />
+            </div>
             <Swim className="computer">
                 <ComputersCanvas/>
             </Swim>

@@ -1,21 +1,12 @@
-import styles from './page.module.css'
 import HeroSection from "@/components/HeroSection/HeroSection";
-import {getDictionary} from "@/api/dictionary";
-import {fetchReviews} from "@/api/date";
-import {Locale} from "../../../i18n.config";
 
-export default async function Home({
-                                       params: {lang}
-                                   }: {
-    params: { lang: Locale }
-}) {
-    const {navigation} = await getDictionary(lang)
-    const reviews = await fetchReviews()
+
+export default function Home() {
 
     return (
-        <main className={styles.main}>
+        <main>
             <section id="section1">
-                <HeroSection navigation={navigation}/>
+                <HeroSection />
             </section>
         </main>
     )
