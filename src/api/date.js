@@ -1,5 +1,5 @@
 import { Reviews } from "./models";
-import { connectToDb } from "@/app/lib/utils";
+import {connectToDb} from "@/api/connectToDb";
 
 
 export const fetchReviews = async () => {

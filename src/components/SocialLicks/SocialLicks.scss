@@ -1,0 +1,13 @@
+.isAbsolute,
+.container-social-links {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 10px;
+  z-index: 1;
+
+  svg {
+    position: relative;
+  }
+}

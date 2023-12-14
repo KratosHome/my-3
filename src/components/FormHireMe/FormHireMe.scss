@@ -1,0 +1,75 @@
+.container-form-hire-me {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  > div {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    span {
+      position: absolute;
+      bottom: -25px;
+      font-size: 15px;
+    }
+  }
+
+  input {
+    border-radius: 8px;
+    border: 1px solid #606686;
+    background: var(--background-color-input);
+    width: 80%;
+    max-width: 55vw;
+    height: 50px;
+    color: var(--text-color);
+    padding-left: 20px;
+
+    &::placeholder {
+      color: #A5A9BA;
+    }
+  }
+
+  textarea {
+    width: 80%;
+    max-width: 55vw;
+    border-radius: 8px;
+    border: 1px solid #606686;
+    background: var(--background-color-input);
+    height: 100px;
+    color: var(--text-color);
+    padding-left: 20px;
+    padding-top: 15px;
+
+    &::placeholder {
+      color: #A5A9BA;
+    }
+  }
+
+  .send-message {
+    padding: 0;
+    width: 40%;
+    max-width: 55vw;
+    border-radius: 8px;
+    background-color: #6D24C9;
+    color: #FFFFFF;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #A5A9BA;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.wrapper-thank-you {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
