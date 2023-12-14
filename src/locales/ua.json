@@ -1,0 +1,19 @@
+{
+  "navigation": {
+    "about": "про мене",
+    "projects": "проекти",
+    "services": "послуги",
+    "contact": "контакт",
+    "mainH2": "Код як мистецтво: Інженерія, що дарує функціональну красу"
+  },
+  "page": {
+    "home": {
+      "title": "",
+      "description": ""
+    },
+    "about": {
+      "title": "",
+      "description": ""
+    }
+  }
+}

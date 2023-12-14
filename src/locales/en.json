@@ -1,0 +1,19 @@
+{
+  "navigation": {
+    "about": "about",
+    "projects": "projects",
+    "services": "services",
+    "contact": "contact",
+    "mainH2": "Code as Art: Engineering Functional Beauty"
+  },
+  "page": {
+    "home": {
+      "title": "",
+      "description": ""
+    },
+    "about": {
+      "title": "",
+      "description": ""
+    }
+  }
+}
