@@ -1,7 +1,9 @@
 import HeroSection from "@/components/HeroSection/HeroSection";
+import {fetchReviews} from "@/api/date";
 
 
-export default function Home() {
+export default async function Home() {
+    const reviews = await fetchReviews()
 
     return (
         <main>
