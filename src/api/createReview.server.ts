@@ -1,11 +1,9 @@
 'use server'
-
-import {Reviews} from "@/app/lib/models";
-import {connectToDb} from "@/app/lib/utils";
 import TelegramBot from "node-telegram-bot-api";
+import {Reviews} from "@/api/models";
+import {connectToDb} from "@/api/connectToDb";
 
 export const createReviewAction = async (formData: any) => {
-    console.log("formData", formData);
 
     try {
         const chatId = `${process.env.TELEGRAM_BOT_CHAT_ID}`;
