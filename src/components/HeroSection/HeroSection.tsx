@@ -15,20 +15,10 @@ const HeroSection = ({navigation}: any) => {
 
     return (
         <div className="container-3d">
-            <SocialLicks/>
-            <MainTitle navigation={navigation}/>
-            <div className="wrapper-hire-me">
-                <MyModal
-                    childrenOpen={
-                        <Button>
-                            {pathName === "/ua" ? "Найняти мене" : "Hire me"}
-                        </Button>
-                    }
-                    childrenModal={<FormHireMe/>}
-                    layoutId={"hireMe1"}
-                />
-            </div>
 
+            <Swim className="computer">
+                <ComputersCanvas/>
+            </Swim>
         </div>
     );
 };
