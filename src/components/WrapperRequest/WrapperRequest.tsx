@@ -1,27 +1,21 @@
 "use client"
-import React, { useEffect, useState } from 'react';
-import { fetchReviews } from "@/api/date";
+import React, {useEffect, useState} from 'react';
+import {fetchReviews} from "@/api/date";
 import TrustedBy from "@/components/TrustedBy/TrustedBy";
 
-export default function WrapperRequest() {
-    const [reviews, setReviews] = useState<any>(null);
+export default  function WrapperRequest() {
+    const [reviews, setReviews] = useState([]);
 
+console.log("reviews", reviews)
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await fetchReviews();
-                setReviews(data);
-            } catch (error) {
-                console.error("Error fetching reviews:", error);
-            }
-        };
+        async function fetchData() {
+            const response = await fetch('/api/reviews');
+            const data = await response.json();
+            setReviews(data);
+        }
 
         fetchData();
     }, []);
-
-    if (!reviews) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <div>
