@@ -22,7 +22,7 @@ const Connect = () => {
         <div className="container-connect">
             <div className="head-block">
                 <span className="name">{pathName === "/ua" ? "Відправити контакт" : "Let’s connect"}</span>
-                <a href="mailto:OlegonTkach101@gmail.com">OlegonTkach101@gmail.com</a>
+                <a className="link-another-platform" href="mailto:OlegonTkach101@gmail.com">OlegonTkach101@gmail.com</a>
             </div>
             <div className="wrapper-block">
                 <FadeInAnimation direction="left" delay={0.3}>
