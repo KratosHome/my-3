@@ -8,6 +8,9 @@ import localFont from 'next/font/local'
 import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 import {ReactNode} from "react";
 import Head from "next/head";
+import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
+import {useSelector} from "react-redux";
+import {RootState} from "@/store/store";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -38,16 +41,18 @@ export default async function RootLayout({
     params: { lang: Locale }
 }) {
     const {navigation} = await getDictionary(params.lang)
+    const {theme} = useSelector((state: RootState) => state.theme);
 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
         <Head>
-            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-            <GoogleTagManager/>
+            <meta name="theme-color" content={theme === 'light' ? "#F7F7F7" : "#10101D"}/>
+            < GoogleTagManager/>
         </Head>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
             <NavBar navigation={navigation}/>
+            <StarsCanvas/>
             {children}
             </body>
         </ReduxProvider>
