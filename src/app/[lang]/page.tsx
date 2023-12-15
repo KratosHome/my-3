@@ -11,12 +11,31 @@ export default function Home() {
 
     return (
         <main>
-           
+            <section id="section1">
+                <HeroSection/>
+            </section>
         </main>
     )
 }
 
 /*
+
+
+            <section id="about">
+                <AboutMe/>
+            </section>
+            <section id="projects">
+                <SelectedProjects/>
+            </section>
+            <section id="services">
+                <Services/>
+            </section>
+            <section id="experience">
+                <Experience/>
+            </section>
+
+
+
             <section id="trustedBy">
                 <WrapperRequest/>
             </section>
