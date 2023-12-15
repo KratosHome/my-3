@@ -17,7 +17,7 @@ export default function Home() {
             <section id="about">
                 <AboutMe/>
             </section>
-        </main>2
+        </main>
     )
 }
 
