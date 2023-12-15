@@ -29,7 +29,9 @@ const HeroSection = () => {
                     layoutId={"2334342"}
                 />
             </div>
-
+            <Swim className="computer">
+                <ComputersCanvas/>
+            </Swim>
         </div>
     );
 };
