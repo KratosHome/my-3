@@ -24,7 +24,7 @@ export default function Home() {
                 <Services/>
             </section>
             <section id="experience">
-                <Experience/> 
+                <Experience/>
             </section>
         </main>
     )
