@@ -11,17 +11,21 @@ export default function Home() {
 
     return (
         <main>
-
+            <section id="section1">
+                <HeroSection/>
+            </section>
             <section id="about">
                 <AboutMe/>
             </section>
-        </main>
+        </main>2
     )
 }
 
 /*
 
-
+   <section id="section1">
+                <HeroSection/>
+            </section>
             <section id="about">
                 <AboutMe/>
             </section>
