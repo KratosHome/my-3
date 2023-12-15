@@ -49,6 +49,7 @@ export default async function RootLayout({
         </Head>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
+            <NavBar navigation={navigation}/>
             <StarsCanvas/>
             {children}
             </body>
