@@ -58,7 +58,7 @@ const Swiper: FC<swiperTypes> = ({
         }
         setSlidePosition(0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [screenWidth]);
 
 
     const containerWidth = ref.current?.offsetWidth;

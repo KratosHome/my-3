@@ -93,9 +93,11 @@ const Experience = () => {
             <span className="title-block">
                 {pathName === "/ua" ? `Професійний досвід` : `Professional experience`}
             </span>
-            {experience.map((item, index) => (
-                <ExperienceList key={item.id} item={item} index={index}/>
-            ))}
+            <div className="container-experience-list">
+                {experience.map((item, index) => (
+                    <ExperienceList key={item.id} item={item} index={index}/>
+                ))}
+            </div>
         </motion.div>
     );
 };

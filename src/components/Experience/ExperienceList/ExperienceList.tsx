@@ -24,6 +24,7 @@ const ExperienceList = ({item, index}: any) => {
         visible: {
             x: 0,
             opacity: 1,
+            scale: 1,
             transition: {
                 type: "spring",
                 duration: 0.8,
@@ -35,6 +36,7 @@ const ExperienceList = ({item, index}: any) => {
         hidden: {
             x: index % 2 === 0 ? -300 : 300,
             opacity: 0,
+            scale: 0.8,
         }
     };
 
@@ -49,6 +51,7 @@ const ExperienceList = ({item, index}: any) => {
 
     return (
         <motion.div
+            className={"container-experience-list"}
             ref={refView}
             initial="hidden"
             animate={controls}
@@ -56,8 +59,8 @@ const ExperienceList = ({item, index}: any) => {
         >
             <motion.div
                 layout
-                initial="closed"
-                animate={isOpen ? "open" : "closed"}
+                initial="hidden"
+                animate={controls}
                 transition={{duration: 0.5}}
                 className="wrapper-experience-list"
                 onClick={toggleOpen}

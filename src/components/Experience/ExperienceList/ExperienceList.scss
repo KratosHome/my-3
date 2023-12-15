@@ -12,6 +12,7 @@
   border: 2px solid #A1AAD9;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  overflow: hidden;
 
   div, span, a {
     color: white;
@@ -81,3 +82,4 @@
     height: 650px;
   }
 }
+
