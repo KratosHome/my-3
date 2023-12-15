@@ -44,9 +44,7 @@ export default async function RootLayout({
 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
-        <Head>
-            <GoogleTagManager/>
-        </Head>
+        <GoogleTagManager/>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
             <NavBar navigation={navigation}/>
