@@ -7,6 +7,7 @@ import ReduxProvider from "@/app/[lang]/provider";
 import localFont from 'next/font/local'
 import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 import {ReactNode} from "react";
+import Head from "next/head";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -40,7 +41,10 @@ export default async function RootLayout({
 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
-        <GoogleTagManager/>
+        <Head>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+            <GoogleTagManager/>
+        </Head>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
             <NavBar navigation={navigation}/>
