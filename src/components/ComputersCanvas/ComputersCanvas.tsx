@@ -72,6 +72,7 @@ const ComputersCanvas = () => {
 
     return (
         <Canvas
+            style={{ touchAction: 'auto' }}
             key={isMobile ? "mobile" : "desktop"}
             frameloop='demand'
             onPointerDown={handleTouchMove}
