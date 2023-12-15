@@ -17,16 +17,16 @@ export default function Home() {
             <section id="about">
                 <AboutMe/>
             </section>
-
+            <section id="projects">
+                <SelectedProjects/>
+            </section>
         </main>
     )
 }
 
 /*
 
-            <section id="projects">
-                <SelectedProjects/>
-            </section>
+
             <section id="services">
                 <Services/>
             </section>
