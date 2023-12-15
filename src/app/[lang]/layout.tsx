@@ -41,13 +41,11 @@ export default async function RootLayout({
     params: { lang: Locale }
 }) {
     const {navigation} = await getDictionary(params.lang)
-    const {theme} = useSelector((state: RootState) => state.theme);
 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
         <Head>
-            <meta name="theme-color" content={theme === 'light' ? "#F7F7F7" : "#10101D"}/>
-            < GoogleTagManager/>
+            <GoogleTagManager/>
         </Head>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
@@ -59,3 +57,4 @@ export default async function RootLayout({
         </html>
     )
 }
+// content={theme === 'light' ? "#F7F7F7" : "#10101D"}
