@@ -7,13 +7,13 @@ import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
 
 
-const Computers = ({ isMobile }: any) => {
+const Computers = ({ isMobile, rotation }: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
 
     const {theme} = useSelector((state: RootState) => state.theme);
 
     return (
-        <mesh>
+        <mesh rotation={[0, rotation, 0]}>
             <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"} />
             <spotLight
                 position={[-20, 50, 10]}
@@ -39,7 +39,7 @@ const ComputersCanvas = () => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia("(max-width: 800px)");
+        const mediaQuery = window.matchMedia("(max-width: 767px)");
         setIsMobile(mediaQuery.matches);
 
         const handleMediaQueryChange = (event: any) => {
@@ -52,6 +52,16 @@ const ComputersCanvas = () => {
             mediaQuery.removeEventListener("change", handleMediaQueryChange);
         };
     }, []);
+
+    const [rotation, setRotation] = useState(0);
+    useEffect(() => {
+        if (isMobile) {
+            const interval = setInterval(() => {
+                setRotation((prev) => prev + 0.005); // Змінити швидкість обертання тут
+            }, 16); // ~60 кадрів в секунду
+            return () => clearInterval(interval);
+        }
+    }, [isMobile]);
 
     return (
         <Canvas
@@ -67,6 +77,7 @@ const ComputersCanvas = () => {
         >
             <Suspense fallback={<Loader/>}>
                 <OrbitControls
+                    enabled={!isMobile}
                     enableZoom={false}
                     target={[3, 0, 0]}
                     maxPolarAngle={Math.PI / 1.5}
@@ -74,7 +85,7 @@ const ComputersCanvas = () => {
                     maxAzimuthAngle={Math.PI * 0.8}
                     minAzimuthAngle={-Math.PI * 0.1}
                 />
-                <Computers isMobile={isMobile}/>
+                <Computers isMobile={isMobile} rotation={rotation}/>
             </Suspense>
             <Preload all/>
         </Canvas>
