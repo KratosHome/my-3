@@ -1,6 +1,6 @@
 import './globals.css'
 import {Locale} from "../../../i18n.config";
-import {getDictionary} from "@/api/dictionary";
+import {getDictionary} from "@/services/dictionary";
 import NavBar from "@/components/NavBar/NavBar";
 import {Metadata} from "next";
 import ReduxProvider from "@/app/[lang]/provider";

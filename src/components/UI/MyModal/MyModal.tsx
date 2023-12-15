@@ -19,7 +19,7 @@ const MyModal = ({layoutId, childrenOpen, childrenModal}: Props) => {
     const [open, setOpen] = useState(false);
 
     const clonedChildrenModal = React.isValidElement<ChildrenModalProps>(childrenModal)
-        ? React.cloneElement(childrenModal, { setOpen })
+        ? React.cloneElement(childrenModal, {setOpen})
         : childrenModal;
 
     return (
@@ -30,9 +30,7 @@ const MyModal = ({layoutId, childrenOpen, childrenModal}: Props) => {
                     onClick={() => setOpen(true)}
                     style={{borderRadius: 10}}
                 >
-                    <motion.div layoutId="status">
-                        {childrenOpen}
-                    </motion.div>
+                    {childrenOpen}
                     <motion.div layoutId="content"/>
                 </motion.div>
                 <Modal

@@ -1,6 +1,6 @@
 "use client"
 import React, {useEffect, useState} from 'react';
-import {fetchReviews} from "@/api/date";
+import {fetchReviews} from "@/services/date";
 import TrustedBy from "@/components/TrustedBy/TrustedBy";
 
 export default  function WrapperRequest() {

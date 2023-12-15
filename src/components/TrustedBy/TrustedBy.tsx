@@ -12,7 +12,9 @@ const TrustedBy = ({reviews}: any) => {
     const pathName = usePathname();
     return (
         <div className="container-trusted-by">
-            <span className="title-block">trusted by</span>
+               <span className="title-block">
+                   {pathName === "/ua" ? "залишити відгук" : " відгуки"}
+               </span>
             <Swiper
                 isButtonToggle={false}
                 cards={reviews}

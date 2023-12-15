@@ -9,6 +9,7 @@ import MyModal from "@/components/UI/MyModal/MyModal";
 import FormHireMe from "@/components/FormHireMe/FormHireMe";
 import {usePathname} from "next/navigation";
 import SocialLicks from "@/components/SocialLicks/SocialLicks";
+import FormHLeaveReview from "@/components/FormHLeaveReview/FormHLeaveReview";
 
 const HeroSection = () => {
     const pathName = usePathname();
@@ -18,6 +19,7 @@ const HeroSection = () => {
             <SocialLicks/>
             <MainTitle/>
             <div className="wrapper-hire-me">
+                <div></div>
                 <MyModal
                     childrenOpen={
                         <Button>
@@ -25,7 +27,7 @@ const HeroSection = () => {
                         </Button>
                     }
                     childrenModal={<FormHireMe/>}
-                    layoutId={"hireMe1"}
+                    layoutId={"2334342"}
                 />
             </div>
             <Swim className="computer">

@@ -1,6 +1,5 @@
-// app/api/reviews/route.js
-import { connectToDb } from "@/api/connectToDb";
-import { Reviews } from "@/api/models";
+import {Reviews} from "../../../services/models";
+import {connectToDb} from "../../../services/connectToDb";
 
 export async function GET() {
     try {
