@@ -1,23 +1,17 @@
 .container-about-me {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
+  padding: 5% 0;
 
 
   span {
-    align-self: flex-start;
     width: 100%;
     text-align: right;
-    font-family: var(--font-consolas);
-    font-size: 56px;
-    font-style: normal;
-    font-weight: 700;
-    letter-spacing: 2.24px;
-    text-transform: uppercase;
   }
 
 

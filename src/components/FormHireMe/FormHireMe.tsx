@@ -102,6 +102,7 @@ export default function FormHireMe({setOpen}: any) {
                         {errors.message && <span>{String(errors.message.message)}</span>}
                     </div>
                     <ReCAPTCHA
+                        className="recaptcha"
                         sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
                         ref={recaptchaRef}
                         onChange={handleCaptchaSubmission}

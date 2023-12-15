@@ -11,7 +11,7 @@ const AboutMe = () => {
 
     return (
         <div className="container-about-me">
-            <span>
+            <span className="title-block">
                 {pathName === "/ua" ? "Про мене" : "About me"}
               </span>
             <div>
