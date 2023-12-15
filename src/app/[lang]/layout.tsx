@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar/NavBar";
 import {Metadata} from "next";
 import ReduxProvider from "@/app/[lang]/provider";
 import localFont from 'next/font/local'
+import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -38,6 +39,7 @@ export default async function RootLayout({
 
     return (
         <html lang={params.lang}>
+        <GoogleTagManager/>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
             <NavBar navigation={navigation}/>
