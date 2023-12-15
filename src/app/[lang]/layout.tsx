@@ -38,14 +38,14 @@ export default async function RootLayout({
     const {navigation} = await getDictionary(params.lang)
 
     return (
-        <html lang={params.lang}>
-        <GoogleTagManager/>
-        <ReduxProvider>
-            <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
-            <NavBar navigation={navigation}/>
-            {children}
-            </body>
-        </ReduxProvider>
-        </html>
+        <>
+            <GoogleTagManager/>
+            <ReduxProvider>
+                <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
+                <NavBar navigation={navigation}/>
+                {children}
+                </body>
+            </ReduxProvider>
+        </>
     )
 }

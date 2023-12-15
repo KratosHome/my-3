@@ -1,4 +1,3 @@
-// components/GoogleTagManager.js
 import Script from 'next/script';
 
 const GTM_ID = `${process.env.NEXT_GTM_ID}`;
