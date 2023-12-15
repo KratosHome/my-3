@@ -34,7 +34,6 @@ const ExperienceList = ({item, index}: any) => {
             }
         },
         hidden: {
-            x: index % 2 === 0 ? -300 : 300,
             opacity: 0,
             scale: 0.8,
         }
