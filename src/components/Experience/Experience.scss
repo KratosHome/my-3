@@ -5,6 +5,9 @@
   > span {
     margin: 50px 0;
     display: block;
+    @media(max-width: 368px) {
+      font-size: 35px;
+    }
   }
 
   .container-experience-list {
