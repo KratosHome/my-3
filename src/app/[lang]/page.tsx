@@ -17,18 +17,6 @@ export default function Home() {
             <section id="about">
                 <AboutMe/>
             </section>
-        </main>
-    )
-}
-
-/*
-
-   <section id="section1">
-                <HeroSection/>
-            </section>
-            <section id="about">
-                <AboutMe/>
-            </section>
             <section id="projects">
                 <SelectedProjects/>
             </section>
@@ -38,6 +26,13 @@ export default function Home() {
             <section id="experience">
                 <Experience/>
             </section>
+        </main>
+    )
+}
+
+/*
+
+
 
 
 
