@@ -150,6 +150,7 @@ const SelectedProjects = () => {
                                                 alt={selectedTab.nameUa}
                                                 className="image"
                                                 fill={true}
+                                                priority={true}
                                             />
                                         </motion.div>
                                     </div>
