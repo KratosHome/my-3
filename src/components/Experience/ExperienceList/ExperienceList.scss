@@ -76,10 +76,8 @@
 }
 
 .wrapper-experience-list[data-isOpen="true"] {
-  height: 400px;
+  height: max-content;
   background-color: #000000;
-  @media(max-width: 668px) {
-    height: 650px;
-  }
+  padding: 20px 0;
 }
 

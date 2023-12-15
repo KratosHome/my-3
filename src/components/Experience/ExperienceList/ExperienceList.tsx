@@ -51,7 +51,6 @@ const ExperienceList = ({item, index}: any) => {
 
     return (
         <motion.div
-            className={"container-experience-list"}
             ref={refView}
             initial="hidden"
             animate={controls}

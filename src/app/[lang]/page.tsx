@@ -23,8 +23,14 @@ export default function Home() {
             <section id="services">
                 <Services/>
             </section>
+            <section id="services">
+                <Services/>
+            </section>
             <section id="experience">
                 <Experience/>
+            </section>
+            <section id="about">
+                <AboutMe/>
             </section>
         </main>
     )
