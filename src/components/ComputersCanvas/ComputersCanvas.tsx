@@ -63,7 +63,7 @@ const ComputersCanvas = () => {
         }
     }, [isMobile]);
 
-    const handleTouchMove = (event) => {
+    const handleTouchMove = (event: any) => {
         if (isMobile) {
             event.stopPropagation();
         }
