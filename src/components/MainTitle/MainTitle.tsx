@@ -24,7 +24,7 @@ const MainTitle = () => {
     }, []);
 
     return (
-        <div className={"container-main-title"}>
+        <div className="container-main-title">
             <h1>
                 <div>
                     <Typewriter

@@ -3,8 +3,6 @@ import "./SocialLicks.scss"
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 
 const SocialLicks = ({isAbsolute = true}) => {
-
-
     return (
         <div className={isAbsolute ? "container-social-links" : ""}>
             <ButtonAnimation

@@ -6,6 +6,7 @@ import {Metadata} from "next";
 import ReduxProvider from "@/app/[lang]/provider";
 import localFont from 'next/font/local'
 import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
+import {ReactNode} from "react";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -32,7 +33,7 @@ export default async function RootLayout({
                                              children,
                                              params
                                          }: {
-    children: React.ReactNode
+    children: ReactNode
     params: { lang: Locale }
 }) {
     const {navigation} = await getDictionary(params.lang)

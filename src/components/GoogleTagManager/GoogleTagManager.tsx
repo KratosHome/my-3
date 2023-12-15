@@ -3,23 +3,16 @@ import Script from 'next/script';
 
 const GoogleTagManager = () => {
         const GTM_ID = `${process.env.NEXT_GTM_ID}`;
-        console.log("GTM_ID", GTM_ID);
-
         return (
             <>
-                <Script
-                    id="google-tag-manager"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: `
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer', '${GTM_ID}');
-        `,
-                    }}
-                />
+                <Script src="https://www.googletagmanager.com/gtag/js?id=G-1VKMHQQYBM"/>
+                <Script id="google-analytics">
+                    {`window.dataLayer = window.dataLayer || [];
+                      function gtag(){dataLayer.push(arguments);}
+                      gtag('js', new Date());
+                      gtag('config', '${GTM_ID}');
+                    `}
+                </Script>
             </>
         )
     }
