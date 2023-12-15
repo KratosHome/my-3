@@ -6,17 +6,11 @@
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
+  padding: 20px 0;
 
   > span {
-    align-self: flex-start;
     width: 100%;
     text-align: left;
-    font-family: var(--font-consolas);
-    font-size: 56px;
-    font-style: normal;
-    font-weight: 700;
-    letter-spacing: 2.24px;
-    text-transform: uppercase;
   }
 
   .wrapper-container {
@@ -56,11 +50,13 @@
   .wrapper-project-list-first-elem-border,
   .wrapper-project-list-first-border {
     border-bottom: 1px solid #7E8696;
-    height: 85px;
+    min-height: 85px;
     display: flex;
     align-items: center;
     margin-left: 50px;
-
+    @media(max-width: 532px) {
+      margin-left: 0;
+    }
   }
 
   .wrapper-project-list {
@@ -74,6 +70,12 @@
 
   .wrapper-select-project {
     margin-left: 5%;
+
+    .name {
+      @media(max-width: 532px) {
+        font-size: 17px;
+      }
+    }
   }
 
   .enumeration {
@@ -88,7 +90,9 @@
     letter-spacing: 1.28px;
     text-transform: uppercase;
     padding-right: 20px;
-
+    @media(max-width: 532px) {
+      display: none;
+    }
   }
 
   .continer-resilt {
@@ -103,9 +107,7 @@
       height: 100%;
       display: grid;
       grid-template-rows: 450px 260px 50px;
-
       grid-gap: 10px;
-
 
       .image-container-mobile,
       .image-container {

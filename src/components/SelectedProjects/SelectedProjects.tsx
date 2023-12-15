@@ -82,7 +82,7 @@ const SelectedProjects = () => {
     //     {pathName === "/ua" ? "" : ""}
     return (
         <div className="container-selected-projects">
-            <span>{pathName === "/ua" ? "Мої проекти" : "My projects"}</span>
+            <span className="title-block">{pathName === "/ua" ? "Мої проекти" : "My projects"}</span>
             <div className="wrapper-container">
                 <FadeInAnimation direction="left" delay={0.2}>
                     <div className="container-map-project">
@@ -117,7 +117,7 @@ const SelectedProjects = () => {
                                         }}
                                     >
                                         <div>
-                                            <span>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
+                                            <span className="name">{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
                                         </div>
                                     </motion.div>
                                 </div>
