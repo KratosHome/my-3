@@ -23,9 +23,8 @@ export default function Home() {
             <section id="services">
                 <Services/>
             </section>
- 
-            <section id="about">
-                <AboutMe/>
+            <section id="experience">
+                <Experience/>
             </section>
         </main>
     )
