@@ -72,7 +72,7 @@ const ExperienceList = ({item, index}: any) => {
                         </div>
                         <a className="link-another-platform" href={item.link} target="_blank">{item.company}</a>
                     </div>
-                    <div>
+                    <div className="wrapper-data">
                         <span>
                             {pathName === "/ua" ? `${item.dateUa}` : `${item.dateEn}`}
                         </span>
