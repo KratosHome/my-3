@@ -17,6 +17,9 @@ export default function Home() {
             <section id="about">
                 <AboutMe/>
             </section>
+            <section id="projects">
+                <SelectedProjects/>
+            </section>
         </main>
     )
 }
