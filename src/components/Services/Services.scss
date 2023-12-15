@@ -1,0 +1,41 @@
+.container-services {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+
+  .iner-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    padding: 30px 12px;
+    border: 2px solid #606686;
+    background: #0E0E10;
+    height: 100%;
+
+    .inner-box-description {
+      color: #FFF;
+      text-align: justify;
+      font-family: var(--font-jetbrains-mono);
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 30px */
+      letter-spacing: 0.8px;
+      overflow-x: auto;
+    }
+  }
+
+
+  > span {
+    text-align: right;
+  }
+
+
+}
+
+
+

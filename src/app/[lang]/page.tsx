@@ -2,6 +2,9 @@ import HeroSection from "@/components/HeroSection/HeroSection";
 import WrapperRequest from "@/components/WrapperRequest/WrapperRequest";
 import AboutMe from "@/components/AboutMe/AboutMe";
 import Connect from "@/components/Connect/Connect";
+import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
+import Services from "@/components/Services/Services";
+import Experience from "@/components/Experience/Experience";
 
 
 export default function Home() {
@@ -14,7 +17,16 @@ export default function Home() {
             <section id="about">
                 <AboutMe/>
             </section>
-            <section id="connаect">
+            <section id="projects">
+                <SelectedProjects/>
+            </section>
+            <section id="services">
+                <Services/>
+            </section>
+            <section id="experience">
+                <Experience/>
+            </section>
+            <section id="trustedBy">
                 <WrapperRequest/>
             </section>
             <section id="connect">
