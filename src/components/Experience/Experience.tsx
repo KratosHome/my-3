@@ -84,7 +84,7 @@ const experience = [
         link: "https://sharmbeauty.ua"
     },
 ]
-
+ 
 
 const Experience = () => {
     const pathName = usePathname();
