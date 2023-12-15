@@ -14,6 +14,11 @@ export default function Home() {
             <section id="section1">
                 <HeroSection/>
             </section>
+        </main>
+    )
+}
+
+/*
             <section id="about">
                 <AboutMe/>
             </section>
@@ -32,6 +37,4 @@ export default function Home() {
             <section id="connect">
                 <Connect/>
             </section>
-        </main>
-    )
-}
+ */

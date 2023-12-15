@@ -9,7 +9,6 @@ import MyModal from "@/components/UI/MyModal/MyModal";
 import FormHireMe from "@/components/FormHireMe/FormHireMe";
 import {usePathname} from "next/navigation";
 import SocialLicks from "@/components/SocialLicks/SocialLicks";
-import FormHLeaveReview from "@/components/FormHLeaveReview/FormHLeaveReview";
 
 const HeroSection = () => {
     const pathName = usePathname();

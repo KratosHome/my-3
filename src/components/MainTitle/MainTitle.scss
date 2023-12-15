@@ -10,7 +10,9 @@
         justify-content: center;
       }
     }
-
+    @media(max-width: 335px) {
+      margin-top: 80px;
+    }
     span {
       font-family: var(--font-jetbrains-mono-bold);
       text-transform: uppercase;

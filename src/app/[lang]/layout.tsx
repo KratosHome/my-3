@@ -6,7 +6,6 @@ import {Metadata} from "next";
 import ReduxProvider from "@/app/[lang]/provider";
 import localFont from 'next/font/local'
 import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
-import Head from "next/head";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -40,12 +39,7 @@ export default async function RootLayout({
 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
-        <Head>
-            <meta charSet="UTF-8" />
-            <title>{metadata.title}</title>
-            <meta name="description" content={metadata.description} />
-            <GoogleTagManager />
-        </Head>
+        <GoogleTagManager/>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
             <NavBar navigation={navigation}/>
