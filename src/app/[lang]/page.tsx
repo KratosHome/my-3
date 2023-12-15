@@ -20,25 +20,16 @@ export default function Home() {
             <section id="projects">
                 <SelectedProjects/>
             </section>
-            <section id="services">
-                <Services/>
-            </section>
-            <section id="services">
-                <Services/>
-            </section>
-            <section id="experience">
-                <Experience/>
-            </section>
-            <section id="about">
-                <AboutMe/>
-            </section>
+
         </main>
     )
 }
 
 /*
 
-
+       <section id="services">
+                <Services/>
+            </section>
 
             <section id="trustedBy">
                 <WrapperRequest/>
