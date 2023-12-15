@@ -63,10 +63,17 @@ const ComputersCanvas = () => {
         }
     }, [isMobile]);
 
+    const handleTouchMove = (event) => {
+        if (isMobile) {
+            event.stopPropagation();
+        }
+    };
+
     return (
         <Canvas
             key={isMobile ? "mobile" : "desktop"}
             frameloop='demand'
+            onTouchMove={handleTouchMove}
             shadows
             dpr={[1, 2]}
             camera={{
