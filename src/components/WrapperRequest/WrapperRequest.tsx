@@ -6,7 +6,6 @@ import TrustedBy from "@/components/TrustedBy/TrustedBy";
 export default  function WrapperRequest() {
     const [reviews, setReviews] = useState([]);
 
-console.log("reviews", reviews)
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('/api/reviews');

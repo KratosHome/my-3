@@ -18,7 +18,7 @@ const TrustedBy = ({reviews}: any) => {
             <Swiper
                 isButtonToggle={false}
                 cards={reviews}
-                numberCards={-1}
+                numberCards={0}
                 renderItem={(item: any) => (
                     <div key={item.id} className="container-reviews">
                         <div className="quotes">“</div>

@@ -85,10 +85,11 @@ const Swiper: FC<swiperTypes> = ({
 
 
     const onSwipe = (e: any, {offset}: any) => {
-      //  let direction = offset.x > 0 ? 'right' : 'left';
         let newPosition = slidePosition + offset.x;
-        newPosition = Math.min(newPosition, 0);
+        // Забезпечуємо, що newPosition не виходить за праву межу (-constraint)
         newPosition = Math.max(newPosition, -constraint);
+        // Забезпечуємо, що newPosition не виходить за ліву межу (0)
+        newPosition = Math.min(newPosition, 0);
         setSlidePosition(newPosition);
     };
 
