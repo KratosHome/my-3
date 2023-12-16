@@ -5,6 +5,7 @@ import Image from "next/image";
 import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
 import FadeInAnimation from '../UIA/FadeInAnimation/FadeInAnimation';
+import Button from "@/components/UI/Button/Button";
 
 const AboutMe = () => {
     const pathName = usePathname();
@@ -26,117 +27,128 @@ const AboutMe = () => {
                             <Image
                                 src={"./aboutMe/ReactLogo.svg"}
                                 alt={"react"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.4}>
                             <Image
                                 src={"./aboutMe/NextLogo.svg"}
                                 alt={"nextJS"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.6}>
                             <Image
                                 src={"./aboutMe/ElectronJsLogo.svg"}
                                 alt={"ElectronJs"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.8}>
                             <Image
                                 src={"./aboutMe/JavaScriptLogo.svg"}
                                 alt={"JavaScript"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={1}>
                             <Image
                                 src={"./aboutMe/TypeScriptLogo.svg"}
                                 alt={"TypeScript"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.2}>
                             <Image
                                 src={"./aboutMe/HTMLLogo.svg"}
                                 alt={"HTML"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.4}>
                             <Image
                                 src={"./aboutMe/CSSLogo.svg"}
                                 alt={"CSS"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.6}>
                             <Image
                                 src={"./aboutMe/ReduxLogo.svg"}
                                 alt={"Redux"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.8}>
                             <Image
                                 src={"./aboutMe/MobXLogo.svg"}
                                 alt={"MobXLogo"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={1}>
                             <Image
                                 src={"./aboutMe/SocketLogo.svg"}
                                 alt={"Socket"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.2}>
                             <Image
                                 src={"./aboutMe/axiosLogo.svg"}
                                 alt={"axios"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.4}>
                             <Image
                                 src={"./aboutMe/reactSpringLogo.svg"}
                                 alt={"reactSpringLogo"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.6}>
                             <Image
                                 src={"./aboutMe/StrapiLogo.svg"}
                                 alt={"Strapi"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                         <Swim isFast={true} delay={0.8}>
                             <Image
                                 src={"./aboutMe/gitOriginalLogo.svg"}
                                 alt={"gitOriginalLogo"}
-                                width={30}
-                                height={30}
+                                width={40}
+                                height={40}
                             />
                         </Swim>
                     </div>
                 </FadeInAnimation>
             </div>
+            <a
+                className="download-pdf-about-me"
+                href={"/Front-End-React-Developerр-Oleg-Tkach.pdf"}
+                download={'Front-End-React-Developerр-Oleg-Tkach'}
+            >
+                {pathName === "/ua" ? "Завантажити резюме" : "Download resume"}
+                <Image src={"/icons/ForwardArrow.svg"} alt={"arrow-resume"}
+                       width={20}
+                       height={20}
+                />
+            </a>
         </div>
     );
 };

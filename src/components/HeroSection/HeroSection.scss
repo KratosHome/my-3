@@ -20,13 +20,15 @@
     top: 20vh;
     left: 0;
     right: 0;
-    .test{
+
+    .test {
       display: none;
     }
+
     @media(max-width: 768px) {
       top: 50vh;
       width: 90vw;
-      .test{
+      .test {
         position: absolute;
         display: block;
         width: 100%;
@@ -36,7 +38,8 @@
 
     }
   }
-  .container-social-links{
+
+  .container-social-links {
     margin-top: 30%;
     @media(max-width: 768px) {
       margin-left: -25vw;

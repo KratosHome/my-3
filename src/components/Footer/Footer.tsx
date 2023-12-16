@@ -14,11 +14,11 @@ const Footer = () => {
             <div className="footer-sociale">
                 <SocialLicks isAbsolute={false}/>
             </div>
-            <div> {pathName === "/ua" ? "Дизайн зроблений " : "Design by "}
+            <div> {pathName === "/ua" ? "Дизайн зроблений " : "Design by"}
                 <a
-                    href="https://t.me/teekay_1610"
+                    href="https://www.linkedin.com/in/tetiana-kucherak/"
                     target="_blank"
-                    aria-label="Telegram"
+                    aria-label="linkedin"
                     className="link-another-platform"
                 >{pathName === "/ua" ? "Тетяна Кучеракй" : "Tetiana Kucherak"}</a></div>
         </div>

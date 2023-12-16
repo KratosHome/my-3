@@ -19,7 +19,7 @@ export default function FormHireMe({setOpen}: any) {
     const {register, handleSubmit, formState: {errors}} = useForm();
 
     async function handleCaptchaSubmission(token: string | null) {
-        setIsverified(true)
+        console.log(token)
         await verifyCaptcha(token)
             .then(() => setIsverified(true))
             .catch(() => setIsverified(false))
@@ -102,11 +102,17 @@ export default function FormHireMe({setOpen}: any) {
                           />
                         {errors.message && <span>{String(errors.message.message)}</span>}
                     </div>
-
+                    <ReCAPTCHA
+                        className="recaptcha"
+                        sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+                        ref={recaptchaRef}
+                        onChange={handleCaptchaSubmission}
+                    />
                     <ButtonAnimation isPulse={false}>
                         <input
                             className="send-message"
                             type="submit"
+                            disabled={!isVerified}
                             value={pathName === "/ua" ? "Надіслати" : "Send"}
                         />
                     </ButtonAnimation>

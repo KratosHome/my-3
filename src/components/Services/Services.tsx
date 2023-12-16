@@ -61,7 +61,6 @@ const services = [
 const Services = () => {
     const pathName = usePathname();
 
-
     return (
         <div className='container-services'>
             <span className="title-block">
@@ -69,7 +68,7 @@ const Services = () => {
             </span>
             <Swiper
                 cards={services}
-                numberCards={0}
+                numberCards={-1}
                 isButtonToggle={true}
                 renderItem={(item: any) => (
                     <div className="iner-box">
