@@ -19,7 +19,6 @@ export default function FormHireMe({setOpen}: any) {
     const {register, handleSubmit, formState: {errors}} = useForm();
 
     async function handleCaptchaSubmission(token: string | null) {
-        console.log(token)
         await verifyCaptcha(token)
             .then(() => setIsverified(true))
             .catch(() => setIsverified(false))
@@ -27,8 +26,10 @@ export default function FormHireMe({setOpen}: any) {
 
     const onSubmit = async (data: any) => {
         setFormSubmitted(true);
-        setTimeout(() => setOpen(false), 1000);
         await telegramAction(data);
+        if (setOpen) {
+            setTimeout(() => setOpen(false), 1000);
+        }
     };
 
     const thankYouAnimation = {
