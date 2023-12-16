@@ -11,6 +11,7 @@ import Head from "next/head";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
+import Footer from "@/components/Footer/Footer";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -53,6 +54,7 @@ export default async function RootLayout({
             <StarsCanvas/>
             {children}
             </body>
+            <Footer/>
         </ReduxProvider>
         </html>
     )

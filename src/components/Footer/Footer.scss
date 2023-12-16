@@ -1,0 +1,38 @@
+.container-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 120px;
+
+  .footer-sociale {
+    div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  a,
+  div {
+    color: var(--text-color);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: 0.16px;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  }
+
+
+  @media(max-width: 668px) {
+    flex-direction: column;
+    margin: 30px 0;
+
+    .footer-sociale {
+      order: -1;
+    }
+  }
+}
