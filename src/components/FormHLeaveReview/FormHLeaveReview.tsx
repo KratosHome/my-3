@@ -40,6 +40,13 @@ const FormHLeaveReview = ({setOpen}: {
         exit: {opacity: 0, y: -50, transition: {duration: 0.5}},
     };
 
+    /*
+             <ReCAPTCHA
+                        sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+                        ref={recaptchaRef}
+                        onChange={handleCaptchaSubmission}
+                    />
+     */
     return (
         <AnimatePresence>
             {!formSubmitted ? (
@@ -103,16 +110,11 @@ const FormHLeaveReview = ({setOpen}: {
                           />
                         {errors.message && <span>{String(errors.message.message)}</span>}
                     </div>
-                    <ReCAPTCHA
-                        sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-                        ref={recaptchaRef}
-                        onChange={handleCaptchaSubmission}
-                    />
+
                     <ButtonAnimation isPulse={false}>
                         <input
                             className="send-message"
                             type="submit"
-                            disabled={!isVerified}
                             value={pathName === "/ua" ? "Надіслати" : "Send"}
                         />
                     </ButtonAnimation>
