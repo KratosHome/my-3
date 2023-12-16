@@ -21,7 +21,7 @@ const Connect = () => {
     return (
         <div className="container-connect">
             <div className="head-block">
-                <span className="name">{pathName === "/ua" ? "Відправити контакт" : "Let’s connect"}</span>
+                <span className="name">{pathName === "/ua" ? "Зв'язатися" : "Let’s connect"}</span>
                 <a className="link-another-platform" href="mailto:OlegonTkach101@gmail.com">OlegonTkach101@gmail.com</a>
             </div>
             <div className="wrapper-block">

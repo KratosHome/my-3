@@ -69,29 +69,31 @@ const Swiper: FC<swiperTypes> = ({
             setConstraint(cardWidth * currentArray.length - containerWidth);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [containerWidth]);
-
-
-    const handleSwipe = (direction: any) => {
-        const containerWidth = ref.current.offsetWidth;
-        const cardWidth = containerWidth / cardsToShow;
-
-        if (direction === 'left') {
-            setSlidePosition(Math.min(slidePosition + cardWidth, 0));
-        } else if (direction === 'right') {
-            setSlidePosition(Math.max(slidePosition - cardWidth, -constraint));
-        }
-    }
+    }, [containerWidth, cardsToShow, currentArray]);
 
 
     const onSwipe = (e: any, {offset}: any) => {
         let newPosition = slidePosition + offset.x;
-        // Забезпечуємо, що newPosition не виходить за праву межу (-constraint)
-        newPosition = Math.max(newPosition, -constraint);
-        // Забезпечуємо, що newPosition не виходить за ліву межу (0)
         newPosition = Math.min(newPosition, 0);
+        newPosition = Math.max(newPosition, -constraint);
         setSlidePosition(newPosition);
     };
+
+    const handleSwipe = (direction: string) => {
+        const containerWidth = ref.current.offsetWidth;
+        const cardWidth = containerWidth / cardsToShow;
+        let newSlidePosition = slidePosition;
+
+        if (direction === 'left') {
+            newSlidePosition = Math.min(slidePosition + cardWidth, 0);
+        } else if (direction === 'right') {
+            newSlidePosition = Math.max(slidePosition - cardWidth, -constraint);
+        }
+
+        setSlidePosition(newSlidePosition);
+    };
+
+
 
 
     useEffect(() => {

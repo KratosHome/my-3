@@ -28,6 +28,9 @@ export default function Home() {
             <section id="trustedBy">
                 <WrapperRequest/>
             </section>
+            <section id="connect">
+                <Connect/>
+            </section>
         </main>
     )
 }
@@ -39,7 +42,5 @@ export default function Home() {
 
 
 
-            <section id="connect">
-                <Connect/>
-            </section>
+
  */
