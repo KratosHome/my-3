@@ -12,6 +12,7 @@
   border: 2px solid #A1AAD9;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  padding: 20px;
 
   div, span, a {
     color: white;
@@ -27,12 +28,12 @@
   .child {
     position: relative;
     width: 100%;
-    padding: 0 20px;
     font-family: var(--font-consolas);
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+
 
     .wrapper-title {
 
@@ -44,11 +45,16 @@
           font-weight: normal;
         }
       }
+
     }
-    .wrapper-data{
+
+    .wrapper-data {
       position: absolute;
       right: 20px;
       top: 45%;
+      @media(max-width: 330px) {
+        top: 40%;
+      }
     }
 
     .open-icon {
@@ -83,7 +89,6 @@
 .wrapper-experience-list[data-isOpen="true"] {
   height: max-content;
   background-color: #000000;
-  padding: 20px;
 
   > div {
     grid-template-columns: 1fr 300px;
