@@ -1,9 +1,8 @@
 "use client"
 import React, {useEffect, useState} from 'react';
-import {fetchReviews} from "@/services/date";
 import TrustedBy from "@/components/TrustedBy/TrustedBy";
 
-export default  function WrapperRequest() {
+export default function WrapperRequest() {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
@@ -17,8 +16,6 @@ export default  function WrapperRequest() {
     }, []);
 
     return (
-        <div>
-            <TrustedBy reviews={reviews}/>
-        </div>
+        <TrustedBy reviews={reviews}/>
     );
 };

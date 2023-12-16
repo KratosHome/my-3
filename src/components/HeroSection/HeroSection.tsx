@@ -15,15 +15,17 @@ const HeroSection = () => {
 
     return (
         <div className="container-3d">
-            <SocialLicks/>
             <MainTitle/>
             <div className="wrapper-hire-me">
                 <div></div>
                 <MyModal
                     childrenOpen={
-                        <Button>
-                            {pathName === "/ua" ? "Найняти мене" : "Hire me"}
-                        </Button>
+                        <>
+                            <Button>
+                                {pathName === "/ua" ? "Найняти мене" : "Hire me"}
+                            </Button>
+                            <SocialLicks/>
+                        </>
                     }
                     childrenModal={<FormHireMe/>}
                     layoutId={"2334342"}

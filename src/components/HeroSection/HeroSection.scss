@@ -36,4 +36,10 @@
 
     }
   }
+  .container-social-links{
+    margin-top: 30%;
+    @media(max-width: 768px) {
+      margin-left: -25vw;
+    }
+  }
 }
