@@ -30,6 +30,7 @@ const HeroSection = () => {
                 />
             </div>
             <Swim className="computer">
+                <div className="test"></div>
                 <ComputersCanvas/>
             </Swim>
         </div>
