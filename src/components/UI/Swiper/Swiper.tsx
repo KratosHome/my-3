@@ -153,7 +153,12 @@ const Swiper: FC<swiperTypes> = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-
+    const calculateBoxWidth = () => {
+        if (currentArray && currentArray.length > 0) {
+            return 100 / Math.min(currentArray.length, cardsToShow) + "%";
+        }
+        return "100%";
+    };
     return (
         <div className='container-cards' ref={componentRef}>
             {isButtonToggle &&
@@ -184,7 +189,7 @@ const Swiper: FC<swiperTypes> = ({
                             animate={inView ? "visible" : isVisible ? "visible" : "hidden"}
                             variants={showAnimate}
                             className='box'
-                            style={{minWidth: `calc(100% / ${cardsToShow})`}}
+                            style={{ minWidth: calculateBoxWidth() }}
                         >
                             {renderItem(item)}
                         </motion.div>
