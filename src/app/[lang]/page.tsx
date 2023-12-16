@@ -23,16 +23,13 @@ export default function Home() {
             <section id="services">
                 <Services/>
             </section>
-
-
             <section id="experience">
                 <Experience/>
             </section>
-
             <section id="trustedBy">
                 <WrapperRequest/>
             </section>
-            <section id="connect">
+            <section id="contact">
                 <Connect/>
             </section>
         </main>
