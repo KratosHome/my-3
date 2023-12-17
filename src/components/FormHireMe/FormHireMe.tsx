@@ -1,6 +1,7 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
 import "./FormHireMe.scss";
+import {telegramAction} from "@/services/telegram.server";
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 import ReCAPTCHA from "react-google-recaptcha"
 import {useRef, useState} from "react"
@@ -8,7 +9,6 @@ import {verifyCaptcha} from "@/services/ServerActions";
 import InputMask from 'react-input-mask';
 import {motion, AnimatePresence} from 'framer-motion';
 import {usePathname} from "next/navigation";
-import axios from "axios";
 
 export default function FormHireMe({setOpen}: any) {
     const pathName = usePathname();
@@ -26,16 +26,11 @@ export default function FormHireMe({setOpen}: any) {
 
     const onSubmit = async (data: any) => {
         setFormSubmitted(true);
-        axios.post('/api/telegramAction', data)
-            .then(response => {
-                if (!setOpen === undefined) {
-                    setTimeout(() => setOpen(false), 1000);
-                }
-            }).catch(error => {
-            console.error('onSubmit Error sending message:', error);
-        });
+        await telegramAction(data);
+        if (!setOpen === undefined) {
+            setTimeout(() => setOpen(false), 1000);
+        }
     };
-
 
     const thankYouAnimation = {
         initial: {opacity: 0, y: 50},
@@ -136,6 +131,5 @@ export default function FormHireMe({setOpen}: any) {
             )}
         </AnimatePresence>
     );
-}
-;
+};
 

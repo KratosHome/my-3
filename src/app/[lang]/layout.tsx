@@ -28,12 +28,6 @@ const JetBrainsMonoBold = localFont({
     variable: '--font-jetbrains-mono-bold',
 });
 
-
-export const metadata: Metadata = {
-    title: 'Frontend-End',
-    description: 'Development of complex and interesting projects',
-}
-
 export default async function RootLayout({
                                              children,
                                              params
