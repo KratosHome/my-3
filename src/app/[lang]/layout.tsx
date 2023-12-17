@@ -47,6 +47,16 @@ export default async function RootLayout({
         <html lang={params.lang === "en" ? "en" : "ua"}>
         <Head>
             <GoogleTagManager/>
+            <meta property="og:title"
+                  content={params.lang === "en" ? "CodeCraftMaster - Your Guide to the World of Programming" : "CodeCraftMaster - Ваш Путівник у Світі Програмування"}/>
+            <meta property="og:description"
+                  content={params.lang === "en" ? "Development of complex and interesting projects" : "Розробка складних і цікавих проектів"}/>
+            <meta property="og:image" content={"/logo.png"}/>
+            <meta property="og:url" content="codecraftmaster.com"/>
+            <meta property="og:type" content="website"/>
+
+            <meta property="og:site_name" content="codecraftmaster"/>
+            <meta property="og:locale" content={params.lang === "en" ? "en" : "ua"}/>
         </Head>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
@@ -59,4 +69,3 @@ export default async function RootLayout({
         </html>
     )
 }
-// content={theme === 'light' ? "#F7F7F7" : "#10101D"}

@@ -9,6 +9,7 @@ import {verifyCaptcha} from "@/services/ServerActions";
 import InputMask from 'react-input-mask';
 import {motion, AnimatePresence} from 'framer-motion';
 import {usePathname} from "next/navigation";
+import axios from "axios";
 
 export default function FormHireMe({setOpen}: any) {
     const pathName = usePathname();
@@ -26,11 +27,16 @@ export default function FormHireMe({setOpen}: any) {
 
     const onSubmit = async (data: any) => {
         setFormSubmitted(true);
-        await telegramAction(data);
-        if (setOpen) {
-            setTimeout(() => setOpen(false), 1000);
-        }
+        axios.post('/api/telegramAction', data)
+            .then(response => {
+                if (setOpen) {
+                    setTimeout(() => setOpen(false), 1000);
+                }
+            }).catch(error => {
+            console.error('Error sending message:', error);
+        });
     };
+
 
     const thankYouAnimation = {
         initial: {opacity: 0, y: 50},
@@ -131,5 +137,6 @@ export default function FormHireMe({setOpen}: any) {
             )}
         </AnimatePresence>
     );
-};
+}
+;
 
