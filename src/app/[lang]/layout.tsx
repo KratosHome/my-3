@@ -55,7 +55,7 @@ export default async function RootLayout({
     params: { lang: Locale }
 }) {
     const {navigation} = await getDictionary(params.lang)
-
+ 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
         <GoogleTagManager/>
