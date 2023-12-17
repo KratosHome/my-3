@@ -6,18 +6,17 @@ const GoogleTagManager = () => {
         return (
             <>
                 <Script
-                    src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
+                    src={`https://www.googletagmanager.com/gtag/js?id=G-1VKMHQQYBM`}
                     strategy="afterInteractive"
                 />
-                <Script
-                    id="google-analytics"
+                <Script id="google-analytics"
                     strategy="afterInteractive"
                 >
                     {`
           window.dataLayer = window.dataLayer || [];
           function gtag() { dataLayer.push(arguments); }
           gtag('js', new Date());
-          gtag('config', '${GTM_ID}', {
+          gtag('config', 'G-1VKMHQQYBM', {
             page_path: window.location.pathname,
           });
         `}
