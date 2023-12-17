@@ -7,9 +7,11 @@ import ReduxProvider from "@/app/[lang]/provider";
 import localFont from 'next/font/local'
 import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 import {ReactNode} from "react";
+import Head from "next/head";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
+import {useSelector} from "react-redux";
+import {RootState} from "@/store/store";
 import Footer from "@/components/Footer/Footer";
-import {Html, Head, Main, NextScript} from 'next/document';
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -42,28 +44,26 @@ export default async function RootLayout({
     const {navigation} = await getDictionary(params.lang)
 
     return (
-        <Html lang={params.lang === "en" ? "en" : "ua"}>
-            <Head>
-                <GoogleTagManager/>
-                <title>Cool Title</title>
-                <meta property="og:title" content="CodeCraftMaster - Your Guide to the World of Programming"/>
-                <meta property="og:description"
-                      content="Development of complex and interesting projects"/>
-                <meta property="og:image" content={"/logo.png"}/>
-                <meta property="og:url" content="codecraftmaster.com"/>
-                <meta property="og:type" content="website"/>
+        <html lang={params.lang === "en" ? "en" : "ua"}>
+        <Head>
+            <GoogleTagManager/>
+            <meta property="og:title" content="CodeCraftMaster - Your Guide to the World of Programming"/>
+            <meta property="og:description" content="Development of complex and interesting projects" />
+            <meta property="og:image" content={"/logo.png"} />
+            <meta property="og:url" content="codecraftmaster.com" />
+            <meta property="og:type" content="website" />
 
-                <meta property="og:site_name" content="codecraftmaster"/>
-                <meta property="og:locale" content={params.lang === "en" ? "en" : "ua"}/>
-            </Head>
-            <ReduxProvider>
-                <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
-                <NavBar navigation={navigation}/>
-                <StarsCanvas/>
-                {children}
-                </body>
-                <Footer/>
-            </ReduxProvider>
-        </Html>
+            <meta property="og:site_name" content="codecraftmaster" />
+            <meta property="og:locale" content={params.lang === "en" ? "en" : "ua"} />
+        </Head>
+        <ReduxProvider>
+            <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
+            <NavBar navigation={navigation}/>
+            <StarsCanvas/>
+            {children}
+            </body>
+            <Footer/>
+        </ReduxProvider>
+        </html>
     )
 }
