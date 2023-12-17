@@ -20,7 +20,6 @@ const FormHLeaveReview = ({setOpen}: {
     const {register, handleSubmit, formState: {errors}} = useForm();
 
     async function handleCaptchaSubmission(token: string | null) {
-
         await verifyCaptcha(token)
             .then(() => setIsverified(true))
             .catch(() => setIsverified(false));

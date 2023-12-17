@@ -25,11 +25,6 @@ export default function FormHireMe({setOpen}: any) {
     }
 
     const onSubmit = async (data: any) => {
-        const GTM_ID = `${process.env.NEXT_GTM_ID}`;
-        console.log("chatId", process.env.TELEGRAM_BOT_CHAT_ID)
-        console.log("process.env.TELEGRAM_BOT_TOKEN", process.env.TELEGRAM_BOT_TOKEN)
-        console.log("GTM_ID", GTM_ID)
-
         setFormSubmitted(true);
         axios.post('/api/telegramAction', data)
             .then(response => {
