@@ -55,9 +55,12 @@ export default async function RootLayout({
     params: { lang: Locale }
 }) {
     const {navigation} = await getDictionary(params.lang)
- 
+
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
+        <Head>
+            <title>Frontend Developer</title>
+        </Head>
         <GoogleTagManager/>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
