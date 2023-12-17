@@ -46,8 +46,7 @@ export default async function RootLayout({
             <Head>
                 <GoogleTagManager/>
                 <title>Cool Title</title>
-                <meta property="og:title"
-                      content="CodeCraftMaster - Your Guide to the World of Programming"/>
+                <meta property="og:title" content="CodeCraftMaster - Your Guide to the World of Programming"/>
                 <meta property="og:description"
                       content="Development of complex and interesting projects"/>
                 <meta property="og:image" content={"/logo.png"}/>
@@ -61,9 +60,7 @@ export default async function RootLayout({
                 <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
                 <NavBar navigation={navigation}/>
                 <StarsCanvas/>
-                <Main/>
                 {children}
-                <NextScript/>
                 </body>
                 <Footer/>
             </ReduxProvider>
