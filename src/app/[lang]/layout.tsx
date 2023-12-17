@@ -5,13 +5,13 @@ import NavBar from "@/components/NavBar/NavBar";
 import {Metadata} from "next";
 import ReduxProvider from "@/app/[lang]/provider";
 import localFont from 'next/font/local'
+import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 import {ReactNode} from "react";
 import Head from "next/head";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
 import Footer from "@/components/Footer/Footer";
-import { GoogleTagManager } from '@next/third-parties/google'
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -58,9 +58,7 @@ export default async function RootLayout({
 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
-        <Head>
-            <GoogleTagManager gtmId="G-VH1Y00D2RY" />
-        </Head>
+        <GoogleTagManager/>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
             <NavBar navigation={navigation}/>
