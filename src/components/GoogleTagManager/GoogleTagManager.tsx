@@ -4,7 +4,7 @@ import Script from 'next/script';
 const GoogleTagManager = () => {
         return (
             <>
-                <Script src="https://www.googletagmanager.com/gtag/js?id=G-VH1Y00D2RY" />
+                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-VH1Y00D2RY" />
                 <Script id="google-analytics">
                     {`
                        window.dataLayer = window.dataLayer || [];
