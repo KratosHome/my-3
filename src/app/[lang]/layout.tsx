@@ -11,7 +11,7 @@ import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
 import Footer from "@/components/Footer/Footer";
-import { GoogleTagManager } from '@next/third-parties/google'
+import {GoogleTagManager} from '@next/third-parties/google'
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -58,7 +58,9 @@ export default async function RootLayout({
 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
-        <GoogleTagManager gtmId="G-1VKMHQQYBM" />
+        <Head>
+            <GoogleTagManager gtmId="G-1VKMHQQYBM"/>
+        </Head>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
             <NavBar navigation={navigation}/>
