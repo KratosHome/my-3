@@ -28,7 +28,7 @@ export default function FormHireMe({setOpen}: any) {
         setFormSubmitted(true);
         axios.post('/api/telegramAction', data)
             .then(response => {
-                if (setOpen) {
+                if (!setOpen === undefined) {
                     setTimeout(() => setOpen(false), 1000);
                 }
             }).catch(error => {

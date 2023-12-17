@@ -4,7 +4,8 @@ import TelegramBot from "node-telegram-bot-api";
 
 export async function POST(formData) {
     const chatId = `${process.env.TELEGRAM_BOT_CHAT_ID}`;
-
+    console.log("chatId", chatId)
+    console.log("process.env.TELEGRAM_BOT_TOKEN", process.env.TELEGRAM_BOT_TOKEN)
     try {
         const formattedDate = formatDate(new Date());
         const bot = new TelegramBot(`${process.env.TELEGRAM_BOT_TOKEN}`, {polling: true});
