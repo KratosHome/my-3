@@ -2,7 +2,7 @@ import Script from 'next/script';
 
 
 const GoogleTagManager = () => {
-        const GTM_ID = `${process.env.NEXT_GTM_ID}`;
+        const GTM_ID = `${process.env.NEXT_GTM_ID}`; 
         return (
             <>
                 <Script
