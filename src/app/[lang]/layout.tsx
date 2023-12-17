@@ -52,7 +52,7 @@ export default async function RootLayout({
             <meta property="og:image" content={"/logo.png"} />
             <meta property="og:url" content="codecraftmaster.com" />
             <meta property="og:type" content="website" />
-
+ 
             <meta property="og:site_name" content="codecraftmaster" />
             <meta property="og:locale" content={params.lang === "en" ? "en" : "ua"} />
         </Head>
