@@ -1,7 +1,6 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
 import "./FormHireMe.scss";
-import {telegramAction} from "@/services/telegram.server";
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 import ReCAPTCHA from "react-google-recaptcha"
 import {useRef, useState} from "react"
