@@ -65,9 +65,8 @@ body {
     background: var(--background-color);
     color: var(--text-color);
     font-family: var(--font-jetbrains-mono);
-    padding-left: calc(var(--index) * 3);
-    padding-right: calc(var(--index) * 3);
-
+    padding-left: calc(var(--index) * 2);
+    padding-right: calc(var(--index) * 2);
     overscroll-behavior: none;
 }
 

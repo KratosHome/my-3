@@ -176,7 +176,8 @@ const SelectedProjects = () => {
                                                     src={"/icons/ForwardArrow.svg"}
                                                     alt={"ForwardArrow"}
                                                     width={20}
-                                                    height={20}/>
+                                                    height={20}
+                                                />
                                             </a>
                                     }
                                 </div>

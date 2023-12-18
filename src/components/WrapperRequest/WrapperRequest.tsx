@@ -9,7 +9,7 @@ export default function WrapperRequest() {
         async function fetchData() {
             const response = await fetch('/api/reviews');
             const data = await response.json();
-            setReviews(data);
+            setReviews(data.reverse());
         }
 
         fetchData();
