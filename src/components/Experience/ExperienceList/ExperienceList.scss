@@ -88,7 +88,8 @@
 
 .wrapper-experience-list[data-isOpen="true"] {
   height: max-content;
-  background-color: #000000;
+  background-color: transparent;
+  backdrop-filter: blur(8px);
 
   > div {
     grid-template-columns: 1fr 300px;
