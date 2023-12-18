@@ -57,10 +57,10 @@ export default async function RootLayout({
     const {navigation} = await getDictionary(params.lang)
 
     const openGraphMeta = {
-        title: 'Frontend Developer', // Заголовок, який буде відображатися в соцмедіа
-        description: 'Development of websites and applications', // Опис
-        url: 'https://codecraftmaster.com', // URL вашого сайту
-        image: '/logo.png', // Повний шлях до зображення для попереднього перегляду
+        title: 'Frontend Developer',
+        description: 'Development of websites and applications',
+        url: 'https://codecraftmaster.com',
+        image: '/logo.png',
         site_name: 'codecraftmaster.com',
         type: 'website'
     };
