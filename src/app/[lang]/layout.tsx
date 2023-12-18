@@ -9,8 +9,6 @@ import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 import {ReactNode} from "react";
 import Head from "next/head";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
-import {useSelector} from "react-redux";
-import {RootState} from "@/store/store";
 import Footer from "@/components/Footer/Footer";
 
 const JetBrainsMono = localFont({
