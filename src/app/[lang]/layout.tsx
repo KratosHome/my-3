@@ -56,8 +56,27 @@ export default async function RootLayout({
 }) {
     const {navigation} = await getDictionary(params.lang)
 
+    const openGraphMeta = {
+        title: 'Frontend Developer', // Заголовок, який буде відображатися в соцмедіа
+        description: 'Development of websites and applications', // Опис
+        url: 'https://codecraftmaster.com', // URL вашого сайту
+        image: '/logo.png', // Повний шлях до зображення для попереднього перегляду
+        site_name: 'codecraftmaster.com',
+        type: 'website'
+    };
+
+
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
+        <Head>
+            <title>{openGraphMeta.title}</title>
+            <meta property="og:title" content={openGraphMeta.title} />
+            <meta property="og:description" content={openGraphMeta.description} />
+            <meta property="og:url" content={openGraphMeta.url} />
+            <meta property="og:image" content={openGraphMeta.url + openGraphMeta.image} />
+            <meta property="og:site_name" content={openGraphMeta.site_name} />
+            <meta property="og:type" content={openGraphMeta.type} />
+        </Head>
         <GoogleTagManager/>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>

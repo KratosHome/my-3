@@ -54,8 +54,8 @@ const date: any = [
     },
     {
         id: 5,
-        nameUa: "MovingWaldo is a platform for movers",
-        nameEn: "Movingwaldo - платформа для перевізників",
+        nameUa: "Movingwaldo - платформа для перевізників",
+        nameEn: "MovingWaldo is a platform for movers",
         img: "/selectedBlock/movingwaldo.png",
         descriptionUa: "Інтеграція інструментів для забезпечення прозорості цін і легкості порівняння послуг переїзду через MovingWaldo включає можливість безпосереднього бронювання, покращений аналіз даних для персоналізованих пропозицій та інтуїтивний інтерфейс, що забезпечує гнучкість та зручність для користувачів",
         descriptionEn: "The integration of tools to ensure transparency in pricing and ease of comparison for moving services through MovingWaldo includes the capability for direct booking, enhanced data analysis for personalized offerings, and an intuitive interface, providing flexibility and convenience for users.",
@@ -79,7 +79,6 @@ const SelectedProjects = () => {
     const getBackgroundImage = (isMobile: boolean) => isMobile ? '/selectedBlock/iphone.png' : '/selectedBlock/macbook.png';
 
 
-    //     {pathName === "/ua" ? "" : ""}
     return (
         <div className="container-selected-projects">
             <span className="title-block">{pathName === "/ua" ? "Мої проекти" : "My projects"}</span>
