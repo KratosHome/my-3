@@ -28,6 +28,9 @@
     --background-color-modal-close: #9898bb;
     --background-color-input: #c8c8d4;
     --shadow-color-inset: #595972;
+    --services-background: rgba(14, 14, 16, 1);
+    --experience-background: rgba(57, 28, 96, 1);
+    --experience-background-hover: rgba(109, 36, 201, 1);
     --safe-area-inset-top: env(safe-area-inset-top);
 }
 
@@ -54,6 +57,9 @@
     --background-color-modal-close: purple;
     --background-color-input: #10101D;
     --shadow-color-inset: #10101D;
+    --services-background: rgba(14, 14, 16, 0.5);
+    --experience-background: rgba(57, 28, 96, 0.7);
+    --experience-background-hover: rgba(109, 36, 201, 0.5);
     --safe-area-inset-top: env(safe-area-inset-top);
 }
 

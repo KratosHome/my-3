@@ -3,6 +3,10 @@
   margin-top: calc(var(--index) * 4);
   position: relative;
 
+  @media screen and (max-width: 390px) {
+    margin-top: 50px;
+  }
+
   .wrapper-hire-me {
     position: absolute;
     z-index: 12;

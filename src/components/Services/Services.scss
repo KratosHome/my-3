@@ -13,7 +13,8 @@
     border-radius: 12px;
     padding: 30px;
     border: 2px solid #606686;
-    background: #0E0E10;
+    background: var(--services-background);
+    backdrop-filter: blur(2px);
     height: 100%;
 
     span,

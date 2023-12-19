@@ -76,9 +76,7 @@ const ExperienceList = ({item, index}: any) => {
                         <span>
                             {pathName === "/ua" ? `${item.dateUa}` : `${item.dateEn}`}
                         </span>
-                        <span
-                            className="open-icon"
-                        >
+                        <span className="open-icon">
                             {isOpen ? "-" : "+"}
                         </span>
                     </div>
