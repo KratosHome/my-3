@@ -5,7 +5,11 @@ import Connect from "@/components/Connect/Connect";
 import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
 import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
+import { Viewport } from 'next'
 
+export const viewport: Viewport = {
+    themeColor: 'black',
+}
 export async function generateMetadata({params, theme}: any) {
     console.log("params, params", params)
     console.log("theme, theme", theme)
@@ -39,8 +43,8 @@ export async function generateMetadata({params, theme}: any) {
         alternates: {
             canonical: 'https://codecraftmaster.com',
             languages: {
-                'en-US': '/en',
-                'uk-UA': '/ua',
+                'en-US': 'https://codecraftmaster.com/en',
+                'uk-UA': 'https://codecraftmaster.com/ua',
             },
         },
         icons: {
