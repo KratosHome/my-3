@@ -90,8 +90,18 @@
 
 .wrapper-experience-list[data-isOpen="true"] {
   height: max-content;
-  background-color: var(--services-background);
+  background-color: var(--experience-background-open);
   backdrop-filter: blur(2px);
+
+  span, div, a {
+    color: var(--services-text);
+  }
+
+  .wrapper-technologies {
+    span {
+      color: white;
+    }
+  }
 
   > div {
     grid-template-columns: 1fr 300px;

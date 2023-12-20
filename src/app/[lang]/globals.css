@@ -7,29 +7,26 @@
 
 :root {
     --index: calc(1vw + 1vh);
-    --background-color: linear-gradient(180deg,
-    rgb(195, 196, 199) 0%,
-    rgb(196, 195, 203) 10%,
-    rgb(199, 192, 210) 20%,
-    rgb(203, 191, 222) 30%,
-    rgb(207, 197, 241) 40%,
-    rgb(206, 212, 246) 50%,
-    rgb(209, 233, 250) 60%,
-    rgb(207, 209, 245) 70%,
-    rgb(205, 215, 228) 80%,
-    rgb(204, 197, 187) 90%,
-    rgb(196, 195, 201) 100%);
-    --text-color: #000000;
+    --background-color: #FBFCFF;
+    --text-color: #0E0E10;
     --text-color-hover: #24428a;
-    --violet-light: #AC69FF;
+    --text-color-footer: #606686;
+    --violet-light: #6D24C9;
     --brand-violet-primary: #6D24C9;
+    --text-color-enumeration: #6A72A0;
+    --text-color-script: #DF631C;
+    --text-color-chose-name-color: #7E8696;
     --loader-background: 0.5;
-    --background-color-modal: #e0e0e0;
+    --background-color-modal: rgba(247, 246, 246, 1);
     --background-color-modal-close: #9898bb;
-    --background-color-input: #c8c8d4;
+    --background-color-input: transparent;
     --shadow-color-inset: #595972;
-    --services-background: rgba(14, 14, 16, 1);
+    --services-img-filter: drop-shadow(10px 5px 0px var(--brand-violet-primary));
+    --services-text: #0E0E10;
+    --services-background-button: #e7e7fa;
+    --services-background: linear-gradient(112deg, rgba(136, 136, 228, 0.09) 17.01%, rgba(43, 43, 193, 0.12) 88.71%);
     --experience-background: rgba(57, 28, 96, 1);
+    --experience-background-open: #e7e7fa;
     --experience-background-hover: rgba(109, 36, 201, 1);
     --safe-area-inset-top: env(safe-area-inset-top);
 }
@@ -50,15 +47,23 @@
     rgb(16, 15, 21) 100%);
     --text-color: #F7F7F7;
     --text-color-hover: #FFA500;
+    --text-color-footer: #F7F7F7;
     --violet-light: #AC69FF;
     --brand-violet-primary: #6D24C9;
+    --text-color-enumeration: #CDD9AB;
+    --text-color-script: #FBC65E;
+    --text-color-chose-name-color: #7E8696;
     --loader-background: 0.1;
     --background-color-modal: #1e1e2a;
     --background-color-modal-close: purple;
     --background-color-input: #10101D;
     --shadow-color-inset: #10101D;
+    --services-text: #FFF;
+    --services-img-filter: drop-shadow(-10px 5px 0px var(--brand-violet-primary));
     --services-background: rgba(14, 14, 16, 0.5);
+    --services-background-button: rgba(14, 14, 16, 0.5);
     --experience-background: rgba(57, 28, 96, 0.7);
+    --experience-background-open: rgba(14, 14, 16, 0.5);
     --experience-background-hover: rgba(109, 36, 201, 0.5);
     --safe-area-inset-top: env(safe-area-inset-top);
 }
@@ -74,6 +79,8 @@ body {
     padding-left: calc(var(--index) * 2);
     padding-right: calc(var(--index) * 2);
     overscroll-behavior: none;
+    max-width: 2550px;
+    margin: 0 auto;
 }
 
 a, span {

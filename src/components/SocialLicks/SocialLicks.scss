@@ -1,13 +1,21 @@
-.isAbsolute,
-.container-social-links {
+.container-social-links-isAbsolute {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 50%;
+  top: 120%;
   left: 10px;
   z-index: 1;
+  flex-direction: column;
 
   svg {
     position: relative;
   }
+}
+
+.container-social-links,
+.container-social-links-isAbsolute {
+  display: flex;
+
+  svg {
+    fill: var(--text-color);
+  }
+
 }

@@ -5,7 +5,6 @@ import Image from "next/image";
 import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
 import FadeInAnimation from '../UIA/FadeInAnimation/FadeInAnimation';
-import Button from "@/components/UI/Button/Button";
 
 const AboutMe = () => {
     const pathName = usePathname();

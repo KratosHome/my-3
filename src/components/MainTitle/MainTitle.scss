@@ -41,7 +41,7 @@
 
   h2 {
     font-family: var(--font-consolas);
-    color: #FFF;
+    color: var(--text-color);
     font-size: calc(var(--index) * 1.2);
     font-style: normal;
     font-weight: bold;

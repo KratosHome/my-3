@@ -24,12 +24,12 @@ const HeroSection = () => {
                             <Button>
                                 {pathName === "/ua" ? "Найняти мене" : "Hire me"}
                             </Button>
-                            <SocialLicks/>
                         </>
                     }
                     childrenModal={<FormHireMe/>}
                     layoutId={"2334342"}
                 />
+                <SocialLicks/>
             </div>
             <Swim className="computer">
                 <div className="test"></div>

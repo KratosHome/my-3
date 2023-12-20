@@ -3,7 +3,6 @@ import React, {FC, useEffect, useRef, useState} from 'react';
 import "./Swiper.scss"
 import {useInView} from "react-intersection-observer";
 import {useWindowWidth} from "@/hooks/useWindowWidth";
-import Image from "next/image";
 import {motion} from "framer-motion";
 
 interface swiperTypes {
@@ -163,11 +162,11 @@ const Swiper: FC<swiperTypes> = ({
         <div className='container-cards' ref={componentRef}>
             {isButtonToggle &&
                 <button className="toggle-swipe-left" onClick={() => handleSwipe('left')}>
-                    <Image
-                        src={"/icons/Chevron.svg"}
-                        alt={"Chevron.svg"}
-                        width={25}
-                        height={25}/>
+                    <svg width="25" height="25" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Chevron Right">
+                            <path id="Vector" d="M17.3443 42L33.3938 25.0031C33.8954 24.4737 33.8954 23.6378 33.3938 23.0805L17.3164 6" stroke="white" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
                 </button>
             }
             <motion.div className='container-slider'>
@@ -198,12 +197,11 @@ const Swiper: FC<swiperTypes> = ({
             </motion.div>
             {isButtonToggle &&
                 <button className="toggle-swipe" onClick={() => handleSwipe('right')}>
-                    <Image
-                        src={"/icons/Chevron.svg"}
-                        alt={"Chevron.svg"}
-                        width={25}
-                        height={25}
-                    />
+                    <svg width="25" height="25" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Chevron Right">
+                            <path id="Vector" d="M17.3443 42L33.3938 25.0031C33.8954 24.4737 33.8954 23.6378 33.3938 23.0805L17.3164 6" stroke="white" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
                 </button>
             }
         </div>

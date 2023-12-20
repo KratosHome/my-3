@@ -7,6 +7,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
   padding: 20px 0;
+  margin-top: 80px;
 
   > span {
     width: 100%;
@@ -25,7 +26,7 @@
 
     .script {
       display: block;
-      color: #FBC65E;
+      color: var(--text-color-script);
       font-family: var(--font-jetbrains-mono);
       font-size: 28px;
       font-style: normal;
@@ -57,6 +58,9 @@
     @media(max-width: 532px) {
       margin-left: 0;
     }
+    .chose-name-color {
+      color: var(--text-color-chose-name-color);
+    }
   }
 
   .wrapper-project-list {
@@ -81,7 +85,7 @@
   .enumeration {
     position: absolute;
     margin-top: 20px;
-    color: #CDD9AB;
+    color: var(--text-color-enumeration);
     font-family: var(--font-jetbrains-mono);
     font-size: 32px;
     font-style: normal;
@@ -150,7 +154,7 @@
         margin-top: 10px;
         display: flex;
         align-items: center;
-        color: #AC69FF;
+        color: var(--violet-light);
         font-family: var(--font-consolas);
         font-size: 28px;
         font-style: normal;

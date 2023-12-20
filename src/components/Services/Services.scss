@@ -19,16 +19,17 @@
 
     span,
     img {
-      color: #FFF;
+      color: var(--services-text);
+      font-weight: 700;
       margin-bottom: 20px;
     }
 
     img {
-      filter: drop-shadow(-10px 5px 0px var(--brand-violet-primary));
+      filter: var(--services-img-filter);
     }
 
     .inner-box-description {
-      color: #FFF;
+      color: var(--services-text);
       font-family: var(--font-jetbrains-mono);
       font-size: 15px;
       font-style: normal;

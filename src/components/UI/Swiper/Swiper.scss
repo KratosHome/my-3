@@ -1,6 +1,10 @@
 .container-cards {
   position: relative;
 
+  path {
+    stroke: var(--services-text);
+  }
+
   .toggle-swipe,
   .toggle-swipe-left {
     position: absolute;
@@ -11,7 +15,7 @@
     height: 48px;
     border-radius: 12px;
     border: 2px solid #606686;
-    background: #0E0E10;
+    background: var(--services-background-button);
     display: flex;
     justify-content: center;
     align-items: center;

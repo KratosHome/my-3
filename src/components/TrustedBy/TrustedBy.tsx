@@ -25,22 +25,26 @@ const TrustedBy = ({reviews}: any) => {
                         <div className="quotes">“</div>
                         <div className="wrapper-reviews">
                             <div className="reviews">{item.reviews}</div>
-                            <div>{item.userName}</div>
-                            <div>{item.company}</div>
+                            <div className="user-info">
+                                <div>{item.userName}</div>
+                                <div>{item.company}</div>
+                            </div>
                         </div>
                     </div>
                 )}
             />
-            <div></div>
-            <MyModal
-                childrenOpen={
-                    <Button>
-                        {pathName === "/ua" ? "залишити відгук" : "leave review"}
-                    </Button>
-                }
-                childrenModal={<FormHLeaveReview/>}
-                layoutId={"leaveReview"}
-            />
+            <div className="wrapper-sent-rew">
+                <div>{pathName === "/ua" ? "Маєш що сказти?" : "Have words to say?"}</div>
+                <MyModal
+                    childrenOpen={
+                        <Button>
+                            {pathName === "/ua" ? "залишити відгук" : "leave review"}
+                        </Button>
+                    }
+                    childrenModal={<FormHLeaveReview/>}
+                    layoutId={"leaveReview"}
+                />
+            </div>
         </div>
     );
 };

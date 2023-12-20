@@ -116,7 +116,8 @@ const SelectedProjects = () => {
                                         }}
                                     >
                                         <div>
-                                            <span className="name">{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
+                                            <span
+                                                className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
                                         </div>
                                     </motion.div>
                                 </div>
