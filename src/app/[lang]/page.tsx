@@ -19,7 +19,7 @@ export async function generateMetadata({params}: any) {
         authors: [{name: 'Олег Ткач', url: 'https://codecraftmaster.com'}, {name: 'Tanya Kucherak', url: 'https://www.linkedin.com/in/tetiana-kucherak/'}],
         creator: 'Oleg Tkach',
         publisher: 'Oleg Tkach',
-        themeColor: '#ffffff',
+        themeColor: '#000000',
         openGraph: {
             title: params.lang === "en" ? 'Frontend Developer' : 'Фронтенд Розробник',
             description: 'Development of websites and applications',
@@ -39,11 +39,12 @@ export async function generateMetadata({params}: any) {
                 noimageindex: false,
             },
         },
+        metadataBase: new URL('https://codecraftmaster.com'),
         alternates: {
-            canonical: 'https://codecraftmaster.com',
+            canonical: '/',
             languages: {
-                'en-US': 'https://codecraftmaster.com/en',
-                'uk-UA': 'https://codecraftmaster.com/ua',
+                'en-US': '/en',
+                'uk-UA': '/ua',
             },
         },
         icons: {
