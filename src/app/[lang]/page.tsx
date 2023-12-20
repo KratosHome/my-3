@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 export async function generateMetadata({params}: any) {
     return {
         title: params.lang === "en" ? 'Frontend Developer 🧑‍💻' : 'Фронтенд Розробник 🧑‍💻',
-        description: params.lang === "en" ? '🚀 Your reliable partner in software development! 🖥 Specializing in creating innovative mobile apps, 📲 websites, and e-commerce stores. Bringing your ideas to life with the latest technologies and a personalized approach 🦾.' : '🚀 Ваш надійний партнер у розробці програмного забезпечення! 🖥 Спеціалізуюсь на створенні інноваційних мобільних додатків, 📲 веб-сайтів та інтернет-магазинів. Втілюю у життя ваші ідеї з найсучаснішими технологіями та індивідуальним підходом 🦾',
+        description: params.lang === "en" ? '🚀 Your partner in mobile app, website, and e-commerce development. Innovative solutions with a personal touch 🖥📲🦾' : '🚀 Ваш партнер у розробці мобільних додатків, веб-сайтів та інтернет-магазинів. Інноваційні рішення та особистий підхід 🖥📲🦾.',
         keywords: params.lang === "en" ?
             ['Next.js',
                 'React',
