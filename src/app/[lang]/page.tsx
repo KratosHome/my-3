@@ -8,7 +8,7 @@ import Experience from "@/components/Experience/Experience";
 
 export async function generateMetadata({params, theme}: any) {
     console.log("params, params", params)
-    console.log("params, params", theme)
+    console.log("theme, theme", theme)
     return {
         title: 'Frontend Developer',
         description: 'Development of websites and applications',
@@ -36,7 +36,7 @@ export async function generateMetadata({params, theme}: any) {
             },
         },
         alternates: {
-            canonical: '/',
+            canonical: 'https://codecraftmaster.com',
             languages: {
                 'en-US': '/en',
                 'uk-UA': '/ua',
