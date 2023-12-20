@@ -8,7 +8,7 @@ import Experience from "@/components/Experience/Experience";
 import {Viewport} from 'next'
 
 export const viewport: Viewport = {
-    themeColor: 'black',
+    themeColor: '#000000',
 }
 
 export async function generateMetadata({params}: any) {
