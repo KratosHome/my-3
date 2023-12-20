@@ -7,7 +7,7 @@ import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
 
 export async function generateMetadata({params, theme}: any) {
-    console.log("params, params", params.lang)
+    console.log("params, params", params)
     console.log("params, params", theme)
     return {
         title: 'Frontend Developer',
