@@ -35,6 +35,7 @@ export async function generateMetadata({params, theme}: any) {
                 noimageindex: false,
             },
         },
+        themeColor: theme === 'light' ? '#ffffff' : '#000000',
         alternates: {
             canonical: 'https://codecraftmaster.com',
             languages: {
