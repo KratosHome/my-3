@@ -35,7 +35,13 @@ export async function generateMetadata({params, theme}: any) {
                 noimageindex: false,
             },
         },
-
+        alternates: {
+            canonical: '/',
+            languages: {
+                'en-US': '/en',
+                'uk-UA': '/ua',
+            },
+        },
         icons: {
             icon: '/logo.png',
             shortcut: '/logo.png',
