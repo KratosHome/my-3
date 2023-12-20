@@ -27,24 +27,6 @@ const JetBrainsMonoBold = localFont({
 });
 
 
-export const metadata: Metadata = {
-    openGraph: {
-        title: 'Frontend Developer',
-        description: 'Development of websites and applications',
-        url: 'https://codecraftmaster.com',
-        siteName: 'codecraftmaster.com',
-        images: [
-            {
-                url: '/logo.png',
-                width: 800,
-                height: 600,
-            },
-        ],
-        locale: 'en_US',
-        type: 'website',
-    },
-}
-
 export default async function RootLayout({
                                              children,
                                              params
