@@ -5,14 +5,13 @@ import Connect from "@/components/Connect/Connect";
 import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
 import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
-import { Viewport } from 'next'
+import {Viewport} from 'next'
 
 export const viewport: Viewport = {
     themeColor: 'black',
 }
-export async function generateMetadata({params, theme}: any) {
-    console.log("params, params", params)
-    console.log("theme, theme", theme)
+
+export async function generateMetadata({params}: any) {
     return {
         title: 'Frontend Developer',
         description: 'Development of websites and applications',
@@ -20,6 +19,7 @@ export async function generateMetadata({params, theme}: any) {
         authors: [{name: 'Олег Ткач', url: 'https://codecraftmaster.com'}, {name: 'Tanya Kucherak', url: 'https://www.linkedin.com/in/tetiana-kucherak/'}],
         creator: 'Oleg Tkach',
         publisher: 'Oleg Tkach',
+        themeColor: '#ffffff',
         openGraph: {
             title: params.lang === "en" ? 'Frontend Developer' : 'Фронтенд Розробник',
             description: 'Development of websites and applications',
@@ -39,7 +39,6 @@ export async function generateMetadata({params, theme}: any) {
                 noimageindex: false,
             },
         },
-        themeColor: theme === 'light' ? '#ffffff' : '#000000',
         alternates: {
             canonical: 'https://codecraftmaster.com',
             languages: {
