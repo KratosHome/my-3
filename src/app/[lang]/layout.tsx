@@ -68,12 +68,13 @@ export default async function RootLayout({
         <html lang={params.lang === "en" ? "en" : "ua"}>
         <Head>
             <title>{openGraphMeta.title}</title>
-            <meta property="og:title" content={openGraphMeta.title} />
-            <meta property="og:description" content={openGraphMeta.description} />
-            <meta property="og:url" content={openGraphMeta.url} />
-            <meta property="og:image" content={openGraphMeta.url + openGraphMeta.image} />
-            <meta property="og:site_name" content={openGraphMeta.site_name} />
-            <meta property="og:type" content={openGraphMeta.type} />
+            <meta property="og:title" content={openGraphMeta.title}/>
+            <meta property="og:description" content={openGraphMeta.description}/>
+            <meta property="og:url" content={openGraphMeta.url}/>
+            <meta property="og:image" content={openGraphMeta.url + openGraphMeta.image}/>
+            <meta property="og:site_name" content={openGraphMeta.site_name}/>
+            <meta property="og:type" content={openGraphMeta.type}/>
+            <meta property="og:image" content={`https://codecraftmaster.com${openGraphMeta.image}`}/>
         </Head>
         <GoogleTagManager/>
         <ReduxProvider>
