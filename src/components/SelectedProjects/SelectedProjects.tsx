@@ -51,7 +51,10 @@ const date: any = [
         link: 'https://www.etere.com/DocView/9710/Etere-Launches-Web-Application-for-the-Fast-Insertion-of-Metadata.aspx',
         technologies: "React, ElectronJS, SCSS, MobX, SOAP, XML, SVN",
         isMobile: false
-    },
+    }
+]
+
+/*
     {
         id: 5,
         nameUa: "Movingwaldo - платформа для перевізників",
@@ -63,8 +66,7 @@ const date: any = [
         link: 'https://www.movingwaldo.com',
         isMobile: false
     },
-]
-
+ */
 const SelectedProjects = () => {
     const pathName = usePathname();
     const [selectedTab, setSelectedTab] = useState(date[0]);
