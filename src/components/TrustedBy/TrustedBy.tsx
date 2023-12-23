@@ -13,9 +13,9 @@ const TrustedBy = ({reviews}: any) => {
     return (
         <div className="container-trusted-by">
             <div className="inner-container"/>
-            <span className="title-block">
-                   {pathName === "/ua" ? "залишити відгук" : " відгуки"}
-               </span>
+            <h2 className="title-block">
+                   {pathName === "/ua" ? "відгуки" : "trusted by"}
+               </h2>
             <Swiper
                 isButtonToggle={false}
                 cards={reviews}

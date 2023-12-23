@@ -90,9 +90,9 @@ const Experience = () => {
     const pathName = usePathname();
     return (
         <motion.div layout className="container-experience">
-            <span className="title-block">
+            <h2 className="title-block">
                 {pathName === "/ua" ? `Професійний досвід` : `Professional experience`}
-            </span>
+            </h2>
             <div className="container-experience-list">
                 {experience.map((item, index) => (
                     <ExperienceList key={item.id} item={item} index={index}/>

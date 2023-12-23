@@ -11,9 +11,9 @@ const AboutMe = () => {
 
     return (
         <div className="container-about-me">
-            <span className="title-block">
+            <h2 className="title-block">
                 {pathName === "/ua" ? "Про мене" : "About me"}
-              </span>
+              </h2>
             <div>
                 <FadeInAnimation direction="left">
                     <Swim>
