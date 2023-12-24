@@ -107,7 +107,7 @@ const Projects = () => {
     const getBackgroundImage = (isMobile: boolean) => isMobile ? '/selectedBlock/iphone.png' : '/selectedBlock/macbook.png';
 
 
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: any) => {
         const { clientX, clientY } = event;
         const mouseX = (clientX / window.innerWidth) * 2 - 1;
         const mouseY = -(clientY / window.innerHeight) * 2 + 1;
