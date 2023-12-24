@@ -4,6 +4,7 @@ export const useWindowWidth = () => {
     const [width, setWidth] = useState<number>(window.innerWidth);
 
     useEffect(() => {
+
         setWidth(window.innerWidth);
         const handleResize = () => {
             setWidth(window.innerWidth);
