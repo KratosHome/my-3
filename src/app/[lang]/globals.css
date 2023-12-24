@@ -70,6 +70,9 @@
 
 /*  font-size: calc(var(--index) * 1); */
 
+html{
+    scroll-behavior: smooth;
+}
 body {
     padding-top: var(--safe-area-inset-top);
     transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
