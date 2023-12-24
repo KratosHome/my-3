@@ -14,8 +14,8 @@ const experience = [
         workPlace: "Remote",
         descriptionEn: "An intermediary platform for delivery with three admin panels.",
         descriptionUa: "Посередницька платформа для доставки з трьома адміністративними панелями.",
-        dateUa: "05.2023 - дотепер",
-        dateEn: "05.2023 - for now",
+        dateUa: "05.2023 - 12.2023",
+        dateEn: "05.2023 - 12.2023",
         technologies: ["React", "React Native", "TypeScript", "SCSS", "Redux Toolkit", "Mui", "Socket.io", "React Big Calendar", "framer motion", "Git"],
         link: "https://rastcom.com"
     },
