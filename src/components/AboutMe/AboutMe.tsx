@@ -13,7 +13,7 @@ const AboutMe = () => {
         <div className="container-about-me">
             <h2 className="title-block">
                 {pathName === "/ua" ? "Про мене" : "About me"}
-              </h2>
+            </h2>
             <div>
                 <FadeInAnimation direction="left">
                     <Swim>
@@ -24,6 +24,7 @@ const AboutMe = () => {
                     <div className="icons-about-me">
                         <Swim isFast={true} delay={0.2}>
                             <Image
+                                title={pathName === "/ua" ? "React логотип" : "React Logo"}
                                 src={"./aboutMe/ReactLogo.svg"}
                                 alt={"react"}
                                 width={40}
@@ -32,6 +33,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.4}>
                             <Image
+                                title={pathName === "/ua" ? "Некст жс логотип" : "NextJS Logo"}
                                 src={"./aboutMe/NextLogo.svg"}
                                 alt={"nextJS"}
                                 width={40}
@@ -40,6 +42,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.6}>
                             <Image
+                                title={pathName === "/ua" ? "ElectronJs логотип" : "ElectronJs Logo"}
                                 src={"./aboutMe/ElectronJsLogo.svg"}
                                 alt={"ElectronJs"}
                                 width={40}
@@ -48,6 +51,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.8}>
                             <Image
+                                title={pathName === "/ua" ? "JavaScript логотип" : "JavaScript Logo"}
                                 src={"./aboutMe/JavaScriptLogo.svg"}
                                 alt={"JavaScript"}
                                 width={40}
@@ -56,6 +60,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={1}>
                             <Image
+                                title={pathName === "/ua" ? "TypeScript логотип" : "TypeScript Logo"}
                                 src={"./aboutMe/TypeScriptLogo.svg"}
                                 alt={"TypeScript"}
                                 width={40}
@@ -64,6 +69,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.2}>
                             <Image
+                                title={pathName === "/ua" ? "HTML логотип" : "HTML Logo"}
                                 src={"./aboutMe/HTMLLogo.svg"}
                                 alt={"HTML"}
                                 width={40}
@@ -72,6 +78,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.4}>
                             <Image
+                                title={pathName === "/ua" ? "CSS логотип" : "CSS Logo"}
                                 src={"./aboutMe/CSSLogo.svg"}
                                 alt={"CSS"}
                                 width={40}
@@ -80,6 +87,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.6}>
                             <Image
+                                title={pathName === "/ua" ? "Redux логотип" : "Redux Logo"}
                                 src={"./aboutMe/ReduxLogo.svg"}
                                 alt={"Redux"}
                                 width={40}
@@ -88,6 +96,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.8}>
                             <Image
+                                title={pathName === "/ua" ? "MobX логотип" : "MobX Logo"}
                                 src={"./aboutMe/MobXLogo.svg"}
                                 alt={"MobXLogo"}
                                 width={40}
@@ -104,6 +113,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.2}>
                             <Image
+                                title={pathName === "/ua" ? "axios логотип" : "axios Logo"}
                                 src={"./aboutMe/axiosLogo.svg"}
                                 alt={"axios"}
                                 width={40}
@@ -112,6 +122,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.4}>
                             <Image
+                                title={pathName === "/ua" ? "reactSpring логотип" : "reactSpring Logo"}
                                 src={"./aboutMe/reactSpringLogo.svg"}
                                 alt={"reactSpringLogo"}
                                 width={40}
@@ -120,6 +131,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.6}>
                             <Image
+                                title={pathName === "/ua" ? "Strapi логотип" : "Strapi Logo"}
                                 src={"./aboutMe/StrapiLogo.svg"}
                                 alt={"Strapi"}
                                 width={40}
@@ -128,6 +140,7 @@ const AboutMe = () => {
                         </Swim>
                         <Swim isFast={true} delay={0.8}>
                             <Image
+                                title={pathName === "/ua" ? "git логотип" : "git Logo"}
                                 src={"./aboutMe/gitOriginalLogo.svg"}
                                 alt={"gitOriginalLogo"}
                                 width={40}
@@ -143,9 +156,12 @@ const AboutMe = () => {
                 download={'Front-End-React-Developerр-Oleg-Tkach'}
             >
                 {pathName === "/ua" ? "Завантажити резюме" : "Download resume"}
-                <Image src={"/icons/ForwardArrow.svg"} alt={"arrow-resume"}
-                       width={20}
-                       height={20}
+                <Image
+                    title={pathName === "/ua" ? "Стрілка вперед" : "Forward Arrow"}
+                    src={"/icons/ForwardArrow.svg"}
+                    alt={"arrow-resume"}
+                    width={20}
+                    height={20}
                 />
             </a>
         </div>

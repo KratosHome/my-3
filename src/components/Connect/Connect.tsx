@@ -32,6 +32,7 @@ const Connect = () => {
                             <div className="img-right"></div>
                         </div>
                         <video
+                            title={pathName === "/ua" ? "фоновий туман" : "фоновий туман"}
                             src={"/connect/smoke-background.mp4"}
                             autoPlay={true}
                             loop

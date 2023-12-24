@@ -20,7 +20,7 @@ export default function NavBar({navigation}: any) {
             <nav className="container-nav">
                 <div>
                     <div className="logo">
-                        <Image src={"/logo.png"} alt={"logo"} width={50} height={50}/>
+                        <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
                     </div>
                     <ul>
                         {Object.entries(navigation).slice(0, -1).map(([key, value], index) => (
