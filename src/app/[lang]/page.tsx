@@ -6,6 +6,7 @@ import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
 import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
 import {Viewport} from 'next'
+import Projects from "@/components/Projects/Projects";
 
 export const viewport: Viewport = {
     themeColor: [
@@ -101,6 +102,9 @@ export default function Home() {
             </section>
             <section id="about">
                 <AboutMe/>
+            </section>
+            <section id="project2s">
+                <Projects/>
             </section>
             <section id="projects">
                 <SelectedProjects/>
