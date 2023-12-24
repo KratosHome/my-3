@@ -56,7 +56,6 @@ export async function generateMetadata({params}: any) {
         }],
         creator: 'Oleg Tkach',
         publisher: 'Oleg Tkach',
-        themeColor: '#000000',
         openGraph: {
             title: params.lang === "en" ? 'Frontend Developer 🧑‍💻 CodeCraftMaster.com' : 'Фронтенд Розробник 🧑‍💻 CodeCraftMster.com',
             description: params.lang === "en" ? '🚀 Your partner in mobile app, website, and e-commerce development. Innovative solutions with a personal touch 🖥📲🦾' : '🚀 Ваш партнер у розробці мобільних додатків, веб-сайтів та інтернет-магазинів. Інноваційні рішення та особистий підхід 🖥📲🦾.',
