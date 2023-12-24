@@ -65,11 +65,11 @@ const Laptop = ({isMobile, rotation}: any) => {
 
     const {theme} = useSelector((state: RootState) => state.theme);
 
-    const {size} = useThree(); // Використання хука useThree всередині компонента, рендереного в Canvas
+    const {size} = useThree();
 
 
     return (
-        <mesh rotation={rotation} >
+        <mesh rotation={rotation}>
             <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"}/>
             <spotLight
                 position={[-20, 50, 10]}
@@ -84,7 +84,7 @@ const Laptop = ({isMobile, rotation}: any) => {
                 object={computer.scene}
                 scale={isMobile ? 5.4 : 25.5}
                 position={isMobile ? [0, 5, 1.5] : [2, -2, 0]}
-                rotation={[0, 1.8, 0]}
+                rotation={[0, 1.5, 0]}
             />
         </mesh>
     );
@@ -107,23 +107,20 @@ const Projects = () => {
     const getBackgroundImage = (isMobile: boolean) => isMobile ? '/selectedBlock/iphone.png' : '/selectedBlock/macbook.png';
 
 
-
-    const initialRotation = [0, 0, 0];
-
     const handleMouseMove = (event) => {
-        const sensitivity = 0.1; // Зменшіть цей коефіцієнт, щоб зробити рух більш плавним
-        const x = (event.clientX / size.width) * 2 - 1;
-        const y = -(event.clientY / size.height) * 2 + 1;
+        const { clientX, clientY } = event;
+        const mouseX = (clientX / window.innerWidth) * 2 - 1;
+        const mouseY = -(clientY / window.innerHeight) * 2 + 1;
 
-        const maxX = Math.PI / 5; // Максимальний кут повороту по осі X
-        const maxY = Math.PI / 5; // Максимальний кут повороту по осі Y
-        const maxZ = Math.PI / 5; // Максимальний кут повороту по осі Z
+        // Обмежте максимальне обертання
+        const maxRotationY = Math.PI / 10; // Максимальне обертання по вертикалі (наприклад, 45 градусів)
+        const maxRotationX = Math.PI / 4; // Максимальне обертання по горизонталі
 
-        const deltaX = Math.max(-maxX, Math.min(maxX, (y * sensitivity)));
-        const deltaY = Math.max(-maxY, Math.min(maxY, (x * sensitivity)));
-        const deltaZ = Math.max(-maxZ, Math.min(maxZ, (x * y * sensitivity)));
+        // Використайте Math.min і Math.max для обмеження обертання
+        const newYRotation = Math.max(-maxRotationY, Math.min(maxRotationY, mouseY * maxRotationY));
+        const newXRotation = Math.max(-maxRotationX, Math.min(maxRotationX, mouseX * maxRotationX));
 
-        setRotation([initialRotation[0] + deltaX, initialRotation[1] + deltaY, initialRotation[2] + deltaZ]);
+        setRotation([0, newXRotation, newYRotation]);
     };
     return (
         <div className="container-projects">
@@ -172,9 +169,9 @@ const Projects = () => {
                         <span className={"script"}>{"</project>"}</span>
                     </div>
                 </FadeInAnimation>
-                <FadeInAnimation direction="right" delay={0.2} >
+                <FadeInAnimation direction="right" delay={0.2}>
                     <AnimatePresence>
-                        <motion.div className="continer-resilt" onPointerMove={handleMouseMove}>
+                        <motion.div className="continer-resilt" >
                             <Canvas
                                 frameloop='demand'
                                 shadows
@@ -184,6 +181,7 @@ const Projects = () => {
                                     fov: 28
                                 }}
                                 gl={{preserveDrawingBuffer: true}}
+                                onPointerMove={handleMouseMove}
                             >
                                 <Suspense fallback={<Loader/>}>
                                     <OrbitControls
@@ -196,7 +194,7 @@ const Projects = () => {
                                         maxAzimuthAngle={Math.PI * 0.8}
                                         minAzimuthAngle={-Math.PI * 0.1}
                                     />
-                                    <Laptop isMobile={isMobile} rotation={rotation}/>
+                                    <Laptop isMobile={isMobile} rotation={rotation} />
                                 </Suspense>
                             </Canvas>
                         </motion.div>
