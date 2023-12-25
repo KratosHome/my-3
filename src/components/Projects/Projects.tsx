@@ -69,25 +69,15 @@ const Laptop = ({isMobile, rotation, selectedImage}: any) => {
     const {theme} = useSelector((state: RootState) => state.theme);
 
 
-
     const texture = useLoader(TextureLoader, `${selectedImage}`);
-    const materialNode = scene.getObjectByName("Object_5");
 
     useEffect(() => {
-        // Траверсування сцени для пошуку відповідного Mesh об'єкта
         scene.traverse((child) => {
             if (child instanceof THREE.Mesh && child.name === "Screen_lambert3_0") {
-                // Створіть новий матеріал з новою текстурою
                 const newMaterial = new THREE.MeshStandardMaterial({
                     map: texture,
-
-                    metalness: 0, // Неметалічний матеріал
-                    roughness: 1, // Повна шорсткість
-                    transparent: false, // Не використовувати прозорість
-                    opacity: 1, // Повна непрозорість
+                    color: new THREE.Color(2.5, 2.5, 2.5),
                 });
-
-                // Застосуйте новий матеріал до обраного Mesh об'єкта
                 child.material = newMaterial;
             }
         });
@@ -109,7 +99,7 @@ const Laptop = ({isMobile, rotation, selectedImage}: any) => {
             <primitive
                 object={computer.scene}
                 scale={isMobile ? 5.4 : 25.5}
-                position={isMobile ? [0, 5, 1.5] : [10, 0, 0]}
+                position={isMobile ? [0, 5, 1.5] : [8, -1, 0]}
                 rotation={[0, 1.5, 0]}
             />
 
@@ -140,8 +130,8 @@ const Projects = () => {
         const mouseY = -(clientY / window.innerHeight) * 2 + 1;
 
         // Обмежте максимальне обертання
-        const maxRotationY = Math.PI / 10; // Максимальне обертання по вертикалі (наприклад, 45 градусів)
-        const maxRotationX = Math.PI / 4; // Максимальне обертання по горизонталі
+        const maxRotationY = Math.PI / 30; // Максимальне обертання по вертикалі (наприклад, 45 градусів)
+        const maxRotationX = Math.PI / 20; // Максимальне обертання по горизонталі
 
         // Використайте Math.min і Math.max для обмеження обертання
         const newYRotation = Math.max(-maxRotationY, Math.min(maxRotationY, mouseY * maxRotationY));
@@ -205,7 +195,7 @@ const Projects = () => {
                                 shadows
                                 dpr={[1, 2]}
                                 camera={{
-                                    position: isMobile ? [38, 10, 10] : [18, 0, -2],
+                                    position: isMobile ? [38, 10, 10] : [16, 0, -2],
                                     fov: 28
                                 }}
                                 gl={{preserveDrawingBuffer: true}}
@@ -222,7 +212,12 @@ const Projects = () => {
                                         maxAzimuthAngle={Math.PI * 0.8}
                                         minAzimuthAngle={-Math.PI * 0.1}
                                     />
-                                    <Laptop isMobile={isMobile} rotation={rotation} selectedImage={selectedTab.img}/>
+                                    <Laptop
+                                        key={selectedTab.img}
+                                        isMobile={isMobile}
+                                        rotation={rotation}
+                                        selectedImage={selectedTab.img}
+                                    />
                                 </Suspense>
                             </Canvas>
                         </motion.div>
