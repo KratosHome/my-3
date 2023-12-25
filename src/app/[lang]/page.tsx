@@ -77,7 +77,7 @@ export async function generateMetadata({params}: any) {
         },
         metadataBase: new URL('https://codecraftmaster.com'),
         alternates: {
-            canonical: '/',
+           // canonical: '/',
             languages: {
                 'en-US': '/en',
                 'uk-UA': '/ua',
