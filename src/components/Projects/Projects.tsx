@@ -1,5 +1,5 @@
 "use client"
-import React, {Suspense, useState} from 'react';
+import React, {Suspense, useEffect, useRef, useState} from 'react';
 import "./Projects.scss"
 import {usePathname} from "next/navigation";
 import FadeInAnimation from "@/components/UIA/FadeInAnimation/FadeInAnimation";
@@ -9,8 +9,10 @@ import ShowMoreText from "@/components/UI/ShowMoreText/ShowMoreText";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
-import {Canvas, useThree} from "@react-three/fiber";
+import {Canvas, useLoader, useThree} from "@react-three/fiber";
 import Loader from "@/components/UI/Loader/Loader";
+import {TextureLoader} from "three";
+import * as THREE from 'three';
 
 const date: any = [
     {
@@ -60,13 +62,37 @@ const date: any = [
 ]
 
 
-const Laptop = ({isMobile, rotation}: any) => {
-    const computer = useGLTF("./laptop/scene.gltf");
+const Laptop = ({isMobile, rotation, selectedImage}: any) => {
+    const computer = useGLTF("/final_laptop/scene.gltf");
+    const {scene} = computer;
 
     const {theme} = useSelector((state: RootState) => state.theme);
 
-    const {size} = useThree();
 
+
+    const texture = useLoader(TextureLoader, `${selectedImage}`);
+    const materialNode = scene.getObjectByName("Object_5");
+
+    useEffect(() => {
+        // Траверсування сцени для пошуку відповідного Mesh об'єкта
+        scene.traverse((child) => {
+            if (child instanceof THREE.Mesh && child.name === "Screen_lambert3_0") {
+                // Створіть новий матеріал з новою текстурою
+                const newMaterial = new THREE.MeshStandardMaterial({
+                    map: texture,
+
+                    metalness: 0, // Неметалічний матеріал
+                    roughness: 1, // Повна шорсткість
+                    transparent: false, // Не використовувати прозорість
+                    opacity: 1, // Повна непрозорість
+                });
+
+                // Застосуйте новий матеріал до обраного Mesh об'єкта
+                child.material = newMaterial;
+            }
+        });
+        console.log("selectedImage", selectedImage)
+    }, [scene, texture, selectedImage]);
 
     return (
         <mesh rotation={rotation}>
@@ -83,9 +109,10 @@ const Laptop = ({isMobile, rotation}: any) => {
             <primitive
                 object={computer.scene}
                 scale={isMobile ? 5.4 : 25.5}
-                position={isMobile ? [0, 5, 1.5] : [2, -2, 0]}
+                position={isMobile ? [0, 5, 1.5] : [10, 0, 0]}
                 rotation={[0, 1.5, 0]}
             />
+
         </mesh>
     );
 };
@@ -108,7 +135,7 @@ const Projects = () => {
 
 
     const handleMouseMove = (event: any) => {
-        const { clientX, clientY } = event;
+        const {clientX, clientY} = event;
         const mouseX = (clientX / window.innerWidth) * 2 - 1;
         const mouseY = -(clientY / window.innerHeight) * 2 + 1;
 
@@ -124,6 +151,7 @@ const Projects = () => {
     };
     return (
         <div className="container-projects">
+
             <span className="title-block">{pathName === "/ua" ? "Мої проєкти" : "My projects"}</span>
             <div className="wrapper-container">
                 <FadeInAnimation direction="left" delay={0.2}>
@@ -171,7 +199,7 @@ const Projects = () => {
                 </FadeInAnimation>
                 <FadeInAnimation direction="right" delay={0.2}>
                     <AnimatePresence>
-                        <motion.div className="continer-resilt" >
+                        <motion.div className="continer-resilt">
                             <Canvas
                                 frameloop='demand'
                                 shadows
@@ -194,7 +222,7 @@ const Projects = () => {
                                         maxAzimuthAngle={Math.PI * 0.8}
                                         minAzimuthAngle={-Math.PI * 0.1}
                                     />
-                                    <Laptop isMobile={isMobile} rotation={rotation} />
+                                    <Laptop isMobile={isMobile} rotation={rotation} selectedImage={selectedTab.img}/>
                                 </Suspense>
                             </Canvas>
                         </motion.div>
@@ -206,3 +234,12 @@ const Projects = () => {
 };
 
 export default Projects;
+
+/*
+    useEffect(() => {
+        if (materialNode) {
+            materialNode.material.map = texture;
+            materialNode.material.needsUpdate = true;
+        }
+    }, [scene]);
+ */

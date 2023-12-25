@@ -1,0 +1,11 @@
+Model Information:
+* title:	Final Laptop
+* source:	https://sketchfab.com/3d-models/final-laptop-d502a3c239f445648e3d2e861a515634
+* author:	lemonkade (https://sketchfab.com/lemonkade)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Final Laptop" (https://sketchfab.com/3d-models/final-laptop-d502a3c239f445648e3d2e861a515634) by lemonkade (https://sketchfab.com/lemonkade) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
