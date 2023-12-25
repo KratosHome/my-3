@@ -105,6 +105,14 @@ export default function Home() {
         "description": "Product description",
     };
 
+    /*
+                <Head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+                />
+            </Head>
+     */
     return (
         <>
             <main>
