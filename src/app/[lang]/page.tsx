@@ -77,7 +77,7 @@ export async function generateMetadata({params}: any) {
         },
         metadataBase: new URL('https://codecraftmaster.com'),
         alternates: {
-           // canonical: '/',
+            // canonical: '/',
             languages: {
                 'en-US': '/en',
                 'uk-UA': '/ua',
@@ -97,22 +97,6 @@ export async function generateMetadata({params}: any) {
 
 export default function Home() {
 
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Your Product Name",
-        "image": "URL of the product image",
-        "description": "Product description",
-    };
-
-    /*
-                <Head>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
-                />
-            </Head>
-     */
     return (
         <>
             <main>
