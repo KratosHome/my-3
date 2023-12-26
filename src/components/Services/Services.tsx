@@ -63,9 +63,9 @@ const Services = () => {
 
     return (
         <div className='container-services'>
-            <span className="title-block">
+            <h2 className="title-block">
                 {pathName === "/ua" ? `Мої послуги` : `My services`}
-            </span>
+            </h2>
             <Swiper
                 cards={services}
                 numberCards={-1}

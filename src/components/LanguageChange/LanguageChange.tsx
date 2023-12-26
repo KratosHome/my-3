@@ -17,14 +17,17 @@ export default function LanguageChange() {
 
     return (
         <ButtonAnimation isPulse={false}>
-            <section className={"container-language-change"}
-                     onClick={() => redirectedPathName(pathName === "/ua" ? "en" : "ua")}
+            <section
+                className={"container-language-change"}
+                onClick={() => redirectedPathName(pathName === "/ua" ? "en" : "ua")}
             >
                 <span>{pathName === "/ua" ? "en" : "ua"}</span>
-                <Image src={"/icons/arrow.svg"}
-                       width={10}
-                       height={10}
-                       alt={pathName === "/ua" ? "UA Flag" : "US Flag"}
+                <Image
+                    title={pathName === "/ua" ? "перемикання мови" : "switch language"}
+                    src={"/icons/arrow.svg"}
+                    width={10}
+                    height={10}
+                    alt={pathName === "/ua" ? "UA Flag" : "US Flag"}
                 />
             </section>
         </ButtonAnimation>

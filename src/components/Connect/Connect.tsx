@@ -21,7 +21,7 @@ const Connect = () => {
     return (
         <div className="container-connect">
             <div className="head-block">
-                <span className="name">{pathName === "/ua" ? "Зв'язатися" : "Let’s connect"}</span>
+                <h2 className="name">{pathName === "/ua" ? "Зв'язатися" : "Let’s connect"}</h2>
                 <a className="link-another-platform" href="mailto:OlegonTkach101@gmail.com">OlegonTkach101@gmail.com</a>
             </div>
             <div className="wrapper-block">
@@ -32,6 +32,7 @@ const Connect = () => {
                             <div className="img-right"></div>
                         </div>
                         <video
+                            title={pathName === "/ua" ? "фоновий туман" : "фоновий туман"}
                             src={"/connect/smoke-background.mp4"}
                             autoPlay={true}
                             loop

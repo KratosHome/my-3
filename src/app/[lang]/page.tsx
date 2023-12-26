@@ -6,18 +6,19 @@ import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
 import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
 import {Viewport} from 'next'
+import Head from "next/head";
 import Projects from "@/components/Projects/Projects";
 
 export const viewport: Viewport = {
     themeColor: [
-        { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-        { media: '(prefers-color-scheme: dark)', color: '#000000' },
+        {media: '(prefers-color-scheme: light)', color: '#ffffff'},
+        {media: '(prefers-color-scheme: dark)', color: '#000000'},
     ],
 }
 
 export async function generateMetadata({params}: any) {
     return {
-        title: params.lang === "en" ? 'Frontend Developer 🧑‍💻' : 'Фронтенд Розробник 🧑‍💻',
+        title: params.lang === "en" ? 'Frontend Developer 🧑‍💻 CodeCraftMaster.com' : 'Фронтенд Розробник 🧑‍💻 CodeCraftMster.com',
         description: params.lang === "en" ? '🚀 Your partner in mobile app, website, and e-commerce development. Innovative solutions with a personal touch 🖥📲🦾' : '🚀 Ваш партнер у розробці мобільних додатків, веб-сайтів та інтернет-магазинів. Інноваційні рішення та особистий підхід 🖥📲🦾.',
         keywords: params.lang === "en" ?
             ['Next.js',
@@ -50,13 +51,15 @@ export async function generateMetadata({params}: any) {
                 "е-комерція",
                 "фронтенд розробка",
                 "Apple розробник"],
-        authors: [{name: 'Олег Ткач', url: 'https://codecraftmaster.com'}, {name: 'Tanya Kucherak', url: 'https://www.linkedin.com/in/tetiana-kucherak/'}],
+        authors: [{name: 'Олег Ткач', url: 'https://codecraftmaster.com'}, {
+            name: 'Tanya Kucherak',
+            url: 'https://www.linkedin.com/in/tetiana-kucherak/'
+        }],
         creator: 'Oleg Tkach',
         publisher: 'Oleg Tkach',
-        themeColor: '#000000',
         openGraph: {
-            title: params.lang === "en" ? 'Frontend Developer 🧑‍💻' : 'Фронтенд Розробник 🧑‍💻',
-            description: 'Development of websites and applications',
+            title: params.lang === "en" ? 'Frontend Developer 🧑‍💻 CodeCraftMaster.com' : 'Фронтенд Розробник 🧑‍💻 CodeCraftMster.com',
+            description: params.lang === "en" ? '🚀 Your partner in mobile app, website, and e-commerce development. Innovative solutions with a personal touch 🖥📲🦾' : '🚀 Ваш партнер у розробці мобільних додатків, веб-сайтів та інтернет-магазинів. Інноваційні рішення та особистий підхід 🖥📲🦾.',
             url: 'https://codecraftmaster.com',
             siteName: 'codecraftmaster.com',
             images: '/logo.png',
@@ -75,7 +78,7 @@ export async function generateMetadata({params}: any) {
         },
         metadataBase: new URL('https://codecraftmaster.com'),
         alternates: {
-            canonical: '/',
+            // canonical: '/',
             languages: {
                 'en-US': '/en',
                 'uk-UA': '/ua',
@@ -96,31 +99,33 @@ export async function generateMetadata({params}: any) {
 export default function Home() {
 
     return (
-        <main>
-            <section id="section1">
-                <HeroSection/>
-            </section>
-            <section id="about">
-                <AboutMe/>
-            </section>
-            <section id="project2s">
+        <>
+            <main>
+                <section id="section1">
+                    <HeroSection/>
+                </section>
+                <section id="about">
+                    <AboutMe/>
+                </section>
+                <section id="project2s">
                 <Projects/>
             </section>
             <section id="projects">
-                <SelectedProjects/>
-            </section>
-            <section id="services">
-                <Services/>
-            </section>
-            <section id="experience">
-                <Experience/>
-            </section>
-            <section id="trustedBy">
-                <WrapperRequest/>
-            </section>
-            <section id="contact">
-                <Connect/>
-            </section>
-        </main>
+                    <SelectedProjects/>
+                </section>
+                <section id="services">
+                    <Services/>
+                </section>
+                <section id="experience">
+                    <Experience/>
+                </section>
+                <section id="trustedBy">
+                    <WrapperRequest/>
+                </section>
+                <section id="contact">
+                    <Connect/>
+                </section>
+            </main>
+        </>
     )
 }
