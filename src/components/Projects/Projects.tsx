@@ -68,7 +68,6 @@ const Laptop = ({isMobile, rotation, selectedImage}: any) => {
 
     const {theme} = useSelector((state: RootState) => state.theme);
 
-
     const texture = useLoader(TextureLoader, `${selectedImage}`);
 
     useEffect(() => {
@@ -76,13 +75,12 @@ const Laptop = ({isMobile, rotation, selectedImage}: any) => {
             if (child instanceof THREE.Mesh && child.name === "Screen_lambert3_0") {
                 const newMaterial = new THREE.MeshStandardMaterial({
                     map: texture,
-                    color: new THREE.Color(2.5, 2.5, 2.5),
+                    color: theme == "light" ? new THREE.Color(1, 1, 1) : new THREE.Color(2.5, 2.5, 2.5),
                 });
                 child.material = newMaterial;
             }
         });
-        console.log("selectedImage", selectedImage)
-    }, [scene, texture, selectedImage]);
+    }, [scene, texture, selectedImage, theme]);
 
     return (
         <mesh rotation={rotation}>
@@ -102,7 +100,6 @@ const Laptop = ({isMobile, rotation, selectedImage}: any) => {
                 position={isMobile ? [0, 5, 1.5] : [8, -1, 0]}
                 rotation={[0, 1.5, 0]}
             />
-
         </mesh>
     );
 };
@@ -119,9 +116,6 @@ const Projects = () => {
         setPreviousIndex(date.findIndex((p: any) => p.id === selectedTab.id)); // Оновіть попередній індекс
         setSelectedTab(project);
     };
-
-    const swipeDirection = date.findIndex((p: any) => p.id === selectedTab.id) > previousIndex ? '100%' : '-100%'; // Визначте напрямок свайпу
-    const getBackgroundImage = (isMobile: boolean) => isMobile ? '/selectedBlock/iphone.png' : '/selectedBlock/macbook.png';
 
 
     const handleMouseMove = (event: any) => {
@@ -141,7 +135,6 @@ const Projects = () => {
     };
     return (
         <div className="container-projects">
-
             <span className="title-block">{pathName === "/ua" ? "Мої проєкти" : "My projects"}</span>
             <div className="wrapper-container">
                 <FadeInAnimation direction="left" delay={0.2}>
@@ -190,36 +183,64 @@ const Projects = () => {
                 <FadeInAnimation direction="right" delay={0.2}>
                     <AnimatePresence>
                         <motion.div className="continer-resilt">
-                            <Canvas
-                                frameloop='demand'
-                                shadows
-                                dpr={[1, 2]}
-                                camera={{
-                                    position: isMobile ? [38, 10, 10] : [16, 0, -2],
-                                    fov: 28
-                                }}
-                                gl={{preserveDrawingBuffer: true}}
-                                onPointerMove={handleMouseMove}
-                            >
-                                <Suspense fallback={<Loader/>}>
-                                    <OrbitControls
-                                        enableZoom={false}
-                                        enablePan={false}
-                                        enableRotate={false}
-                                        target={[3, 0, 0]}
-                                        maxPolarAngle={Math.PI / 1.5}
-                                        minPolarAngle={Math.PI / 3}
-                                        maxAzimuthAngle={Math.PI * 0.8}
-                                        minAzimuthAngle={-Math.PI * 0.1}
-                                    />
-                                    <Laptop
-                                        key={selectedTab.img}
-                                        isMobile={isMobile}
-                                        rotation={rotation}
-                                        selectedImage={selectedTab.img}
-                                    />
-                                </Suspense>
-                            </Canvas>
+                            <div>
+                                <Canvas
+                                    frameloop='demand'
+                                    shadows
+                                    dpr={[1, 2]}
+                                    camera={{
+                                        position: isMobile ? [38, 10, 10] : [16, 0, -2],
+                                        fov: 28
+                                    }}
+                                    gl={{preserveDrawingBuffer: true}}
+                                    onPointerMove={handleMouseMove}
+                                >
+                                    <Suspense fallback={<Loader/>}>
+                                        <OrbitControls
+                                            enableZoom={false}
+                                            enablePan={false}
+                                            enableRotate={false}
+                                            target={[3, 0, 0]}
+                                            maxPolarAngle={Math.PI / 1.5}
+                                            minPolarAngle={Math.PI / 3}
+                                            maxAzimuthAngle={Math.PI * 0.8}
+                                            minAzimuthAngle={-Math.PI * 0.1}
+                                        />
+                                        <Laptop
+                                            key={selectedTab.img}
+                                            isMobile={isMobile}
+                                            rotation={rotation}
+                                            selectedImage={selectedTab.img}
+                                        />
+                                    </Suspense>
+                                </Canvas>
+                                <ShowMoreText
+                                    text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
+                                    maxLength={200}
+                                />
+                                {
+                                    selectedTab.link === null
+                                        ?
+                                        <span
+                                            className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
+                                        </span>
+                                        :
+                                        <a
+                                            className="openProject"
+                                            href={selectedTab.link}
+                                            target="_blank"
+                                            title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
+                                        >
+                                            {pathName === "/ua" ? `Переглянути проект` : `View the project`}
+                                            <Image
+                                                src={"/icons/ForwardArrow.svg"}
+                                                alt={"ForwardArrow"}
+                                                width={20}
+                                                height={20}
+                                            />
+                                        </a>
+                                }
+                            </div>
                         </motion.div>
                     </AnimatePresence>
                 </FadeInAnimation>
@@ -229,12 +250,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
-/*
-    useEffect(() => {
-        if (materialNode) {
-            materialNode.material.map = texture;
-            materialNode.material.needsUpdate = true;
-        }
-    }, [scene]);
- */
