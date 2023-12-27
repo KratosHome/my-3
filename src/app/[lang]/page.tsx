@@ -2,11 +2,9 @@ import HeroSection from "@/components/HeroSection/HeroSection";
 import WrapperRequest from "@/components/WrapperRequest/WrapperRequest";
 import AboutMe from "@/components/AboutMe/AboutMe";
 import Connect from "@/components/Connect/Connect";
-import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
 import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
 import {Viewport} from 'next'
-import Head from "next/head";
 import Projects from "@/components/Projects/Projects";
 
 export const viewport: Viewport = {
@@ -108,10 +106,7 @@ export default function Home() {
                     <AboutMe/>
                 </section>
                 <section id="project2s">
-                <Projects/>
-            </section>
-            <section id="projects">
-                    <SelectedProjects/>
+                    <Projects/>
                 </section>
                 <section id="services">
                     <Services/>

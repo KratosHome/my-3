@@ -30,7 +30,7 @@ const date: any = [
         id: 2,
         nameUa: "Rastcom мобільний застосунок для профісионалів та замовників",
         nameEn: "Rastcom mobile app for professionals and clients.",
-        img: "/selectedBlock/rastcomApp.png",
+        img: "/selectedBlock/mobRastcom.jpeg",
         descriptionUa: "Додаток Rastcom - це ваш шлях до швидкого і надійного з'єднання з професіоналами у будь-якій сфері. Він забезпечує легке управління замовленнями, гнучке планування та безперервне спілкування, все в одному додатку, який завжди з вами.",
         descriptionEn: "The Rastcom app is your path to a quick and reliable connection with professionals in any field. It ensures easy order management, flexible planning, and continuous communication, all in one app that's always with you.",
         technologies: "React Native, TypeScript, Redux Toolkit, git",
