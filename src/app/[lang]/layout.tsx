@@ -79,13 +79,12 @@ export default async function RootLayout({
             "url": "https://codecraftmaster.com"
         },
         "sameAs": [
-            "https://www.linkedin.com/in/oleg-tkach",
-            "https://twitter.com/olegTkach",
-            "https://github.com/olegTkach"
+            "https://www.linkedin.com/in/olegtkach101/",
+            "https://t.me/KratosHome",
+            "https://github.com/KratosHome"
         ],
         "logo": "https://codecraftmaster.com/logo.png",
         "openingHours": "Mo-Fr 09:00-17:00",
-        "additionalType": "http://www.productontology.org/id/Web_development",
     }
 
 
