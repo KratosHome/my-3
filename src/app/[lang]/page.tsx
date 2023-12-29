@@ -95,7 +95,6 @@ export async function generateMetadata({params}: any) {
 }
 
 export default function Home() {
-
     return (
         <>
             <main>
