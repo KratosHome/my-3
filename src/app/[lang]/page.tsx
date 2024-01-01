@@ -52,7 +52,9 @@ export async function generateMetadata({params}: any) {
                 "е-комерція",
                 "фронтенд розробка",
                 "Apple розробник"],
-        authors: [{name: 'Олег Ткач', url: 'https://codecraftmaster.com'}, {
+        authors: [
+            {name: 'Олег Ткач', url: 'https://codecraftmaster.com'},
+            {
             name: 'Tanya Kucherak',
             url: 'https://www.linkedin.com/in/tetiana-kucherak/'
         }],
@@ -62,59 +64,40 @@ export async function generateMetadata({params}: any) {
             title: params.lang === "en" ? 'Frontend Developer 🧑‍💻 CodeCraftMaster.com' : 'Фронтенд Розробник 🧑‍💻 CodeCraftMster.com',
             description: params.lang === "en" ? '🚀 Your partner in mobile app, website, and e-commerce development. Innovative solutions with a personal touch 🖥📲🦾' : '🚀 Ваш партнер у розробці мобільних додатків, веб-сайтів та інтернет-магазинів. Інноваційні рішення та особистий підхід 🖥📲🦾.',
             url: canonicalUrl,
-            siteName: 'codecraftmaster.com',
-            images:
-                '/logo.png',
-            locale:
-                params.lang === "en" ? 'en_US' : 'uk_UA',
-            type:
-                'website',
+            siteName: 'CodeCraftMaster.com',
+            images: '/logo.png',
+            locale: params.lang === "en" ? 'en_US' : 'uk_UA',
+            type: 'website',
         },
         robots: {
             index: true,
-            follow:
-                true,
-            nocache:
-                true,
-            googleBot:
-                {
-                    index: true,
-                    follow:
-                        true,
-                    noimageindex:
-                        false,
-                }
-            ,
-        }
-        ,
+            follow: true,
+            nocache: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                noimageindex: false,
+            },
+        },
         metadataBase: new URL('https://codecraftmaster.com'),
         alternates:
             {
                 canonical: canonicalUrl,
                 languages: {
-                    'en-US':
-                        '/en',
-                    'uk-UA':
-                        '/ua',
-                }
-                ,
-            }
-        ,
+                    'en-US': '/en',
+                    'uk-UA': '/ua',
+                },
+            },
         icons: {
             icon: '/logo.png',
-            shortcut:
-                '/logo.png',
-            apple:
-                '/logo.png',
+            shortcut: '/logo.png',
+            apple: '/logo.png',
             other:
                 {
                     rel: 'apple-touch-icon-precomposed',
-                    url:
-                        '/apple-touch-icon-precomposed.png',
-                }
-            ,
-        }
-        ,
+                    url: '/apple-touch-icon-precomposed.png',
+                },
+        },
     }
 }
 
