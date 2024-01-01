@@ -15,6 +15,9 @@ export const viewport: Viewport = {
 }
 
 export async function generateMetadata({params}: any) {
+    const canonicalUrl = params.lang === "en" ? 'https://codecraftmaster.com/en' : 'https://codecraftmaster.com/ua';
+
+
     return {
         title: params.lang === "en" ? 'Frontend Developer 🧑‍💻 CodeCraftMaster.com' : 'Фронтенд Розробник 🧑‍💻 CodeCraftMster.com',
         description: params.lang === "en" ? '🚀 Your partner in mobile app, website, and e-commerce development. Innovative solutions with a personal touch 🖥📲🦾' : '🚀 Ваш партнер у розробці мобільних додатків, веб-сайтів та інтернет-магазинів. Інноваційні рішення та особистий підхід 🖥📲🦾.',
@@ -58,11 +61,18 @@ export async function generateMetadata({params}: any) {
         openGraph: {
             title: params.lang === "en" ? 'Frontend Developer 🧑‍💻 CodeCraftMaster.com' : 'Фронтенд Розробник 🧑‍💻 CodeCraftMster.com',
             description: params.lang === "en" ? '🚀 Your partner in mobile app, website, and e-commerce development. Innovative solutions with a personal touch 🖥📲🦾' : '🚀 Ваш партнер у розробці мобільних додатків, веб-сайтів та інтернет-магазинів. Інноваційні рішення та особистий підхід 🖥📲🦾.',
-            url: 'https://codecraftmaster.com',
+            url: canonicalUrl,
             siteName: 'codecraftmaster.com',
             images: '/logo.png',
             locale: params.lang === "en" ? 'en_US' : 'uk_UA',
             type: 'website',
+        },
+        alternates: {
+            canonical: canonicalUrl,
+            languages: {
+                'en-US': '/en',
+                'uk-UA': '/ua',
+            },
         },
         robots: {
             index: true,
