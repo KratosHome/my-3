@@ -1,21 +1,32 @@
 'use client'
-import React from 'react';
+import React, {useRef} from 'react';
 import "./TrustedBy.scss"
 import Button from "@/components/UI/Button/Button";
 import MyModal from "@/components/UI/MyModal/MyModal";
 import {usePathname} from "next/navigation";
 import FormHLeaveReview from "@/components/FormHLeaveReview/FormHLeaveReview";
 import Swiper from "@/components/UI/Swiper/Swiper";
+import {variantsH2} from "@/animation/variantsH2";
+import {motion, useInView} from "framer-motion";
 
 
 const TrustedBy = ({reviews}: any) => {
     const pathName = usePathname();
+    const ref = useRef(null);
+    const isInView = useInView(ref);
+
     return (
         <div className="container-trusted-by">
             <div className="inner-container"/>
-            <h2 className="title-block">
-                   {pathName === "/ua" ? "відгуки" : "trusted by"}
-               </h2>
+            <motion.h2
+                ref={ref}
+                className="title-block"
+                variants={variantsH2(isInView)}
+                initial={"hidden"}
+                animate={"visible"}
+            >
+                {pathName === "/ua" ? "відгуки" : "trusted by"}
+            </motion.h2>
             <Swiper
                 isButtonToggle={false}
                 cards={reviews}

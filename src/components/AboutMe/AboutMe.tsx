@@ -1,19 +1,29 @@
 "use client"
-import React from 'react';
+import React, {useRef} from 'react';
 import "./AboutMe.scss";
 import Image from "next/image";
 import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
 import FadeInAnimation from '../UIA/FadeInAnimation/FadeInAnimation';
+import {motion, useInView} from 'framer-motion';
+import {variantsH2} from "@/animation/variantsH2";
 
 const AboutMe = () => {
     const pathName = usePathname();
+    const ref = useRef(null);
+    const isInView = useInView(ref);
 
     return (
         <div className="container-about-me">
-            <h2 className="title-block">
+            <motion.h2
+                ref={ref}
+                className="title-block"
+                variants={variantsH2(isInView)}
+                initial={"hidden"}
+                animate={"visible"}
+            >
                 {pathName === "/ua" ? "Про мене" : "About me"}
-            </h2>
+            </motion.h2>
             <div>
                 <FadeInAnimation direction="left">
                     <Swim>

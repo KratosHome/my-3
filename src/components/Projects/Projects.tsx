@@ -3,16 +3,17 @@ import React, {Suspense, useEffect, useRef, useState} from 'react';
 import "./Projects.scss"
 import {usePathname} from "next/navigation";
 import FadeInAnimation from "@/components/UIA/FadeInAnimation/FadeInAnimation";
-import {AnimatePresence, motion} from "framer-motion";
+import {AnimatePresence, motion, useInView} from "framer-motion";
 import Image from "next/image";
 import ShowMoreText from "@/components/UI/ShowMoreText/ShowMoreText";
-import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
+import {OrbitControls, useGLTF} from "@react-three/drei";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
-import {Canvas, useLoader, useThree} from "@react-three/fiber";
+import {Canvas, useLoader} from "@react-three/fiber";
 import Loader from "@/components/UI/Loader/Loader";
 import {TextureLoader} from "three";
 import * as THREE from 'three';
+import {variantsH2} from "@/animation/variantsH2";
 
 const date: any = [
     {
@@ -106,6 +107,8 @@ const Laptop = ({isMobile, rotation, selectedImage}: any) => {
 
 const Projects = () => {
     const pathName = usePathname();
+    const ref = useRef(null);
+    const isInView = useInView(ref);
 
     const [selectedTab, setSelectedTab] = useState(date[0]);
     const [previousIndex, setPreviousIndex] = useState(0); // Зберігайте попередній індекс
@@ -116,7 +119,6 @@ const Projects = () => {
         setPreviousIndex(date.findIndex((p: any) => p.id === selectedTab.id)); // Оновіть попередній індекс
         setSelectedTab(project);
     };
-
 
     const handleMouseMove = (event: any) => {
         const {clientX, clientY} = event;
@@ -134,8 +136,16 @@ const Projects = () => {
         setRotation([0, newXRotation, newYRotation]);
     };
     return (
-        <div className="container-projects">
-            <span className="title-block">{pathName === "/ua" ? "Мої проєкти" : "My projects"}</span>
+        <div className="container-projects" ref={ref}>
+            <motion.h2
+                ref={ref}
+                className="title-block"
+                variants={variantsH2(isInView)}
+                initial={"hidden"}
+                animate={"visible"}
+            >
+                {pathName === "/ua" ? "Мої проєкти" : "My projects"}
+            </motion.h2>
             <div className="wrapper-container">
                 <FadeInAnimation direction="left" delay={0.2}>
                     <div className="container-map-project">

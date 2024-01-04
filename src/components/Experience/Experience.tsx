@@ -1,9 +1,10 @@
 'use client'
-import React from 'react';
+import React, {useRef} from 'react';
 import "./Experience.scss";
-import {motion} from 'framer-motion';
+import {motion, useInView} from 'framer-motion';
 import ExperienceList from "@/components/Experience/ExperienceList/ExperienceList";
 import {usePathname} from "next/navigation";
+import {variantsH2} from "@/animation/variantsH2";
 
 const experience = [
     {
@@ -88,11 +89,19 @@ const experience = [
 
 const Experience = () => {
     const pathName = usePathname();
+    const ref = useRef(null);
+    const isInView = useInView(ref);
     return (
         <motion.div layout className="container-experience">
-            <h2 className="title-block">
+            <motion.h2
+                ref={ref}
+                className="title-block"
+                variants={variantsH2(isInView)}
+                initial={"hidden"}
+                animate={"visible"}
+            >
                 {pathName === "/ua" ? `Професійний досвід` : `Professional experience`}
-            </h2>
+            </motion.h2>
             <div className="container-experience-list">
                 {experience.map((item, index) => (
                     <ExperienceList key={item.id} item={item} index={index}/>
