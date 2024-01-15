@@ -1,29 +1,47 @@
 "use client"
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import "./AboutMe.scss";
 import Image from "next/image";
 import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
 import FadeInAnimation from '../UIA/FadeInAnimation/FadeInAnimation';
-import {motion, useInView} from 'framer-motion';
-import {variantsH2} from "@/animation/variantsH2";
+import {gsap} from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutMe = () => {
     const pathName = usePathname();
-    const ref = useRef(null);
-    const isInView = useInView(ref);
+    const imgRef = useRef(null);
+
+    useEffect(() => {
+        const element = imgRef.current;
+
+        gsap.fromTo(element,
+            {
+                opacity: 0,
+                scale: 0.5,
+                y: -50
+            },
+            {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top center+=200",
+                    toggleActions: "play none none reverse",
+                },
+            });
+    }, [imgRef]);
 
     return (
         <div className="container-about-me">
-            <motion.h2
-                ref={ref}
-                className="title-block"
-                variants={variantsH2(isInView)}
-                initial={"hidden"}
-                animate={"visible"}
-            >
+            <h2 className="h2-amimate" ref={imgRef}>
                 {pathName === "/ua" ? "Про мене" : "About me"}
-            </motion.h2>
+            </h2>
             <div>
                 <FadeInAnimation direction="left">
                     <Swim>
