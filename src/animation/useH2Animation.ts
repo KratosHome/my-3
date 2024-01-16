@@ -25,7 +25,7 @@ export const useH2Animation = () => {
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: element,
-                        start: "top center+=200",
+                        start: "bottom bottom-=100",
                         end: "top top+=50",
                         toggleActions: "play reverse play reverse",
                     },
