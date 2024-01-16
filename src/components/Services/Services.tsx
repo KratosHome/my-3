@@ -1,11 +1,10 @@
 'use client'
 import "./Services.scss";
-import React, {useRef} from "react";
+import React from "react";
 import Image from "next/image";
 import {usePathname} from "next/navigation";
 import Swiper from "@/components/UI/Swiper/Swiper";
-import {variantsH2} from "@/animation/variantsH2";
-import {motion, useInView} from "framer-motion";
+import {useH2Animation} from "@/animation/useH2Animation";
 
 
 const services = [
@@ -62,20 +61,13 @@ const services = [
 
 const Services = () => {
     const pathName = usePathname();
-    const ref = useRef(null);
-    const isInView = useInView(ref);
+    const animatedRef = useH2Animation();
 
     return (
         <div className='container-services'>
-            <motion.h2
-                ref={ref}
-                className="title-block"
-                variants={variantsH2(isInView)}
-                initial={"hidden"}
-                animate={"visible"}
-            >
+            <h2 ref={animatedRef} className="title-block">
                 {pathName === "/ua" ? `Мої послуги` : `My services`}
-            </motion.h2>
+            </h2>
             <Swiper
                 cards={services}
                 numberCards={-1}

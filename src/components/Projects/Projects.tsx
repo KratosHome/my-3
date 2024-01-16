@@ -14,6 +14,7 @@ import Loader from "@/components/UI/Loader/Loader";
 import {TextureLoader} from "three";
 import * as THREE from 'three';
 import {variantsH2} from "@/animation/variantsH2";
+import {useH2Animation} from "@/animation/useH2Animation";
 
 const date: any = [
     {
@@ -63,7 +64,7 @@ const date: any = [
 ]
 
 
-const Laptop = ({isMobile, rotation, selectedImage}: any) => {
+const Laptop = ({rotation, selectedImage}: any) => {
     const computer = useGLTF("/final_laptop/scene.gltf");
     const {scene} = computer;
 
@@ -97,8 +98,8 @@ const Laptop = ({isMobile, rotation, selectedImage}: any) => {
             <pointLight intensity={0.5}/>
             <primitive
                 object={computer.scene}
-                scale={isMobile ? 5.4 : 25.5}
-                position={isMobile ? [0, 5, 1.5] : [8, -1, 0]}
+                scale={25.5}
+                position={[8, -1, 0]}
                 rotation={[0, 1.5, 0]}
             />
         </mesh>
@@ -107,16 +108,12 @@ const Laptop = ({isMobile, rotation, selectedImage}: any) => {
 
 const Projects = () => {
     const pathName = usePathname();
+    const animatedRef = useH2Animation();
     const ref = useRef(null);
-    const isInView = useInView(ref);
 
     const [selectedTab, setSelectedTab] = useState(date[0]);
-    const [previousIndex, setPreviousIndex] = useState(0); // Зберігайте попередній індекс
-
-    const [isMobile, setIsMobile] = useState(false);
     const [rotation, setRotation] = useState([0, 0, 0]);
     const selectProject = (project: any) => {
-        setPreviousIndex(date.findIndex((p: any) => p.id === selectedTab.id)); // Оновіть попередній індекс
         setSelectedTab(project);
     };
 
@@ -137,15 +134,9 @@ const Projects = () => {
     };
     return (
         <div className="container-projects" ref={ref}>
-            <motion.h2
-                ref={ref}
-                className="title-block"
-                variants={variantsH2(isInView)}
-                initial={"hidden"}
-                animate={"visible"}
-            >
+            <h2 ref={animatedRef} className="title-block">
                 {pathName === "/ua" ? "Мої проєкти" : "My projects"}
-            </motion.h2>
+            </h2>
             <div className="wrapper-container">
                 <FadeInAnimation direction="left" delay={0.2}>
                     <div className="container-map-project">
@@ -199,7 +190,7 @@ const Projects = () => {
                                     shadows
                                     dpr={[1, 2]}
                                     camera={{
-                                        position: isMobile ? [38, 10, 10] : [16, 0, -2],
+                                        position: [16, 0, -2],
                                         fov: 28
                                     }}
                                     gl={{preserveDrawingBuffer: true}}
@@ -218,7 +209,6 @@ const Projects = () => {
                                         />
                                         <Laptop
                                             key={selectedTab.img}
-                                            isMobile={isMobile}
                                             rotation={rotation}
                                             selectedImage={selectedTab.img}
                                         />

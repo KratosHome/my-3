@@ -1,45 +1,20 @@
 "use client"
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import "./AboutMe.scss";
 import Image from "next/image";
 import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
 import FadeInAnimation from '../UIA/FadeInAnimation/FadeInAnimation';
-import {gsap} from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import {useH2Animation} from "@/animation/useH2Animation";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const AboutMe = () => {
     const pathName = usePathname();
-    const imgRef = useRef(null);
-
-    useEffect(() => {
-        const element = imgRef.current;
-
-        gsap.fromTo(element,
-            {
-                opacity: 0,
-                scale: 0.5,
-                y: -50
-            },
-            {
-                opacity: 1,
-                scale: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top center+=200",
-                    toggleActions: "play none none reverse",
-                },
-            });
-    }, [imgRef]);
+    const animatedRef = useH2Animation();
 
     return (
         <div className="container-about-me">
-            <h2 className="h2-amimate" ref={imgRef}>
+            <h2 className="h2-amimate" ref={animatedRef}>
                 {pathName === "/ua" ? "Про мене" : "About me"}
             </h2>
             <div>

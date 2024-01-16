@@ -5,15 +5,12 @@ import "./Connect.scss";
 import {usePathname} from "next/navigation";
 import Button from "@/components/UI/Button/Button";
 import FadeInAnimation from "@/components/UIA/FadeInAnimation/FadeInAnimation";
-import {motion, useInView} from "framer-motion";
-import {variantsH2} from "@/animation/variantsH2";
+import {useH2Animation} from "@/animation/useH2Animation";
 
 const Connect = () => {
     const pathName = usePathname();
     const videoRef = useRef<any>(null);
-    const ref = useRef(null);
-    const isInView = useInView(ref);
-
+    const animatedRef = useH2Animation();
 
     useEffect(() => {
         if (videoRef.current) {
@@ -25,15 +22,9 @@ const Connect = () => {
     return (
         <div className="container-connect">
             <div className="head-block">
-                <motion.h2
-                    ref={ref}
-                    className="name"
-                    variants={variantsH2(isInView)}
-                    initial={"hidden"}
-                    animate={"visible"}
-                >
+                <h2 ref={animatedRef} className="name">
                     {pathName === "/ua" ? "Зв'язатися" : "Let’s connect"}
-                </motion.h2>
+                </h2>
                 <a className="link-another-platform" href="mailto:OlegonTkach101@gmail.com">OlegonTkach101@gmail.com</a>
             </div>
             <div className="wrapper-block">
