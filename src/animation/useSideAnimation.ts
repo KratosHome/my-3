@@ -27,10 +27,12 @@ export const useSideAnimation = ({direction}: any) => {
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: element,
-                    start: "bottom bottom+=100",
-                    end: "top top+=100",
+                    start: "bottom bottom-=100",
+                    end: "top top+=50",
                     toggleActions: "play reverse play reverse",
                 },
+                delay: 0,
+                stagger: 0.1,
             }
         );
     }, [direction]);

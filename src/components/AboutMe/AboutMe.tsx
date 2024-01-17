@@ -14,36 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutMe = () => {
     const pathName = usePathname();
     const animatedRef = useH2Animation();
-    const ref = useRef(null);
     const refLeft = useSideAnimation({direction: 'left'});
     const refRight = useSideAnimation({direction: 'right'});
-
-    useEffect(() => {
-        const element = ref.current;
-
-        if (element) {
-            gsap.fromTo(element,
-                {
-                    opacity: 0,
-                    scale: 0.5,
-                    x: -1000,
-                },
-                {
-                    opacity: 1,
-                    scale: 1,
-                    x: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "bottom bottom+=100",
-                        end: "top top+=50",
-                        toggleActions: "play reverse play reverse",
-                    },
-                });
-        }
-    }, []);
-
 
     return (
         <div className="container-about-me">

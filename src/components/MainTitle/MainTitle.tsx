@@ -1,8 +1,12 @@
 "use client"
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './MainTitle.scss';
 import {Typewriter} from 'react-simple-typewriter';
 import {usePathname} from "next/navigation";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const MainTitle = () => {
     const pathName = usePathname();
@@ -21,6 +25,31 @@ const MainTitle = () => {
         const totalTime = ('developer'.length * 100) + 1500; // adjust based on your typeSpeed and delaySpeed
         const timer = setTimeout(() => setShowDevText(true), totalTime);
         return () => clearTimeout(timer);
+    }, []);
+
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const element = ref.current;
+
+        if (element) {
+            gsap.fromTo(element, {
+                opacity: 0,
+                y: -20
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                delay: 3.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "bottom bottom-=100",
+                    end: "top top-=10",
+                    toggleActions: "play reverse play reverse",
+                }
+            });
+        }
     }, []);
 
     return (
@@ -60,7 +89,7 @@ const MainTitle = () => {
                     />
                 )}
             </h1>
-            <h2>{pathName === "/ua" ? "Код як мистецтво: Інженерія, що дарує функціональну красу" : "Code as Art: Engineering Functional Beauty"}</h2>
+            <h2 ref={ref}>{pathName === "/ua" ? "Код як мистецтво: Інженерія, що дарує функціональну красу" : "Code as Art: Engineering Functional Beauty"}</h2>
         </div>
     );
 };

@@ -111,7 +111,7 @@ export default function Home() {
                 <section id="about">
                     <AboutMe/>
                 </section>
-                <section id="project2s">
+                <section id="projects">
                     <Projects/>
                 </section>
                 <section id="services">

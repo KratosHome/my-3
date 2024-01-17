@@ -26,7 +26,7 @@ export const useH2Animation = () => {
                     scrollTrigger: {
                         trigger: element,
                         start: "bottom bottom-=100",
-                        end: "top top+=50",
+                        end: "top top-=10",
                         toggleActions: "play reverse play reverse",
                     },
                 });

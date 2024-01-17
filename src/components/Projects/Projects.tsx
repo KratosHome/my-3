@@ -15,6 +15,7 @@ import {TextureLoader} from "three";
 import * as THREE from 'three';
 import {variantsH2} from "@/animation/variantsH2";
 import {useH2Animation} from "@/animation/useH2Animation";
+import {useSideAnimation} from "@/animation/useSideAnimation";
 
 const date: any = [
     {
@@ -109,6 +110,10 @@ const Laptop = ({rotation, selectedImage}: any) => {
 const Projects = () => {
     const pathName = usePathname();
     const animatedRef = useH2Animation();
+    const refLeft = useSideAnimation({direction: 'left'});
+    const refRight = useSideAnimation({direction: 'right'});
+
+
     const ref = useRef(null);
 
     const [selectedTab, setSelectedTab] = useState(date[0]);
@@ -138,50 +143,48 @@ const Projects = () => {
                 {pathName === "/ua" ? "Мої проєкти" : "My projects"}
             </h2>
             <div className="wrapper-container">
-                <FadeInAnimation direction="left" delay={0.2}>
-                    <div className="container-map-project">
-                        <span className={"script"}>{"<project>"}</span>
-                        {date.map((project: any) => (
-                            <div key={project.id} className={"wrapper-select-project"}>
-                                <span className="enumeration">0{project.id}</span>
-                                <div
-                                    className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}
+                <div className="container-map-project" ref={refLeft}>
+                    <span className={"script"}>{"<project>"}</span>
+                    {date.map((project: any) => (
+                        <div key={project.id} className={"wrapper-select-project"}>
+                            <span className="enumeration">0{project.id}</span>
+                            <div
+                                className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}
+                            >
+                                <motion.div
+                                    key={project.id}
+                                    className={"wrapper-project-list"}
+                                    onClick={() => selectProject(project)}
+                                    whileHover={{
+                                        scale: 1.05,
+                                        transition: {
+                                            duration: 0.5,
+                                            damping: 10,
+                                            ease: [0.17, 0.67, 0.83, 0.67],
+                                            type: "spring",
+                                            stiffness: 400,
+                                        }
+                                    }}
+                                    whileTap={{
+                                        scale: 0.99,
+                                        transition: {
+                                            type: "spring",
+                                            stiffness: 400,
+                                            damping: 10
+                                        }
+                                    }}
                                 >
-                                    <motion.div
-                                        key={project.id}
-                                        className={"wrapper-project-list"}
-                                        onClick={() => selectProject(project)}
-                                        whileHover={{
-                                            scale: 1.05,
-                                            transition: {
-                                                duration: 0.5,
-                                                damping: 10,
-                                                ease: [0.17, 0.67, 0.83, 0.67],
-                                                type: "spring",
-                                                stiffness: 400,
-                                            }
-                                        }}
-                                        whileTap={{
-                                            scale: 0.99,
-                                            transition: {
-                                                type: "spring",
-                                                stiffness: 400,
-                                                damping: 10
-                                            }
-                                        }}
-                                    >
-                                        <div>
+                                    <div>
                                             <span
                                                 className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
-                                        </div>
-                                    </motion.div>
-                                </div>
+                                    </div>
+                                </motion.div>
                             </div>
-                        ))}
-                        <span className={"script"}>{"</project>"}</span>
-                    </div>
-                </FadeInAnimation>
-                <FadeInAnimation direction="right" delay={0.2}>
+                        </div>
+                    ))}
+                    <span className={"script"}>{"</project>"}</span>
+                </div>
+                <div ref={refRight}>
                     <AnimatePresence>
                         <motion.div className="continer-resilt">
                             <div>
@@ -243,7 +246,7 @@ const Projects = () => {
                             </div>
                         </motion.div>
                     </AnimatePresence>
-                </FadeInAnimation>
+                </div>
             </div>
         </div>
     );
