@@ -16,6 +16,7 @@ import * as THREE from 'three';
 import {variantsH2} from "@/animation/variantsH2";
 import {useH2Animation} from "@/animation/useH2Animation";
 import {useSideAnimation} from "@/animation/useSideAnimation";
+import gsap from "gsap";
 
 const date: any = [
     {
@@ -109,12 +110,6 @@ const Laptop = ({rotation, selectedImage}: any) => {
 
 const Projects = () => {
     const pathName = usePathname();
-    const animatedRef = useH2Animation();
-    const refLeft = useSideAnimation({direction: 'left'});
-    const refRight = useSideAnimation({direction: 'right'});
-
-
-    const ref = useRef(null);
 
     const [selectedTab, setSelectedTab] = useState(date[0]);
     const [rotation, setRotation] = useState([0, 0, 0]);
@@ -137,8 +132,71 @@ const Projects = () => {
 
         setRotation([0, newXRotation, newYRotation]);
     };
+
+
+//// ------------------------
+
+    const animatedRef = useRef(null);
+    const refList = useRef(null);
+    const refLeft = useRef(null);
+    const refRight = useRef(null);
+
+
+    useEffect(() => {
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(animatedRef.current,
+                {
+                    opacity: 0,
+                    rotateX: -390,
+                    x: 1010
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    rotateX: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: animatedRef.current,
+                        start: "bottom bottom-=150",
+                        end: "top top+=50",
+                        toggleActions: "play reverse play reverse",
+                    },
+                    delay: 0,
+                    stagger: 0.1,
+                })
+
+
+            gsap.fromTo(refList.current,
+                {
+                    opacity: 0,
+                    rotateX: -390,
+                    x: 1010
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    rotateX: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: animatedRef.current,
+                        start: "bottom bottom-=150",
+                        end: "top top+=50",
+                        toggleActions: "play reverse play reverse",
+                    },
+                    delay: 0,
+                    stagger: 0.1,
+                })
+
+        }, [animatedRef, refList]);
+
+        return () => ctx.revert();
+
+    }, []);
     return (
-        <div className="container-projects" ref={ref}>
+        <div className="container-projects">
             <h2 ref={animatedRef} className="title-block">
                 {pathName === "/ua" ? "Мої проєкти" : "My projects"}
             </h2>
@@ -149,103 +207,81 @@ const Projects = () => {
                         <div key={project.id} className={"wrapper-select-project"}>
                             <span className="enumeration">0{project.id}</span>
                             <div
+                                ref={refList}
                                 className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}
                             >
-                                <motion.div
+                                <div
                                     key={project.id}
                                     className={"wrapper-project-list"}
                                     onClick={() => selectProject(project)}
-                                    whileHover={{
-                                        scale: 1.05,
-                                        transition: {
-                                            duration: 0.5,
-                                            damping: 10,
-                                            ease: [0.17, 0.67, 0.83, 0.67],
-                                            type: "spring",
-                                            stiffness: 400,
-                                        }
-                                    }}
-                                    whileTap={{
-                                        scale: 0.99,
-                                        transition: {
-                                            type: "spring",
-                                            stiffness: 400,
-                                            damping: 10
-                                        }
-                                    }}
                                 >
-                                    <div>
-                                            <span
-                                                className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
-                                    </div>
-                                </motion.div>
+                                    <span className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
+                                </div>
                             </div>
                         </div>
                     ))}
                     <span className={"script"}>{"</project>"}</span>
                 </div>
                 <div ref={refRight}>
-                    <AnimatePresence>
-                        <motion.div className="continer-resilt">
-                            <div>
-                                <Canvas
-                                    frameloop='demand'
-                                    shadows
-                                    dpr={[1, 2]}
-                                    camera={{
-                                        position: [16, 0, -2],
-                                        fov: 28
-                                    }}
-                                    gl={{preserveDrawingBuffer: true}}
-                                    onPointerMove={handleMouseMove}
-                                >
-                                    <Suspense fallback={<Loader/>}>
-                                        <OrbitControls
-                                            enableZoom={false}
-                                            enablePan={false}
-                                            enableRotate={false}
-                                            target={[3, 0, 0]}
-                                            maxPolarAngle={Math.PI / 1.5}
-                                            minPolarAngle={Math.PI / 3}
-                                            maxAzimuthAngle={Math.PI * 0.8}
-                                            minAzimuthAngle={-Math.PI * 0.1}
-                                        />
-                                        <Laptop
-                                            key={selectedTab.img}
-                                            rotation={rotation}
-                                            selectedImage={selectedTab.img}
-                                        />
-                                    </Suspense>
-                                </Canvas>
-                                <ShowMoreText
-                                    text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
-                                    maxLength={200}
-                                />
-                                {
-                                    selectedTab.link === null
-                                        ?
-                                        <span
-                                            className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
+                    <div className="continer-resilt">
+                        <div>
+                            <Canvas
+                                frameloop='demand'
+                                shadows
+                                dpr={[1, 2]}
+                                camera={{
+                                    position: [16, 0, -2],
+                                    fov: 28
+                                }}
+                                gl={{preserveDrawingBuffer: true}}
+                                onPointerMove={handleMouseMove}
+                            >
+                                <Suspense fallback={<Loader/>}>
+                                    <OrbitControls
+                                        enableZoom={false}
+                                        enablePan={false}
+                                        enableRotate={false}
+                                        target={[3, 0, 0]}
+                                        maxPolarAngle={Math.PI / 1.5}
+                                        minPolarAngle={Math.PI / 3}
+                                        maxAzimuthAngle={Math.PI * 0.8}
+                                        minAzimuthAngle={-Math.PI * 0.1}
+                                    />
+                                    <Laptop
+                                        key={selectedTab.img}
+                                        rotation={rotation}
+                                        selectedImage={selectedTab.img}
+                                    />
+                                </Suspense>
+                            </Canvas>
+                            <ShowMoreText
+                                text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
+                                maxLength={200}
+                            />
+                            {
+                                selectedTab.link === null
+                                    ?
+                                    <span
+                                        className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
                                         </span>
-                                        :
-                                        <a
-                                            className="openProject"
-                                            href={selectedTab.link}
-                                            target="_blank"
-                                            title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
-                                        >
-                                            {pathName === "/ua" ? `Переглянути проект` : `View the project`}
-                                            <Image
-                                                src={"/icons/ForwardArrow.svg"}
-                                                alt={"ForwardArrow"}
-                                                width={20}
-                                                height={20}
-                                            />
-                                        </a>
-                                }
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
+                                    :
+                                    <a
+                                        className="openProject"
+                                        href={selectedTab.link}
+                                        target="_blank"
+                                        title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
+                                    >
+                                        {pathName === "/ua" ? `Переглянути проект` : `View the project`}
+                                        <Image
+                                            src={"/icons/ForwardArrow.svg"}
+                                            alt={"ForwardArrow"}
+                                            width={20}
+                                            height={20}
+                                        />
+                                    </a>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

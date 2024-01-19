@@ -6,16 +6,108 @@ import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
 import {useH2Animation} from "@/animation/useH2Animation";
 import {useSideAnimation} from "@/animation/useSideAnimation";
+import gsap from "gsap";
 
 const AboutMe = () => {
     const pathName = usePathname();
-    const animatedRef = useH2Animation();
-    const refLeft = useSideAnimation({direction: 'left'});
-    const refRight = useSideAnimation({direction: 'right'});
 
+    const heRef = useRef(null);
+    const refLeft = useRef(null);
+    const refRight = useRef(null);
+    const refA = useRef(null);
+
+    useEffect(() => {
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(heRef.current,
+                {
+                    opacity: 0,
+                    rotateX: 80,
+                },
+                {
+                    opacity: 1,
+                    rotateX: 0,
+                    duration: 0.5,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: heRef.current,
+                        start: "bottom bottom-=80",
+                        end: "top top+=80",
+                        toggleActions: "play reverse play reverse",
+                    },
+                    delay: 0,
+                    stagger: 0.1,
+                })
+
+            gsap.fromTo(refRight.current,
+                {
+                    opacity: 0,
+                    x: 1000,
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: heRef.current,
+                        start: "bottom bottom-=250",
+                        end: "top top-=80",
+                        toggleActions: "play reverse play reverse",
+                    },
+                    delay: 0.5,
+                    stagger: 0.1,
+                })
+            gsap.fromTo(refA.current,
+                {
+                    opacity: 0,
+                    x: 1000,
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: heRef.current,
+                        start: "bottom bottom-=250",
+                        end: "top top-=80",
+                        toggleActions: "play reverse play reverse",
+                    },
+                    delay: 0.5,
+                    stagger: 0.1,
+                })
+
+
+            gsap.fromTo(refLeft.current,
+                {
+                    opacity: 0,
+                    x: -1000,
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: heRef.current,
+                        start: "bottom bottom-=250",
+                        end: "top top-=80",
+                        toggleActions: "play reverse play reverse",
+                    },
+                    delay: 0.5,
+                    stagger: 0.1,
+                })
+
+
+        }, [heRef]);
+
+        return () => ctx.revert();
+
+    }, []);
     return (
         <div className="container-about-me">
-            <h2 className="h2-amimate" ref={animatedRef}>
+            <h2 className="h2-amimate" ref={heRef}>
                 {pathName === "/ua" ? "Про мене" : "About me"}
             </h2>
             <div>
@@ -155,6 +247,7 @@ const AboutMe = () => {
                 </div>
             </div>
             <a
+                ref={refA}
                 className="download-pdf-about-me"
                 href={"/Front-End-React-Developerр-Oleg-Tkach.pdf"}
                 download={'Front-End-React-Developerр-Oleg-Tkach'}

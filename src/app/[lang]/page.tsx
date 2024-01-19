@@ -6,8 +6,7 @@ import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
 import {Viewport} from 'next'
 import Projects from "@/components/Projects/Projects";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import ProjectsNew from "@/components/ProjectsNew/ProjectsNew";
 
 
 export const viewport: Viewport = {
@@ -58,9 +57,9 @@ export async function generateMetadata({params}: any) {
         authors: [
             {name: 'Олег Ткач', url: 'https://codecraftmaster.com'},
             {
-            name: 'Tanya Kucherak',
-            url: 'https://www.linkedin.com/in/tetiana-kucherak/'
-        }],
+                name: 'Tanya Kucherak',
+                url: 'https://www.linkedin.com/in/tetiana-kucherak/'
+            }],
         creator: 'Oleg Tkach',
         publisher: 'Oleg Tkach',
         openGraph: {
@@ -111,13 +110,16 @@ export default function Home() {
                 <section id="section1">
                     <HeroSection/>
                 </section>
-                <section id="about">
+                <section id="about" className="about-section">
                     <AboutMe/>
                 </section>
-                <section id="projects">
+                <section id="projects" className="project-section">
+                    <ProjectsNew/>
+                </section>
+                <section id="projects" className="services-section">
                     <Projects/>
                 </section>
-                <section id="services">
+                <section id="services" className="">
                     <Services/>
                 </section>
                 <section id="experience">
