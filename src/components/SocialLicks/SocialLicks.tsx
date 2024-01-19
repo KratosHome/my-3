@@ -2,9 +2,10 @@ import React from 'react';
 import "./SocialLicks.scss"
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 
-const SocialLicks = ({isAbsolute = true}) => {
+const SocialLicks = ({isAbsolute = true, refLinks}: any) => {
     return (
-        <div className={isAbsolute ? "container-social-links-isAbsolute" : "container-social-links"}>
+        <div ref={refLinks}
+             className={isAbsolute ? "container-social-links-isAbsolute" : "container-social-links"}>
             <ButtonAnimation
                 isPulse={true}
                 as="a" href="https://github.com/KratosHome" target="_blank"

@@ -1,5 +1,5 @@
 "use client"
-import React, { useLayoutEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import "./ThemeChange.scss";
 import {motion} from 'framer-motion';
 import gsap from 'gsap';
@@ -12,14 +12,14 @@ const ThemeChange = () => {
     const dispatch = useDispatch<AppDispatch>();
     const {theme} = useSelector((state: RootState) => state.theme);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
         const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         dispatch(toggleTheme(storedTheme !== null ? storedTheme : systemTheme))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         gsap.to(document.documentElement, {
             '--background-color': theme === 'light' ? [/* light gradient values */] : [/* dark gradient values */],
             duration: 0.5,

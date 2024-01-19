@@ -7,14 +7,14 @@ import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
 
 
-const Computers = ({ isMobile, rotation }: any) => {
+const Computers = ({isMobile, rotation}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
 
     const {theme} = useSelector((state: RootState) => state.theme);
 
     return (
         <mesh rotation={[0, rotation, 0]}>
-            <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"} />
+            <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"}/>
             <spotLight
                 position={[-20, 50, 10]}
                 angle={0.12}
@@ -23,7 +23,7 @@ const Computers = ({ isMobile, rotation }: any) => {
                 castShadow
                 shadow-mapSize={500}
             />
-            <pointLight intensity={0.5} />
+            <pointLight intensity={0.5}/>
             <primitive
                 object={computer.scene}
                 scale={isMobile ? 0.7 : 0.75}
@@ -35,7 +35,7 @@ const Computers = ({ isMobile, rotation }: any) => {
 };
 
 
-const ComputersCanvas = () => {
+const ComputersCanvas = ({refComputer}: any) => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -72,7 +72,8 @@ const ComputersCanvas = () => {
 
     return (
         <Canvas
-            style={{ touchAction: 'auto !important' }}
+            ref={refComputer}
+            style={{touchAction: 'auto !important'}}
             key={isMobile ? "mobile" : "desktop"}
             frameloop='demand'
             onPointerDown={handleTouchMove}

@@ -1,5 +1,5 @@
 .container-background-main {
-    height: 80px;
+  height: 80px;
 
   .inner-container {
     z-index: -1;
@@ -16,6 +16,18 @@
   .container-nav {
     padding-top: 20px;
     display: flex;
+
+    .logo {
+      opacity: 0;
+    }
+
+    .menu-item {
+      opacity: 0;
+    }
+
+    .nav-bar-toggle {
+      opacity: 0;
+    }
 
     > div {
       width: 100%;

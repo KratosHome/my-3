@@ -1,8 +1,6 @@
 import {useRef, useEffect} from 'react';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
 
 export const useSideAnimation = ({direction}: any) => {
     const ref = useRef(null);

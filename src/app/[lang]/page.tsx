@@ -6,6 +6,9 @@ import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
 import {Viewport} from 'next'
 import Projects from "@/components/Projects/Projects";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
 
 export const viewport: Viewport = {
     themeColor: [

@@ -4,13 +4,9 @@ import "./AboutMe.scss";
 import Image from "next/image";
 import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
-import FadeInAnimation from '../UIA/FadeInAnimation/FadeInAnimation';
 import {useH2Animation} from "@/animation/useH2Animation";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import {useSideAnimation} from "@/animation/useSideAnimation";
 
-gsap.registerPlugin(ScrollTrigger);
 const AboutMe = () => {
     const pathName = usePathname();
     const animatedRef = useH2Animation();

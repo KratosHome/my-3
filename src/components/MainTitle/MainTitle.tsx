@@ -4,11 +4,10 @@ import './MainTitle.scss';
 import {Typewriter} from 'react-simple-typewriter';
 import {usePathname} from "next/navigation";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
-const MainTitle = () => {
+
+const MainTitle = ({refH2, refH1}: any) => {
     const pathName = usePathname();
 
     const [showReactText, setShowReactText] = useState(false);
@@ -35,7 +34,7 @@ const MainTitle = () => {
         if (element) {
             gsap.fromTo(element, {
                 opacity: 0,
-                y: -20
+                ч: -20
             }, {
                 opacity: 1,
                 y: 0,
@@ -54,7 +53,7 @@ const MainTitle = () => {
 
     return (
         <div className="container-main-title">
-            <h1>
+            <h1 ref={refH1}>
                 <div>
                     <Typewriter
                         words={['Front-end']}
@@ -89,7 +88,7 @@ const MainTitle = () => {
                     />
                 )}
             </h1>
-            <h2 ref={ref}>{pathName === "/ua" ? "Код як мистецтво: Інженерія, що дарує функціональну красу" : "Code as Art: Engineering Functional Beauty"}</h2>
+            <h2 ref={refH2}>{pathName === "/ua" ? "Код як мистецтво: Інженерія, що дарує функціональну красу" : "Code as Art: Engineering Functional Beauty"}</h2>
         </div>
     );
 };

@@ -6,12 +6,13 @@ import Image from 'next/image';
 import ThemeChange from '@/components/ThemeChange/ThemeChange';
 import LanguageChange from '@/components/LanguageChange/LanguageChange';
 import HoverLink from '@/components/UI/HoverLink/HoverLink';
-
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 export default function NavBar({navigation}: any) {
     useEffect(() => {
-        gsap.fromTo(".logo", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 0.5, delay: 0.2, ease: "power3.out"});
-        gsap.fromTo(".menu-item", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 0.5, stagger: 0.2, ease: "power3.out"});
-        gsap.fromTo(".nav-bar-toggle", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 0.5, delay: 0.5, ease: "power3.out"});
+        gsap.fromTo(".logo", {opacity: 0, x: -100}, {opacity: 1, x: 0, duration: 1, delay: 0.2, ease: "power3.out"});
+        gsap.fromTo(".menu-item", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power3.out"});
+        gsap.fromTo(".nav-bar-toggle", {opacity: 0, x: 100}, {opacity: 1, x: 0, duration: 1, delay: 0.2, ease: "power3.out"});
     }, []);
 
     return (
