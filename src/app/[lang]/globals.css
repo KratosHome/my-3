@@ -78,16 +78,17 @@ body {
     transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
     background: var(--background-color);
     color: var(--text-color);
-    font-family: var(--font-jetbrains-mono);
+    font-family: --font-jetbrains-mono;
     padding-left: calc(var(--index) * 2);
     padding-right: calc(var(--index) * 2);
     overscroll-behavior: none;
     max-width: 2550px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 a, span {
-    font-family: var(--font-consolas);
+    font-family: --font-consolas;
     color: var(--text-color);
     text-decoration: none;
     text-transform: capitalize;
@@ -103,8 +104,10 @@ ul {
     list-style: none;
 }
 
+
+
 button {
-    font-family: var(--font-consolas);
+    font-family: --font-consolas;
     color: #F7F7F7;
     text-transform: uppercase;
     border: none;
@@ -119,7 +122,7 @@ button {
 }
 
 .title-block {
-    font-family: var(--font-consolas);
+    font-family: --font-consolas;
     font-size: 56px;
     font-style: normal;
     font-weight: 700;

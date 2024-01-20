@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 // Ініціалізуємо змінну для збереження теми
 let storedTheme = 'light';
@@ -10,6 +10,7 @@ if (typeof window !== 'undefined') {
 
 const initialState = {
     theme: storedTheme,
+    scroll: false
 };
 
 export const themeSlice = createSlice({
@@ -22,9 +23,12 @@ export const themeSlice = createSlice({
                 localStorage.setItem('theme', action.payload);
             }
         },
+        toggleScroll: (state, action: PayloadAction<boolean>) => {
+            state.scroll = action.payload;
+        }
     },
 });
 
-export const { toggleTheme } = themeSlice.actions;
+export const {toggleTheme} = themeSlice.actions;
 
 export default themeSlice.reducer;

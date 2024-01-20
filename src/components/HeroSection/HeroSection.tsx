@@ -85,7 +85,7 @@ const HeroSection = () => {
             gsap.fromTo(refButton.current,
                 {
                     opacity: 0.5,
-                    x: -300,
+                    x: -800,
                 },
                 {
                     opacity: 1,
@@ -128,7 +128,6 @@ const HeroSection = () => {
     }, []);
 
 
-    console.log("animationPlayed", animationPlayed)
 
     return (
         <div className="container-3d">

@@ -113,9 +113,6 @@ export default function Home() {
                 <section id="about" className="about-section">
                     <AboutMe/>
                 </section>
-                <section id="projects" className="project-section">
-                    <ProjectsNew/>
-                </section>
                 <section id="projects" className="services-section">
                     <Projects/>
                 </section>

@@ -27,7 +27,7 @@
     .script {
       display: block;
       color: var(--text-color-script);
-      font-family: var(--font-jetbrains-mono);
+      font-family: --font-jetbrains-mono;
       font-size: 28px;
       font-style: normal;
       font-weight: 700;
@@ -87,7 +87,7 @@
     position: absolute;
     margin-top: 20px;
     color: var(--text-color-enumeration);
-    font-family: var(--font-jetbrains-mono);
+    font-family: --font-jetbrains-mono;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -156,7 +156,7 @@
         display: flex;
         align-items: center;
         color: var(--violet-light);
-        font-family: var(--font-consolas);
+        font-family: --font-consolas;
         font-size: 28px;
         font-style: normal;
         font-weight: 700;

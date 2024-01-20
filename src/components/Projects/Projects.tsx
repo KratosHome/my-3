@@ -14,9 +14,6 @@ import Loader from "@/components/UI/Loader/Loader";
 import {TextureLoader} from "three";
 import * as THREE from 'three';
 import {variantsH2} from "@/animation/variantsH2";
-import {useH2Animation} from "@/animation/useH2Animation";
-import {useSideAnimation} from "@/animation/useSideAnimation";
-import gsap from "gsap";
 
 const date: any = [
     {
@@ -66,8 +63,8 @@ const date: any = [
 ]
 
 
-const Laptop = ({rotation, selectedImage}: any) => {
-    const computer = useGLTF("/final_laptop/scene.gltf");
+const Laptop = ({isMobile, rotation, selectedImage}: any) => {
+    const computer = useGLTF("./desktop_pc/scene.gltf");
     const {scene} = computer;
 
     const {theme} = useSelector((state: RootState) => state.theme);
@@ -76,7 +73,7 @@ const Laptop = ({rotation, selectedImage}: any) => {
 
     useEffect(() => {
         scene.traverse((child) => {
-            if (child instanceof THREE.Mesh && child.name === "Screen_lambert3_0") {
+            if (child instanceof THREE.Mesh && child.name === "Cube045") {
                 const newMaterial = new THREE.MeshStandardMaterial({
                     map: texture,
                     color: theme == "light" ? new THREE.Color(1, 1, 1) : new THREE.Color(2.5, 2.5, 2.5),
@@ -100,9 +97,9 @@ const Laptop = ({rotation, selectedImage}: any) => {
             <pointLight intensity={0.5}/>
             <primitive
                 object={computer.scene}
-                scale={25.5}
-                position={[8, -1, 0]}
-                rotation={[0, 1.5, 0]}
+                scale={isMobile ? 0.7 : 0.75}
+                position={isMobile ? [0, 5, -1.5] : [5, -2, -2.5]}
+                rotation={[-0.01, -0.2, -0.1]}
             />
         </mesh>
     );
@@ -110,10 +107,16 @@ const Laptop = ({rotation, selectedImage}: any) => {
 
 const Projects = () => {
     const pathName = usePathname();
+    const ref = useRef(null);
+    const isInView = useInView(ref);
 
     const [selectedTab, setSelectedTab] = useState(date[0]);
+    const [previousIndex, setPreviousIndex] = useState(0); // Зберігайте попередній індекс
+
+    const [isMobile, setIsMobile] = useState(false);
     const [rotation, setRotation] = useState([0, 0, 0]);
     const selectProject = (project: any) => {
+        setPreviousIndex(date.findIndex((p: any) => p.id === selectedTab.id)); // Оновіть попередній індекс
         setSelectedTab(project);
     };
 
@@ -132,157 +135,125 @@ const Projects = () => {
 
         setRotation([0, newXRotation, newYRotation]);
     };
-
-
-//// ------------------------
-
-    const animatedRef = useRef(null);
-    const refList = useRef(null);
-    const refLeft = useRef(null);
-    const refRight = useRef(null);
-
-
-    useEffect(() => {
-
-        const ctx = gsap.context(() => {
-            gsap.fromTo(animatedRef.current,
-                {
-                    opacity: 0,
-                    rotateX: -390,
-                    x: 1010
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    rotateX: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: animatedRef.current,
-                        start: "bottom bottom-=150",
-                        end: "top top+=50",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    delay: 0,
-                    stagger: 0.1,
-                })
-
-
-            gsap.fromTo(refList.current,
-                {
-                    opacity: 0,
-                    rotateX: -390,
-                    x: 1010
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    rotateX: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: animatedRef.current,
-                        start: "bottom bottom-=150",
-                        end: "top top+=50",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    delay: 0,
-                    stagger: 0.1,
-                })
-
-        }, [animatedRef, refList]);
-
-        return () => ctx.revert();
-
-    }, []);
     return (
-        <div className="container-projects">
-            <h2 ref={animatedRef} className="title-block">
+        <div className="container-projects" ref={ref}>
+            <motion.h2
+                ref={ref}
+                className="title-block"
+                variants={variantsH2(isInView)}
+                initial={"hidden"}
+                animate={"visible"}
+            >
                 {pathName === "/ua" ? "Мої проєкти" : "My projects"}
-            </h2>
+            </motion.h2>
             <div className="wrapper-container">
-                <div className="container-map-project" ref={refLeft}>
-                    <span className={"script"}>{"<project>"}</span>
-                    {date.map((project: any) => (
-                        <div key={project.id} className={"wrapper-select-project"}>
-                            <span className="enumeration">0{project.id}</span>
-                            <div
-                                ref={refList}
-                                className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}
-                            >
+                <FadeInAnimation direction="left" delay={0.2}>
+                    <div className="container-map-project">
+                        <span className={"script"}>{"<project>"}</span>
+                        {date.map((project: any) => (
+                            <div key={project.id} className={"wrapper-select-project"}>
+                                <span className="enumeration">0{project.id}</span>
                                 <div
-                                    key={project.id}
-                                    className={"wrapper-project-list"}
-                                    onClick={() => selectProject(project)}
+                                    className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}
                                 >
-                                    <span className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
+                                    <motion.div
+                                        key={project.id}
+                                        className={"wrapper-project-list"}
+                                        onClick={() => selectProject(project)}
+                                        whileHover={{
+                                            scale: 1.05,
+                                            transition: {
+                                                duration: 0.5,
+                                                damping: 10,
+                                                ease: [0.17, 0.67, 0.83, 0.67],
+                                                type: "spring",
+                                                stiffness: 400,
+                                            }
+                                        }}
+                                        whileTap={{
+                                            scale: 0.99,
+                                            transition: {
+                                                type: "spring",
+                                                stiffness: 400,
+                                                damping: 10
+                                            }
+                                        }}
+                                    >
+                                        <div>
+                                            <span
+                                                className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
+                                        </div>
+                                    </motion.div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                    <span className={"script"}>{"</project>"}</span>
-                </div>
-                <div ref={refRight}>
-                    <div className="continer-resilt">
-                        <div>
-                            <Canvas
-                                frameloop='demand'
-                                shadows
-                                dpr={[1, 2]}
-                                camera={{
-                                    position: [16, 0, -2],
-                                    fov: 28
-                                }}
-                                gl={{preserveDrawingBuffer: true}}
-                                onPointerMove={handleMouseMove}
-                            >
-                                <Suspense fallback={<Loader/>}>
-                                    <OrbitControls
-                                        enableZoom={false}
-                                        enablePan={false}
-                                        enableRotate={false}
-                                        target={[3, 0, 0]}
-                                        maxPolarAngle={Math.PI / 1.5}
-                                        minPolarAngle={Math.PI / 3}
-                                        maxAzimuthAngle={Math.PI * 0.8}
-                                        minAzimuthAngle={-Math.PI * 0.1}
-                                    />
-                                    <Laptop
-                                        key={selectedTab.img}
-                                        rotation={rotation}
-                                        selectedImage={selectedTab.img}
-                                    />
-                                </Suspense>
-                            </Canvas>
-                            <ShowMoreText
-                                text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
-                                maxLength={200}
-                            />
-                            {
-                                selectedTab.link === null
-                                    ?
-                                    <span
-                                        className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
-                                        </span>
-                                    :
-                                    <a
-                                        className="openProject"
-                                        href={selectedTab.link}
-                                        target="_blank"
-                                        title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
-                                    >
-                                        {pathName === "/ua" ? `Переглянути проект` : `View the project`}
-                                        <Image
-                                            src={"/icons/ForwardArrow.svg"}
-                                            alt={"ForwardArrow"}
-                                            width={20}
-                                            height={20}
-                                        />
-                                    </a>
-                            }
-                        </div>
+                        ))}
+                        <span className={"script"}>{"</project>"}</span>
                     </div>
-                </div>
+                </FadeInAnimation>
+                <FadeInAnimation direction="right" delay={0.2}>
+                    <AnimatePresence>
+                        <motion.div className="continer-resilt">
+                            <div>
+                                <Canvas
+                                    frameloop='demand'
+                                    shadows
+                                    dpr={[1, 2]}
+                                    camera={{
+                                        position: isMobile ? [38, 10, 10] : [16, 0, -2],
+                                        fov: 28
+                                    }}
+                                    gl={{preserveDrawingBuffer: true}}
+                                    onPointerMove={handleMouseMove}
+                                >
+                                    <Suspense fallback={<Loader/>}>
+                                        <OrbitControls
+                                            enableZoom={false}
+                                            enablePan={false}
+                                            enableRotate={false}
+                                            target={[3, 0, 0]}
+                                            maxPolarAngle={Math.PI / 1.5}
+                                            minPolarAngle={Math.PI / 3}
+                                            maxAzimuthAngle={Math.PI * 0.8}
+                                            minAzimuthAngle={-Math.PI * 0.1}
+                                        />
+                                        <Laptop
+                                            key={selectedTab.img}
+                                            isMobile={isMobile}
+                                            rotation={rotation}
+                                            selectedImage={selectedTab.img}
+                                        />
+                                    </Suspense>
+                                </Canvas>
+                                <ShowMoreText
+                                    text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
+                                    maxLength={200}
+                                />
+                                {
+                                    selectedTab.link === null
+                                        ?
+                                        <span
+                                            className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
+                                        </span>
+                                        :
+                                        <a
+                                            className="openProject"
+                                            href={selectedTab.link}
+                                            target="_blank"
+                                            title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
+                                        >
+                                            {pathName === "/ua" ? `Переглянути проект` : `View the project`}
+                                            <Image
+                                                src={"/icons/ForwardArrow.svg"}
+                                                alt={"ForwardArrow"}
+                                                width={20}
+                                                height={20}
+                                            />
+                                        </a>
+                                }
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </FadeInAnimation>
             </div>
         </div>
     );

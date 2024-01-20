@@ -13,16 +13,25 @@ import Head from "next/head";
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
     variable: '--font-jetbrains-mono',
+    weight: '300',
+    style: 'normal',
+    display: 'swap'
 });
 
 const consolas = localFont({
     src: '../fonts/consolas/consolas.ttf',
     variable: '--font-consolas',
+    weight: '400',
+    style: 'normal',
+    display: 'swap',
 });
 
 const JetBrainsMonoBold = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Bold.woff2',
     variable: '--font-jetbrains-mono-bold',
+    weight: '700',
+    style: 'normal',
+    display: 'swap',
 });
 
 
@@ -91,6 +100,9 @@ export default async function RootLayout({
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
         <Head>
+            <link rel="preload" href={JetBrainsMono.variable} as="font" crossOrigin={""}/>
+            <link rel="preload" href={consolas.variable} as="font" crossOrigin=""/>
+            <link rel="preload" href={JetBrainsMonoBold.variable} as="font" crossOrigin=""/>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
