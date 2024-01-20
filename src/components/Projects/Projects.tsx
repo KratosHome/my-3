@@ -64,7 +64,7 @@ const date: any = [
 
 
 const Laptop = ({isMobile, rotation, selectedImage}: any) => {
-    const computer = useGLTF("./desktop_pc/scene.gltf");
+    const computer = useGLTF("./desktop_pc2/scene.gltf");
     const {scene} = computer;
 
     const {theme} = useSelector((state: RootState) => state.theme);
