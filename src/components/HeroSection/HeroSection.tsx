@@ -10,6 +10,7 @@ import {usePathname} from "next/navigation";
 import SocialLicks from "@/components/SocialLicks/SocialLicks";
 import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
+import {useScrollLock} from "@/hooks/useScrollLock";
 
 
 const HeroSection = () => {
@@ -20,6 +21,20 @@ const HeroSection = () => {
     const refLinks = useRef(null);
 
     const [animationPlayed, setAnimationPlayed] = useState(true);
+
+    const {lockScroll, unlockScroll} = useScrollLock();
+
+    useEffect(() => {
+        if (animationPlayed) {
+            lockScroll();
+        } else {
+            unlockScroll();
+        }
+
+        return () => {
+            unlockScroll();
+        };
+    }, [lockScroll, unlockScroll, animationPlayed]);
 
     useEffect(() => {
 
@@ -39,8 +54,6 @@ const HeroSection = () => {
                         start: "bottom bottom-=100",
                         end: "top top-=10",
                         toggleActions: "play reverse play reverse",
-                        onEnter: () => setAnimationPlayed(false),
-                        onEnterBack: () => setAnimationPlayed(false),
                     },
                     delay: animationPlayed ? 2.8 : 0,
                     stagger: 0.1,
@@ -63,11 +76,10 @@ const HeroSection = () => {
                         start: "bottom bottom-=100",
                         end: "top top-=10",
                         toggleActions: "play reverse play reverse",
-                        onEnter: () => setAnimationPlayed(false),
-                        onEnterBack: () => setAnimationPlayed(false),
                     },
                     delay: animationPlayed ? 3.5 : 0,
                     stagger: 0.1,
+                    onComplete: () => setAnimationPlayed(false)
                 })
 
             gsap.fromTo(refButton.current,
@@ -85,8 +97,6 @@ const HeroSection = () => {
                         start: "bottom bottom-=100",
                         end: "top top-=10",
                         toggleActions: "play reverse play reverse",
-                        onEnter: () => setAnimationPlayed(false),
-                        onEnterBack: () => setAnimationPlayed(false),
                     },
                     delay: animationPlayed ? 4 : 0,
                     stagger: 0.1,
@@ -106,8 +116,6 @@ const HeroSection = () => {
                         start: "bottom bottom-=100",
                         end: "top top-=10",
                         toggleActions: "play reverse play reverse",
-                        onEnter: () => setAnimationPlayed(false),
-                        onEnterBack: () => setAnimationPlayed(false),
                     },
                     delay: animationPlayed ? 4.3 : 0,
                     stagger: 0.4,
@@ -118,6 +126,9 @@ const HeroSection = () => {
         return () => ctx.revert();
 
     }, []);
+
+
+    console.log("animationPlayed", animationPlayed)
 
     return (
         <div className="container-3d">

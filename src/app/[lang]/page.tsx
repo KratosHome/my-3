@@ -107,7 +107,7 @@ export default function Home() {
     return (
         <>
             <main>
-                <section id="section1">
+                <section id="section1"  className="hero-section">
                     <HeroSection/>
                 </section>
                 <section id="about" className="about-section">

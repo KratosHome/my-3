@@ -1,71 +1,16 @@
 "use client"
-import React, {Suspense, useEffect, useLayoutEffect, useRef, useState} from "react";
-import {Canvas, useThree} from "@react-three/fiber";
-import {Environment, OrbitControls, Preload, useGLTF} from "@react-three/drei";
+import React, {Suspense, useEffect, useState} from "react";
+import {Canvas} from "@react-three/fiber";
+import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 import Loader from "@/components/UI/Loader/Loader";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
-import gsap from "gsap";
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Computers = ({isMobile, rotation}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
-
     const {theme} = useSelector((state: RootState) => state.theme);
 
-
-    const {scene, camera} = useThree();
-    const tl = gsap.timeline();
-
-    useEffect(() => {
-        const triggers = [
-            {
-                trigger: ".about-section",
-                start: "top bottom",
-                end: "top top",
-                positions: { x: 50, y: -50, z: 50 }
-            },
-            {
-                trigger: ".project-section",
-                start: "top bottom",
-                end: "top top",
-                positions: { x: 0, y: 0, z: 20 }
-            },
-            {
-                trigger: ".services-section",
-                start: "top bottom",
-                end: "top top",
-                positions: { x: 0, y: -2, z: 500 }
-            }
-        ];
-        const initialPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
-
-
-        triggers.forEach(({ trigger, start, end, positions }) => {
-            ScrollTrigger.create({
-                trigger,
-                start,
-                end,
-                scrub: 1.5, // Збільшений параметр scrub для плавності
-                onEnter: () => gsap.to(camera.position, {
-                    ...positions,
-                    ease: "power1.out",
-                    duration: 2 // Додавання тривалості анімації
-                }),
-                onLeaveBack: () => gsap.to(camera.position, {
-                    ...initialPosition,
-                    ease: "power1.in",
-                    duration: 2
-                })
-            });
-        });
-
-        return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    }, []);
-
-// services-section
     return (
         <>
             <directionalLight
@@ -73,7 +18,6 @@ const Computers = ({isMobile, rotation}: any) => {
                 position={[-2.38, 1.32, 0.74]}
                 intensity={5}
             />
-
             <mesh rotation={[0, rotation, 0]}>
                 <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"}/>
                 <spotLight
@@ -134,6 +78,7 @@ const ComputersCanvas = ({refComputer}: any) => {
 
     return (
         <Canvas
+            ref={refComputer}
             style={{touchAction: 'auto !important'}}
             key={isMobile ? "mobile" : "desktop"}
             frameloop='demand'
