@@ -84,7 +84,6 @@ body {
     overscroll-behavior: none;
     max-width: 2550px;
     margin: 0 auto;
-    overflow: hidden;
 }
 
 a, span {

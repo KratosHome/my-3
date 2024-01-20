@@ -22,19 +22,7 @@ const HeroSection = () => {
 
     const [animationPlayed, setAnimationPlayed] = useState(true);
 
-    const {lockScroll, unlockScroll} = useScrollLock();
 
-    useEffect(() => {
-        if (animationPlayed) {
-            lockScroll();
-        } else {
-            unlockScroll();
-        }
-
-        return () => {
-            unlockScroll();
-        };
-    }, [lockScroll, unlockScroll, animationPlayed]);
 
     useEffect(() => {
 
@@ -57,6 +45,7 @@ const HeroSection = () => {
                     },
                     delay: animationPlayed ? 2.8 : 0,
                     stagger: 0.1,
+                    onComplete: () => setAnimationPlayed(false)
                 })
 
 
@@ -119,6 +108,7 @@ const HeroSection = () => {
                     },
                     delay: animationPlayed ? 4.3 : 0,
                     stagger: 0.4,
+                    onComplete: () => setAnimationPlayed(false)
                 });
 
         }, [refH2, refComputer, refButton, refLinks]);
