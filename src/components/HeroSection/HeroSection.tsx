@@ -10,7 +10,6 @@ import {usePathname} from "next/navigation";
 import SocialLicks from "@/components/SocialLicks/SocialLicks";
 import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
-import {useScrollLock} from "@/hooks/useScrollLock";
 
 
 const HeroSection = () => {
@@ -65,6 +64,7 @@ const HeroSection = () => {
                         start: "bottom bottom-=100",
                         end: "top top-=10",
                         toggleActions: "play reverse play reverse",
+                      //  scrub: true,
                     },
                     delay: animationPlayed ? 3.5 : 0,
                     stagger: 0.1,

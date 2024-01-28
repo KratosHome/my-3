@@ -4,8 +4,6 @@ import "./AboutMe.scss";
 import Image from "next/image";
 import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
-import {useH2Animation} from "@/animation/useH2Animation";
-import {useSideAnimation} from "@/animation/useSideAnimation";
 import gsap from "gsap";
 
 const AboutMe = () => {
@@ -34,6 +32,7 @@ const AboutMe = () => {
                         start: "bottom bottom-=80",
                         end: "top top+=80",
                         toggleActions: "play reverse play reverse",
+                        scrub: true,
                     },
                     delay: 0,
                     stagger: 0.1,
