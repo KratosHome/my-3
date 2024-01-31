@@ -7,30 +7,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "@/store/store";
 import {toggleTheme} from "@/store/themeSlice/themeSlice";
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
+import {useTheme} from "next-themes";
 
 const ThemeChange = () => {
-    const dispatch = useDispatch<AppDispatch>();
-    const {theme} = useSelector((state: RootState) => state.theme);
 
-    useEffect(() => {
-        const storedTheme = localStorage.getItem('theme');
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        dispatch(toggleTheme(storedTheme !== null ? storedTheme : systemTheme))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        gsap.to(document.documentElement, {
-            '--background-color': theme === 'light' ? [/* light gradient values */] : [/* dark gradient values */],
-            duration: 0.5,
-            ease: "power1.out"
-        });
-        document.documentElement.setAttribute('data-theme', theme);
-    }, [theme]);
+    const {theme, setTheme} = useTheme()
 
     const changeTheme = () => {
-        dispatch(toggleTheme(theme === 'light' ? 'dark' : 'light'))
-    };
+        setTheme(theme === "dark" ? "light" : "dark")
+    }
+
 
     const svgVariants = {
         light: {rotate: 360, opacity: 1},

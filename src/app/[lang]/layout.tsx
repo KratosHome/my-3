@@ -9,6 +9,7 @@ import {ReactNode} from "react";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import Footer from "@/components/Footer/Footer";
 import Head from "next/head";
+import MyThemeProvider from "@/components/MyThemeProvider/MyThemeProvider";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -109,14 +110,16 @@ export default async function RootLayout({
             />
         </Head>
         <GoogleTagManager/>
-        <ReduxProvider>
-            <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
-            <NavBar navigation={navigation}/>
-            <StarsCanvas/>
-            {children}
-            </body>
-            <Footer/>
-        </ReduxProvider>
+        <MyThemeProvider>
+            <ReduxProvider>
+                <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
+                <NavBar navigation={navigation}/>
+                <StarsCanvas/>
+                {children}
+                </body>
+                <Footer/>
+            </ReduxProvider>
+        </MyThemeProvider>
         </html>
     )
 }
