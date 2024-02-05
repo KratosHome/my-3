@@ -123,3 +123,10 @@ export default async function RootLayout({
         </html>
     )
 }
+
+export function generateStaticParams() {
+    return [
+        {params: {locale: "en"}},
+        {params: {locale: "ua"}},
+    ];
+}
