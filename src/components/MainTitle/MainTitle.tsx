@@ -1,17 +1,14 @@
 "use client"
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import './MainTitle.scss';
 import {Typewriter} from 'react-simple-typewriter';
 import {usePathname} from "next/navigation";
-import gsap from "gsap";
-
 
 
 const MainTitle = ({refH2, refH1}: any) => {
     const pathName = usePathname();
 
     const [showReactText, setShowReactText] = useState(false);
-
     const [showDevText, setShowDevText] = useState(false);
 
     useEffect(() => {
@@ -26,30 +23,6 @@ const MainTitle = ({refH2, refH1}: any) => {
         return () => clearTimeout(timer);
     }, []);
 
-    const ref = useRef(null);
-
-    useEffect(() => {
-        const element = ref.current;
-
-        if (element) {
-            gsap.fromTo(element, {
-                opacity: 0,
-                ч: -20
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                delay: 3.5,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: element,
-                    start: "bottom bottom-=100",
-                    end: "top top-=10",
-                    toggleActions: "play reverse play reverse",
-                }
-            });
-        }
-    }, []);
 
     return (
         <div className="container-main-title">

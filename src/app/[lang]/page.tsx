@@ -1,12 +1,12 @@
-import HeroSection from "@/components/HeroSection/HeroSection";
-import WrapperRequest from "@/components/WrapperRequest/WrapperRequest";
-import AboutMe from "@/components/AboutMe/AboutMe";
-import Connect from "@/components/Connect/Connect";
-import Services from "@/components/Services/Services";
-import Experience from "@/components/Experience/Experience";
 import {Viewport} from 'next'
-import Projects from "@/components/Projects/Projects";
-import ProjectsNew from "@/components/ProjectsNew/ProjectsNew";
+import {lazy} from "react";
+const HeroSection = lazy(() => import('@/components/HeroSection/HeroSection'));
+const WrapperRequest = lazy(() => import('@/components/WrapperRequest/WrapperRequest'));
+const AboutMe = lazy(() => import('@/components/AboutMe/AboutMe'));
+const Connect = lazy(() => import('@/components/Connect/Connect'));
+const Services = lazy(() => import('@/components/Services/Services'));
+const Experience = lazy(() => import('@/components/Experience/Experience'));
+const Projects = lazy(() => import('@/components/Projects/Projects'));
 
 
 export const viewport: Viewport = {
@@ -105,30 +105,28 @@ export async function generateMetadata({params}: any) {
 
 export default function Home() {
     return (
-        <>
-            <main>
-                <section id="section1"  className="hero-section">
-                    <HeroSection/>
-                </section>
-                <section id="about" className="about-section">
-                    <AboutMe/>
-                </section>
-                <section id="projects" className="services-section">
-                    <Projects/>
-                </section>
-                <section id="services" className="">
-                    <Services/>
-                </section>
-                <section id="experience">
-                    <Experience/>
-                </section>
-                <section id="trustedBy">
-                    <WrapperRequest/>
-                </section>
-                <section id="contact">
-                    <Connect/>
-                </section>
-            </main>
-        </>
+        <main>
+            <section id="section1" className="hero-section">
+                <HeroSection/>
+            </section>
+            <section id="about" className="about-section">
+                <AboutMe/>
+            </section>
+            <section id="projects" className="services-section">
+                <Projects/>
+            </section>
+            <section id="services" className="">
+                <Services/>
+            </section>
+            <section id="experience">
+                <Experience/>
+            </section>
+            <section id="trustedBy">
+                <WrapperRequest/>
+            </section>
+            <section id="contact">
+                <Connect/>
+            </section>
+        </main>
     )
 }

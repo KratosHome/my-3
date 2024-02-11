@@ -1,11 +1,10 @@
 'use client'
 import "./Services.scss";
-import React, {useEffect, useRef, useState} from "react";
+import React from "react";
 import Image from "next/image";
 import {usePathname} from "next/navigation";
 import Swiper from "@/components/UI/Swiper/Swiper";
 import {useH2Animation} from "@/animation/useH2Animation";
-import gsap from "gsap";
 
 
 const services = [
@@ -63,8 +62,6 @@ const services = [
 const Services = () => {
     const pathName = usePathname();
     const animatedRef = useH2Animation();
-
-
 
     return (
         <div className='container-services'>

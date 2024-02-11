@@ -41,7 +41,7 @@ export default function NavBar({navigation}: any) {
                             <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
                         </div>
                         <ul>
-                            {Object.entries(navigation).slice(0, -1).map(([key, value], index) => (
+                            {Object.entries(navigation).slice(0, -1).map(([key, value]) => (
                                 <li key={key} className="menu-item">
                                     <HoverLink rout={`#${key}`}>
                                         <>{value}</>

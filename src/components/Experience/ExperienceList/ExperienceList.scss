@@ -28,7 +28,6 @@
   .child {
     position: relative;
     width: 100%;
-    font-family: --font-consolas;
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
@@ -41,7 +40,6 @@
         margin: 10px 0;
 
         &:last-child {
-          font-family: --font-jetbrains-mono;
           font-weight: normal;
         }
       }

@@ -16,7 +16,6 @@
     }
 
     span {
-      font-family: --font-jetbrains-mono-bold;
       text-transform: uppercase;
       font-size: calc(var(--index) * 3.9);
       font-style: normal;
@@ -41,7 +40,6 @@
 
   h2 {
     opacity: 0;
-    font-family: --font-consolas;
     color: var(--text-color);
     font-size: calc(var(--index) * 1.2);
     font-style: normal;

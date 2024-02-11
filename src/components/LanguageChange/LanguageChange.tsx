@@ -3,10 +3,8 @@ import React, {useRef} from 'react';
 import "./LanguageChange.scss"
 import {useRouter} from 'next/navigation';
 import {usePathname} from 'next/navigation';
-import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 import Image from "next/image";
 import {useGSAP} from "@gsap/react";
-import {gsap} from 'gsap';
 import {handleHover} from "@/components/UIA/Hover/hover";
 
 export default function LanguageChange() {

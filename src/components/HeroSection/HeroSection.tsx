@@ -1,5 +1,5 @@
 "use client"
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import MainTitle from "@/components/MainTitle/MainTitle";
 import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
 import "./HeroSection.scss";
@@ -15,104 +15,123 @@ import {useGSAP} from "@gsap/react";
 
 const HeroSection = () => {
     const pathName = usePathname();
+    const refH1 = useRef(null);
     const refH2 = useRef(null);
     const refComputer = useRef(null);
     const refButton = useRef(null);
     const refLinks = useRef(null);
-    const startTime = useRef(Date.now());
 
     const [animationPlayed, setAnimationPlayed] = useState(true);
-    const [isComputerLoading, setIsComputerLoading] = useState(false);
 
 
     useGSAP(() => {
 
-            gsap.fromTo(refH2.current,
-                {
-                    opacity: 0,
-                    x: -210
+        gsap.fromTo(refH1.current,
+            {
+                opacity: 0,
+                x: -210
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: refH1.current,
+                    start: "bottom bottom-=100",
+                    end: "top top-=10",
+                    toggleActions: "play reverse play reverse",
                 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.5,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: refH2.current,
-                        start: "bottom bottom-=100",
-                        end: "top top-=10",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    delay: animationPlayed ? 2.8 : 0,
-                    stagger: 0.1,
-                    onComplete: () => setAnimationPlayed(false)
-                })
+                delay: 0,
+                stagger: 0.1,
+            })
 
-
-            gsap.fromTo(refComputer.current,
-                {
-                    opacity: 0,
-                    scale: 0.2,
+        gsap.fromTo(refH2.current,
+            {
+                opacity: 0,
+                x: -210
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: refH2.current,
+                    start: "bottom bottom-=100",
+                    end: "top top-=10",
+                    toggleActions: "play reverse play reverse",
                 },
-                {
-                    opacity: 1,
-                    scale: 1,
-                    x: 0,
-                    duration: 1.3,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: refComputer.current,
-                        start: "bottom bottom-=100",
-                        end: "top top-=10",
-                        toggleActions: "play reverse play reverse",
-                        //  scrub: true,
-                    },
-                    delay: animationPlayed ? 3 : 0,
-                    stagger: 0.1,
-                    onComplete: () => {
-                        setAnimationPlayed(false);
-                    }
-                })
+                delay: animationPlayed ? 2.8 : 0,
+                stagger: 0.1,
+                onComplete: () => setAnimationPlayed(false)
+            })
 
-            gsap.fromTo(refButton.current,
-                {
-                    opacity: 0.5,
-                    x: -800,
+
+        gsap.fromTo(refComputer.current,
+            {
+                opacity: 0,
+                scale: 0.2,
+            },
+            {
+                opacity: 1,
+                scale: 1,
+                x: 0,
+                duration: 1.3,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: refComputer.current,
+                    start: "bottom bottom-=100",
+                    end: "top top-=10",
+                    toggleActions: "play reverse play reverse",
+                    //  scrub: true,
                 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 1.3,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: refButton.current,
-                        start: "bottom bottom-=100",
-                        end: "top top-=10",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    delay: animationPlayed ? 4 : 0,
-                    stagger: 0.1,
-                })
+                delay: animationPlayed ? 3 : 0,
+                stagger: 0.1,
+                onComplete: () => {
+                    setAnimationPlayed(false);
+                }
+            })
 
-            gsap.fromTo(refLinks.current,
-                {
-                    opacity: 0,
-                    x: -300
-                }, {
-                    opacity: 1,
-                    x: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: refButton.current,
-                        start: "bottom bottom-=100",
-                        end: "top top-=10",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    delay: animationPlayed ? 4.3 : 0,
-                    stagger: 0.4,
-                    onComplete: () => setAnimationPlayed(false)
-                });
+        gsap.fromTo(refButton.current,
+            {
+                opacity: 0.5,
+                x: -800,
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1.3,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: refButton.current,
+                    start: "bottom bottom-=100",
+                    end: "top top-=10",
+                    toggleActions: "play reverse play reverse",
+                },
+                delay: animationPlayed ? 4 : 0,
+                stagger: 0.1,
+            })
+
+        gsap.fromTo(refLinks.current,
+            {
+                opacity: 0,
+                x: -300
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: refButton.current,
+                    start: "bottom bottom-=100",
+                    end: "top top-=10",
+                    toggleActions: "play reverse play reverse",
+                },
+                delay: animationPlayed ? 4.3 : 0,
+                stagger: 0.4,
+                onComplete: () => setAnimationPlayed(false)
+            });
 
 
     }, []);
@@ -120,7 +139,7 @@ const HeroSection = () => {
 
     return (
         <div className="container-3d">
-            <MainTitle refH2={refH2}/>
+            <MainTitle refH1={refH1} refH2={refH2}/>
             <div className="wrapper-hire-me">
                 <div></div>
                 <MyModal
@@ -136,7 +155,7 @@ const HeroSection = () => {
             </div>
             <Swim className="computer">
                 <div className="test"></div>
-                <ComputersCanvas refComputer={refComputer} setIsComputerLoading={setIsComputerLoading}/>
+                <ComputersCanvas refComputer={refComputer}/>
             </Swim>
         </div>
     );

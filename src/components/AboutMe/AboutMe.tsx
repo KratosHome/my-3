@@ -31,7 +31,7 @@ const AboutMe = () => {
                     scrollTrigger: {
                         trigger: heRef.current,
                         start: "bottom bottom-=250",
-                        end: "top top+=180",
+                        end: "top top+=130",
                         toggleActions: "play reverse play reverse",
                     },
                     delay: 0,
@@ -119,6 +119,7 @@ const AboutMe = () => {
                     <div className="icons-about-me">
                         <Swim isFast={true} delay={0.2}>
                             <Image
+
                                 title={pathName === "/ua" ? "React логотип" : "React Logo"}
                                 src={"./aboutMe/ReactLogo.svg"}
                                 alt={"react"}

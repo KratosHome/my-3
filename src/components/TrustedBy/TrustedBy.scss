@@ -33,8 +33,7 @@
     .quotes {
       position: absolute;
       color: var(--border, #606686);
-      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      font-family: --font-consolas;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
       font-size: 80px;
       font-style: normal;
       font-weight: 400;
@@ -75,7 +74,6 @@
 
     > div {
       color: var(--services-text);
-      font-family: --font-consolas;
       font-size: 2rem;
       font-style: normal;
       font-weight: 700;
