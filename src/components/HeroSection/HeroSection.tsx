@@ -68,22 +68,8 @@ const HeroSection = () => {
                         toggleActions: "play reverse play reverse",
                         //  scrub: true,
                     },
-                    delay: animationPlayed ? 3.5 : 0,
                     stagger: 0.1,
-                    onComplete: () => {
-                        const currentTime = Date.now();
-                        const elapsedTime = (currentTime - startTime.current) / 1000;
-                        if (elapsedTime >= 3.5) {
-                            setAnimationPlayed(false);
-                        } else {
-                            const waitForAnimation = 3.5 - elapsedTime;
-                            setTimeout(() => {
-                                if (refComputer.current) {
-                                    setAnimationPlayed(false);
-                                }
-                            }, waitForAnimation * 1000);
-                        }
-                    }
+
                 })
 
             gsap.fromTo(refButton.current,
