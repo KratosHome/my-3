@@ -60,10 +60,12 @@ const date: any = [
 
 const Projects = () => {
     const pathName = usePathname();
+    const refHover = useRef(null);
     const ref = useRef(null);
     const heRef = useRef(null);
     const refLeft = useRef(null);
     const refRight = useRef(null);
+    const {contextSafe} = useGSAP();
 
     const [selectedTab, setSelectedTab] = useState(date[0]);
 
@@ -87,8 +89,8 @@ const Projects = () => {
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: heRef.current,
-                        start: "bottom bottom-=250",
-                        end: "top top+=180",
+                        start: "bottom bottom-=150",
+                        end: "top top+=100",
                         toggleActions: "play reverse play reverse",
                     },
                     delay: 0,
@@ -143,6 +145,14 @@ const Projects = () => {
     }, []);
 
 
+    const handleMouseEnter = contextSafe((projectId: any) => {
+        gsap.fromTo(`.hover-clas-${projectId}`,
+            {scale: 1,},
+            {scale: 0.9, duration: 0.3, ease: 'power1.inOut', yoyo: true, repeat: 1}
+        );
+    });
+
+
     return (
         <div className="container-projects" ref={ref}>
             <h2 ref={heRef}
@@ -150,43 +160,22 @@ const Projects = () => {
             >
                 {pathName === "/ua" ? "Мої проєкти" : "My projects"}
             </h2>
-            <div className="wrapper-container" >
+            <div className="wrapper-container">
                 <div className="container-map-project" ref={refLeft}>
                     <span className={"script"}>{"<project>"}</span>
                     {date.map((project: any) => (
-                        <div key={project.id} className={"wrapper-select-project"}>
+                        <div
+                            key={project.id}
+                            className={"wrapper-select-project"}
+                            onMouseEnter={() => handleMouseEnter(project.id)}
+                            onClick={() => selectProject(project)}>
                             <span className="enumeration">0{project.id}</span>
                             <div
-                                className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}
-                            >
-                                <motion.div
-                                    key={project.id}
-                                    className={"wrapper-project-list"}
-                                    onClick={() => selectProject(project)}
-                                    whileHover={{
-                                        scale: 1.05,
-                                        transition: {
-                                            duration: 0.5,
-                                            damping: 10,
-                                            ease: [0.17, 0.67, 0.83, 0.67],
-                                            type: "spring",
-                                            stiffness: 400,
-                                        }
-                                    }}
-                                    whileTap={{
-                                        scale: 0.99,
-                                        transition: {
-                                            type: "spring",
-                                            stiffness: 400,
-                                            damping: 10
-                                        }
-                                    }}
-                                >
-                                    <div>
-                                            <span
-                                                className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
-                                    </div>
-                                </motion.div>
+                                className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}>
+                                <div className={`wrapper-project-list hover-clas-${project.id}`} ref={refHover}>
+                                    <span
+                                        className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
+                                </div>
                             </div>
                         </div>
                     ))}
