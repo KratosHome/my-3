@@ -27,7 +27,6 @@ const HeroSection = () => {
 
     useGSAP(() => {
 
-        const ctx = gsap.context(() => {
             gsap.fromTo(refH2.current,
                 {
                     opacity: 0,
@@ -68,8 +67,11 @@ const HeroSection = () => {
                         toggleActions: "play reverse play reverse",
                         //  scrub: true,
                     },
+                    delay: animationPlayed ? 3 : 0,
                     stagger: 0.1,
-
+                    onComplete: () => {
+                        setAnimationPlayed(false);
+                    }
                 })
 
             gsap.fromTo(refButton.current,
@@ -112,9 +114,6 @@ const HeroSection = () => {
                     onComplete: () => setAnimationPlayed(false)
                 });
 
-        }, [refH2, refComputer, refButton, refLinks]);
-
-        return () => ctx.revert();
 
     }, []);
 
