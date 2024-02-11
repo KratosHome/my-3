@@ -5,6 +5,7 @@ import Image from "next/image";
 import Swim from "@/components/UIA/Swim/Swim";
 import {usePathname} from "next/navigation";
 import gsap from "gsap";
+import {useGSAP} from "@gsap/react";
 
 const AboutMe = () => {
     const pathName = usePathname();
@@ -14,7 +15,7 @@ const AboutMe = () => {
     const refRight = useRef(null);
     const refA = useRef(null);
 
-    useEffect(() => {
+    useGSAP(() => {
 
         const ctx = gsap.context(() => {
             gsap.fromTo(heRef.current,
@@ -30,7 +31,7 @@ const AboutMe = () => {
                     scrollTrigger: {
                         trigger: heRef.current,
                         start: "bottom bottom-=250",
-                        end: "top top+=220",
+                        end: "top top+=180",
                         toggleActions: "play reverse play reverse",
                     },
                     delay: 0,
