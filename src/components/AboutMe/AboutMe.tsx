@@ -25,14 +25,13 @@ const AboutMe = () => {
                 {
                     opacity: 1,
                     rotateX: 0,
-                    duration: 0.5,
+                    duration: 1,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: heRef.current,
-                        start: "bottom bottom-=80",
-                        end: "top top+=80",
+                        start: "bottom bottom-=250",
+                        end: "top top+=220",
                         toggleActions: "play reverse play reverse",
-                        scrub: true,
                     },
                     delay: 0,
                     stagger: 0.1,

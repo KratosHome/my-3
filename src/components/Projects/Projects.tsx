@@ -72,7 +72,7 @@ const Projects = () => {
         <div className="container-projects" ref={ref}>
             <h2
                 ref={heRef}
-                className="title-block"
+                className="title-block h2-animate"
             >
                 {pathName === "/ua" ? "Мої проєкти" : "My projects"}
             </h2>
