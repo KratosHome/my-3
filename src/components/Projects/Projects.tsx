@@ -2,11 +2,8 @@
 import React, {useRef, useState} from 'react';
 import "./Projects.scss"
 import {usePathname} from "next/navigation";
-import FadeInAnimation from "@/components/UIA/FadeInAnimation/FadeInAnimation";
-import {AnimatePresence, motion, useInView} from "framer-motion";
 import Image from "next/image";
 import ShowMoreText from "@/components/UI/ShowMoreText/ShowMoreText";
-import {variantsH2} from "@/animation/variantsH2";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 
