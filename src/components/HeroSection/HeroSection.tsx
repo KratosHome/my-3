@@ -10,6 +10,7 @@ import {usePathname} from "next/navigation";
 import SocialLicks from "@/components/SocialLicks/SocialLicks";
 import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
+import {useGSAP} from "@gsap/react";
 
 
 const HeroSection = () => {
@@ -18,12 +19,13 @@ const HeroSection = () => {
     const refComputer = useRef(null);
     const refButton = useRef(null);
     const refLinks = useRef(null);
+    const startTime = useRef(Date.now());
 
     const [animationPlayed, setAnimationPlayed] = useState(true);
+    const [isComputerLoading, setIsComputerLoading] = useState(false);
 
 
-
-    useEffect(() => {
+    useGSAP(() => {
 
         const ctx = gsap.context(() => {
             gsap.fromTo(refH2.current,
@@ -64,11 +66,24 @@ const HeroSection = () => {
                         start: "bottom bottom-=100",
                         end: "top top-=10",
                         toggleActions: "play reverse play reverse",
-                      //  scrub: true,
+                        //  scrub: true,
                     },
                     delay: animationPlayed ? 3.5 : 0,
                     stagger: 0.1,
-                    onComplete: () => setAnimationPlayed(false)
+                    onComplete: () => {
+                        const currentTime = Date.now();
+                        const elapsedTime = (currentTime - startTime.current) / 1000;
+                        if (elapsedTime >= 3.5) {
+                            setAnimationPlayed(false);
+                        } else {
+                            const waitForAnimation = 3.5 - elapsedTime;
+                            setTimeout(() => {
+                                if (refComputer.current) {
+                                    setAnimationPlayed(false);
+                                }
+                            }, waitForAnimation * 1000);
+                        }
+                    }
                 })
 
             gsap.fromTo(refButton.current,
@@ -118,7 +133,6 @@ const HeroSection = () => {
     }, []);
 
 
-
     return (
         <div className="container-3d">
             <MainTitle refH2={refH2}/>
@@ -137,7 +151,7 @@ const HeroSection = () => {
             </div>
             <Swim className="computer">
                 <div className="test"></div>
-                <ComputersCanvas refComputer={refComputer}/>
+                <ComputersCanvas refComputer={refComputer} setIsComputerLoading={setIsComputerLoading}/>
             </Swim>
         </div>
     );

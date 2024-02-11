@@ -23,6 +23,7 @@
 
     .menu-item {
       opacity: 0;
+      font-size: 30px;
     }
 
     .nav-bar-toggle {
@@ -53,9 +54,6 @@
       align-items: center;
       gap: 10px;
 
-      @media screen and (max-width: 768px) {
-
-      }
     }
   }
 }

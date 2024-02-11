@@ -1,18 +1,11 @@
 "use client"
-import React, {Suspense, useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import "./Projects.scss"
 import {usePathname} from "next/navigation";
 import FadeInAnimation from "@/components/UIA/FadeInAnimation/FadeInAnimation";
 import {AnimatePresence, motion, useInView} from "framer-motion";
 import Image from "next/image";
 import ShowMoreText from "@/components/UI/ShowMoreText/ShowMoreText";
-import {OrbitControls, useGLTF} from "@react-three/drei";
-import {useSelector} from "react-redux";
-import {RootState} from "@/store/store";
-import {Canvas, useLoader} from "@react-three/fiber";
-import Loader from "@/components/UI/Loader/Loader";
-import {TextureLoader} from "three";
-import * as THREE from 'three';
 import {variantsH2} from "@/animation/variantsH2";
 
 const date: any = [
@@ -63,89 +56,26 @@ const date: any = [
 ]
 
 
-const Laptop = ({isMobile, rotation, selectedImage}: any) => {
-    const computer = useGLTF("./desktop_pc2/scene.gltf");
-    const {scene} = computer;
-
-    const {theme} = useSelector((state: RootState) => state.theme);
-
-    const texture = useLoader(TextureLoader, `${selectedImage}`);
-
-    useEffect(() => {
-        scene.traverse((child) => {
-            if (child instanceof THREE.Mesh && child.name === "Cube045") {
-                const newMaterial = new THREE.MeshStandardMaterial({
-                    map: texture,
-                    color: theme == "light" ? new THREE.Color(1, 1, 1) : new THREE.Color(2.5, 2.5, 2.5),
-                });
-                child.material = newMaterial;
-            }
-        });
-    }, [scene, texture, selectedImage, theme]);
-
-    return (
-        <mesh rotation={rotation}>
-            <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"}/>
-            <spotLight
-                position={[-20, 50, 10]}
-                angle={0.12}
-                penumbra={1}
-                intensity={1}
-                castShadow
-                shadow-mapSize={500}
-            />
-            <pointLight intensity={0.5}/>
-            <primitive
-                object={computer.scene}
-                scale={isMobile ? 0.7 : 0.75}
-                position={isMobile ? [0, 5, -1.5] : [5, -2, -2.5]}
-                rotation={[-0.01, -0.2, -0.1]}
-            />
-        </mesh>
-    );
-};
-
 const Projects = () => {
     const pathName = usePathname();
     const ref = useRef(null);
+    const heRef = useRef(null);
     const isInView = useInView(ref);
 
     const [selectedTab, setSelectedTab] = useState(date[0]);
-    const [previousIndex, setPreviousIndex] = useState(0); // Зберігайте попередній індекс
 
-    const [isMobile, setIsMobile] = useState(false);
-    const [rotation, setRotation] = useState([0, 0, 0]);
     const selectProject = (project: any) => {
-        setPreviousIndex(date.findIndex((p: any) => p.id === selectedTab.id)); // Оновіть попередній індекс
         setSelectedTab(project);
     };
 
-    const handleMouseMove = (event: any) => {
-        const {clientX, clientY} = event;
-        const mouseX = (clientX / window.innerWidth) * 2 - 1;
-        const mouseY = -(clientY / window.innerHeight) * 2 + 1;
-
-        // Обмежте максимальне обертання
-        const maxRotationY = Math.PI / 30; // Максимальне обертання по вертикалі (наприклад, 45 градусів)
-        const maxRotationX = Math.PI / 20; // Максимальне обертання по горизонталі
-
-        // Використайте Math.min і Math.max для обмеження обертання
-        const newYRotation = Math.max(-maxRotationY, Math.min(maxRotationY, mouseY * maxRotationY));
-        const newXRotation = Math.max(-maxRotationX, Math.min(maxRotationX, mouseX * maxRotationX));
-
-        setRotation([0, newXRotation, newYRotation]);
-    };
     return (
         <div className="container-projects" ref={ref}>
-            <motion.h2
-                ref={ref}
+            <h2
+                ref={heRef}
                 className="title-block"
-                variants={variantsH2(isInView)}
-                initial={"hidden"}
-                animate={"visible"}
             >
                 {pathName === "/ua" ? "Мої проєкти" : "My projects"}
-            </motion.h2>
+            </h2>
             <div className="wrapper-container">
                 <FadeInAnimation direction="left" delay={0.2}>
                     <div className="container-map-project">
@@ -192,66 +122,34 @@ const Projects = () => {
                 </FadeInAnimation>
                 <FadeInAnimation direction="right" delay={0.2}>
                     <AnimatePresence>
-                        <motion.div className="continer-resilt">
-                            <div>
-                                <Canvas
-                                    frameloop='demand'
-                                    shadows
-                                    dpr={[1, 2]}
-                                    camera={{
-                                        position: isMobile ? [38, 10, 10] : [16, 0, -2],
-                                        fov: 28
-                                    }}
-                                    gl={{preserveDrawingBuffer: true}}
-                                    onPointerMove={handleMouseMove}
-                                >
-                                    <Suspense fallback={<Loader/>}>
-                                        <OrbitControls
-                                            enableZoom={false}
-                                            enablePan={false}
-                                            enableRotate={false}
-                                            target={[3, 0, 0]}
-                                            maxPolarAngle={Math.PI / 1.5}
-                                            minPolarAngle={Math.PI / 3}
-                                            maxAzimuthAngle={Math.PI * 0.8}
-                                            minAzimuthAngle={-Math.PI * 0.1}
-                                        />
-                                        <Laptop
-                                            key={selectedTab.img}
-                                            isMobile={isMobile}
-                                            rotation={rotation}
-                                            selectedImage={selectedTab.img}
-                                        />
-                                    </Suspense>
-                                </Canvas>
-                                <ShowMoreText
-                                    text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
-                                    maxLength={200}
-                                />
-                                {
-                                    selectedTab.link === null
-                                        ?
-                                        <span
-                                            className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
+                        <div className="continer-resilt">
+                            <ShowMoreText
+                                text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
+                                maxLength={200}
+                            />
+                            {
+                                selectedTab.link === null
+                                    ?
+                                    <span
+                                        className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
                                         </span>
-                                        :
-                                        <a
-                                            className="openProject"
-                                            href={selectedTab.link}
-                                            target="_blank"
-                                            title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
-                                        >
-                                            {pathName === "/ua" ? `Переглянути проект` : `View the project`}
-                                            <Image
-                                                src={"/icons/ForwardArrow.svg"}
-                                                alt={"ForwardArrow"}
-                                                width={20}
-                                                height={20}
-                                            />
-                                        </a>
-                                }
-                            </div>
-                        </motion.div>
+                                    :
+                                    <a
+                                        className="openProject"
+                                        href={selectedTab.link}
+                                        target="_blank"
+                                        title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
+                                    >
+                                        {pathName === "/ua" ? `Переглянути проект` : `View the project`}
+                                        <Image
+                                            src={"/icons/ForwardArrow.svg"}
+                                            alt={"ForwardArrow"}
+                                            width={20}
+                                            height={20}
+                                        />
+                                    </a>
+                            }
+                        </div>
                     </AnimatePresence>
                 </FadeInAnimation>
             </div>

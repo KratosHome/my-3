@@ -3,37 +3,12 @@ import {Locale} from "../../../i18n.config";
 import {getDictionary} from "@/services/dictionary";
 import NavBar from "@/components/NavBar/NavBar";
 import ReduxProvider from "@/app/[lang]/provider";
-import localFont from 'next/font/local'
 import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 import {ReactNode} from "react";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import Footer from "@/components/Footer/Footer";
 import Head from "next/head";
 import MyThemeProvider from "@/components/MyThemeProvider/MyThemeProvider";
-
-const JetBrainsMono = localFont({
-    src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
-    variable: '--font-jetbrains-mono',
-    weight: '300',
-    style: 'normal',
-    display: 'swap'
-});
-
-const consolas = localFont({
-    src: '../fonts/consolas/consolas.ttf',
-    variable: '--font-consolas',
-    weight: '400',
-    style: 'normal',
-    display: 'swap',
-});
-
-const JetBrainsMonoBold = localFont({
-    src: '../fonts/webfonts/JetBrainsMono-Bold.woff2',
-    variable: '--font-jetbrains-mono-bold',
-    weight: '700',
-    style: 'normal',
-    display: 'swap',
-});
 
 
 export default async function RootLayout({
@@ -101,9 +76,9 @@ export default async function RootLayout({
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
         <Head>
-            <link rel="preload" href={JetBrainsMono.variable} as="font" crossOrigin={""}/>
-            <link rel="preload" href={consolas.variable} as="font" crossOrigin=""/>
-            <link rel="preload" href={JetBrainsMonoBold.variable} as="font" crossOrigin=""/>
+            <link rel="preload" as="font" crossOrigin={""}/>
+            <link rel="preload" as="font" crossOrigin=""/>
+            <link rel="preload" as="font" crossOrigin=""/>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
@@ -112,7 +87,7 @@ export default async function RootLayout({
         <GoogleTagManager/>
         <MyThemeProvider>
             <ReduxProvider>
-                <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
+                <body>
                 <NavBar navigation={navigation}/>
                 <StarsCanvas/>
                 {children}
@@ -130,4 +105,5 @@ export function generateStaticParams() {
         {params: {locale: "ua"}},
     ];
 }
+
 // 43243
