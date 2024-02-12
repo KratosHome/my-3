@@ -5,10 +5,8 @@ import {OrbitControls, Preload} from "@react-three/drei";
 import Loader from "@/components/UI/Loader/Loader";
 import Computers from "@/components/ComputersCanvas/Computers";
 
-const ComputersCanvas = ({refComputer}: any) => {
+const ComputersCanvas = React.memo(({refComputer}: any) => {
     const [isMobile, setIsMobile] = useState(false);
-
-
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 767px)");
@@ -74,6 +72,6 @@ const ComputersCanvas = ({refComputer}: any) => {
             <Preload all/>
         </Canvas>
     );
-};
+});
 
 export default ComputersCanvas;
