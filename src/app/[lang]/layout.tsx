@@ -105,3 +105,5 @@ export function generateStaticParams() {
         {params: {locale: "ua"}},
     ];
 }
+
+// ffvsfd
