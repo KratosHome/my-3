@@ -132,9 +132,7 @@ const HeroSection = () => {
                 stagger: 0.4,
                 onComplete: () => setAnimationPlayed(false)
             });
-
-
-    }, []);
+    });
 
 
     return (

@@ -11,7 +11,7 @@ export async function telegramAction(formData: any) {
     Data: ${formattedDate},
     Name: ${formData.name},
     Email: ${formData.email},
-    Number: ${formData.message},
+    Number: ${formData.number},
     Message: ${formData.message},
     `)
 }
