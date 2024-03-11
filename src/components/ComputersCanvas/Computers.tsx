@@ -3,11 +3,75 @@ import React from 'react';
 import {useGLTF} from "@react-three/drei";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
+import gsap from "gsap";
+import {useThree} from "@react-three/fiber";
+import {useGSAP} from "@gsap/react";
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Computers = ({isMobile, rotation}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
 
     const {theme} = useSelector((state: RootState) => state.theme);
+
+
+    const {scene, camera} = useThree();
+    const tl = gsap.timeline();
+
+    useGSAP(() => {
+        const triggers = [
+            {
+                trigger: ".hero-section",
+                start: "top bottom",
+                end: "top top",
+                positions: {x: camera.position.x, y: camera.position.y, z: camera.position.z}
+            },
+            {
+                trigger: ".about-section",
+                start: "top bottom",
+                end: "top top",
+                toggleClass: "hide-model",
+                positions: {x: 50, y: -50, z: 50}
+            },
+            {
+                trigger: ".project-section",
+                start: "top bottom",
+                end: "top top",
+                toggleClass: "project-model",
+                positions: {x: 40, y: 0, z: 10}
+            },
+            {
+                trigger: ".hide-model",
+                start: "top bottom",
+                end: "top top",
+                toggleClass: "hide-model",
+                positions: {x: 0, y: 0, z: 1000}
+            }
+        ];
+
+        triggers.forEach(({trigger, start, end, positions, toggleClass}) => {
+            ScrollTrigger.create({
+                trigger,
+                start,
+                end,
+                toggleClass,
+                scrub: true,
+                markers: true,
+                onEnter: () => gsap.to(camera.position, {
+                    ...positions,
+                    ease: "power1.out",
+                    duration: 1.5
+                }),
+                onEnterBack: () => gsap.to(camera.position, {
+                    ...positions,
+                    ease: "power1.out",
+                    duration: 1.5
+                }),
+            });
+        });
+
+    }, {dependencies: [camera]});
 
     return (
         <mesh rotation={[0, rotation, 0]}>
