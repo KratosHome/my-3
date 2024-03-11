@@ -73,73 +73,68 @@ const Projects = () => {
 
     useGSAP(() => {
 
-        const ctx = gsap.context(() => {
-            gsap.fromTo(heRef.current,
-                {
-                    opacity: 0,
-                    rotateX: 80,
+        gsap.fromTo(heRef.current,
+            {
+                opacity: 0,
+                rotateX: 80,
+            },
+            {
+                opacity: 1,
+                rotateX: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: heRef.current,
+                    start: "bottom bottom-=150",
+                    end: "top top+=100",
+                    toggleActions: "play reverse play reverse",
                 },
-                {
-                    opacity: 1,
-                    rotateX: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: heRef.current,
-                        start: "bottom bottom-=150",
-                        end: "top top+=100",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    delay: 0,
-                    stagger: 0.1,
-                })
+                delay: 0,
+                stagger: 0.1,
+            })
 
-            gsap.fromTo(refRight.current,
-                {
-                    opacity: 0,
-                    x: -1000,
+        gsap.fromTo(refRight.current,
+            {
+                opacity: 0,
+                x: -1000,
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: heRef.current,
+                    start: "bottom bottom-=250",
+                    end: "top top-=80",
+                    toggleActions: "play reverse play reverse",
                 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: heRef.current,
-                        start: "bottom bottom-=250",
-                        end: "top top-=80",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    delay: 0.5,
-                    stagger: 0.1,
-                })
+                delay: 0.5,
+                stagger: 0.1,
+            })
 
 
-            gsap.fromTo(refLeft.current,
-                {
-                    opacity: 0,
-                    x: 1000,
+        gsap.fromTo(refLeft.current,
+            {
+                opacity: 0,
+                x: 1000,
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: heRef.current,
+                    start: "bottom bottom-=250",
+                    end: "top top-=80",
+                    toggleActions: "play reverse play reverse",
                 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: heRef.current,
-                        start: "bottom bottom-=250",
-                        end: "top top-=80",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    delay: 0.5,
-                    stagger: 0.1,
-                })
+                delay: 0.5,
+                stagger: 0.1,
+            })
 
-        }, [heRef]);
-
-        return () => ctx.revert();
-
-    }, []);
+    });
 
 
     const handleMouseEnter = contextSafe((projectId: any) => {
