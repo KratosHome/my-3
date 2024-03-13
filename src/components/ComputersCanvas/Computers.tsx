@@ -10,7 +10,7 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Computers = ({isMobile, rotation}: any) => {
+const Computers = ({isMobile, rotation, refComputer}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
 
     const {theme} = useSelector((state: RootState) => state.theme);
@@ -25,53 +25,69 @@ const Computers = ({isMobile, rotation}: any) => {
                 trigger: ".hero-section",
                 start: "top bottom",
                 end: "top top",
-                positions: {x: camera.position.x, y: camera.position.y, z: camera.position.z}
+                cameraPositions: {x: camera.position.x, y: camera.position.y, z: camera.position.z},
+                computerPositions: {x: 0, y: 0, z: 0, opacity: 1},
             },
             {
                 trigger: ".about-section",
                 start: "top bottom",
                 end: "top top",
-                toggleClass: "hide-model",
-                positions: {x: 50, y: -50, z: 50}
+                cameraPositions: {x: 50, y: -50, z: 50},
+                computerPositions: {x: 2, y: 0, z: -1.5, opacity: 1},
             },
             {
                 trigger: ".project-section",
                 start: "top bottom",
                 end: "top top",
-                toggleClass: "project-model",
-                positions: {x: 40, y: 0, z: 10}
+                cameraPositions: {x: 40, y: 0, z: 10},
+                computerPositions: {x: 220, y: 0, z: -1.5, position: "absolute", opacity: 1},
             },
             {
                 trigger: ".hide-model",
                 start: "top bottom",
                 end: "top top",
-                toggleClass: "hide-model",
-                positions: {x: 0, y: 0, z: 1000}
+                pin: true,
+                cameraPositions: {x: 0, y: 0, z: 0},
+                computerPositions: {x: 20, y: 0, z: -1.5, opacity: 0},
             }
         ];
 
-        triggers.forEach(({trigger, start, end, positions, toggleClass}) => {
+        triggers.forEach(({trigger, start, end, cameraPositions, computerPositions, pin}) => {
             ScrollTrigger.create({
                 trigger,
                 start,
                 end,
-                toggleClass,
+                pin,
                 scrub: true,
                 markers: true,
-                onEnter: () => gsap.to(camera.position, {
-                    ...positions,
-                    ease: "power1.out",
-                    duration: 1.5
-                }),
-                onEnterBack: () => gsap.to(camera.position, {
-                    ...positions,
-                    ease: "power1.out",
-                    duration: 1.5
-                }),
+                onEnter: () => {
+                    gsap.to(camera.position, {
+                        ...cameraPositions,
+                        ease: "power1.out",
+                        duration: 1.5
+                    });
+                    gsap.to(refComputer.current, {
+                        ...computerPositions,
+                        ease: "power1.out",
+                        duration: 1.5
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to(camera.position, {
+                        ...cameraPositions,
+                        ease: "power1.out",
+                        duration: 1.5
+                    });
+                    gsap.to(refComputer.current, {
+                        ...computerPositions,
+                        ease: "power1.out",
+                        duration: 1.5
+                    });
+                },
             });
         });
 
-    }, {dependencies: [camera]});
+    });
 
     return (
         <mesh rotation={[0, rotation, 0]}>

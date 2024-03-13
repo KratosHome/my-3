@@ -25,10 +25,10 @@
 
   .computer {
     cursor: grab;
-    position: absolute;
+    position: fixed;
     height: 60vh;
     width: 95vw;
-    top: 20vh;
+    top: 30vh;
     left: 0;
     right: 0;
     z-index: 1;
@@ -60,4 +60,9 @@
       margin-left: -25vw;
     }
   }
+}
+.hide-model,
+.project-section,
+.about-section{
+  z-index: 3 !important;
 }

@@ -112,10 +112,10 @@ export default function Home() {
             <section id="about" className="about-section">
                 <AboutMe/>
             </section>
-            <section id="projects" className="services-section">
+            <section id="projects" className="project-section">
                 <Projects/>
             </section>
-            <section id="services" className="">
+            <section id="services" className="hide-model">
                 <Services/>
             </section>
             <section id="experience">
