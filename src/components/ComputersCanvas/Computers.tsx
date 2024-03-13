@@ -12,54 +12,66 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Computers = ({isMobile, rotation, refComputer}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
-
     const {theme} = useSelector((state: RootState) => state.theme);
-
-
     const {scene, camera} = useThree();
-    const tl = gsap.timeline();
 
     useGSAP(() => {
         const triggers = [
             {
                 trigger: ".hero-section",
-                start: "top bottom",
-                end: "top top",
+                start: "top center",
+                end: "bottom center",
                 cameraPositions: {x: camera.position.x, y: camera.position.y, z: camera.position.z},
-                computerPositions: {x: 0, y: 0, z: 0, opacity: 1},
+                computerPositions: {
+                    x: 0,
+                    y: 0,
+                    z: 0,
+                    opacity: 1,
+                    height: "60vh",
+                    width: "95vw"
+                },
             },
             {
                 trigger: ".about-section",
-                start: "top bottom",
-                end: "top top",
-                cameraPositions: {x: 50, y: -50, z: 50},
-                computerPositions: {x: 2, y: 0, z: -1.5, opacity: 1},
+                start: "top center",
+                end: "bottom center",
+                cameraPositions: {x: camera.position.x, y: camera.position.y, z: camera.position.z},
+                computerPositions: {
+                    x: 100, y: 0, z: 0, opacity: 1,
+                    height: "20vh",
+                    width: "35vw"
+                },
             },
             {
                 trigger: ".project-section",
                 start: "top bottom",
-                end: "top top",
-                cameraPositions: {x: 40, y: 0, z: 10},
-                computerPositions: {x: 220, y: 0, z: -1.5, position: "absolute", opacity: 1},
+                end: "bottom bottom",
+                cameraPositions: {x: camera.position.x, y: camera.position.y, z: camera.position.z},
+                computerPositions: {
+                    x: 720, y: 20, z: 0, opacity: 1,
+                    height: "30vh",
+                    width: "40vw"
+                },
+                markers: true
             },
             {
                 trigger: ".hide-model",
                 start: "top bottom",
-                end: "top top",
-                pin: true,
-                cameraPositions: {x: 0, y: 0, z: 0},
-                computerPositions: {x: 20, y: 0, z: -1.5, opacity: 0},
+                end: "bottom bottom",
+                computerPositions: {
+               opacity: 0,
+                },
             }
         ];
 
-        triggers.forEach(({trigger, start, end, cameraPositions, computerPositions, pin}) => {
+
+        triggers.forEach(({trigger, start, end, cameraPositions, computerPositions, markers}) => {
             ScrollTrigger.create({
                 trigger,
                 start,
                 end,
-                pin,
                 scrub: true,
-                markers: true,
+                markers,
                 onEnter: () => {
                     gsap.to(camera.position, {
                         ...cameraPositions,
@@ -87,7 +99,20 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
             });
         });
 
+        gsap.to(refComputer.current, {
+            stagger: 0.5,
+            duration: 5,
+            scrollTrigger: {
+                trigger: ".main",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true,
+                pin: true,
+            }
+        })
+
     });
+
 
     return (
         <mesh rotation={[0, rotation, 0]}>

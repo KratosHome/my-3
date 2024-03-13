@@ -1,5 +1,9 @@
 import {Viewport} from 'next'
-import {lazy} from "react";
+import React, {lazy} from "react";
+import Swim from "@/components/UIA/Swim/Swim";
+import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
+import ContainerModel from "@/components/ContainerModel/ContainerModel";
+
 const HeroSection = lazy(() => import('@/components/HeroSection/HeroSection'));
 const WrapperRequest = lazy(() => import('@/components/WrapperRequest/WrapperRequest'));
 const AboutMe = lazy(() => import('@/components/AboutMe/AboutMe'));
@@ -106,6 +110,9 @@ export async function generateMetadata({params}: any) {
 export default function Home() {
     return (
         <main>
+            <section className="main">
+                <ContainerModel/>
+            </section>
             <section id="section1" className="hero-section">
                 <HeroSection/>
             </section>

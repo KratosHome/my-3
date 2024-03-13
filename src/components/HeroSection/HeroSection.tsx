@@ -1,9 +1,7 @@
 "use client"
 import React, {useRef, useState} from 'react';
 import MainTitle from "@/components/MainTitle/MainTitle";
-import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
 import "./HeroSection.scss";
-import Swim from "@/components/UIA/Swim/Swim";
 import MyModal from "@/components/UI/MyModal/MyModal";
 import FormHireMe from "@/components/FormHireMe/FormHireMe";
 import {usePathname} from "next/navigation";
@@ -125,10 +123,7 @@ const HeroSection = () => {
                 />
                 <SocialLicks refLinks={refLinks}/>
             </div>
-            <Swim className="computer">
-                <div className="test"></div>
-                <ComputersCanvas/>
-            </Swim>
+
         </div>
     );
 };
