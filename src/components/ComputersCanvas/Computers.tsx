@@ -19,8 +19,8 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
         const triggers = [
             {
                 trigger: ".hero-section",
-                start: "top center",
-                end: "bottom center",
+                start: "top bottom",
+                end: "center bottom",
                 cameraPositions: {x: camera.position.x, y: camera.position.y, z: camera.position.z},
                 computerPositions: {
                     x: 0,
@@ -44,11 +44,11 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
             },
             {
                 trigger: ".project-section",
-                start: "top bottom",
+                start: "top center",
                 end: "bottom bottom",
                 cameraPositions: {x: camera.position.x, y: camera.position.y, z: camera.position.z},
                 computerPositions: {
-                    x: 720, y: 20, z: 0, opacity: 1,
+                    x: 720, y: 100, z: 0, opacity: 1,
                     height: "30vh",
                     width: "40vw"
                 },
@@ -59,7 +59,7 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
                 start: "top bottom",
                 end: "bottom bottom",
                 computerPositions: {
-               opacity: 0,
+                    opacity: 0,
                 },
             }
         ];
