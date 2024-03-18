@@ -8,9 +8,13 @@ import HoverLink from '@/components/UI/HoverLink/HoverLink';
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {useGSAP} from "@gsap/react";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
-
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
+
 export default function NavBar({navigation}: any) {
+    const pathname = usePathname();
+    const lacal = pathname.split('/')[1];
 
     useGSAP(() => {
         gsap.fromTo(".logo", {opacity: 0, x: -100}, {opacity: 1, x: 0, duration: 1, delay: 0.2, ease: "power3.out"});
@@ -37,13 +41,13 @@ export default function NavBar({navigation}: any) {
                 <div className="inner-container"/>
                 <nav className="container-nav">
                     <div>
-                        <div className="logo">
+                        <Link href="/" className="logo">
                             <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
-                        </div>
+                        </Link>
                         <ul>
                             {Object.entries(navigation).slice(0, -1).map(([key, value]) => (
                                 <li key={key} className="menu-item">
-                                    <HoverLink rout={value === "blog" ? "en/blog" : `#${key}`}>
+                                    <HoverLink rout={value === "blog" ? `/${lacal}/blog` : `#${key}`}>
                                         <>{value}</>
                                     </HoverLink>
                                 </li>
