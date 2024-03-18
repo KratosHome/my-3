@@ -4,17 +4,13 @@ import {useGLTF} from "@react-three/drei";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
 import gsap from "gsap";
-import {useThree} from "@react-three/fiber";
 import {useGSAP} from "@gsap/react";
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Computers = ({isMobile, rotation, refComputer}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
     const {theme} = useSelector((state: RootState) => state.theme);
-    const {scene, camera} = useThree();
-
+ //   const {scene, camera} = useThree();
 
     useGSAP(() => {
 
@@ -43,7 +39,7 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
             })
             .to(".main", {
                 x: 0,
-                y: -80,
+                y: -50,
                 z: 0,
                 ease: "Power0.out",
                 duration: 1.5,

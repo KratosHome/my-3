@@ -1,7 +1,5 @@
 import {Viewport} from 'next'
 import React, {lazy} from "react";
-import Swim from "@/components/UIA/Swim/Swim";
-import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
 import ContainerModel from "@/components/ContainerModel/ContainerModel";
 
 const HeroSection = lazy(() => import('@/components/HeroSection/HeroSection'));
@@ -110,9 +108,7 @@ export async function generateMetadata({params}: any) {
 export default function Home() {
     return (
         <main>
-            <section className="main">
-                <ContainerModel/>
-            </section>
+            <ContainerModel/>
             <section id="section1" className="hero-section">
                 <HeroSection/>
             </section>

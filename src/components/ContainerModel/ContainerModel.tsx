@@ -3,8 +3,6 @@ import "./ContainerModel.scss";
 import Swim from "@/components/UIA/Swim/Swim";
 import React, {useEffect, useState} from 'react';
 import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
-import {useGSAP} from "@gsap/react";
-import gsap from "gsap";
 
 const ContainerModel = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -18,16 +16,21 @@ const ContainerModel = () => {
     }, []);
 
 
-
+    console.log("scrollPosition", scrollPosition > 500 || scrollPosition === 0 ? "1" : "-1",)
     return (
-        <Swim className="computer"
-              style={{
-                  position: 'absolute',
-                  zIndex: scrollPosition > 500 ? 1 : -1,
-              }}>
-            <div className="test"></div>
-            <ComputersCanvas/>
-        </Swim>
+        <div
+            style={{
+                position: 'absolute',
+                top: 0,
+                zIndex: scrollPosition > 500 || scrollPosition === 0 ? 1 : -1,
+            }}>
+            <section className="main">
+                <Swim className="computer">
+                    <div className="test"></div>
+                    <ComputersCanvas/>
+                </Swim>
+            </section>
+        </div>
     );
 };
 
