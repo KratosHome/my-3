@@ -16,21 +16,13 @@ const ContainerModel = () => {
     }, []);
 
 
-    console.log("scrollPosition", scrollPosition > 500 || scrollPosition === 0 ? "1" : "-1",)
     return (
-        <div
-            style={{
-                position: 'absolute',
-                top: "70px",
-                zIndex: scrollPosition > 500 || scrollPosition === 0 ? 1 : -1,
-            }}>
-            <section className="main">
-                <Swim className="computer">
-                    <div className="test"></div>
-                    <ComputersCanvas/>
-                </Swim>
-            </section>
-        </div>
+        <section className="main">
+            <Swim className="computer">
+                <div className="test"></div>
+                <ComputersCanvas/>
+            </Swim>
+        </section>
     );
 };
 
