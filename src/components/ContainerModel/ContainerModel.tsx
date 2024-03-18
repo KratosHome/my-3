@@ -3,6 +3,8 @@ import "./ContainerModel.scss";
 import Swim from "@/components/UIA/Swim/Swim";
 import React, {useEffect, useState} from 'react';
 import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
+import {useGSAP} from "@gsap/react";
+import gsap from "gsap";
 
 const ContainerModel = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -14,6 +16,8 @@ const ContainerModel = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+
 
     return (
         <Swim className="computer"
