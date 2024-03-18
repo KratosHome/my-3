@@ -1,6 +1,7 @@
 export const blogDate = [
     {
         id: 1,
+        url: 'find-work',
         titleEn: 'blog 1',
         titleUa: 'blog 1',
         descriptionUa: `
@@ -9,30 +10,7 @@ export const blogDate = [
                  <p>Це другий абзац тексту. Тут продовжується ваш текст.</p>
     `,
         descriptionEn: 'blog 1',
-        "img": "/selectedBlock/rastcomFront.png",
+        "img": "/blogImg/findWork.webp",
     },
-    {
-        id: 1,
-        titleEn: 'blog 1',
-        titleUa: 'blog 1',
-        descriptionUa: 'blog 1',
-        descriptionEn: 'blog 1',
-        "img": "/selectedBlock/rastcomFront.png",
-    },
-    {
-        id: 1,
-        titleEn: 'blog 1',
-        titleUa: 'blog 1',
-        descriptionUa: 'blog 1',
-        descriptionEn: 'blog 1',
-        "img": "/selectedBlock/rastcomFront.png",
-    },
-    {
-        id: 1,
-        titleEn: 'blog 1',
-        titleUa: 'blog 1',
-        descriptionUa: 'blog 1',
-        descriptionEn: 'blog 1',
-        "img": "/selectedBlock/rastcomFront.png",
-    },
+
 ]
