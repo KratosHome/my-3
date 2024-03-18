@@ -39,7 +39,7 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
             })
             .to(".main", {
                 x: 0,
-                y: -50,
+                y: -190,
                 z: 0,
                 ease: "Power0.out",
                 duration: 1.5,
