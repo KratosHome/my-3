@@ -21,7 +21,7 @@ const ContainerModel = () => {
         <div
             style={{
                 position: 'absolute',
-                top: 0,
+                top: "70px",
                 zIndex: scrollPosition > 500 || scrollPosition === 0 ? 1 : -1,
             }}>
             <section className="main">
