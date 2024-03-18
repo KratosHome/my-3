@@ -134,6 +134,7 @@ const Projects = () => {
                 stagger: 0.1,
             })
 
+
     });
 
 

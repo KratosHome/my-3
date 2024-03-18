@@ -1,5 +1,7 @@
 import {Viewport} from 'next'
-import {lazy} from "react";
+import React, {lazy} from "react";
+import ContainerModel from "@/components/ContainerModel/ContainerModel";
+
 const HeroSection = lazy(() => import('@/components/HeroSection/HeroSection'));
 const WrapperRequest = lazy(() => import('@/components/WrapperRequest/WrapperRequest'));
 const AboutMe = lazy(() => import('@/components/AboutMe/AboutMe'));
@@ -106,16 +108,17 @@ export async function generateMetadata({params}: any) {
 export default function Home() {
     return (
         <main>
+            <ContainerModel/>
             <section id="section1" className="hero-section">
                 <HeroSection/>
             </section>
             <section id="about" className="about-section">
                 <AboutMe/>
             </section>
-            <section id="projects" className="services-section">
+            <section id="projects" className="project-section">
                 <Projects/>
             </section>
-            <section id="services" className="">
+            <section id="services" className="hide-model">
                 <Services/>
             </section>
             <section id="experience">

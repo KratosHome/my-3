@@ -5,7 +5,8 @@ import {OrbitControls, Preload} from "@react-three/drei";
 import Loader from "@/components/UI/Loader/Loader";
 import Computers from "@/components/ComputersCanvas/Computers";
 
-const ComputersCanvas = React.memo(({refComputer}: any) => {
+const ComputersCanvas = React.memo(() => {
+    const refComputer = React.useRef(null);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -67,7 +68,7 @@ const ComputersCanvas = React.memo(({refComputer}: any) => {
                     maxAzimuthAngle={Math.PI * 0.8}
                     minAzimuthAngle={-Math.PI * 0.1}
                 />
-                <Computers isMobile={isMobile} rotation={rotation}/>
+                <Computers isMobile={isMobile} rotation={rotation} refComputer={refComputer}/>
             </Suspense>
             <Preload all/>
         </Canvas>

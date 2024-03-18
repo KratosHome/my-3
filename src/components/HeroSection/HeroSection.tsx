@@ -1,9 +1,7 @@
 "use client"
 import React, {useRef, useState} from 'react';
 import MainTitle from "@/components/MainTitle/MainTitle";
-import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
 import "./HeroSection.scss";
-import Swim from "@/components/UIA/Swim/Swim";
 import MyModal from "@/components/UI/MyModal/MyModal";
 import FormHireMe from "@/components/FormHireMe/FormHireMe";
 import {usePathname} from "next/navigation";
@@ -17,7 +15,6 @@ const HeroSection = () => {
     const pathName = usePathname();
     const refH1 = useRef(null);
     const refH2 = useRef(null);
-    const refComputer = useRef(null);
     const refButton = useRef(null);
     const refLinks = useRef(null);
 
@@ -67,31 +64,6 @@ const HeroSection = () => {
                 onComplete: () => setAnimationPlayed(false)
             })
 
-
-        gsap.fromTo(refComputer.current,
-            {
-                opacity: 0,
-                scale: 0.2,
-            },
-            {
-                opacity: 1,
-                scale: 1,
-                x: 0,
-                duration: 1.3,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: refComputer.current,
-                    start: "bottom bottom-=100",
-                    end: "top top-=10",
-                    toggleActions: "play reverse play reverse",
-                    //  scrub: true,
-                },
-                delay: animationPlayed ? 3 : 0,
-                stagger: 0.1,
-                onComplete: () => {
-                    setAnimationPlayed(false);
-                }
-            })
 
         gsap.fromTo(refButton.current,
             {
@@ -151,10 +123,7 @@ const HeroSection = () => {
                 />
                 <SocialLicks refLinks={refLinks}/>
             </div>
-            <Swim className="computer">
-                <div className="test"></div>
-                <ComputersCanvas refComputer={refComputer}/>
-            </Swim>
+
         </div>
     );
 };
