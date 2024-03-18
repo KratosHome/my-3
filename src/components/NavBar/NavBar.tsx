@@ -43,7 +43,7 @@ export default function NavBar({navigation}: any) {
                         <ul>
                             {Object.entries(navigation).slice(0, -1).map(([key, value]) => (
                                 <li key={key} className="menu-item">
-                                    <HoverLink rout={`#${key}`}>
+                                    <HoverLink rout={value === "blog" ? "en/blog" : `#${key}`}>
                                         <>{value}</>
                                     </HoverLink>
                                 </li>
