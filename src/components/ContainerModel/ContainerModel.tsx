@@ -16,7 +16,6 @@ const ContainerModel = () => {
     }, []);
 
 
-    console.log("scrollPosition", scrollPosition > 500 || scrollPosition === 0 ? "1" : "-1",)
     return (
         <div
             style={{
