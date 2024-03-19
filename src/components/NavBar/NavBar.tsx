@@ -8,8 +8,9 @@ import HoverLink from '@/components/UI/HoverLink/HoverLink';
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {useGSAP} from "@gsap/react";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
-import { usePathname, useRouter } from "next/navigation";
+import {usePathname} from "next/navigation";
 import Link from "next/link";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function NavBar({navigation}: any) {

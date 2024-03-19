@@ -6,7 +6,7 @@ export default async function Page() {
     return (
         <>
             {blogDate.map((item, index) =>
-                <BlogList key={item.id} item={item}/>
+                <BlogList item={item}/>
             )}
         </>
     );
