@@ -1,4 +1,8 @@
-.active-link {
+.container-link {
+
+}
+
+.animate-link {
   background-color: var(--text-color);
   background-image: linear-gradient(to right, #E56466 50%, transparent 50%);
   background-size: 200% 100%;
@@ -12,4 +16,11 @@
   &:hover {
     background-position: left;
   }
+}
+
+.active-link {
+  background-color: #E56466;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
 }

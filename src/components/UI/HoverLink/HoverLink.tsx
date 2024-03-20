@@ -1,6 +1,7 @@
 import React, {FC, ReactNode} from 'react';
 import "./HoverLink.scss"
 import Link from "next/link";
+import {usePathname} from "next/navigation";
 
 interface activeLinkType {
     children: ReactNode;
@@ -8,8 +9,11 @@ interface activeLinkType {
 }
 
 const HoverLink: FC<activeLinkType> = ({children, rout}) => {
+    const pathName = usePathname()
+    const isActive = pathName.includes(rout);
+
     return (
-        <Link className="active-link" href={rout}>
+        <Link className={`container-link ${isActive ? "active-link" : "animate-link"}`} href={rout}>
             {children}
         </Link>
     );

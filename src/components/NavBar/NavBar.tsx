@@ -35,6 +35,11 @@ export default function NavBar({navigation}: any) {
         });
     });
 
+
+    // TEMPORARY FIX
+    const sesion = true
+    const isAdmin = true
+
     return (
         <>
             <ScrollToTop/>
@@ -53,6 +58,16 @@ export default function NavBar({navigation}: any) {
                                     </HoverLink>
                                 </li>
                             ))}
+                            {sesion ? (
+                                <>
+                                    {isAdmin && <HoverLink rout={"admin"}>admin</HoverLink>}
+                                    <button>logout</button>
+                                </>
+                            ) : (
+                                <HoverLink rout="/login">
+                                    login
+                                </HoverLink>
+                            )}
                         </ul>
                         <div className="nav-bar-toggle">
                             <LanguageChange/>
