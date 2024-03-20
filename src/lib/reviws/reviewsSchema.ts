@@ -29,8 +29,6 @@ const reviewsSchema = new mongoose.Schema({
     isPublic: {
         type: Boolean,
         required: true,
-        min: 3,
-        max: 955,
     },
 }, {timestamps: true});
 

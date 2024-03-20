@@ -15,6 +15,9 @@ const BlogList = ({item}: any) => {
                 <Image src={item.img} alt={item.titleEn} fill={true}/>
             </div>
             <h2>{item.titleEn}</h2>
+            <p>data</p>
+            <p>Avtor</p>
+            <p>read mor </p>
         </Link>
     );
 };

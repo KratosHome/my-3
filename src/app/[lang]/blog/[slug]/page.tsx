@@ -5,7 +5,8 @@ export default async function Page() {
 
     return (
         <>
-            fvsdf
+            <h1>titile</h1>
+            <div>img avor</div>
         </>
     );
 }

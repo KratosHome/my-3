@@ -1,5 +1,5 @@
-import { Reviews } from "./models";
 import {connectToDb} from "@/services/connectToDb";
+import {Reviews} from "../lib/reviws/reviewsSchema";
 
 
 export const fetchReviews = async () => {
