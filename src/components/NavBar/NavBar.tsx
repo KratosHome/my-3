@@ -60,7 +60,7 @@ export default function NavBar({navigation}: any) {
                             ))}
                             {sesion ? (
                                 <>
-                                    {isAdmin && <HoverLink rout={"admin"}>admin</HoverLink>}
+                                    {isAdmin && <HoverLink rout={`/${lacal}/admin`}>admin</HoverLink>}
                                     <button>logout</button>
                                 </>
                             ) : (
