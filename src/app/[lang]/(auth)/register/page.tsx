@@ -1,18 +1,22 @@
 import {register} from "@/lib/users/userController";
+import {signIn} from "@/lib/users/auth";
+import RegisterForm from "@/components/RegisterForm/RegisterForm";
 
 export default async function Page() {
+
+    const handleLogin = async () => {
+        "use server"
+        await signIn("github");
+    }
+
 
     return (
         <>
             <div>
-                <form action={register}>
-                    <input type="text" placeholder="username" name="username"/>
-                    <input type="text" placeholder="email" name="email"/>
-                    <input type="text" placeholder="password" name="password"/>
-                    <input type="text" placeholder="repeat password" name="passwordRepeat"/>
-                    <input type="text" placeholder="img" name="img"/>
-                    <button type={"submit"}>register</button>
+                <form action={handleLogin}>
+                    <button>login gihub</button>
                 </form>
+                <RegisterForm/>
             </div>
         </>
     );

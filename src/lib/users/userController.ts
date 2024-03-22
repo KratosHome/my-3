@@ -3,6 +3,7 @@ import {User} from "@/lib/users/userSchema";
 import {revalidatePath, unstable_noStore as noStore} from "next/cache";
 import {Post} from "@/lib/post/postSchema";
 import bcrypt from "bcrypt";
+import {signIn} from "@/lib/users/auth";
 
 export const createUsers = async (session: any) => {
     "use server"
@@ -125,5 +126,18 @@ export const register = async (formData: any) => {
     } catch (err) {
         console.log(err);
         return {error: "Something went wrong!"};
+    }
+};
+
+
+export const login = async (formData: any) => {
+    "use server"
+    const { email, password } = Object.fromEntries(formData);
+
+    try {
+        await signIn("credentials", { email, password });
+    } catch (err) {
+        console.log(err);
+        throw err;
     }
 };
