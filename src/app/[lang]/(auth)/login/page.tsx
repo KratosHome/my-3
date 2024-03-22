@@ -14,7 +14,6 @@ export default async function LoginPage() {
         await signIn("github");
     }
     const session = await auth();
-    console.log("session", session)
     if (session?.user) {
         await createUsers(session)
     }

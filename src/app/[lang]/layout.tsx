@@ -9,6 +9,8 @@ import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import Footer from "@/components/Footer/Footer";
 import Head from "next/head";
 import MyThemeProvider from "@/components/MyThemeProvider/MyThemeProvider";
+import {auth} from "@/lib/users/auth";
+import Header from "@/components/Header/Header";
 
 
 export default async function RootLayout({
@@ -72,6 +74,7 @@ export default async function RootLayout({
         "openingHours": "Mo-Fr 09:00-17:00",
     }
 
+    const session = await auth();
 
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
@@ -88,7 +91,7 @@ export default async function RootLayout({
         <MyThemeProvider>
             <ReduxProvider>
                 <body>
-                <NavBar navigation={navigation}/>
+                <Header navigation={navigation} session={session}/>
                 <StarsCanvas/>
                 {children}
                 </body>

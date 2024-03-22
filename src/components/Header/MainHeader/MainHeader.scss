@@ -1,0 +1,119 @@
+.container-background-main {
+    height: 80px;
+
+    .inner-container {
+        z-index: -1;
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 100vw;
+        background-image: url('/background.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100svh;
+    }
+
+    .container-nav {
+        padding-top: 20px;
+        display: flex;
+
+        .logo {
+            opacity: 0;
+        }
+
+        .menu-item {
+            opacity: 0;
+            font-size: 30px;
+        }
+
+        .nav-bar-toggle {
+            opacity: 0;
+        }
+
+        > div {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            li {
+                padding: 0 20px;
+            }
+        }
+
+        .nav-bar-toggle {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 10px;
+
+        }
+    }
+}
+
+
+.main-header-client {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4.75rem 1fr 4.75rem;
+    align-items: center;
+    gap: 0.9375rem;
+
+    padding: 15px 16px;
+
+    border-bottom: 1px solid var(--stoke);
+
+    @media screen and (min-width: 768px) {
+        padding: 0;
+        border-bottom: none;
+        grid-template-columns: 9.375rem 1fr 9.375rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        grid-template-columns: 19.375rem 1fr 19.375rem;
+    }
+
+    .burger-menu-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: none;
+        background-color: transparent;
+
+        height: 24px;
+        width: 24px;
+
+        cursor: pointer;
+
+        &>svg {
+            stroke: var(--text-color);
+        }
+    }
+
+    .logo--header {
+        justify-self: center;
+        display: inline-flex;
+        align-items: center;
+
+        width: 80px;
+        height: 32px;
+
+        @media screen and (min-width: 768px) {
+            width: 200px;
+            height: 98px;
+        }
+    }
+}
+@media screen and (min-width: 1024px) {
+    .main-header-client {
+        display: none;
+    }
+}

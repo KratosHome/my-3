@@ -2,7 +2,6 @@ import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
 import {connectToDb} from "@/lib/connectToDb";
 import {User} from "@/lib/users/userSchema";
-import {createUsers} from "@/lib/users/userController";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import {AdapterUser} from "@auth/core/adapters";

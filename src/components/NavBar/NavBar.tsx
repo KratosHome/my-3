@@ -10,12 +10,24 @@ import {useGSAP} from "@gsap/react";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
+import {menuDate} from "@/mokDate/menuDate";
+import {useState} from "react";
+import SubMenu from "@/components/NavBar/subMenu/subMenu";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function NavBar({navigation}: any) {
+
+export default function NavBar({navigation, session}: any) {
     const pathname = usePathname();
-    const lacal = pathname.split('/')[1];
+    const locale = pathname.split('/')[1];
+
+    console.log("session", session)
+
+    const filteredMenu = menuDate.filter(item => {
+        if (session && item.name === "login") return false;
+        if (!session && item.name === "cabinet") return false;
+        return true;
+    });
 
     useGSAP(() => {
         gsap.fromTo(".logo", {opacity: 0, x: -100}, {opacity: 1, x: 0, duration: 1, delay: 0.2, ease: "power3.out"});
@@ -36,38 +48,30 @@ export default function NavBar({navigation}: any) {
     });
 
 
-    // TEMPORARY FIX
-    const sesion = true
-    const isAdmin = true
+    const [isOpenSubMenu, setIsOpenSubMenu] = useState<number | null>(null);
+
+    const subMenuToggle = (index: number) => setIsOpenSubMenu(index);
 
     return (
         <>
-            <ScrollToTop/>
             <header className="container-background-main">
-                <div className="inner-container"/>
                 <nav className="container-nav">
                     <div>
                         <Link href="/" className="logo">
                             <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
                         </Link>
-                        <ul>
-                            {Object.entries(navigation).slice(0, -1).map(([key, value]) => (
-                                <li key={key} className="menu-item">
-                                    <HoverLink rout={value === "blog" ? `/${lacal}/blog` : `#${key}`}>
-                                        <>{value}</>
+                        <ul onMouseLeave={() => setIsOpenSubMenu(null)}>
+                            {filteredMenu.map((item: any, index: number) => (
+                                <li key={item.name} className="menu-item" onMouseEnter={() => subMenuToggle(index)}>
+                                    <HoverLink rout={`/${locale}/blog`}>
+                                        {item.name}
                                     </HoverLink>
+                                    {item.subMenu && isOpenSubMenu === index && (
+                                        <SubMenu item={item}/>
+                                    )}
                                 </li>
                             ))}
-                            {sesion ? (
-                                <>
-                                    {isAdmin && <HoverLink rout={`/${lacal}/admin`}>admin</HoverLink>}
-                                    <button>logout</button>
-                                </>
-                            ) : (
-                                <HoverLink rout="/login">
-                                    login
-                                </HoverLink>
-                            )}
+                            {session ? <button>logout</button> : null}
                         </ul>
                         <div className="nav-bar-toggle">
                             <LanguageChange/>
