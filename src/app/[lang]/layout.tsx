@@ -78,8 +78,6 @@ export default async function RootLayout({
     return (
         <html lang={params.lang === "en" ? "en" : "ua"}>
         <Head>
-            <link rel="preload" as="font" crossOrigin={""}/>
-            <link rel="preload" as="font" crossOrigin=""/>
             <link rel="preload" as="font" crossOrigin=""/>
             <script
                 type="application/ld+json"

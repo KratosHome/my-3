@@ -1,77 +1,92 @@
 export const menuDate = [
     {
-        name: "home",
+        nameUa: "головна",
+        nameEn: "home",
         rout: "/",
         subMenu: [
             {
-                name: "about",
+                nameUa: "про мене",
+                nameEn: "about",
                 rout: "/#about",
                 subMenu: []
             },
             {
-                name: "projects",
+                nameUa: "проекти",
+                nameEn: "projects",
                 rout: "/#projects",
                 subMenu: []
             },
             {
-                name: "services",
+                nameUa: "послуги",
+                nameEn: "services",
                 rout: "/#services",
                 subMenu: []
             },
             {
-                name: "experience",
+                nameUa: "досвід",
+                nameEn: "experience",
                 rout: "/#experience",
                 subMenu: []
             },
             {
-                name: "trustedBy",
+                nameUa: "довіряють",
+                nameEn: "trusted by",
                 rout: "/#trustedBy",
                 subMenu: []
             },
             {
-                name: "contact",
+                nameUa: "контакти",
+                nameEn: "contact",
                 rout: "/#contact",
                 subMenu: []
             }
         ]
     },
     {
-        name: "blog",
+        nameUa: "блог",
+        nameEn: "blog",
         rout: "/blog",
         subMenu: []
     },
     {
-        name: "mentoring",
+        nameUa: "менторство",
+        nameEn: "mentoring",
         rout: "/mentoring",
         subMenu: []
     },
     {
-        name: "students",
+        nameUa: "студенти",
+        nameEn: "students",
         rout: "/students",
         subMenu: []
     },
     {
-        name: "join team",
+        nameUa: "взяти участь",
+        nameEn: "join team",
         rout: "/join-team",
         subMenu: []
     },
     {
-        name: "chat",
+        nameUa: "чат",
+        nameEn: "chat",
         rout: "/chat",
         subMenu: []
     },
     {
-        name: "FAQ",
+        nameUa: "FAQ",
+        nameEn: "FAQ",
         rout: "/faq",
         subMenu: []
     },
     {
-        name: "login",
+        nameUa: "увійти",
+        nameEn: "login",
         rout: "/login",
         subMenu: []
     },
     {
-        name: "cabinet",
+        nameUa: "cabinet",
+        nameEn: "кабіент",
         rout: "/cabinet",
         subMenu: []
     },

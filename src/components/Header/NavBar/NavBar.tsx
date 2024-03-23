@@ -34,8 +34,8 @@ const NavBar = ({navigation, session}: any) => {
 
 
     const filteredMenu = menuDate.filter(item => {
-        if (session && item.name === "login") return false;
-        if (!session && item.name === "cabinet") return false;
+        if (session && item.nameEn === "login") return false;
+        if (!session && item.nameEn === "cabinet") return false;
         return true;
     });
 
@@ -58,19 +58,18 @@ const NavBar = ({navigation, session}: any) => {
         });
     });
 
-
     return (
         <nav className="container-desktop-menu">
-            <Link href="/" className="logo">
+            <Link href={`/${locale}`} className="logo">
                 <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
             </Link>
             <ul className={`nav-bar__list`} onMouseLeave={() => setIsOpenSubMenu({})}>
                 {filteredMenu.map((menu, index) =>
-                    <React.Fragment key={`${menu.name} ${index}`}>
+                    <React.Fragment key={`${menu.nameUa} ${index}`}>
                         <li className={`menu-item item-hover`}
                             onMouseEnter={() => subMenuToggle(index)}>
                             <HoverLink rout={`${locale}/${menu.rout}`}>
-                                {navigation && navigation[menu.name] ? navigation[menu.name] : menu.name}
+                                {menu.nameUa}
                                 {menu?.subMenu.length > 0 &&
                                     <button
                                         className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}

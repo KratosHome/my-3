@@ -8,7 +8,7 @@ import MobileHeader from "@/components/Header/MobileHeader/MobileHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Header = ({navigation, session}: any) => {
+const Header = ({session}: any) => {
 
     return (
         <>
@@ -17,7 +17,7 @@ const Header = ({navigation, session}: any) => {
                 <div className="inner-container"/>
                 <header className="container-header-client">
                     <MobileHeader/>
-                    <NavBar navigation={navigation} session={session}/>
+                    <NavBar session={session}/>
                 </header>
             </div>
         </>
