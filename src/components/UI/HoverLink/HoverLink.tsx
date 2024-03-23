@@ -10,7 +10,7 @@ interface activeLinkType {
 
 const HoverLink: FC<activeLinkType> = ({children, rout}) => {
     const pathName = usePathname()
-    const isActive = pathName.includes(rout);
+    const isActive = pathName === rout; // pathName.includes(rout);
 
     return (
         <Link className={`container-link ${isActive ? "active-link" : "animate-link"}`} href={rout}>

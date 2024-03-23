@@ -1,6 +1,5 @@
 "use client";
 import "./header.scss";
-import MainHeader from "@/components/Header/MainHeader/MainHeader";
 import NavBar from "@/components/Header/NavBar/NavBar";
 import {usePathname} from "next/navigation";
 import {menuDate} from "@/mokDate/menuDate";
@@ -8,6 +7,8 @@ import {useGSAP} from "@gsap/react";
 import {gsap} from "gsap";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import MobileHeader from "@/components/Header/MobileHeader/MobileHeader";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Header = ({navigation, session}: any) => {
@@ -48,8 +49,8 @@ const Header = ({navigation, session}: any) => {
             <div className="container-background-main">
                 <div className="inner-container"/>
                 <header className="container-header-client">
-                    <MainHeader/>
-                    <NavBar/>
+                    <MobileHeader/>
+                    <NavBar session={session}/>
                 </header>
             </div>
         </>

@@ -20,6 +20,9 @@ gsap.registerPlugin(ScrollTrigger);
 export default function NavBar({navigation, session}: any) {
     const pathname = usePathname();
     const locale = pathname.split('/')[1];
+    const [isOpenSubMenu, setIsOpenSubMenu] = useState<number | null>(null);
+
+    const subMenuToggle = (index: number) => setIsOpenSubMenu(index);
 
     console.log("session", session)
 
@@ -48,35 +51,31 @@ export default function NavBar({navigation, session}: any) {
     });
 
 
-    const [isOpenSubMenu, setIsOpenSubMenu] = useState<number | null>(null);
 
-    const subMenuToggle = (index: number) => setIsOpenSubMenu(index);
 
     return (
         <>
             <header className="container-background-main">
                 <nav className="container-nav">
-                    <div>
-                        <Link href="/" className="logo">
-                            <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
-                        </Link>
-                        <ul onMouseLeave={() => setIsOpenSubMenu(null)}>
-                            {filteredMenu.map((item: any, index: number) => (
-                                <li key={item.name} className="menu-item" onMouseEnter={() => subMenuToggle(index)}>
-                                    <HoverLink rout={`/${locale}/blog`}>
-                                        {item.name}
-                                    </HoverLink>
-                                    {item.subMenu && isOpenSubMenu === index && (
-                                        <SubMenu item={item}/>
-                                    )}
-                                </li>
-                            ))}
-                            {session ? <button>logout</button> : null}
-                        </ul>
-                        <div className="nav-bar-toggle">
-                            <LanguageChange/>
-                            <ThemeChange/>
-                        </div>
+                    <Link href="/" className="logo">
+                        <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
+                    </Link>
+                    <ul onMouseLeave={() => setIsOpenSubMenu(null)}>
+                        {filteredMenu.map((item: any, index: number) => (
+                            <li key={item.name} className="menu-item" onMouseEnter={() => subMenuToggle(index)}>
+                                <HoverLink rout={`/${locale}/blog`}>
+                                    {item.name}
+                                </HoverLink>
+                                {item.subMenu && isOpenSubMenu === index && (
+                                    <SubMenu item={item}/>
+                                )}
+                            </li>
+                        ))}
+                        {session ? <button>logout</button> : null}
+                    </ul>
+                    <div className="nav-bar-toggle">
+                        <LanguageChange/>
+                        <ThemeChange/>
                     </div>
                 </nav>
             </header>

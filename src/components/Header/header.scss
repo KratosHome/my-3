@@ -1,8 +1,21 @@
-.container-header-client {
-  position: sticky;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 10000;
+
+.container-background-main {
+  height: 80px;
+
+  .inner-container {
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    background-image: url('/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100svh;
+  }
+
+  header {
+    position: relative;
+  }
 
 }

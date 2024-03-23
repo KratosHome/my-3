@@ -1,6 +1,6 @@
 "use client";
 import {useState} from "react";
-import "./MainHeader.scss";
+import "./MobileHeader.scss";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
 import CloseSvg from "@/components/SVG/CloseSvg";
@@ -9,7 +9,7 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 import UserNav from "@/components/Header/UserNavLink/UserNav";
 import Image from "next/image";
 
-const MainHeader = () => {
+const MobileHeader = () => {
     const pathname = usePathname();
     const [isOpenMenu, setIsOpenMenu] = useState(false);
 
@@ -34,4 +34,4 @@ const MainHeader = () => {
     );
 };
 
-export default MainHeader;
+export default MobileHeader;

@@ -61,7 +61,7 @@ export const menuDate = [
         subMenu: []
     },
     {
-        name: "faq",
+        name: "FAQ",
         rout: "/faq",
         subMenu: []
     },

@@ -8,8 +8,15 @@ import SubNav from "@/components/Header/SubNav/SubNav";
 import Image from "next/image";
 import LanguageChange from "@/components/LanguageChange/LanguageChange";
 import ThemeChange from "@/components/ThemeChange/ThemeChange";
+import {usePathname} from "next/navigation";
+import {useGSAP} from "@gsap/react";
+import {gsap} from "gsap";
+import HoverLink from "@/components/UI/HoverLink/HoverLink";
 
-const NavBar = ({isMobileMenuOpen = false}) => {
+const NavBar = ({session}: any) => {
+    const pathname = usePathname();
+    const locale = pathname.split('/')[1];
+
     const [isOpenSubMenu, setIsOpenSubMenu] = useState<{ [key: number]: boolean; }>({});
 
     const subMenuToggle = (index: number) => {
@@ -25,47 +32,68 @@ const NavBar = ({isMobileMenuOpen = false}) => {
         setIsOpenSubMenu(newSubMenuState);
     };
 
+
+    const filteredMenu = menuDate.filter(item => {
+        if (session && item.name === "login") return false;
+        if (!session && item.name === "cabinet") return false;
+        return true;
+    });
+
+
+    useGSAP(() => {
+        gsap.fromTo(".logo", {opacity: 0, x: -100}, {opacity: 1, x: 0, duration: 1, delay: 0.2, ease: "power3.out"});
+        gsap.fromTo(".menu-item", {opacity: 0, y: -20}, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+        gsap.fromTo(".nav-bar-toggle", {opacity: 0, x: 100}, {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            delay: 0.2,
+            ease: "power3.out"
+        });
+    });
+
+
+    console.log("session", session)
+
     return (
-        <div className="container-desktop-menu">
+        <nav className="container-desktop-menu">
             <Link href="/" className="logo">
                 <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
             </Link>
-            <ul className={`nav-bar__list ${isMobileMenuOpen ? "open" : "desktop-only"}`}
-                onMouseLeave={() => !isMobileMenuOpen && setIsOpenSubMenu({})}
-            >
-                {menuDate.map((menu, index) =>
-                    <li key={menu.name} className={`nav-bar__item mobile-menu__item`}>
-                        <div
-                            className={`nav-bar__item--main} ${isOpenSubMenu[index] ? "focused" : ""}`}
-                            onMouseEnter={() => !isMobileMenuOpen && subMenuToggle(index)}
-                        >
-                            <Link
-                                href={menu.rout}
-                                onClick={() => (isMobileMenuOpen ? null : subMenuToggle(index))}
-                            >
+            <ul className={`nav-bar__list`} onMouseLeave={() => setIsOpenSubMenu({})}>
+                {filteredMenu.map((menu, index) =>
+                    <li key={menu.name} className={`menu-item`}>
+                        <div onMouseEnter={() => subMenuToggle(index)}>
+                            <HoverLink rout={menu.rout}>
                                 {menu.name}
-                            </Link>
-                            {menu?.subMenu.length > 0 && (
-                                <button
-                                    type="button"
-                                    className={`sub-menu__btn mobile-only ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}
-                                    onClick={() => setIsOpenSubMenu((prev) => ({
-                                        ...prev,
-                                        [index]: !prev[index],
-                                    }))}
-                                >
-                                    <ArrowDownSvg/>
-                                </button>
-                            )}
+                                {menu?.subMenu.length > 0 &&
+                                    <button
+                                        className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}
+                                        onClick={() => setIsOpenSubMenu((prev) => ({
+                                            ...prev,
+                                            [index]: !prev[index],
+                                        }))}
+                                    >
+                                        <ArrowDownSvg/>
+                                    </button>
+                                }
+                            </HoverLink>
                         </div>
                         {menu?.subMenu.length > 0 && (
                             <SubNav
                                 isOpen={isOpenSubMenu[index]}
                                 navLink={menu.subMenu}
                                 navIndex={index}
-                                isMobile={isMobileMenuOpen}
+                                isMobile={false}
                             />
                         )}
+                        {session ? <button>logout</button> : null}
                     </li>
                 )}
             </ul>
@@ -73,7 +101,7 @@ const NavBar = ({isMobileMenuOpen = false}) => {
                 <LanguageChange/>
                 <ThemeChange/>
             </div>
-        </div>
+        </nav>
     );
 };
 
