@@ -1,17 +1,9 @@
 import {useRef} from "react";
-
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
-
 import "./SubNav.scss";
+import HoverLink from "@/components/UI/HoverLink/HoverLink";
 
-interface SubNavProps {
-    isOpen: boolean;
-    navLink: any[];
-    menuToggle?: (index: number, resetAll?: boolean) => void;
-    navIndex?: number;
-    isMobile: boolean;
-}
 
 const AnimationVariants = {
     open: {
@@ -40,7 +32,7 @@ const SubNavAnimationVariants = {
     closed: {
         opacity: 0,
         ease: "power1.out",
-        duration: 1,
+        duration: 0.2,
     },
     openMobile: {
         opacity: 1,
@@ -54,40 +46,25 @@ const SubNavAnimationVariants = {
     },
 };
 
-const SubNav = ({
-                    isOpen = false,
-                    navLink,
-                    navIndex,
-                    isMobile = false,
-                }: SubNavProps) => {
+const SubNav = ({isOpen = false, navLink, navIndex}: any) => {
     const subNavRef = useRef<HTMLUListElement | null>(null);
 
-    useGSAP(
-        () => {
+    useGSAP(() => {
+
             if (isOpen) {
-                gsap
-                    .timeline()
+                gsap.timeline()
                     .set(subNavRef.current, {display: "grid"})
                     .fromTo(
                         subNavRef.current,
-                        isMobile
-                            ? SubNavAnimationVariants.closedMobile
-                            : SubNavAnimationVariants.closed,
-                        isMobile
-                            ? SubNavAnimationVariants.openMobile
-                            : SubNavAnimationVariants.open
+                        SubNavAnimationVariants.closed,
+                        SubNavAnimationVariants.open
                     );
             } else {
-                gsap
-                    .timeline()
+                gsap.timeline()
                     .fromTo(
                         subNavRef.current,
-                        isMobile
-                            ? SubNavAnimationVariants.openMobile
-                            : SubNavAnimationVariants.open,
-                        isMobile
-                            ? SubNavAnimationVariants.closedMobile
-                            : SubNavAnimationVariants.closed
+                        SubNavAnimationVariants.open,
+                        SubNavAnimationVariants.closed
                     )
                     .set(subNavRef.current, {display: "none"});
             }
@@ -109,20 +86,18 @@ const SubNav = ({
                 }
             }
         },
+
         {dependencies: [isOpen]}
     );
 
     return (
         <ul ref={subNavRef} className={`sub-nav__list`}>
-            {navLink.map((menu, index) => (
-                <li
-                    key={`${menu.name}_${index}`}
-                    className={`sub-nav__item sub-nav__item--${navIndex}`}
-                >
-                    {menu.name}
-                    {menu?.subMenu.length > 0 && (
-                        <SubNav navLink={menu.child} isMobile={isMobile} isOpen={isOpen}/>
-                    )}
+            {navLink.map((menu: any, index: number) => (
+                <li key={`${menu.name}_${index}`} className={`sub-nav__item sub-nav__item--${navIndex}`}>
+                    <HoverLink rout={menu.name}>
+                        {menu.name}
+                    </HoverLink>
+                    {menu?.subMenu.length > 0 && <SubNav navLink={menu.child} isOpen={isOpen}/>}
                 </li>
             ))}
         </ul>

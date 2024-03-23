@@ -1,7 +1,6 @@
 import './globals.css'
 import {Locale} from "../../../i18n.config";
 import {getDictionary} from "@/services/dictionary";
-import NavBar from "@/components/NavBar/NavBar";
 import ReduxProvider from "@/app/[lang]/provider";
 import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 import {ReactNode} from "react";

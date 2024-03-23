@@ -1,7 +1,7 @@
 import {NextRequest, NextResponse} from "next/server";
 import {connectToDb} from "@/lib/connectToDb";
 import {User} from "@/lib/users/userSchema";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export async function POST(request: NextRequest) {
     if (request.method !== 'POST') return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });

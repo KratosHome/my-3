@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-
+import "./MobileMenu.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -7,7 +7,6 @@ import NavBar from "../../Header/NavBar/NavBar";
 import UserNavLink from "../UserNavLink/UserNav";
 
 
-import "./MobileMenu.scss";
 
 const MenuAnimationVariants = {
   open: {

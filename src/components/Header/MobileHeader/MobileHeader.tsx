@@ -6,7 +6,6 @@ import Link from "next/link";
 import CloseSvg from "@/components/SVG/CloseSvg";
 import BurgerMenuSvg from "@/components/SVG/BurgerMenuSvg";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import UserNav from "@/components/Header/UserNavLink/UserNav";
 import Image from "next/image";
 
 const MobileHeader = () => {
@@ -29,7 +28,6 @@ const MobileHeader = () => {
             <Link href="/" className="logo">
                 <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
             </Link>
-            {!isOpenMenu && <UserNav/>}
         </div>
     );
 };

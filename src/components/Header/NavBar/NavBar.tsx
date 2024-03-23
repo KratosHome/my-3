@@ -13,7 +13,7 @@ import {useGSAP} from "@gsap/react";
 import {gsap} from "gsap";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
 
-const NavBar = ({session}: any) => {
+const NavBar = ({navigation, session}: any) => {
     const pathname = usePathname();
     const locale = pathname.split('/')[1];
 
@@ -59,8 +59,6 @@ const NavBar = ({session}: any) => {
     });
 
 
-    console.log("session", session)
-
     return (
         <nav className="container-desktop-menu">
             <Link href="/" className="logo">
@@ -68,10 +66,11 @@ const NavBar = ({session}: any) => {
             </Link>
             <ul className={`nav-bar__list`} onMouseLeave={() => setIsOpenSubMenu({})}>
                 {filteredMenu.map((menu, index) =>
-                    <li key={menu.name} className={`menu-item`}>
-                        <div onMouseEnter={() => subMenuToggle(index)}>
-                            <HoverLink rout={menu.rout}>
-                                {menu.name}
+                    <React.Fragment key={`${menu.name} ${index}`}>
+                        <li className={`menu-item item-hover`}
+                            onMouseEnter={() => subMenuToggle(index)}>
+                            <HoverLink rout={`${locale}/${menu.rout}`}>
+                                {navigation && navigation[menu.name] ? navigation[menu.name] : menu.name}
                                 {menu?.subMenu.length > 0 &&
                                     <button
                                         className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}
@@ -84,17 +83,16 @@ const NavBar = ({session}: any) => {
                                     </button>
                                 }
                             </HoverLink>
-                        </div>
+                            {session ? <button>logout</button> : null}
+                        </li>
                         {menu?.subMenu.length > 0 && (
                             <SubNav
                                 isOpen={isOpenSubMenu[index]}
                                 navLink={menu.subMenu}
                                 navIndex={index}
-                                isMobile={false}
                             />
                         )}
-                        {session ? <button>logout</button> : null}
-                    </li>
+                    </React.Fragment>
                 )}
             </ul>
             <div className="nav-bar-toggle">
