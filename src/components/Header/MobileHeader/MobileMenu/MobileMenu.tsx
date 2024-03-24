@@ -68,12 +68,30 @@ const MobileMenu = ({
             ...prevState,
             [index]: !prevState[index]
         }));
-    };
 
+        gsap.to(`.animate-sub-menu${index}`, {
+            duration: 0.5,
+            height: !isOpenSubMenu[index] ? 'auto' : '0px',
+            opacity: !isOpenSubMenu[index] ? 1 : 0,
+        });
+    };
+    /*
+       useEffect(() => {
+           if (isOpen) {
+               document.body.style.overflow = 'hidden';
+           } else {
+               document.body.style.overflow = '';
+           }
+           return () => {
+               document.body.style.overflow = '';
+           };
+       }, [isOpen]);
+
+     */
     useGSAP(() => {
         if (isOpen) {
             gsap.timeline()
-                .set(menuRef.current, {display: "initial"})
+                .set(menuRef.current, {display: "block"})
                 .to(menuRef.current, MenuAnimationVariants.open);
 
             gsap.fromTo(
@@ -87,16 +105,6 @@ const MobileMenu = ({
                 .set(menuRef.current, {display: "none"});
         }
     }, {dependencies: [isOpen]});
-
-
-    useGSAP(() => {
-
-        gsap.to(".sub-menu__container", {
-            duration: 0.5,
-            height: 'auto',
-            opacity: 1,
-        });
-    }, {dependencies: [isOpenSubMenu]})
 
 
     return (
@@ -126,17 +134,15 @@ const MobileMenu = ({
                                     </button>
                                 }
                             </li>
-                            {isOpenSubMenu[index] && (
-                                <ul className="sub-menu__container">
-                                    {menu.subMenu.map((subMenu: any, subIndex: number) =>
-                                        <li key={subIndex}>
-                                            <HoverLink rout={subMenu.rout}>
-                                                {locale === "en" ? subMenu.nameEn : subMenu.nameUa}
-                                            </HoverLink>
-                                        </li>
-                                    )}
-                                </ul>
-                            )}
+                            <ul className={`animate-sub-menu${index} sub-menu__container `}>
+                                {menu.subMenu.map((subMenu: any, subIndex: number) =>
+                                    <li key={subIndex}>
+                                        <HoverLink rout={subMenu.rout}>
+                                            {locale === "en" ? subMenu.nameEn : subMenu.nameUa}
+                                        </HoverLink>
+                                    </li>
+                                )}
+                            </ul>
                         </React.Fragment>
                     )}
                     {session ? <button>logout</button> : null}
