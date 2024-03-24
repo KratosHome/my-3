@@ -34,8 +34,8 @@ const NavBar = ({navigation, session}: any) => {
 
 
     const filteredMenu = menuDate.filter(item => {
-        if (session && item.nameEn === "login") return false;
-        if (!session && item.nameEn === "cabinet") return false;
+        if (session && item.rout === "/login") return false;
+        if (!session && item.rout === "/cabinet") return false;
         return true;
     });
 
@@ -65,11 +65,11 @@ const NavBar = ({navigation, session}: any) => {
             </Link>
             <ul className={`nav-bar__list`} onMouseLeave={() => setIsOpenSubMenu({})}>
                 {filteredMenu.map((menu, index) =>
-                    <React.Fragment key={`${menu.nameUa} ${index}`}>
+                    <React.Fragment key={`${menu.rout}_${index + index + index}`}>
                         <li className={`menu-item item-hover`}
                             onMouseEnter={() => subMenuToggle(index)}>
-                            <HoverLink rout={`${locale}/${menu.rout}`}>
-                                {menu.nameUa}
+                            <HoverLink rout={`/${locale}/${menu.rout}`}>
+                                {locale === "en" ? menu.nameEn : menu.nameUa}
                                 {menu?.subMenu.length > 0 &&
                                     <button
                                         className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}

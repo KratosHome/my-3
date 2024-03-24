@@ -3,6 +3,7 @@ import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 import "./SubNav.scss";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
+import {usePathname} from "next/navigation";
 
 
 const AnimationVariants = {
@@ -47,10 +48,11 @@ const SubNavAnimationVariants = {
 };
 
 const SubNav = ({isOpen = false, navLink, navIndex}: any) => {
+    const pathname = usePathname();
+    const locale = pathname.split('/')[1];
     const subNavRef = useRef<HTMLUListElement | null>(null);
 
     useGSAP(() => {
-
             if (isOpen) {
                 gsap.timeline()
                     .set(subNavRef.current, {display: "grid"})
@@ -86,16 +88,15 @@ const SubNav = ({isOpen = false, navLink, navIndex}: any) => {
                 }
             }
         },
-
         {dependencies: [isOpen]}
     );
 
     return (
         <ul ref={subNavRef} className={`sub-nav__list`}>
             {navLink.map((menu: any, index: number) => (
-                <li key={`${menu.name}_${index}`} className={`sub-nav__item sub-nav__item--${navIndex}`}>
-                    <HoverLink rout={menu.name}>
-                        {menu.name}
+                <li key={`${menu.rout}_${index + index}`} className={`sub-nav__item sub-nav__item--${navIndex}`}>
+                    <HoverLink rout={menu.rout}>
+                        {locale === "en" ? menu.nameEn : menu.nameUa}
                     </HoverLink>
                     {menu?.subMenu.length > 0 && <SubNav navLink={menu.child} isOpen={isOpen}/>}
                 </li>

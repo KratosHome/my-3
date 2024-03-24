@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import NavBar from "../../Header/NavBar/NavBar";
-import UserNavLink from "../UserNavLink/UserNav";
 
 
 
@@ -76,7 +75,6 @@ const MobileMenu = ({
         </ul>
         <NavBar isMobileMenuOpen={true} />
       </div>
-      <UserNavLink isMobileMenuOpen={true} closeMenu={closeMenu} />
       <div
         style={{ display: "flex", alignItems: "center", paddingLeft: "16px" }}
       >

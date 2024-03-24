@@ -85,8 +85,8 @@ export const menuDate = [
         subMenu: []
     },
     {
-        nameUa: "cabinet",
-        nameEn: "кабіент",
+        nameUa: "кабіент",
+        nameEn: "cabinet",
         rout: "/cabinet",
         subMenu: []
     },
