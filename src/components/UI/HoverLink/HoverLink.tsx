@@ -6,14 +6,19 @@ import {usePathname} from "next/navigation";
 interface activeLinkType {
     children: ReactNode;
     rout: string
+    click?: () => void
 }
 
-const HoverLink: FC<activeLinkType> = ({children, rout}) => {
+const HoverLink: FC<activeLinkType> = ({children, rout, click}) => {
     const pathName = usePathname()
     const isActive = pathName === rout; // pathName.includes(rout);
 
     return (
-        <Link className={`container-link ${isActive ? "active-link" : "animate-link"}`} href={rout}>
+        <Link
+            className={`container-link ${isActive ? "active-link" : "animate-link"}`}
+            href={rout}
+            onClick={click}
+        >
             {children}
         </Link>
     );

@@ -1,12 +1,12 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./MobileMenu.scss";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
 import ArrowDownSvg from "@/components/SVG/ArrowDownSvg";
-import SubNav from "@/components/Header/DesktopHeader/SubNav/SubNav";
 import {usePathname} from "next/navigation";
-import {menuDate} from "@/mokDate/menuDate";
+import CloseSvg from "@/components/SVG/CloseSvg";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 
 const MenuAnimationVariants = {
@@ -50,6 +50,7 @@ const MobileMenu = ({
     closeMenu: (value: boolean) => void;
     filteredMenu: any
 }) => {
+    const {contextSafe} = useGSAP()
     const pathname = usePathname();
     const locale = pathname.split('/')[1];
     const menuRef = useRef<HTMLDivElement | null>(null);
@@ -64,26 +65,39 @@ const MobileMenu = ({
 
     const subMenuToggle = (index: number) => {
         setIsOpenSubMenu((prevState: any) => ({
-            ...prevState, // Копіюємо попередній стан
-            [index]: !prevState[index] // Переключаємо стан для конкретного індексу
+            ...prevState,
+            [index]: !prevState[index]
         }));
     };
 
     useGSAP(() => {
-            if (isOpen) {
-                gsap.timeline()
-                    .set(menuRef.current, {display: "initial"})
-                    .to(menuRef.current, MenuAnimationVariants.open);
+        if (isOpen) {
+            gsap.timeline()
+                .set(menuRef.current, {display: "initial"})
+                .to(menuRef.current, MenuAnimationVariants.open);
 
-                const elements = menuRef?.current?.querySelectorAll(".mobile-menu__item") || null;
-                gsap.fromTo(elements, AnimationVariants.closed, AnimationVariants.open);
-            } else {
-                gsap.timeline()
-                    .to(menuRef.current, MenuAnimationVariants.closed)
-                    .set(menuRef.current, {display: "none"});
-            }
-        },
-        {dependencies: [isOpen]});
+            gsap.fromTo(
+                ".mobile-menu__item",
+                AnimationVariants.closed,
+                AnimationVariants.open
+            );
+        } else {
+            gsap.timeline()
+                .to(menuRef.current, MenuAnimationVariants.closed)
+                .set(menuRef.current, {display: "none"});
+        }
+    }, {dependencies: [isOpen]});
+
+
+    useGSAP(() => {
+
+        gsap.to(".sub-menu__container", {
+            duration: 0.5,
+            height: 'auto',
+            opacity: 1,
+        });
+    }, {dependencies: [isOpenSubMenu]})
+
 
     return (
         <div
@@ -92,36 +106,40 @@ const MobileMenu = ({
             onClick={(e) => closeMenuHandler(e)}
         >
             <div className="mobile-menu__wrapper">
+                <div className="burger-mob-menu-btn">
+                    <button onClick={() => closeMenu(false)}>
+                        <CloseSvg/>
+                    </button>
+                </div>
                 <ul className="extra-menu__list">
                     {filteredMenu.map((menu: any, index: number) =>
                         <React.Fragment key={`${menu.rout}_${index + index + index}`}>
-                            <li onClick={() => subMenuToggle(index)}>
-                                <HoverLink rout={`/${locale}/${menu.rout}`}>
+                            <li className="mobile-menu__item">
+                                <HoverLink rout={`/${locale}/${menu.rout}`} click={() => closeMenu(false)}>
                                     {locale === "en" ? menu.nameEn : menu.nameUa}
-                                    {menu?.subMenu.length > 0 &&
-                                        <button
-                                            className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}>
-                                            <ArrowDownSvg/>
-                                        </button>
-                                    }
                                 </HoverLink>
-                                {session ? <button>logout</button> : null}
+                                {menu?.subMenu.length > 0 &&
+                                    <button
+                                        onClick={() => subMenuToggle(index)}
+                                        className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}>
+                                        <ArrowDownSvg/>
+                                    </button>
+                                }
                             </li>
-                            {menu?.subMenu.length > 0 && isOpenSubMenu[index] && (
-                                <div>
+                            {isOpenSubMenu[index] && (
+                                <ul className="sub-menu__container">
                                     {menu.subMenu.map((subMenu: any, subIndex: number) =>
-                                        <ul key={subIndex}>
-                                            <li>
-                                                <HoverLink rout={menu.rout}>
-                                                    {locale === "en" ? subMenu.nameEn : subMenu.nameUa}
-                                                </HoverLink>
-                                            </li>
-                                        </ul>
+                                        <li key={subIndex}>
+                                            <HoverLink rout={subMenu.rout}>
+                                                {locale === "en" ? subMenu.nameEn : subMenu.nameUa}
+                                            </HoverLink>
+                                        </li>
                                     )}
-                                </div>
+                                </ul>
                             )}
                         </React.Fragment>
                     )}
+                    {session ? <button>logout</button> : null}
                 </ul>
             </div>
         </div>
