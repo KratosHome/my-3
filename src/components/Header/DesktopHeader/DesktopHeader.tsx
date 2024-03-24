@@ -1,10 +1,10 @@
 "use client";
-import "./NavBar.scss";
+import "./DesktopHeader.scss";
 import Link from "next/link";
 import React, {useState} from "react";
 import {menuDate} from "@/mokDate/menuDate";
 import ArrowDownSvg from "@/components/SVG/ArrowDownSvg";
-import SubNav from "@/components/Header/SubNav/SubNav";
+import SubNav from "@/components/Header/DesktopHeader/SubNav/SubNav";
 import Image from "next/image";
 import LanguageChange from "@/components/LanguageChange/LanguageChange";
 import ThemeChange from "@/components/ThemeChange/ThemeChange";
@@ -13,7 +13,7 @@ import {useGSAP} from "@gsap/react";
 import {gsap} from "gsap";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
 
-const NavBar = ({navigation, session}: any) => {
+const DesktopHeader = ({session, filteredMenu}: any) => {
     const pathname = usePathname();
     const locale = pathname.split('/')[1];
 
@@ -31,13 +31,6 @@ const NavBar = ({navigation, session}: any) => {
         newSubMenuState[index] = true;
         setIsOpenSubMenu(newSubMenuState);
     };
-
-
-    const filteredMenu = menuDate.filter(item => {
-        if (session && item.rout === "/login") return false;
-        if (!session && item.rout === "/cabinet") return false;
-        return true;
-    });
 
 
     useGSAP(() => {
@@ -64,7 +57,7 @@ const NavBar = ({navigation, session}: any) => {
                 <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
             </Link>
             <ul className={`nav-bar__list`} onMouseLeave={() => setIsOpenSubMenu({})}>
-                {filteredMenu.map((menu, index) =>
+                {filteredMenu.map((menu: any, index: number) =>
                     <React.Fragment key={`${menu.rout}_${index + index + index}`}>
                         <li className={`menu-item item-hover`}
                             onMouseEnter={() => subMenuToggle(index)}>
@@ -102,4 +95,4 @@ const NavBar = ({navigation, session}: any) => {
     );
 };
 
-export default NavBar;
+export default DesktopHeader;

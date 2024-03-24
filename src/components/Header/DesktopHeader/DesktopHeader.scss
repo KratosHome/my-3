@@ -2,13 +2,14 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  position: relative;
 
   ul {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 25px;
-    margin-top: 25px;
+    gap: 30px;
+    margin-top: -10px;
     color: var(--text-color);
 
     .menu-item {
@@ -32,14 +33,12 @@
       .sub-menu__btn--open {
         transform: rotate(180deg);
       }
-
     }
   }
 
   .logo {
     opacity: 0;
   }
-
 
   .nav-bar-toggle {
     opacity: 0;

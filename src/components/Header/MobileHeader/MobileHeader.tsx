@@ -1,15 +1,15 @@
 "use client";
-import {useState} from "react";
+import React, {useState} from "react";
 import "./MobileHeader.scss";
-import {usePathname} from "next/navigation";
 import Link from "next/link";
 import CloseSvg from "@/components/SVG/CloseSvg";
 import BurgerMenuSvg from "@/components/SVG/BurgerMenuSvg";
-import MobileMenu from "../MobileMenu/MobileMenu";
+import MobileMenu from "@/components/Header/MobileHeader/MobileMenu/MobileMenu";
 import Image from "next/image";
+import LanguageChange from "@/components/LanguageChange/LanguageChange";
+import ThemeChange from "@/components/ThemeChange/ThemeChange";
 
-const MobileHeader = () => {
-    const pathname = usePathname();
+const MobileHeader = ({session, filteredMenu}: any) => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
 
     const menuToggle = () => {
@@ -17,17 +17,23 @@ const MobileHeader = () => {
     };
 
     return (
-        <div className="main-header-client">
-            <div className="mobile-only">
-                <button type="button" className="burger-menu-btn" onClick={menuToggle}>
-                    {isOpenMenu ? <CloseSvg/> : <BurgerMenuSvg/>}
-                </button>
-                <MobileMenu isOpen={isOpenMenu} closeMenu={menuToggle}/>
-            </div>
-
+        <div className="container-header-mobile">
+            <button type="button" className="burger-menu-btn" onClick={menuToggle}>
+                {isOpenMenu ? <CloseSvg/> : <BurgerMenuSvg/>}
+            </button>
+            <MobileMenu
+                session={session}
+                isOpen={isOpenMenu}
+                closeMenu={setIsOpenMenu}
+                filteredMenu={filteredMenu}
+            />
             <Link href="/" className="logo">
                 <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
             </Link>
+            <div className="nav-bar-toggle">
+                <LanguageChange/>
+                <ThemeChange/>
+            </div>
         </div>
     );
 };
