@@ -13,38 +13,55 @@
   font-weight: 600;
   line-height: 1.5;
   scroll-behavior: auto;
-  color: var(--text-color);
-  border-top: 1px solid var(--stoke);
 
 
   .mobile-menu__wrapper {
-    background-color: red;
-    background-color: rgba(90, 38, 155, 0.98);
+    background-color: var(--sub-menu-background);
     width: 90vw;
     height: 100svh;
     overflow: auto;
     padding: 0 5px 20px 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
 
     .burger-mob-menu-btn {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
 
       button {
         background-color: transparent;
         border: none;
-        color: var(--text-color);
         line-height: 1.5;
         padding: 10px 20px;
         cursor: pointer;
+
+        svg {
+          stroke: var(--sub-menu-color);
+        }
       }
     }
 
     .extra-menu__list {
 
+      a {
+        background-color: var(--sub-menu-color);
+      }
+
       li {
         display: flex;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        margin-bottom: 5px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        margin-bottom: 10px;
+
+        .sub-menu__btn {
+          display: flex;
+          transition: transform 0.5s ease;
+          transform-origin: center;
+        }
+
+        .sub-menu__btn--open {
+          transform: rotate(180deg);
+        }
       }
 
       .sub-menu__btn {

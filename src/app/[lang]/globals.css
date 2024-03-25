@@ -30,6 +30,8 @@
     --experience-background-open: #e7e7fa;
     --experience-background-hover: rgba(109, 36, 201, 1);
     --safe-area-inset-top: env(safe-area-inset-top);
+    --sub-menu-background: rgba(90, 38, 155, 0.8);
+    --sub-menu-color: #F7F7F7;
 }
 
 [data-theme="dark"] {
@@ -67,6 +69,8 @@
     --experience-background-open: rgba(14, 14, 16, 0.5);
     --experience-background-hover: rgba(109, 36, 201, 0.5);
     --safe-area-inset-top: env(safe-area-inset-top);
+    --sub-menu-background: rgba(90, 38, 155, 0.8);
+    --sub-menu-color: #F7F7F7;
 }
 
 /*  font-size: calc(var(--index) * 1); */

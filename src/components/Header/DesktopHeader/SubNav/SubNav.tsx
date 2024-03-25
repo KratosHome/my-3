@@ -53,43 +53,36 @@ const SubNav = ({isOpen = false, navLink, navIndex}: any) => {
     const subNavRef = useRef<HTMLUListElement | null>(null);
 
     useGSAP(() => {
+        if (isOpen) {
+            gsap.timeline().set(subNavRef.current, {display: "grid"})
+                .fromTo(
+                    subNavRef.current,
+                    SubNavAnimationVariants.closed,
+                    SubNavAnimationVariants.open
+                );
+        } else {
+            gsap.timeline().fromTo(
+                subNavRef.current,
+                SubNavAnimationVariants.open,
+                SubNavAnimationVariants.closed
+            )
+                .set(subNavRef.current, {display: "none"});
+        }
+
+        if (subNavRef?.current?.children) {
+            const subNavChildrenAnim = gsap.timeline()
+                .fromTo(subNavRef.current.children,
+                    AnimationVariants.closed,
+                    AnimationVariants.open
+                )
+                .reverse();
             if (isOpen) {
-                gsap.timeline()
-                    .set(subNavRef.current, {display: "grid"})
-                    .fromTo(
-                        subNavRef.current,
-                        SubNavAnimationVariants.closed,
-                        SubNavAnimationVariants.open
-                    );
+                subNavChildrenAnim.reversed(!subNavChildrenAnim);
             } else {
-                gsap.timeline()
-                    .fromTo(
-                        subNavRef.current,
-                        SubNavAnimationVariants.open,
-                        SubNavAnimationVariants.closed
-                    )
-                    .set(subNavRef.current, {display: "none"});
+                subNavChildrenAnim.reversed();
             }
-
-            if (subNavRef?.current?.children) {
-                const subNavChildrenAnim = gsap
-                    .timeline()
-                    .fromTo(
-                        subNavRef.current.children,
-                        AnimationVariants.closed,
-                        AnimationVariants.open
-                    )
-                    .reverse();
-
-                if (isOpen) {
-                    subNavChildrenAnim.reversed(!subNavChildrenAnim);
-                } else {
-                    subNavChildrenAnim.reversed();
-                }
-            }
-        },
-        {dependencies: [isOpen]}
-    );
+        }
+    }, {dependencies: [isOpen]});
 
     return (
         <ul ref={subNavRef} className={`sub-nav__list`}>

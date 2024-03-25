@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import "./MobileMenu.scss";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
@@ -6,7 +6,8 @@ import HoverLink from "@/components/UI/HoverLink/HoverLink";
 import ArrowDownSvg from "@/components/SVG/ArrowDownSvg";
 import {usePathname} from "next/navigation";
 import CloseSvg from "@/components/SVG/CloseSvg";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
+import Link from "next/link";
+import Image from "next/image";
 
 
 const MenuAnimationVariants = {
@@ -115,7 +116,10 @@ const MobileMenu = ({
         >
             <div className="mobile-menu__wrapper">
                 <div className="burger-mob-menu-btn">
-                    <button onClick={() => closeMenu(false)}>
+                    <Link href="/" className="logo" onClick={() => closeMenu(false)}>
+                        <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
+                    </Link>
+                    <button className="sub-menu-btn" onClick={() => closeMenu(false)}>
                         <CloseSvg/>
                     </button>
                 </div>
@@ -127,9 +131,8 @@ const MobileMenu = ({
                                     {locale === "en" ? menu.nameEn : menu.nameUa}
                                 </HoverLink>
                                 {menu?.subMenu.length > 0 &&
-                                    <button
-                                        onClick={() => subMenuToggle(index)}
-                                        className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}>
+                                    <button onClick={() => subMenuToggle(index)}
+                                            className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}>
                                         <ArrowDownSvg/>
                                     </button>
                                 }
@@ -137,7 +140,7 @@ const MobileMenu = ({
                             <ul className={`animate-sub-menu${index} sub-menu__container `}>
                                 {menu.subMenu.map((subMenu: any, subIndex: number) =>
                                     <li key={subIndex}>
-                                        <HoverLink rout={subMenu.rout}>
+                                        <HoverLink rout={subMenu.rout} click={() => closeMenu(false)}>
                                             {locale === "en" ? subMenu.nameEn : subMenu.nameUa}
                                         </HoverLink>
                                     </li>

@@ -4,11 +4,15 @@
   position: absolute;
   z-index: 50;
   bottom: 0;
-  background-color: rgba(90, 38, 155, 0.8);
+  background-color: var(--sub-menu-background);
   padding: 5px 25px;
   width: 100%;
   right: 0;
   left: 0;
   grid-template-columns: repeat(4, minmax(166px, 1fr));
-  border-radius: 10px;
+  border-radius: 3px;
+
+  a {
+    background-color: var(--sub-menu-color);
+  }
 }
