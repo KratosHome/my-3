@@ -1,6 +1,6 @@
 'use client'
 import React, {FC} from 'react';
-import "./Button.scss";
+import st from "./Button.module.scss";
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 
 interface ButtonType {
@@ -13,7 +13,7 @@ const Button: FC<ButtonType> = ({children, onClick}: any) => {
         <ButtonAnimation
             isPulse={false}
             as="button"
-            className={"container-button"}
+            className={st.containerButton}
             onClick={onClick}
         >
             {children}

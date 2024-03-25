@@ -12,6 +12,7 @@ import {usePathname} from "next/navigation";
 import {useGSAP} from "@gsap/react";
 import {gsap} from "gsap";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
+import LogOut from "@/components/LogOut/LogOut";
 
 const DesktopHeader = ({session, filteredMenu}: any) => {
     const pathname = usePathname();
@@ -75,7 +76,6 @@ const DesktopHeader = ({session, filteredMenu}: any) => {
                                     </button>
                                 }
                             </HoverLink>
-                            {session ? <button>logout</button> : null}
                         </li>
                         {menu?.subMenu.length > 0 && (
                             <SubNav
@@ -86,6 +86,7 @@ const DesktopHeader = ({session, filteredMenu}: any) => {
                         )}
                     </React.Fragment>
                 )}
+                {session ? <LogOut/> : null}
             </ul>
             <div className="nav-bar-toggle">
                 <LanguageChange/>

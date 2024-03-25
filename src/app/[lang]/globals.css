@@ -32,6 +32,7 @@
     --safe-area-inset-top: env(safe-area-inset-top);
     --sub-menu-background: rgba(90, 38, 155, 0.8);
     --sub-menu-color: #F7F7F7;
+    --link-color: #4648d7;
 }
 
 [data-theme="dark"] {
@@ -71,6 +72,7 @@
     --safe-area-inset-top: env(safe-area-inset-top);
     --sub-menu-background: rgba(90, 38, 155, 0.8);
     --sub-menu-color: #F7F7F7;
+    --link-color: #d8e3ae;
 }
 
 /*  font-size: calc(var(--index) * 1); */
