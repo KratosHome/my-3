@@ -10,6 +10,7 @@ import {handleHover} from "@/components/UIA/Hover/hover";
 export default function LanguageChange() {
     const router = useRouter();
     const pathName = usePathname();
+    const locale = pathName.split('/')[1];
 
     const ref = useRef(null);
     const {contextSafe} = useGSAP();
@@ -28,15 +29,15 @@ export default function LanguageChange() {
             ref={ref}
             onMouseEnter={handleMouseEnter}
             className={"container-language-change"}
-            onClick={() => redirectedPathName(pathName === "/ua" ? "en" : "ua")}
+            onClick={() => redirectedPathName(locale === "ua" ? "en" : "ua")}
         >
-            <span>{pathName === "/ua" ? "en" : "ua"}</span>
+            <span>{locale === "ua" ? "en" : "ua"}</span>
             <Image
                 title={pathName === "/ua" ? "перемикання мови" : "switch language"}
                 src={"/icons/arrow.svg"}
                 width={10}
                 height={10}
-                alt={pathName === "/ua" ? "UA Flag" : "US Flag"}
+                alt={locale === "ua" ? "UA Flag" : "US Flag"}
             />
         </div>
     )

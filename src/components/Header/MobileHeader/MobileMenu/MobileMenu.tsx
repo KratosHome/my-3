@@ -51,7 +51,6 @@ const MobileMenu = ({
     closeMenu: (value: boolean) => void;
     filteredMenu: any
 }) => {
-    const {contextSafe} = useGSAP()
     const pathname = usePathname();
     const locale = pathname.split('/')[1];
     const menuRef = useRef<HTMLDivElement | null>(null);
