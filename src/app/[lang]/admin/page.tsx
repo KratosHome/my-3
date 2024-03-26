@@ -6,7 +6,6 @@ export default async function Page({params: {lang}}: any) {
     const dict = await getDictionary(lang)
     const session = await auth();
 
-    console.log(session)
     if (session === null) {
         redirect(`/${lang}`);
     }

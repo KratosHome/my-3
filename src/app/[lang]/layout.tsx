@@ -10,6 +10,7 @@ import Head from "next/head";
 import MyThemeProvider from "@/components/MyThemeProvider/MyThemeProvider";
 import {auth} from "@/lib/users/auth";
 import Header from "@/components/Header/Header";
+import SessionWrapper from "@/components/SessionWrapper/SessionWrapper";
 
 
 export default async function RootLayout({
@@ -87,12 +88,14 @@ export default async function RootLayout({
         <GoogleTagManager/>
         <MyThemeProvider>
             <ReduxProvider>
-                <body>
-                <Header navigation={navigation} session={session}/>
-                <StarsCanvas/>
-                {children}
-                </body>
-                <Footer/>
+                <SessionWrapper>
+                    <body>
+                    <Header navigation={navigation} session={session}/>
+                    <StarsCanvas/>
+                    {children}
+                    </body>
+                    <Footer/>
+                </SessionWrapper>
             </ReduxProvider>
         </MyThemeProvider>
         </html>

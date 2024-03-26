@@ -1,15 +1,15 @@
 "use client"
 import React, {useEffect, useState} from 'react';
 import "./СhangePasswordWrapper.scss"
-import {useParams} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
 import MyInput from "@/components/UI/MyInput/MyInput";
 import Button from "@/components/UI/Button/Button";
 import Loading from "@/components/UI/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
-import {router} from "next/client";
 
 const СhangePasswordWrapper = ({dict, lang}: any) => {
     const params = useParams()
+    const router = useRouter()
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const [loading, setIsLoading] = useState(false);

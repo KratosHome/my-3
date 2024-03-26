@@ -1,3 +1,6 @@
+import NavBarAdmin from "@/components/admin/NavBarAdmin/NavBarAdmin";
+import "./admin.scss"
+
 export default function RootLayout({
                                        children,
                                        params: {locale},
@@ -7,9 +10,10 @@ export default function RootLayout({
 }>) {
 
     return (
-        <>layout
+        <div className="admin_container">
+            <NavBarAdmin/>
             {children}
-        </>
+        </div>
 
     );
 }
