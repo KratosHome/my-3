@@ -10,11 +10,11 @@ export const createUsers = async (session: any) => {
     try {
         connectToDb();
 
-        const user = await User.findOne({email: session.user.email});
+        const user = await User.findOne({email: session.user.email.toLowerCase()});
         if (!user) {
             const newUser = new User({
                 username: session.user.name,
-                email: session.user.email,
+                email: session.user.email.toLowerCase(),
                 image: session.user.image,
             });
 
@@ -68,7 +68,7 @@ export const addUser = async (prevState: any, formData: any) => {
         connectToDb();
         const newUser = new User({
             username,
-            email,
+            email: email.toLowerCase(),
             password,
             img,
         });
@@ -106,7 +106,7 @@ export const register = async (formData: any) => {
 
     try {
         connectToDb();
-        const user = await User.findOne({email: email});
+        const user = await User.findOne({email: email.toLowerCase()});
         if (user) return {error: "Username already exists"};
 
         const salt = await bcrypt.genSalt(10);
@@ -114,14 +114,12 @@ export const register = async (formData: any) => {
 
         const newUser = new User({
             username,
-            email,
+            email: email.toLowerCase(),
             password: hashedPassword,
             img,
         });
 
         await newUser.save();
-        console.log("saved to db");
-
         return {success: true};
     } catch (err) {
         console.log(err);
@@ -132,12 +130,16 @@ export const register = async (formData: any) => {
 
 export const login = async (formData: any) => {
     "use server"
-    const { email, password } = Object.fromEntries(formData);
+    const {email, password} = Object.fromEntries(formData);
 
     try {
-        await signIn("credentials", { email, password });
+        await signIn("credentials", {
+            email: email.toLowerCase(),
+            password});
     } catch (err) {
         console.log(err);
         throw err;
     }
 };
+
+

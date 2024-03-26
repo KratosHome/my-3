@@ -6,9 +6,10 @@ type ButtonType = HTMLAttributes<HTMLElement> & AnchorHTMLAttributes<HTMLAnchorE
     children: React.ReactNode;
     as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
     isPulse: boolean
+    disabled: boolean
 };
 
-const ButtonAnimation: FC<ButtonType> = ({children, as = 'div', isPulse, ...props}) => {
+const ButtonAnimation: FC<ButtonType> = ({children, as = 'div', isPulse, disabled, ...props}) => {
     const controls = useAnimation();
 
     const handleMouseEnter = () => {
@@ -30,6 +31,7 @@ const ButtonAnimation: FC<ButtonType> = ({children, as = 'div', isPulse, ...prop
             initial={{scale: 1}}
             animate={controls}
             onMouseEnter={handleMouseEnter}
+            disabled={disabled}
             whileTap={{
                 scale: 0.9,
                 transition: {

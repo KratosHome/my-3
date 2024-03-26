@@ -3,7 +3,7 @@ import {auth} from "@/lib/users/auth";
 import {createUsers} from "@/lib/users/userController";
 import {redirect} from "next/navigation";
 import React from "react";
-import ForgotPasswordWrapper from "@/components/auth/ForgotPasswordWrapper/ForgotPasswordWrapper";
+import СhangePasswordWrapper from "@/components/auth/СhangePasswordWrapper/СhangePasswordWrapper";
 
 export default async function Page({params: {lang}}: any) {
     const dict = await getDictionary(lang)
@@ -15,7 +15,7 @@ export default async function Page({params: {lang}}: any) {
     }
     return (
         <>
-            <ForgotPasswordWrapper dict={dict}/>
+            <СhangePasswordWrapper lang={lang} dict={dict}/>
         </>
     );
 }

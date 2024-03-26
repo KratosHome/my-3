@@ -4,7 +4,7 @@ import "./TrustedBy.scss"
 import Button from "@/components/UI/Button/Button";
 import MyModal from "@/components/UI/MyModal/MyModal";
 import {usePathname} from "next/navigation";
-import FormHLeaveReview from "@/components/FormHLeaveReview/FormHLeaveReview";
+import FormHLeaveReview from "@/components/home/FormHLeaveReview/FormHLeaveReview";
 import Swiper from "@/components/UI/Swiper/Swiper";
 import {useH2Animation} from "@/animation/useH2Animation";
 

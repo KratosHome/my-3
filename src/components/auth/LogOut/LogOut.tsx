@@ -1,6 +1,6 @@
 import React from 'react';
 import "./LogOut.scss";
-import {logoutAction} from "@/components/LogOut/logoutAction.server";
+import {logoutAction} from "@/components/auth/LogOut/logoutAction.server";
 
 export default function LogOut() {
     const handleLogout = async (e: any) => {

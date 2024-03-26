@@ -12,7 +12,7 @@ import {usePathname} from "next/navigation";
 import {useGSAP} from "@gsap/react";
 import {gsap} from "gsap";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
-import LogOut from "@/components/LogOut/LogOut";
+import LogOut from "@/components/auth/LogOut/LogOut";
 
 const DesktopHeader = ({session, filteredMenu}: any) => {
     const pathname = usePathname();

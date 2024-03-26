@@ -2,7 +2,7 @@
 import React from 'react';
 import "./Experience.scss";
 import {motion} from 'framer-motion';
-import ExperienceList from "@/components/Experience/ExperienceList/ExperienceList";
+import ExperienceList from "@/components/home/Experience/ExperienceList/ExperienceList";
 import {usePathname} from "next/navigation";
 import {useH2Animation} from "@/animation/useH2Animation";
 

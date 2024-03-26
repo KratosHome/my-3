@@ -1,0 +1,29 @@
+import {createUsers} from "@/lib/users/userController";
+import {auth} from "@/lib/users/auth";
+import RegisterForm from "@/components/RegisterForm/RegisterForm";
+import React from "react";
+import {getDictionary} from "@/services/dictionary";
+import {redirect} from "next/navigation";
+import "./SingUp.scss"
+import GitHubButton from "@/components/UI/GitHubButton/GitHubButton";
+import OrLine from "@/components/UI/OrLine/OrLine";
+
+export default async function Page({params: {lang}}: any) {
+    const dict = await getDictionary(lang)
+    const session = await auth();
+
+    if (session?.user) {
+        await createUsers(session)
+        redirect(`/${lang}/admin`);
+    }
+    return (
+        <div className="sign-up__container">
+            <div>
+                <h1>Sing Up</h1>
+                <GitHubButton/>
+                <OrLine>{dict.page.login.or}</OrLine>
+                <RegisterForm dict={dict}/>
+            </div>
+        </div>
+    );
+}

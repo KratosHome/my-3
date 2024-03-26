@@ -2,12 +2,12 @@ import {Viewport} from 'next'
 import React, {lazy} from "react";
 import ContainerModel from "@/components/ContainerModel/ContainerModel";
 
-const HeroSection = lazy(() => import('@/components/HeroSection/HeroSection'));
-const WrapperRequest = lazy(() => import('@/components/WrapperRequest/WrapperRequest'));
-const AboutMe = lazy(() => import('@/components/AboutMe/AboutMe'));
+const HeroSection = lazy(() => import('@/components/home/HeroSection/HeroSection'));
+const WrapperRequest = lazy(() => import('@/components/home/WrapperRequest/WrapperRequest'));
+const AboutMe = lazy(() => import('@/components/home/AboutMe/AboutMe'));
 const Connect = lazy(() => import('@/components/Connect/Connect'));
 const Services = lazy(() => import('@/components/Services/Services'));
-const Experience = lazy(() => import('@/components/Experience/Experience'));
+const Experience = lazy(() => import('@/components/home/Experience/Experience'));
 const Projects = lazy(() => import('@/components/Projects/Projects'));
 
 

@@ -1,6 +1,6 @@
 "use client"
 import React, {useEffect, useRef} from 'react';
-import FormHireMe from "@/components/FormHireMe/FormHireMe";
+import FormHireMe from "@/components/home/FormHireMe/FormHireMe";
 import "./Connect.scss";
 import {usePathname} from "next/navigation";
 import Button from "@/components/UI/Button/Button";

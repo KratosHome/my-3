@@ -1,7 +1,11 @@
 "use client"
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import "./RegisterForm.scss";
+import MyInput from "@/components/UI/MyInput/MyInput";
+import Button from "@/components/UI/Button/Button";
+import Warning from "@/components/UI/Warning/Warning";
 
-const RegisterForm = () => {
+const RegisterForm = ({dict}: any) => {
     const [error, setError] = useState('');
 
     const handleSubmit = async (event: any) => {
@@ -10,7 +14,6 @@ const RegisterForm = () => {
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
 
-        console.log(data);
         const res = await fetch('/api/register', {
             method: 'POST',
             headers: {
@@ -30,16 +33,15 @@ const RegisterForm = () => {
     };
 
     return (
-        <div>
+        <div className="register-form__container">
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="username" name="username"/>
-                <input type="text" placeholder="email" name="email"/>
-                <input type="text" placeholder="password" name="password"/>
-                <input type="text" placeholder="repeat password" name="passwordRepeat"/>
-                <input type="text" placeholder="img" name="img"/>
-                <button type={"submit"}>register</button>
+                <MyInput type={"text"} placeholder={dict.page.login.username} name={"username"}/>
+                <MyInput type={"text"} placeholder={dict.page.login.email} name={"email"}/>
+                <MyInput type={"password"} placeholder={dict.page.login.password} name={"password"}/>
+                <MyInput type={"password"} placeholder={dict.page.login.repeatPassword} name={"passwordRepeat"}/>
+                <Button>{dict.page.login.submit}</Button>
             </form>
-            {error && <div>{error}</div>}
+            {error && <Warning color={"error"}>{error}</Warning>}
         </div>
     );
 };

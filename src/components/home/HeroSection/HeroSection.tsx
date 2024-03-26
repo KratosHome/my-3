@@ -3,7 +3,7 @@ import React, {useRef, useState} from 'react';
 import MainTitle from "@/components/MainTitle/MainTitle";
 import "./HeroSection.scss";
 import MyModal from "@/components/UI/MyModal/MyModal";
-import FormHireMe from "@/components/FormHireMe/FormHireMe";
+import FormHireMe from "@/components/home/FormHireMe/FormHireMe";
 import {usePathname} from "next/navigation";
 import SocialLicks from "@/components/SocialLicks/SocialLicks";
 import gsap from "gsap";

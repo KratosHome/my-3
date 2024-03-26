@@ -2,7 +2,7 @@
 import "./ContainerModel.scss";
 import Swim from "@/components/UIA/Swim/Swim";
 import React from 'react';
-import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
+import ComputersCanvas from "@/components/home/ComputersCanvas/ComputersCanvas";
 
 const ContainerModel = () => {
 
