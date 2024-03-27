@@ -12,7 +12,9 @@ export default function RootLayout({
     return (
         <div className="admin_container">
             <NavBarAdmin/>
-            {children}
+            <div className="children-admin">
+                {children}
+            </div>
         </div>
 
     );

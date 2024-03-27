@@ -1,0 +1,11 @@
+.user-wrapper_container {
+  border: 1px solid red;
+  height: 70svh;
+  margin: 0 0 20px 10px;
+  overflow-x: auto;
+  max-width: calc(100vw - 250px);
+
+  .item-wrapper_container {
+    display: flex;
+  }
+}
