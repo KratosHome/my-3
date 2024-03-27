@@ -4,56 +4,41 @@ import "./NavBarAdmin.scss";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {useSession} from "next-auth/react";
+import {adminNavBar} from "@/mokDate/adminNavBar";
+import Lock from "@/components/SVG/Lock";
 
-const navBar = [
-    {
-        nameUa: "головна",
-        nameEn: "main",
-        url: "/admin",
-        role: ["all"]
-    },
-    {
-        nameUa: "проект",
-        nameEn: "project",
-        url: "/admin/project",
-        role: ["all"]
-    },
-    {
-        nameUa: "пости",
-        nameEn: "posts",
-        url: "/admin/my-posts",
-        role: ["all"]
-    },
-    {
-        nameUa: "налаштування",
-        nameEn: "settings",
-        url: "/admin/settings",
-        role: ["all"]
-    },
-    {
-        nameUa: "користувачи",
-        nameEn: "users",
-        url: "/admin/users",
-        role: ["admin"]
-    },
-]
 
 const NavBarAdmin = () => {
     const pathName = usePathname();
     const locale = pathName.split('/')[1];
-    const {data: session} = useSession()
+    const {data: session} = useSession<any>();
 
-    // const session = await auth();
-    console.log("session", session?.user?.isAdmin)
+    const hasAccess = (roles: string[]): boolean => {
+        return roles.includes('all') || ((session?.user as any)?.isAdmin && roles.includes('admin'));
+    };
+
+    const isActive = (url: string): boolean => {
+        return pathName === `/${locale}${url}`;
+    };
     return (
-        <div>
-            {navBar.map((item, index) =>
+        <div className="nav-bar-admin__container">
+            {adminNavBar.map((item: any, index: number) => (
                 <div key={item.url}>
-                    <Link href={`/${locale}${item.url}`}>
-                        {item.nameUa}
-                    </Link>
+                    {hasAccess(item.role) ? (
+                        <Link href={`/${locale}${item.url}`}
+                              className={isActive(item.url) ? 'active-link-nav-admin' : 'item-nav-bar-admin'}>
+                            {locale === "en" ? item.nameEn : item.nameUa}
+                        </Link>
+                    ) : (
+                        <div className="item-nav-bar-admin">
+                            <Lock/>
+                            <span>
+                                  {locale === "en" ? item.nameEn : item.nameUa}
+                             </span>
+                        </div>
+                    )}
                 </div>
-            )}
+            ))}
         </div>
     );
 };
