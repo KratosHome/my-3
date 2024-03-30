@@ -1,6 +1,7 @@
 import {connectToDb} from "@/lib/connectToDb";
 import {Post} from "@/lib/post/postSchema";
 import {revalidatePath} from "next/cache";
+import {a} from "@react-spring/three";
 
 
 export const getPosts = async (page: number = 1, limit: number = 10) => {
@@ -39,7 +40,7 @@ export const addPost = async (formData: any) => {
     const {title, desc, slug, userId} = Object.fromEntries(formData);
 
     try {
-        connectToDb();
+        await connectToDb();
         const newPost = new Post({
             title,
             desc,

@@ -1,3 +1,7 @@
-interface CustomUser {
-    isAdmin: boolean;
+interface User {
+    _id: string;
+}
+
+interface Session {
+    user?: User;
 }

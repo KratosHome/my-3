@@ -17,13 +17,17 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        isPublished: {
+            type: Boolean,
+            default: false,
+        },
         slug: {
             type: String,
-            required: true,
-            unique: true,
+            required: false,
+            unique: false,
         },
     },
-    { timestamps: true }
+    {timestamps: true}
 );
 
 export const Post = mongoose.models?.Post || mongoose.model("Post", postSchema);

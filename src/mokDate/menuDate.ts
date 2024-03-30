@@ -52,44 +52,7 @@ export const menuDate = [
         nameUa: "менторство",
         nameEn: "mentoring",
         rout: "/mentoring",
-        subMenu:  [
-            {
-                nameUa: "про мене",
-                nameEn: "about",
-                rout: "/#about",
-                subMenu: []
-            },
-            {
-                nameUa: "проекти",
-                nameEn: "projects",
-                rout: "/#projects",
-                subMenu: []
-            },
-            {
-                nameUa: "послуги",
-                nameEn: "services",
-                rout: "/#services",
-                subMenu: []
-            },
-            {
-                nameUa: "досвід",
-                nameEn: "experience",
-                rout: "/#experience",
-                subMenu: []
-            },
-            {
-                nameUa: "довіряють",
-                nameEn: "trusted by",
-                rout: "/#trustedBy",
-                subMenu: []
-            },
-            {
-                nameUa: "контакти",
-                nameEn: "contact",
-                rout: "/#contact",
-                subMenu: []
-            }
-        ]
+        subMenu: []
     },
     {
         nameUa: "студенти",
@@ -124,7 +87,7 @@ export const menuDate = [
     {
         nameUa: "кабіент",
         nameEn: "cabinet",
-        rout: "/cabinet",
+        rout: "/admin",
         subMenu: []
     },
 

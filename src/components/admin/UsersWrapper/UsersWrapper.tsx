@@ -74,8 +74,6 @@ const UsersWrapper = ({users}: any) => {
         }
     ]
 
-    console.log("users", users.users)
-
     return (
         <div className="user-wrapper_container">
             <DataTable

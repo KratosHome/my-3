@@ -4,6 +4,7 @@ import {User} from "@/lib/users/userSchema";
 import bcrypt from "bcryptjs";
 import {v4 as uuidv4} from "uuid";
 import nodemailer from "nodemailer";
+import {a} from "@react-spring/three";
 
 export async function POST(request: NextRequest) {
     if (request.method !== 'POST') return NextResponse.json({error: 'Method not allowed'}, {status: 405});
@@ -11,9 +12,9 @@ export async function POST(request: NextRequest) {
     const {email} = data;
 
     try {
-        connectToDb();
+        await connectToDb();
         const user = await User.findOne({email});
-        if (!user) return NextResponse.json({ error: "There is no such user" }, { status: 400 });
+        if (!user) return NextResponse.json({error: "There is no such user"}, {status: 400});
 
         const resetToken = uuidv4();
         user.resetPasswordToken = resetToken;
@@ -55,7 +56,7 @@ export async function POST(request: NextRequest) {
             html: emailTemplate,
         });
 
-        return NextResponse.json({ success: true }, { status: 201 });
+        return NextResponse.json({success: true}, {status: 201});
     } catch (err) {
         console.error(err);
     }

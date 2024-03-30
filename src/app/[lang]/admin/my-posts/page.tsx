@@ -1,11 +1,10 @@
-"use server"
-import {addPost} from "@/lib/post/postController";
+import CreatePost from "@/components/admin/CreatePost/CreatePost";
 
 export default async function Page() {
 
     return (
         <div>
-          my-posts
+            <CreatePost/>
         </div>
     );
 }

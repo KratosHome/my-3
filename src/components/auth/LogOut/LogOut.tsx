@@ -1,6 +1,7 @@
 import React from 'react';
 import "./LogOut.scss";
 import {logoutAction} from "@/components/auth/LogOut/logoutAction.server";
+import LogOutSvg from "@/components/SVG/LogOutSvg";
 
 export default function LogOut() {
     const handleLogout = async (e: any) => {
@@ -9,8 +10,8 @@ export default function LogOut() {
     }
 
     return (
-        <form onSubmit={handleLogout}>
-            <button>log out</button>
+        <form onSubmit={handleLogout} className="log-out__container">
+            <button><LogOutSvg/></button>
         </form>
     );
 }
