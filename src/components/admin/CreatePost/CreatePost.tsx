@@ -64,20 +64,17 @@ const CreatePost = () => {
 
 
     const cretePost = () => {
+        const formData = new FormData();
         const userId = (session?.user as any)?._id;
-        fetchData('/api/post/create',
-            {
-                userId: userId,
-                title: title,
-                desc: desc,
-                image: image
-            });
+        formData.append('userId', userId);
+        formData.append('title', title);
+        formData.append('desc', desc);
+        formData.append('image', image);
+
+        fetchData('/api/post/create', formData, true)
     }
 
-    console.log("data", data);
-    console.log("error", error);
 
-    // {dict.warnings.checkEmail}
     return (
         <>
             {isLoading && <Loading/>}
