@@ -1,6 +1,6 @@
 "use client"
 import "./createPost.scss";
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {useFetchData} from "@/hooks/useFetchData";
@@ -9,6 +9,7 @@ import Loading from "@/components/UI/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
 
 const CreatePost = () => {
+    const quillRef = useRef<any>(null);
     const {data: session} = useSession();
     const {data, error, isLoading, fetchData} = useFetchData<{ error?: string }>();
 
@@ -25,17 +26,20 @@ const CreatePost = () => {
         "#254563",
         "white"
     ];
-    const modules = {
-        toolbar: [
-            [{header: [1, 2, 3, 4, 5, 6, false]}],
-            ["bold", "italic", "underline", "strike", "blockquote"],
-            [{align: ["right", "center", "justify"]}],
-            [{list: "ordered"}, {list: "bullet"}],
-            ["link", "image"],
-            [{color: myColors}],
-            [{background: myColors}]
-        ]
-    };
+    const modules = React.useMemo(() => ({
+        toolbar: {
+            container: [
+                [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                ["bold", "italic", "underline", "strike", "blockquote"],
+                [{ align: [] }],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["link", "image"],
+                [{ color: myColors }],
+                [{ background: myColors }],
+            ],
+        },
+    }), []);
+
 
     const formats = [
         "header",
@@ -89,6 +93,7 @@ const CreatePost = () => {
                 />
                 <input type="file" onChange={handleImageChange}/>
                 <ReactQuill
+                    ref={quillRef}
                     className="text_area"
                     theme="snow"
                     modules={modules}

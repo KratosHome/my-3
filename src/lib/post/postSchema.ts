@@ -6,7 +6,27 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        titleEn: {
+            type: String,
+            required: true,
+        },
+        titleUa: {
+            type: String,
+            required: true,
+        },
+        url: {
+            type: String,
+            required: true,
+        },
         desc: {
+            type: String,
+            required: true,
+        },
+        descEn: {
+            type: String,
+            required: true,
+        },
+        descUa: {
             type: String,
             required: true,
         },
@@ -19,13 +39,9 @@ const postSchema = new mongoose.Schema(
         },
         isPublished: {
             type: Boolean,
+            required: true,
             default: false,
-        },
-        slug: {
-            type: String,
-            required: false,
-            unique: false,
-        },
+        }
     },
     {timestamps: true}
 );

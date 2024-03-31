@@ -6,11 +6,27 @@ import {a} from "@react-spring/three";
 
 export const getPosts = async (page: number = 1, limit: number = 10) => {
     try {
-        connectToDb();
-        const total = await Post.countDocuments();
+        await connectToDb();
+        const total = await Post.countDocuments({isPublished: true});
         const totalPages = Math.ceil(total / limit);
         const startIndex = (page - 1) * limit;
-        const posts = await Post.find().limit(limit).skip(startIndex);
+        const posts = await Post.aggregate([
+            {$match: {isPublished: true}},
+            {$limit: limit},
+            {$skip: startIndex},
+            {$project: {title: 1, img: 1, userId: 1}},
+            {$addFields: {convertedUserId: {$toObjectId: "$userId"}}},
+            {$lookup: {from: "users", localField: "convertedUserId", foreignField: "_id", as: "userDetails"}},
+            {$unwind: "$userDetails"},
+            {
+                $project: {
+                    title: 1,
+                    img: 1,
+                    userId: 1,
+                    userDetails: {email: "$userDetails.email", username: "$userDetails.username"}
+                }
+            }
+        ]);
         return {
             data: posts,
             total,

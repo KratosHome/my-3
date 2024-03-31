@@ -14,6 +14,9 @@ module.exports = {
             },
         ];
     },
+    images: {
+        domains: ['res.cloudinary.com'],
+    },
     env: {
         NEXT_MONGO_DB: process.env.NEXT_MONGO_DB,
         NEXT_GTM_ID: process.env.NEXT_GTM_ID,
