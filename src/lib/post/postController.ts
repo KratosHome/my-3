@@ -1,7 +1,6 @@
 import {connectToDb} from "@/lib/connectToDb";
 import {Post} from "@/lib/post/postSchema";
 import {revalidatePath} from "next/cache";
-import {a} from "@react-spring/three";
 
 
 export const getPosts = async (page: string = "1", limit: number = 10, lang: string) => {
@@ -28,6 +27,8 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
                 }
             }
         ]);
+
+
         return {
             data: posts,
             total,

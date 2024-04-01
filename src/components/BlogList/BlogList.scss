@@ -1,9 +1,19 @@
 .container-blog-list {
+  display: flex;
+  border: 1px solid red;
+  border-radius: 10px;
+  padding: 20px 0px 20px 20px;
 
   .img-container {
     position: relative;
     width: 230px;
     height: 230px;
     opacity: 0.9;
+  }
+
+  .user-name__blog-list {
+    writing-mode: vertical-lr;
+    transform: rotate(0deg);
+    cursor: default;
   }
 }

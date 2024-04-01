@@ -1,3 +1,4 @@
+import "./blog.scss"
 import BlogList from "@/components/BlogList/BlogList";
 import {getPosts} from "@/lib/post/postController";
 import PaginationControl from "@/components/PaginationControl/PaginationControl";
@@ -10,7 +11,7 @@ export default async function Page({params: {lang}, searchParams}: any) {
 
     return (
         <>
-            <div>
+            <div className="blog__container">
                 {posts.data.map((item, index) =>
                     <BlogList key={item.title} item={item}/>
                 )}

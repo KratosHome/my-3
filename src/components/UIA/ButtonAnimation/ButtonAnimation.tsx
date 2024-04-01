@@ -6,7 +6,7 @@ type ButtonType = HTMLAttributes<HTMLElement> & AnchorHTMLAttributes<HTMLAnchorE
     children: React.ReactNode;
     as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
     isPulse: boolean
-    disabled: boolean
+    disabled?: boolean
 };
 
 const ButtonAnimation: FC<ButtonType> = ({children, as = 'div', isPulse, disabled, ...props}) => {
