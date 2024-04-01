@@ -12,6 +12,9 @@ export async function POST(request: NextRequest) {
     const userId = formData.get('userId')
     const title = formData.get('title')
     const desc = formData.get('desc')
+    const local = formData.get('local')
+    const postId = formData.get('postId')
+    const url = formData.get('url')
     const image = formData.get('image') as File
 
     try {
@@ -31,18 +34,31 @@ export async function POST(request: NextRequest) {
             }).end(buffer)
         });
 
-        const newPost = new Post({
+        console.log("postId", postId)
+        const postData: any = {
             title,
             desc,
             userId: userId,
             img: uploadResult.url,
-        });
+            local: local,
+            url: url
+        };
+
+        if (postId) {
+            postData.postId = postId;
+        }
+
+        const newPost = new Post(postData);
         await newPost.save();
 
         revalidatePath("/blog");
         revalidatePath("/admin");
 
-        return NextResponse.json({success: true}, {status: 201});
+        return NextResponse.json(
+            {
+                success: true,
+                postId: newPost.postId
+            }, {status: 201});
     } catch (err) {
         console.error(err);
         return NextResponse.json({error: "Something went wrong!"}, {status: 500});

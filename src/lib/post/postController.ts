@@ -4,17 +4,17 @@ import {revalidatePath} from "next/cache";
 import {a} from "@react-spring/three";
 
 
-export const getPosts = async (page: number = 1, limit: number = 10) => {
+export const getPosts = async (page: string = "1", limit: number = 10, lang: string) => {
     try {
         await connectToDb();
-        const total = await Post.countDocuments({isPublished: true});
+        const total = await Post.countDocuments({isPublished: false, local: lang});
         const totalPages = Math.ceil(total / limit);
-        const startIndex = (page - 1) * limit;
+        const startIndex = (+page - 1) * limit;
         const posts = await Post.aggregate([
-            {$match: {isPublished: true}},
+            {$match: {isPublished: false, local: lang}},
             {$limit: limit},
             {$skip: startIndex},
-            {$project: {title: 1, img: 1, userId: 1}},
+            {$project: {title: 1, img: 1, userId: 1, local: 1}},
             {$addFields: {convertedUserId: {$toObjectId: "$userId"}}},
             {$lookup: {from: "users", localField: "convertedUserId", foreignField: "_id", as: "userDetails"}},
             {$unwind: "$userDetails"},
@@ -23,6 +23,7 @@ export const getPosts = async (page: number = 1, limit: number = 10) => {
                     title: 1,
                     img: 1,
                     userId: 1,
+                    local: 1,
                     userDetails: {email: "$userDetails.email", username: "$userDetails.username"}
                 }
             }
@@ -41,7 +42,7 @@ export const getPosts = async (page: number = 1, limit: number = 10) => {
 
 export const getPost = async (slug: any) => {
     try {
-        connectToDb();
+        await connectToDb();
         const post = await Post.findOne({slug});
         return post;
     } catch (err) {
@@ -64,7 +65,6 @@ export const addPost = async (formData: any) => {
             userId,
         });
         await newPost.save();
-        console.log("saved to db");
 
         revalidatePath("/blog");
         revalidatePath("/admin");
@@ -80,10 +80,9 @@ export const deletePost = async (formData: any) => {
     const {id} = Object.fromEntries(formData);
 
     try {
-        connectToDb();
+        await connectToDb();
 
         await Post.findByIdAndDelete(id);
-        console.log("deleted from db");
         revalidatePath("/blog");
         revalidatePath("/admin");
     } catch (err) {

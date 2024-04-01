@@ -11,8 +11,7 @@ const BlogList = ({item}: any) => {
     const pathname = usePathname();
     const lacal = pathname.split('/')[1];
 
-    console.log(item.img)
-    console.log(item.title)
+    console.log(item)
     return (
         <Link href={`/${lacal}/blog/${item.title}`} className="container-blog-list">
             <div className="img-container">

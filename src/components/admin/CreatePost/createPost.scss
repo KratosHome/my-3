@@ -1,11 +1,20 @@
 .create-post__container {
 
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+
+  .create-post__button {
+    background-color: red;
+    width: 300px;
+    margin-left: auto;
+  }
 
   .text_area {
     background-color: white;
     color: black;
 
-    .ql-container{
+    .ql-container {
       height: 50svh;
     }
   }
