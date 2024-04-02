@@ -21,7 +21,7 @@ export default async function LoginPage({params: {lang}}: any) {
 
     if (session?.user) {
         await createUsers(session)
-        redirect(`/${lang}/admin`);
+        redirect(`/${lang}/profile`);
     }
     return (
         <div className="login-page__container">

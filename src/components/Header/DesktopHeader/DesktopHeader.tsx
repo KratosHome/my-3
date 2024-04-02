@@ -8,15 +8,14 @@ import SubNav from "@/components/Header/DesktopHeader/SubNav/SubNav";
 import Image from "next/image";
 import LanguageChange from "@/components/LanguageChange/LanguageChange";
 import ThemeChange from "@/components/ThemeChange/ThemeChange";
-import {usePathname} from "next/navigation";
 import {useGSAP} from "@gsap/react";
 import {gsap} from "gsap";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
 import LogOut from "@/components/auth/LogOut/LogOut";
+import {useLocale} from "@/hooks/useLocale";
 
 const DesktopHeader = ({session, filteredMenu}: any) => {
-    const pathname = usePathname();
-    const locale = pathname.split('/')[1];
+    const {locale} = useLocale();
 
     const [isOpenSubMenu, setIsOpenSubMenu] = useState<{ [key: number]: boolean; }>({});
 
@@ -51,6 +50,9 @@ const DesktopHeader = ({session, filteredMenu}: any) => {
             ease: "power3.out"
         });
     });
+
+
+
 
     return (
         <nav className="container-desktop-menu">

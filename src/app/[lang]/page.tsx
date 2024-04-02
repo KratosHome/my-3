@@ -8,7 +8,7 @@ const AboutMe = lazy(() => import('@/components/home/AboutMe/AboutMe'));
 const Connect = lazy(() => import('@/components/Connect/Connect'));
 const Services = lazy(() => import('@/components/Services/Services'));
 const Experience = lazy(() => import('@/components/home/Experience/Experience'));
-const Projects = lazy(() => import('@/components/Projects/Projects'));
+const Projects = lazy(() => import('@/components/home/Projects/Projects'));
 
 
 export const viewport: Viewport = {

@@ -14,6 +14,7 @@ const HoverLink: FC<activeLinkType> = ({children, rout, click}) => {
     const pathName = usePathname()
     const isActive = pathName === rout; // pathName.includes(rout);
 
+
     return (
         <Link
             className={`container-link ${isActive ? "active-link" : "animate-link"}`}

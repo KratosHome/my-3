@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
     const local = formData.get('local')
     const postId = formData.get('postId')
     const url = formData.get('url')
+    const shortTitle = formData.get('shortTitle')
     const image = formData.get('image') as File
 
     try {
@@ -34,14 +35,14 @@ export async function POST(request: NextRequest) {
             }).end(buffer)
         });
 
-        console.log("postId", postId)
         const postData: any = {
             title,
             desc,
             userId: userId,
             img: uploadResult.url,
             local: local,
-            url: url
+            url: url,
+            shortTitle: shortTitle,
         };
 
         if (postId) {
@@ -52,7 +53,7 @@ export async function POST(request: NextRequest) {
         await newPost.save();
 
         revalidatePath("/blog");
-        revalidatePath("/admin");
+        revalidatePath("/profile");
 
         return NextResponse.json(
             {

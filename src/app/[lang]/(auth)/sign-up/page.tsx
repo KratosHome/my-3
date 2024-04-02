@@ -14,7 +14,7 @@ export default async function Page({params: {lang}}: any) {
 
     if (session?.user) {
         await createUsers(session)
-        redirect(`/${lang}/admin`);
+        redirect(`/${lang}/profile`);
     }
     return (
         <div className="sign-up__container">

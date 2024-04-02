@@ -1,17 +1,21 @@
 "use client"
 import "./createPost.scss";
 import React, {useEffect, useRef, useState} from 'react';
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {useFetchData} from "@/hooks/useFetchData";
 import {useSession} from "next-auth/react";
 import Loading from "@/components/UI/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
 import {useLocale} from "@/hooks/useLocale";
+import dynamic from "next/dynamic";
+
+const ReactQuill = dynamic(() => import('react-quill'), {
+    ssr: false,
+    loading: () => <p>Loading...</p>
+});
 
 const CreatePost = () => {
     const {locale} = useLocale();
-    const quillRef = useRef<any>(null);
     const {data: session} = useSession();
     const {data, error, isLoading, fetchData} = useFetchData<{ error?: string }>();
 
@@ -19,6 +23,7 @@ const CreatePost = () => {
 
     const [desc, setDesc] = useState("");
     const [title, setTitle] = useState("");
+    const [shortTitle, setShortTitle] = useState("");
     const [postId, setPostId] = useState<any>(null);
     const [url, setUrl] = useState("");
     const [image, setImage] = useState<any>(null);
@@ -86,6 +91,7 @@ const CreatePost = () => {
         formData.append('title', title);
         formData.append('desc', desc);
         formData.append('image', image);
+        formData.append('shortTitle', shortTitle);
 
         if (postId) {
             formData.append('local', locale === "ua" ? "en" : "ua");
@@ -129,6 +135,12 @@ const CreatePost = () => {
                     onChange={(e) => setUrl(e.target.value)}
                 />
                 <input
+                    value={shortTitle}
+                    type="text"
+                    placeholder={"shortTitle"}
+                    onChange={(e) => setShortTitle(e.target.value)}
+                />
+                <input
                     value={title}
                     type="text"
                     placeholder={"title"}
@@ -136,7 +148,6 @@ const CreatePost = () => {
                 />
                 <input type="file" ref={fileInputRef} onChange={handleImageChange}/>
                 <ReactQuill
-                    ref={quillRef}
                     className="text_area"
                     theme="snow"
                     modules={modules}

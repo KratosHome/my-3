@@ -1,6 +1,6 @@
 "use client"
 import React, {useEffect, useState} from 'react';
-import TrustedBy from "@/components/TrustedBy/TrustedBy";
+import TrustedBy from "@/components/home/TrustedBy/TrustedBy";
 
 export default function WrapperRequest() {
     const [reviews, setReviews] = useState([]);

@@ -1,6 +1,6 @@
 "use client"
 import "./usersWrapper.scss"
-import DataTable from "@/components/DataTable/DataTable";
+import DataTable from "@/components/UI/DataTable/DataTable";
 import Button from "@/components/UI/Button/Button";
 
 const UsersWrapper = ({users}: any) => {

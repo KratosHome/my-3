@@ -10,7 +10,6 @@ import {useGSAP} from "@gsap/react";
 const Computers = ({isMobile, rotation, refComputer}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
     const {theme} = useSelector((state: RootState) => state.theme);
-    //   const {scene, camera} = useThree();
 
     useGSAP(() => {
 

@@ -14,9 +14,10 @@ const Header = ({session}: any) => {
 
     const filteredMenu = menuDate.filter(item => {
         if (session && item.rout === "/login") return false;
-        if (!session && item.rout === "/cabinet") return false;
+        if (!session && item.rout === "/profile") return false;
         return true;
     });
+
     return (
         <>
             <ScrollToTop/>

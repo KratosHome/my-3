@@ -2,31 +2,31 @@ export const adminNavBar = [
     {
         nameUa: "головна",
         nameEn: "main",
-        url: "/admin",
+        url: "/profile",
         role: ["all"]
     },
     {
         nameUa: "проект",
         nameEn: "project",
-        url: "/admin/project",
+        url: "/profile/project",
         role: ["all"]
     },
     {
         nameUa: "пости",
         nameEn: "posts",
-        url: "/admin/my-posts",
+        url: "/profile/my-posts",
         role: ["all"]
     },
     {
         nameUa: "налаштування",
         nameEn: "settings",
-        url: "/admin/settings",
+        url: "/profile/settings",
         role: ["all"]
     },
     {
         nameUa: "користувачи",
         nameEn: "users",
-        url: "/admin/users",
+        url: "/profile/users",
         role: ["admin"]
     },
 ]

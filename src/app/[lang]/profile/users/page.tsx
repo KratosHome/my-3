@@ -15,7 +15,7 @@ export default async function Page({params: {lang}, searchParams}: any) {
     const totalPages = users.totalPages
 
     if (!session.user.isAdmin) {
-        redirect(`/${lang}/admin`);
+        redirect(`/${lang}/profile`);
     }
     return (
         <div>

@@ -5,26 +5,13 @@ import {usePathname} from "next/navigation";
 import {useSession} from "next-auth/react";
 import Link from "next/link";
 import Lock from "@/components/SVG/Lock";
+import {navBarPostsList} from "@/mokDate/navBarPostsList";
+import {useLocale} from "@/hooks/useLocale";
 
-
-const navBarPostsList = [
-    {
-        nameUa: "створити",
-        nameEn: "create",
-        url: "/admin",
-        role: ["all"]
-    },
-    {
-        nameUa: "мої пости",
-        nameEn: "posts",
-        url: "/admin",
-        role: ["all"]
-    }
-]
 
 const NavBarPostsAdmin = () => {
     const pathName = usePathname();
-    const locale = pathName.split('/')[1];
+    const {locale} = useLocale();
     const {data: session} = useSession<any>();
 
     const hasAccess = (roles: string[]): boolean => {
@@ -50,7 +37,7 @@ const NavBarPostsAdmin = () => {
                                 <Lock/>
                                 <span>
                                   {locale === "en" ? item.nameEn : item.nameUa}
-                             </span>
+                               </span>
                             </div>
                         )}
                     </li>
