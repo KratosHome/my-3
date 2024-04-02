@@ -5,7 +5,7 @@ import "./paginationControl.scss";
 import {useRouter, useSearchParams} from "next/navigation";
 import {useGSAP} from "@gsap/react";
 import {gsap} from "gsap";
-import Arrow from "@/components/SVG/Arrow";
+import Arrow from "@/assets/Arrow";
 
 
 interface PaginationControlProps {

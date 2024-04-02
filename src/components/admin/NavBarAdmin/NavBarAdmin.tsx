@@ -5,7 +5,7 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {useSession} from "next-auth/react";
 import {adminNavBar} from "@/mokDate/adminNavBar";
-import Lock from "@/components/SVG/Lock";
+import Lock from "@/assets/Lock";
 
 
 const NavBarAdmin = () => {

@@ -36,7 +36,7 @@ const Connect = () => {
                         </div>
                         <video
                             title={pathName === "/ua" ? "фоновий туман" : "фоновий туман"}
-                            src={"/connect/smoke-background.mp4"}
+                            src={"https://res.cloudinary.com/dfreocjfu/video/upload/v1712064618/footer/dfl2jk1kjhj2tla7k9v9.mp4"}
                             autoPlay={true}
                             loop
                             muted

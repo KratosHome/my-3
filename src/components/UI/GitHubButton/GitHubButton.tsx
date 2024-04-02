@@ -1,7 +1,7 @@
 import React from 'react';
 import "./GitHubButton.scss"
 import Button from "@/components/UI/Button/Button";
-import GitHub from "@/components/SVG/GitHub";
+import GitHub from "@/assets/GitHub";
 import {signIn} from "@/lib/users/auth";
 
 const GitHubButton = () => {

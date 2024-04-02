@@ -2,7 +2,7 @@
 import React, {FC, useState} from 'react';
 import "./myInput.scss"
 import {useForm} from "react-hook-form";
-import HidePass from "@/components/SVG/HidePass";
+import HidePass from "@/assets/HidePass";
 
 interface myInputProps {
     label?: string

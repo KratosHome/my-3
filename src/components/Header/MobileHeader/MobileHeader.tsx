@@ -2,8 +2,8 @@
 import React, {useState} from "react";
 import "./MobileHeader.scss";
 import Link from "next/link";
-import CloseSvg from "@/components/SVG/CloseSvg";
-import BurgerMenuSvg from "@/components/SVG/BurgerMenuSvg";
+import CloseSvg from "@/assets/CloseSvg";
+import BurgerMenuSvg from "@/assets/BurgerMenuSvg";
 import MobileMenu from "@/components/Header/MobileHeader/MobileMenu/MobileMenu";
 import Image from "next/image";
 import LanguageChange from "@/components/LanguageChange/LanguageChange";

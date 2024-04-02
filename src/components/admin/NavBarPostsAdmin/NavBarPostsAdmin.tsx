@@ -4,7 +4,7 @@ import "./NavBarPostsAdmin.scss"
 import {usePathname} from "next/navigation";
 import {useSession} from "next-auth/react";
 import Link from "next/link";
-import Lock from "@/components/SVG/Lock";
+import Lock from "@/assets/Lock";
 import {navBarPostsList} from "@/mokDate/navBarPostsList";
 import {useLocale} from "@/hooks/useLocale";
 

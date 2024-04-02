@@ -1,7 +1,7 @@
 import React from 'react';
 import "./LogOut.scss";
 import {logoutAction} from "@/components/auth/LogOut/logoutAction.server";
-import LogOutSvg from "@/components/SVG/LogOutSvg";
+import LogOutSvg from "@/assets/LogOutSvg";
 
 export default function LogOut() {
     const handleLogout = async (e: any) => {

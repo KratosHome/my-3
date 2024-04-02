@@ -6,6 +6,7 @@ import {usePathname} from 'next/navigation';
 import Image from "next/image";
 import {useGSAP} from "@gsap/react";
 import {handleHover} from "@/components/UIA/Hover/hover";
+import arrow from "../../assets/icons/arrow.svg"
 
 export default function LanguageChange() {
     const router = useRouter();
@@ -34,7 +35,7 @@ export default function LanguageChange() {
             <span>{locale === "ua" ? "en" : "ua"}</span>
             <Image
                 title={pathName === "/ua" ? "перемикання мови" : "switch language"}
-                src={"/icons/arrow.svg"}
+                src={arrow}
                 width={10}
                 height={10}
                 alt={locale === "ua" ? "UA Flag" : "US Flag"}

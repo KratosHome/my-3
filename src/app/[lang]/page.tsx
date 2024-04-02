@@ -6,7 +6,7 @@ const HeroSection = lazy(() => import('@/components/home/HeroSection/HeroSection
 const WrapperRequest = lazy(() => import('@/components/home/WrapperRequest/WrapperRequest'));
 const AboutMe = lazy(() => import('@/components/home/AboutMe/AboutMe'));
 const Connect = lazy(() => import('@/components/Connect/Connect'));
-const Services = lazy(() => import('@/components/Services/Services'));
+const Services = lazy(() => import('@/components/home/Services/Services'));
 const Experience = lazy(() => import('@/components/home/Experience/Experience'));
 const Projects = lazy(() => import('@/components/home/Projects/Projects'));
 

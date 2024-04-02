@@ -3,9 +3,9 @@ import "./MobileMenu.scss";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
-import ArrowDownSvg from "@/components/SVG/ArrowDownSvg";
+import ArrowDownSvg from "@/assets/ArrowDownSvg";
 import {usePathname} from "next/navigation";
-import CloseSvg from "@/components/SVG/CloseSvg";
+import CloseSvg from "@/assets/CloseSvg";
 import Link from "next/link";
 import Image from "next/image";
 

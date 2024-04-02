@@ -3,7 +3,7 @@ import "./DesktopHeader.scss";
 import Link from "next/link";
 import React, {useState} from "react";
 import {menuDate} from "@/mokDate/menuDate";
-import ArrowDownSvg from "@/components/SVG/ArrowDownSvg";
+import ArrowDownSvg from "@/assets/ArrowDownSvg";
 import SubNav from "@/components/Header/DesktopHeader/SubNav/SubNav";
 import Image from "next/image";
 import LanguageChange from "@/components/LanguageChange/LanguageChange";
