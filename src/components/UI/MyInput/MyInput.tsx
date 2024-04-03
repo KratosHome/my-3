@@ -11,9 +11,11 @@ interface myInputProps {
     name: string
     register?: ReturnType<typeof useForm>['register'] | any;
     error?: string | any;
+    value?: any
+    onChange?: (e: any) => void
 }
 
-const MyInput: FC<myInputProps> = ({type, placeholder, register, error, label, name}) => {
+const MyInput: FC<myInputProps> = ({type, placeholder, register, error, label, name, value, onChange}) => {
     const [inputType, setInputType] = useState<string>(type);
 
     const toggleShowPassword = () => {
@@ -28,6 +30,8 @@ const MyInput: FC<myInputProps> = ({type, placeholder, register, error, label, n
                     name={name}
                     type={inputType}
                     placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}
                     {...register}
                 />
                 {type === "password" && <HidePass click={toggleShowPassword}/>}

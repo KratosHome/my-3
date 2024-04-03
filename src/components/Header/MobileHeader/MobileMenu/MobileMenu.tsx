@@ -8,6 +8,7 @@ import {usePathname} from "next/navigation";
 import CloseSvg from "@/assets/CloseSvg";
 import Link from "next/link";
 import Image from "next/image";
+import LogOut from "@/components/auth/LogOut/LogOut";
 
 
 const MenuAnimationVariants = {
@@ -147,7 +148,7 @@ const MobileMenu = ({
                             </ul>
                         </React.Fragment>
                     )}
-                    {session ? <button>logout</button> : null}
+                    {session ? <LogOut/> : null}
                 </ul>
             </div>
         </div>

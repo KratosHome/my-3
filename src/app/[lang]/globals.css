@@ -59,7 +59,7 @@
     --text-color-footer: #F7F7F7;
     --violet-light: #AC69FF;
     --brand-violet-primary: #6D24C9;
-    --text-color-enumeration: #CDD9AB;
+    --text-color-enumeration: rgba(247, 247, 247, 0.7);
     --text-color-script: #FBC65E;
     --text-color-chose-name-color: #7E8696;
     --loader-background: 0.1;
@@ -175,4 +175,8 @@ textarea {
 button {
     border: none;
     background-color: transparent;
+}
+
+li {
+    list-style: none;
 }

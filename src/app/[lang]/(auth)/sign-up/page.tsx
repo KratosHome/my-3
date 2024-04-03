@@ -7,6 +7,7 @@ import {redirect} from "next/navigation";
 import "./SingUp.scss"
 import GitHubButton from "@/components/UI/GitHubButton/GitHubButton";
 import OrLine from "@/components/UI/OrLine/OrLine";
+import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
 
 export default async function Page({params: {lang}}: any) {
     const dict = await getDictionary(lang)
@@ -17,13 +18,15 @@ export default async function Page({params: {lang}}: any) {
         redirect(`/${lang}/profile`);
     }
     return (
-        <div className="sign-up__container">
-            <div>
-                <h1>Sing Up</h1>
-                <GitHubButton/>
-                <OrLine>{dict.page.login.or}</OrLine>
-                <RegisterForm dict={dict}/>
+        <AnimatedPage>
+            <div className="sign-up__container">
+                <div>
+                    <h1>Sing Up</h1>
+                    <GitHubButton/>
+                    <OrLine>{dict.page.login.or}</OrLine>
+                    <RegisterForm dict={dict}/>
+                </div>
             </div>
-        </div>
+        </AnimatedPage>
     );
 }

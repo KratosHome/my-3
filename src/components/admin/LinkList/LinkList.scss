@@ -1,0 +1,29 @@
+.container__link-list {
+  .active-link-nav-admin,
+  .item-nav-bar-admin {
+    display: block;
+    width: 180px;
+    padding: 10px 5px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    span {
+      padding: 0 15px;
+    }
+
+    &:hover {
+      background-color: var(--text-color-enumeration);
+    }
+  }
+
+  .active-link-nav-admin {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

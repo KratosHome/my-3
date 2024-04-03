@@ -11,7 +11,7 @@ import MyThemeProvider from "@/components/MyThemeProvider/MyThemeProvider";
 import {auth} from "@/lib/users/auth";
 import Header from "@/components/Header/Header";
 import SessionWrapper from "@/components/SessionWrapper/SessionWrapper";
-import BlockPageTransition from "@/components/UIA/BlockPageTransition/BlockPageTransition";
+import BlockPageTransition from "@/components/animationTransition/BlockPageTransition/BlockPageTransition";
 
 
 export default async function RootLayout({

@@ -15,7 +15,7 @@ export const createUsers = async (session: any) => {
             const newUser = new User({
                 username: session.user.name,
                 email: session.user.email.toLowerCase(),
-                image: session.user.image,
+                img: session.user.image,
             });
 
             await newUser.save();

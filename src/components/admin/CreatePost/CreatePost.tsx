@@ -8,6 +8,9 @@ import Loading from "@/components/UI/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
 import {useLocale} from "@/hooks/useLocale";
 import dynamic from "next/dynamic";
+import Button from "@/components/UI/Button/Button";
+import MyInput from "@/components/UI/MyInput/MyInput";
+import {useForm} from "react-hook-form";
 
 const ReactQuill = dynamic(() => import('react-quill'), {
     ssr: false,
@@ -19,14 +22,15 @@ const CreatePost = () => {
     const {data: session} = useSession();
     const {data, error, isLoading, fetchData} = useFetchData<{ error?: string }>();
 
+    const {register, watch, reset, formState: {errors}, handleSubmit} = useForm({mode: 'onBlur'});
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const [desc, setDesc] = useState("");
-    const [title, setTitle] = useState("");
-    const [shortTitle, setShortTitle] = useState("");
     const [postId, setPostId] = useState<any>(null);
-    const [url, setUrl] = useState("");
     const [image, setImage] = useState<any>(null);
+    const title = watch("title");
+    const url = watch("url");
+    const shortTitle = watch("shortTitle");
 
     useEffect(() => {
         if (data) {
@@ -105,10 +109,9 @@ const CreatePost = () => {
         }
         fetchData('/api/post/create', formData, true)
 
-        setTitle('');
         setDesc('');
         setImage(null);
-        setUrl('');
+        reset()
 
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
@@ -127,26 +130,69 @@ const CreatePost = () => {
             {data && <Warning color={"ok"}>create another language post {locale === "ua" ? "en" : "ua"}</Warning>}
             {error && <Warning color={"error"}> {error} </Warning>}
             <div className="create-post__container">
-                <button className="create-post__button" onClick={cretePost}>- Create Post -</button>
-                <input
-                    value={url}
+                <Button onClick={cretePost}>Create Post</Button>
+                <MyInput
                     type="text"
-                    placeholder={"url"}
-                    onChange={(e) => setUrl(e.target.value)}
+                    placeholder="title"
+                    name="title"
+                    register={{
+                        ...register('title', {
+                            required: 'This field is required',
+                            minLength: {
+                                value: 6,
+                                message: 'Name must be at least 6 characters',
+                            },
+                            maxLength: {
+                                value: 50,
+                                message: 'Name cannot be more than 50 characters',
+                            }
+                        })
+                    }}
+                    error={errors.title?.message}
+                />
+                <MyInput
+                    type="text"
+                    placeholder="sub title"
+                    name="shortTitle"
+                    register={{
+                        ...register('shortTitle', {
+                            required: 'This field is required',
+                            minLength: {
+                                value: 6,
+                                message: 'Name must be at least 6 characters',
+                            },
+                            maxLength: {
+                                value: 100,
+                                message: 'Name cannot be more than 100 characters',
+                            }
+                        })
+                    }}
+                    error={errors.shortTitle?.message}
+                />
+                <MyInput
+                    type="text"
+                    placeholder="url"
+                    name="url"
+                    register={{
+                        ...register('url', {
+                            required: 'This field is required',
+                            minLength: {
+                                value: 6,
+                                message: 'Name must be at least 6 characters',
+                            },
+                            maxLength: {
+                                value: 30,
+                                message: 'Name cannot be more than 30 characters',
+                            }
+                        })
+                    }}
+                    error={errors.url?.message}
                 />
                 <input
-                    value={shortTitle}
-                    type="text"
-                    placeholder={"shortTitle"}
-                    onChange={(e) => setShortTitle(e.target.value)}
+                    className="file-input__create-post"
+                    type="file"
+                    ref={fileInputRef} onChange={handleImageChange}
                 />
-                <input
-                    value={title}
-                    type="text"
-                    placeholder={"title"}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <input type="file" ref={fileInputRef} onChange={handleImageChange}/>
                 <ReactQuill
                     className="text_area"
                     theme="snow"

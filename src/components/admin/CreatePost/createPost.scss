@@ -4,14 +4,17 @@
   display: flex;
   flex-direction: column;
 
-  .create-post__button {
-    background-color: red;
-    width: 300px;
+  button {
     margin-left: auto;
+    margin-bottom: 20px;
+  }
+
+  .file-input__create-post{
+    margin-bottom: 20px ;
   }
 
   .text_area {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     color: black;
 
     .ql-container {
