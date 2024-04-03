@@ -11,6 +11,7 @@ import MyThemeProvider from "@/components/MyThemeProvider/MyThemeProvider";
 import {auth} from "@/lib/users/auth";
 import Header from "@/components/Header/Header";
 import SessionWrapper from "@/components/SessionWrapper/SessionWrapper";
+import BlockPageTransition from "@/components/UIA/BlockPageTransition/BlockPageTransition";
 
 
 export default async function RootLayout({
@@ -90,6 +91,7 @@ export default async function RootLayout({
             <ReduxProvider>
                 <SessionWrapper>
                     <body>
+                    <BlockPageTransition/>
                     <Header navigation={navigation} session={session}/>
                     <StarsCanvas/>
                     {children}

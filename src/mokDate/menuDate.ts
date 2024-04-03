@@ -67,6 +67,12 @@ export const menuDate = [
         subMenu: []
     },
     {
+        nameUa: "FAQ",
+        nameEn: "FAQ",
+        rout: "faq",
+        subMenu: []
+    },
+    {
         nameUa: "увійти",
         nameEn: "login",
         rout: "/login",
