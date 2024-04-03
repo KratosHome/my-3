@@ -1,6 +1,6 @@
 
 
-export default async function Page() {
+export default async function Page({params: {lang, postId}, searchParams}: any) {
 
     return (
         <>

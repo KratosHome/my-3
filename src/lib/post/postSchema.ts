@@ -7,6 +7,10 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        subTittle: {
+            type: String,
+            required: true,
+        },
         desc: {
             type: String,
             required: true,

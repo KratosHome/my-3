@@ -75,7 +75,7 @@ const UsersWrapper = ({users}: any) => {
     ]
 
     return (
-        <div className="user-wrapper_container">
+        <div>
             <DataTable
                 initialSelectedOptions={columns}
                 columns={columns}

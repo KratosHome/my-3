@@ -1,60 +1,73 @@
-.container-data-table {
-  display: flex;
-  flex-direction: column;
+.user-wrapper_container {
+  border: 1px solid #9c6666;
+  height: 70svh;
+  border-radius: 5px;
+  margin: 0 0 20px 10px;
+  overflow-x: auto;
+  max-width: calc(100vw - 250px);
 
-  .wrapper-management {
+  .item-wrapper_container {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    gap: 10px;
-    margin: 10px 0;
+  }
 
-    > div {
-      gap: 5px;
+  .container-data-table {
+    display: flex;
+    flex-direction: column;
+
+    .wrapper-management {
       display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-  }
+      justify-content: space-around;
+      width: 100%;
+      gap: 10px;
+      margin: 10px 0;
 
-  .wrapper-header-table {
-    display: flex;
-    text-align: center;
-
-    .datatable-header-cell {
-      border: 1px solid var(--primary-red);
-      margin: 2px;
-      border-radius: 5px;
-    }
-  }
-
-
-  .datatable-row {
-    display: flex;
-    text-align: center;
-
-    .datatable-cell {
-      border: 1px solid var(--background-color-dark);
-      margin: 2px;
-      border-radius: 5px;
-
-      .wrapper-item {
-        padding: 0 5px;
-        overflow: auto;
+      > div {
+        gap: 5px;
         display: flex;
-        justify-content: center;
         align-items: center;
-        height: 100%;
-        width: 100%;
+        flex-direction: column;
+      }
+    }
 
+    .wrapper-header-table {
+      display: flex;
+      text-align: center;
+
+      .datatable-header-cell {
+        border: 1px solid var(--primary-red);
+        margin: 2px;
+        border-radius: 5px;
+      }
+    }
+
+
+    .datatable-row {
+      display: flex;
+      text-align: center;
+
+      .datatable-cell {
+        border: 1px solid var(--background-color-dark);
+        margin: 2px;
+        border-radius: 5px;
+
+        .wrapper-item {
+          padding: 0 5px;
+          overflow: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+
+        }
       }
     }
   }
-}
 
-.item-tablet-JSX {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .item-tablet-JSX {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

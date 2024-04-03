@@ -3,31 +3,39 @@ import {Post} from "@/lib/post/postSchema";
 import {revalidatePath} from "next/cache";
 
 
-export const getPosts = async (page: string = "1", limit: number = 10, lang: string) => {
+export const getPosts = async (page: string = "1", limit: number = 10, lang: string, userId?: string) => {
     try {
+        console.log("userId", userId);
         await connectToDb();
-        const total = await Post.countDocuments({isPublished: false, local: lang});
+        const matchQuery = userId ? {local: lang, userId: userId} : {isPublished: true, local: lang};
+        const total = await Post.countDocuments(matchQuery);
         const totalPages = Math.ceil(total / limit);
         const startIndex = (+page - 1) * limit;
-        const posts = await Post.aggregate([
-            {$match: {isPublished: false, local: lang}},
+
+        const postsQuery = [
+            {$match: matchQuery},
             {$limit: limit},
             {$skip: startIndex},
-            {$project: {title: 1, img: 1, userId: 1, local: 1}},
+            {$project: {title: 1, img: 1, userId: 1, local: 1, subTittle: 1, isPublished: 1, createdAt: 1}},
             {$addFields: {convertedUserId: {$toObjectId: "$userId"}}},
             {$lookup: {from: "users", localField: "convertedUserId", foreignField: "_id", as: "userDetails"}},
             {$unwind: "$userDetails"},
             {
                 $project: {
                     title: 1,
+                    subTittle: 1,
                     img: 1,
                     userId: 1,
                     local: 1,
+                    isPublished: 1,
+                    createdAt: 1,
                     userDetails: {email: "$userDetails.email", username: "$userDetails.username"}
                 }
             }
-        ]);
+        ];
 
+
+        const posts = await Post.aggregate(postsQuery);
 
         return {
             data: posts,
@@ -41,10 +49,10 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
     }
 };
 
-export const getPost = async (slug: any) => {
+export const getPost = async (postId: any, local: string) => {
     try {
         await connectToDb();
-        const post = await Post.findOne({slug});
+        const post = await Post.find({_id: postId, local: local});
         return post;
     } catch (err) {
         console.log(err);
