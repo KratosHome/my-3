@@ -8,7 +8,7 @@ export default async function Page({params: {lang, postId}, searchParams}: any) 
 
     return (
         <>
-            {postId}
+            {postId} vrtvsdf
         </>
     );
 }
