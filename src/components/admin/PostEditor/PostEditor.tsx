@@ -1,6 +1,6 @@
 "use client"
-import "./createPost.scss";
-import React, {useEffect, useRef, useState} from 'react';
+import "./postEditor.scss";
+import React, {FC, useEffect, useRef, useState} from 'react';
 import "react-quill/dist/quill.snow.css";
 import {useFetchData} from "@/hooks/useFetchData";
 import {useSession} from "next-auth/react";
@@ -11,26 +11,41 @@ import dynamic from "next/dynamic";
 import Button from "@/components/UI/Button/Button";
 import MyInput from "@/components/UI/MyInput/MyInput";
 import {useForm} from "react-hook-form";
+import Image from "next/image";
 
 const ReactQuill = dynamic(() => import('react-quill'), {
     ssr: false,
     loading: () => <p>Loading...</p>
 });
 
-const CreatePost = () => {
+interface CreatePostProps {
+    post?: any
+}
+
+const PostEditor: FC<CreatePostProps> = ({post}) => {
     const {locale} = useLocale();
     const {data: session} = useSession();
     const {data, error, isLoading, fetchData} = useFetchData<{ error?: string }>();
 
-    const {register, watch, reset, formState: {errors}, handleSubmit} = useForm({mode: 'onBlur'});
+    const {register, watch, reset, formState: {errors}} = useForm({mode: 'onBlur'});
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const [desc, setDesc] = useState("");
+    const [desc, setDesc] = useState(post?.desc || '');
     const [postId, setPostId] = useState<any>(null);
     const [image, setImage] = useState<any>(null);
     const title = watch("title");
     const url = watch("url");
-    const shortTitle = watch("shortTitle");
+    const subTitle = watch("subTitle");
+
+    useEffect(() => {
+        if (post) {
+            reset({
+                title: post.title,
+                url: post.url,
+                subTitle: post.subTitle
+            });
+        }
+    }, [post]);
 
     useEffect(() => {
         if (data) {
@@ -95,7 +110,7 @@ const CreatePost = () => {
         formData.append('title', title);
         formData.append('desc', desc);
         formData.append('image', image);
-        formData.append('shortTitle', shortTitle);
+        formData.append('subTitle', subTitle);
 
         if (postId) {
             formData.append('local', locale === "ua" ? "en" : "ua");
@@ -123,14 +138,32 @@ const CreatePost = () => {
 
     }
 
+    const updatePost = () => {
+        const formData = new FormData();
+        formData.append('id', post._id);
+
+
+        formData.append('title', title);
+        formData.append('desc', desc);
+        formData.append('image', image);
+        formData.append('subTitle', subTitle);
+        formData.append('url', url);
+
+        fetchData('/api/post/update', formData, true)
+
+    }
+
     return (
         <>
             {isLoading && <Loading/>}
             {data && <Warning color={"ok"}>sen post </Warning>}
-            {data && <Warning color={"ok"}>create another language post {locale === "ua" ? "en" : "ua"}</Warning>}
+            {data && !post &&
+                <Warning color={"ok"}>create another language post {locale === "ua" ? "en" : "ua"}</Warning>}
             {error && <Warning color={"error"}> {error} </Warning>}
             <div className="create-post__container">
-                <Button onClick={cretePost}>Create Post</Button>
+                <Button onClick={post ? updatePost : cretePost}>
+                    {post ? "Update Post" : "Create Post"}
+                </Button>
                 <MyInput
                     type="text"
                     placeholder="title"
@@ -153,9 +186,9 @@ const CreatePost = () => {
                 <MyInput
                     type="text"
                     placeholder="sub title"
-                    name="shortTitle"
+                    name="subTitle"
                     register={{
-                        ...register('shortTitle', {
+                        ...register('subTitle', {
                             required: 'This field is required',
                             minLength: {
                                 value: 6,
@@ -167,7 +200,7 @@ const CreatePost = () => {
                             }
                         })
                     }}
-                    error={errors.shortTitle?.message}
+                    error={errors.subTitle?.message}
                 />
                 <MyInput
                     type="text"
@@ -188,11 +221,14 @@ const CreatePost = () => {
                     }}
                     error={errors.url?.message}
                 />
-                <input
-                    className="file-input__create-post"
-                    type="file"
-                    ref={fileInputRef} onChange={handleImageChange}
-                />
+                <div>
+                    <input
+                        className="file-input__create-post"
+                        type="file"
+                        ref={fileInputRef} onChange={handleImageChange}
+                    />
+                    {post ? <Image src={post.img} alt="post image" width={40} height={40}/> : null}
+                </div>
                 <ReactQuill
                     className="text_area"
                     theme="snow"
@@ -206,4 +242,4 @@ const CreatePost = () => {
     );
 };
 
-export default CreatePost;
+export default PostEditor;

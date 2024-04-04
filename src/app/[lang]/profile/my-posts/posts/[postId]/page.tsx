@@ -1,14 +1,12 @@
-import {auth} from "@/lib/users/auth";
-import {getPost, getPosts} from "@/lib/post/postController";
+import {getPost} from "@/lib/post/postController";
+import PostEditor from "@/components/admin/PostEditor/PostEditor";
 
 export default async function Page({params: {lang, postId}, searchParams}: any) {
     const posts = await getPost(postId, lang)
 
-    console.log(posts)
-
     return (
         <>
-            {postId} vrtvsdf
+            <PostEditor post={posts[0]}/>
         </>
     );
 }

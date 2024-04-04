@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        subTittle: {
+        subTitle: {
             type: String,
             required: true,
         },

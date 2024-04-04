@@ -6,7 +6,7 @@ import Image from "next/image";
 import Microscope from "@/assets/icons/Microscope";
 import Check from "@/assets/icons/Check";
 import Edit from "@/assets/icons/Edit";
-import {redirect, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 
 const WrapperPosts = ({posts}: any) => {
     const router = useRouter();
@@ -34,7 +34,7 @@ const WrapperPosts = ({posts}: any) => {
                 disabled={item.isPublished}
                 className="svg-icons__wrapper-posts"
                 onClick={() => {
-                    router.push(`posts/${item._id}`);
+                    router.push(`posts/${item.postId}`);
                 }}>
                 <Edit/>
             </button>,

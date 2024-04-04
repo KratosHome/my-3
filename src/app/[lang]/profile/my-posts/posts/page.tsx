@@ -10,6 +10,7 @@ export default async function Page({params: {lang}, searchParams}: any) {
     const posts = await getPosts(page, 10, lang, session.user._id)
     const totalPages = posts.totalPages
 
+
     return (
         <>
             <WrapperPosts posts={posts.data}/>

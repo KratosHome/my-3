@@ -16,7 +16,7 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
             {$match: matchQuery},
             {$limit: limit},
             {$skip: startIndex},
-            {$project: {title: 1, img: 1, userId: 1, local: 1, subTittle: 1, isPublished: 1, createdAt: 1}},
+            {$project: {title: 1, img: 1, userId: 1, local: 1, subTittle: 1, isPublished: 1, createdAt: 1, postId: 1}},
             {$addFields: {convertedUserId: {$toObjectId: "$userId"}}},
             {$lookup: {from: "users", localField: "convertedUserId", foreignField: "_id", as: "userDetails"}},
             {$unwind: "$userDetails"},
@@ -26,6 +26,7 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
                     subTittle: 1,
                     img: 1,
                     userId: 1,
+                    postId: 1,
                     local: 1,
                     isPublished: 1,
                     createdAt: 1,
@@ -52,7 +53,7 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
 export const getPost = async (postId: any, local: string) => {
     try {
         await connectToDb();
-        const post = await Post.find({_id: postId, local: local});
+        const post: any = await Post.find({postId: postId, local: local});
         return post;
     } catch (err) {
         console.log(err);

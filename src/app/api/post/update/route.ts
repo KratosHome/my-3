@@ -2,53 +2,41 @@ import {NextRequest, NextResponse} from "next/server";
 import {connectToDb} from "@/lib/connectToDb";
 import {Post} from "@/lib/post/postSchema";
 import {revalidatePath} from "next/cache";
-import cloudinary from "@/lib/cloudinaryConfig";
 
 export async function POST(request: NextRequest) {
     if (request.method !== 'POST') return NextResponse.json({error: 'Method not allowed'}, {status: 405});
     const formData = await request.formData();
-    const userId = formData.get('userId')
+    const id = formData.get('id')
+
     const title = formData.get('title')
     const desc = formData.get('desc')
-    const local = formData.get('local')
-    const postId = formData.get('postId')
+
     const url = formData.get('url')
     const subTitle = formData.get('subTitle')
-    const image = formData.get('image') as File
+    const image = formData.get('image') as File | null
 
     try {
         await connectToDb();
-        const arrBuffer = await image.arrayBuffer();
-        const buffer = new Uint8Array(arrBuffer);
+        console.log("id", id)
+        const existingPost = await Post.findById(id);
+        let imgURL;
 
-        const uploadResult: any = await new Promise((resolve, reject) => {
-            cloudinary.uploader.upload_stream({
-                tags: "blog",
-            }, function (error, result) {
-                if (error) {
-                    reject(error)
-                    return
-                }
-                resolve(result);
-            }).end(buffer)
-        });
+        if (image !== null) {
+            console.log("image", image)
+            imgURL = existingPost.img;
+        } else {
+            imgURL = existingPost.img;
+        }
 
-        const postData: any = {
+        const updatedData: any = {
             title,
             desc,
-            userId: userId,
-            img: uploadResult.url,
-            local: local,
+            img: imgURL,
             url: url,
             subTitle: subTitle,
         };
 
-        if (postId) {
-            postData.postId = postId;
-        }
-
-        const newPost = new Post(postData);
-        await newPost.save();
+        await Post.findByIdAndUpdate(id, updatedData, {new: true});
 
         revalidatePath("/blog");
         revalidatePath("/profile");
@@ -56,7 +44,6 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
             {
                 success: true,
-                postId: newPost.postId
             }, {status: 201});
     } catch (err) {
         console.error(err);
