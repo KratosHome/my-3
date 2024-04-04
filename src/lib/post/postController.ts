@@ -16,21 +16,21 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
             {$match: matchQuery},
             {$limit: limit},
             {$skip: startIndex},
-            {$project: {title: 1, img: 1, userId: 1, local: 1, subTittle: 1, isPublished: 1, createdAt: 1, postId: 1}},
+            {$project: {title: 1, img: 1, userId: 1, local: 1, subTitle: 1, isPublished: 1, createdAt: 1, postId: 1}},
             {$addFields: {convertedUserId: {$toObjectId: "$userId"}}},
             {$lookup: {from: "users", localField: "convertedUserId", foreignField: "_id", as: "userDetails"}},
             {$unwind: "$userDetails"},
             {
                 $project: {
                     title: 1,
-                    subTittle: 1,
+                    subTitle: 1,
                     img: 1,
                     userId: 1,
                     postId: 1,
                     local: 1,
                     isPublished: 1,
                     createdAt: 1,
-                    userDetails: {email: "$userDetails.email", username: "$userDetails.username"}
+                    userDetails: {email: "$userDetails.email", username: "$userDetails.username",  img: "$userDetails.img"}
                 }
             }
         ];

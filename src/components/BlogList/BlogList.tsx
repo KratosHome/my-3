@@ -7,6 +7,7 @@ import {useLocale} from "@/hooks/useLocale";
 import {useGSAP} from "@gsap/react";
 import gsap from 'gsap';
 import Avatar from "@/components/UI/Avatar/Avatar";
+import {formatDate} from "@/services/formatDate";
 
 const BlogList = ({item}: any) => {
     const {locale} = useLocale()
@@ -34,7 +35,7 @@ const BlogList = ({item}: any) => {
     });
 
     const handleMouseEnter = contextSafe(() => {
-        gsap.to(titleRef.current, {scale: 1.05, ease: "power1.inOut"});
+        gsap.to(titleRef.current, {scale: 1.02, ease: "power1.inOut"});
         gsap.to(subTitleRef.current, {scale: 1.07, ease: "power1.inOut"});
         gsap.to(imgRef.current, {scale: 1.1, ease: "power1.inOut"});
         gsap.to(buttonRef.current, {scale: 1, ease: "power1.inOut"});
@@ -57,6 +58,8 @@ const BlogList = ({item}: any) => {
         gsap.to(userRef.current, {scale: 1, ease: "power1.inOut"});
     })
 
+    console.log("item", item.userDetails.img)
+
     return (
         <Link
             ref={containerRef}
@@ -65,20 +68,22 @@ const BlogList = ({item}: any) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
+            <div className="create-at__blog-list">
+                {formatDate(item.createdAt, false)}
+            </div>
             <div className="wrapper__blog-list">
                 <span ref={titleRef}>{item.title}</span>
                 <span ref={subTitleRef}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, ad.
+                 {item.subTitle}
                 </span>
                 <div className="img-container__blog-list" ref={imgRef}>
                     <Image src={item.img} alt={item.title} fill={true}/>
                 </div>
-                <button ref={buttonRef}>read</button>
-            </div>
-            <div className="user__blog-list" ref={userRef}>
-                <Avatar src={item.img} alt={item.title} size={"small"}/>
-                <div className="user-name__blog-list">
-                    {item.userDetails.username}
+                <div className="user__blog-list" ref={userRef}>
+                    <Avatar src={item.userDetails.img} alt={item.userDetails.username} size={"small"}/>
+                    <div className="user-name__blog-list">
+                        {item.userDetails.username}
+                    </div>
                 </div>
             </div>
         </Link>

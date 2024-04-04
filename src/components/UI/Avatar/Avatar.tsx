@@ -1,3 +1,4 @@
+"use clent"
 import React, {FC} from 'react';
 import Image from "next/image";
 import "./Avatar.scss";

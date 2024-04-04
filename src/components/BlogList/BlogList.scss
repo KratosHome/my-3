@@ -8,12 +8,21 @@
   margin-bottom: 65px;
   padding: 15px 0;
 
+  .create-at__blog-list {
+    position: absolute;
+    writing-mode: vertical-lr;
+    transform: rotate(0deg);
+    cursor: default;
+    color: var(--blog-txt-color-next);
+    font-size: 16px;
+  }
+
   .img-container__blog-list {
     position: relative;
-    width: 240px;
-    height: 240px;
+    width: 290px;
+    height: 290px;
     opacity: 0.9;
-    margin-top: 20px;
+    margin-top: 40px;
 
     img {
       border-radius: 5px;
@@ -57,18 +66,13 @@
   }
 
   .user__blog-list {
-    position: absolute;
-    right: 6px;
-    top: 30px;
+    display: flex;
 
     > div {
-      margin: 10px 0;
+      margin: 20px 0 0 10px
     }
 
     .user-name__blog-list {
-      writing-mode: vertical-lr;
-      transform: rotate(0deg);
-      cursor: default;
       color: var(--blog-txt-color-next);
       font-size: 16px;
     }
