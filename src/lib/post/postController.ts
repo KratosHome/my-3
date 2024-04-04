@@ -1,6 +1,7 @@
 import {connectToDb} from "@/lib/connectToDb";
 import {Post} from "@/lib/post/postSchema";
 import {revalidatePath} from "next/cache";
+import {User} from "@/lib/users/userSchema";
 
 
 export const getPosts = async (page: string = "1", limit: number = 10, lang: string, userId?: string) => {
@@ -16,7 +17,19 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
             {$match: matchQuery},
             {$limit: limit},
             {$skip: startIndex},
-            {$project: {title: 1, img: 1, userId: 1, local: 1, subTitle: 1, isPublished: 1, createdAt: 1, postId: 1}},
+            {
+                $project: {
+                    title: 1,
+                    img: 1,
+                    userId: 1,
+                    local: 1,
+                    subTitle: 1,
+                    isPublished: 1,
+                    createdAt: 1,
+                    postId: 1,
+                    url: 1
+                }
+            },
             {$addFields: {convertedUserId: {$toObjectId: "$userId"}}},
             {$lookup: {from: "users", localField: "convertedUserId", foreignField: "_id", as: "userDetails"}},
             {$unwind: "$userDetails"},
@@ -28,9 +41,14 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
                     userId: 1,
                     postId: 1,
                     local: 1,
+                    url: 1,
                     isPublished: 1,
                     createdAt: 1,
-                    userDetails: {email: "$userDetails.email", username: "$userDetails.username",  img: "$userDetails.img"}
+                    userDetails: {
+                        email: "$userDetails.email",
+                        username: "$userDetails.username",
+                        img: "$userDetails.img"
+                    }
                 }
             }
         ];
@@ -61,6 +79,20 @@ export const getPost = async (postId: any, local: string) => {
     }
 };
 
+export const getPostByUrl = async (url: any, local: string) => {
+    try {
+        await connectToDb();
+        const post: any = await Post.find({url: { $regex: url, $options: 'i' }, local: local})
+        const user = await User.find(post.userId).select('email username img').lean();
+        const resultUser = user[0];
+        const resultPost = post[0];
+
+        return {resultPost, resultUser};
+    } catch (err) {
+        console.log(err);
+        throw new Error("Failed to fetch post!");
+    }
+};
 
 export const addPost = async (formData: any) => {
     "use server"

@@ -58,12 +58,10 @@ const BlogList = ({item}: any) => {
         gsap.to(userRef.current, {scale: 1, ease: "power1.inOut"});
     })
 
-    console.log("item", item.userDetails.img)
-
     return (
         <Link
             ref={containerRef}
-            href={`/${locale}/blog/${item.title}`} className="container-blog-list"
+            href={`/${locale}/blog/${item.url}`} className="container-blog-list"
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

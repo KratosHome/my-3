@@ -1,0 +1,38 @@
+.container__blog-post {
+
+  .info__blog-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 20px
+    }
+
+  }
+
+
+  .wrapper__blog-post {
+    background-color: rgba(59, 80, 134, 0.8);
+    padding: 5px 15px;
+    border-radius: 10px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+  }
+}
