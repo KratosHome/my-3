@@ -49,9 +49,9 @@ export const menuDate = [
         subMenu: []
     },
     {
-        nameUa: "команди",
-        nameEn: "teams",
-        rout: "teams",
+        nameUa: "cтартапи",
+        nameEn: "startups",
+        rout: "startups",
         subMenu: []
     },
     {

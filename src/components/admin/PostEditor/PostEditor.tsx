@@ -4,7 +4,7 @@ import React, {FC, useEffect, useRef, useState} from 'react';
 import "react-quill/dist/quill.snow.css";
 import {useFetchData} from "@/hooks/useFetchData";
 import {useSession} from "next-auth/react";
-import Loading from "@/components/UI/Loading/Loading";
+import Loading from "@/components/UI/loaders/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
 import {useLocale} from "@/hooks/useLocale";
 import dynamic from "next/dynamic";

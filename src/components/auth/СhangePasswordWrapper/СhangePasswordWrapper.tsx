@@ -4,7 +4,7 @@ import "./СhangePasswordWrapper.scss"
 import {useParams, useRouter} from "next/navigation";
 import MyInput from "@/components/UI/MyInput/MyInput";
 import Button from "@/components/UI/Button/Button";
-import Loading from "@/components/UI/Loading/Loading";
+import Loading from "@/components/UI/loaders/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
 
 const СhangePasswordWrapper = ({dict, lang}: any) => {

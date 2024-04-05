@@ -1,10 +1,10 @@
 "use client"
-import React, {useState} from 'react';
+import React from 'react';
 import "./ForgotPasswordWrapper.scss";
 import MyInput from "@/components/UI/MyInput/MyInput";
 import Button from "@/components/UI/Button/Button";
 import Warning from "@/components/UI/Warning/Warning";
-import Loading from "@/components/UI/Loading/Loading";
+import Loading from "@/components/UI/loaders/Loading/Loading";
 import {useFetchData} from "@/hooks/useFetchData";
 
 const ForgotPasswordWrapper = ({dict}: any) => {

@@ -2,7 +2,7 @@
 import React, {Suspense, useEffect, useState} from "react";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload} from "@react-three/drei";
-import Loader from "@/components/UI/Loader/Loader";
+import Loader from "@/components/UI/loaders/Loader/Loader";
 import Computers from "@/components/home/ComputersCanvas/Computers";
 
 const ComputersCanvas = React.memo(() => {
