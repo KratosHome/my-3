@@ -11,14 +11,14 @@
 
 .loadingBar {
     height: 100%;
-    width: 0%;
+    width: 0;
     background-color: #007bff;
     animation: loadingAnimation 2s infinite ease-in-out;
 }
 
 @keyframes loadingAnimation {
     0% {
-        width: 0%;
+        width: 0;
     }
     50% {
         width: 50%;
