@@ -1,12 +1,14 @@
 import {gsap} from 'gsap';
 import {useRouter, usePathname} from "next/navigation";
 import {useLocale} from "@/hooks/useLocale";
+import {useGSAP} from "@gsap/react";
 
 export const useGsapPageTransition = () => {
     const {locale} = useLocale();
     const router = useRouter();
     const pathName = usePathname();
-    const triggerAnimation = (selector: string, rout: string, onComplete?: () => void) => {
+    const {contextSafe} = useGSAP();
+    const triggerAnimation = contextSafe((selector: string, rout: string, onComplete?: () => void) => {
         let targetPath = rout.split('#')[0];
         if (rout.includes('#')) {
             targetPath += `${locale}`;
@@ -20,7 +22,6 @@ export const useGsapPageTransition = () => {
         if (pathName === targetPath) {
             return;
         }
-
         gsap.fromTo(selector, {
             x: '100%',
             clipPath: "circle(0% at 0 0)",
@@ -38,7 +39,7 @@ export const useGsapPageTransition = () => {
                 if (onComplete) onComplete();
             },
         });
-    };
+    });
 
     return triggerAnimation;
 };
