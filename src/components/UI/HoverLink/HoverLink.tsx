@@ -2,10 +2,8 @@
 import React, {FC, ReactNode} from 'react';
 import "./HoverLink.scss"
 import Link from "next/link";
-import {usePathname, useRouter} from "next/navigation";
-import {useRef} from 'react';
-import {gsap} from 'gsap';
-import {useGSAP} from "@gsap/react";
+import {usePathname} from "next/navigation";
+import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 
 
 interface activeLinkType {
@@ -15,23 +13,13 @@ interface activeLinkType {
 }
 
 const HoverLink: FC<activeLinkType> = ({children, rout, click}) => {
-    const router = useRouter();
     const pathName = usePathname()
     const isActive = pathName === rout;
-
+    const triggerAnimation = useGsapPageTransition();
 
     const handleClick = (e: React.MouseEvent) => {
         e.preventDefault();
-
-        gsap.fromTo(".page-transition", {
-            x: '0%',
-        }, {
-            duration: 1,
-            x: '100%',
-            ease: 'power2.inOut',
-            onComplete: () => router.push(rout)
-        });
-        if (click) click();
+        triggerAnimation(".page-transition", rout, click);
     };
 
     return (

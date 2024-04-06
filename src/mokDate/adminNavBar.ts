@@ -8,7 +8,7 @@ export const adminNavBar = [
     {
         nameUa: "проект",
         nameEn: "project",
-        url: "/profile/project",
+        url: "/profile/projects",
         role: ["all"]
     },
     {

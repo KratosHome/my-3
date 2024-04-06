@@ -13,8 +13,10 @@ import {gsap} from "gsap";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
 import LogOut from "@/components/auth/LogOut/LogOut";
 import {useLocale} from "@/hooks/useLocale";
+import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 
 const DesktopHeader = ({session, filteredMenu}: any) => {
+    const triggerAnimation = useGsapPageTransition();
     const {locale} = useLocale();
 
     const [isOpenSubMenu, setIsOpenSubMenu] = useState<{ [key: number]: boolean; }>({});
@@ -52,11 +54,15 @@ const DesktopHeader = ({session, filteredMenu}: any) => {
     });
 
 
+    const handlePageClick = (e: React.MouseEvent, rout: string) => {
+        e.preventDefault();
+        triggerAnimation(".page-transition", rout);
+    };
 
 
     return (
         <nav className="container-desktop-menu">
-            <Link href={`/${locale}`} className="logo">
+            <Link href={`/${locale}`} className="logo" onClick={(e) => handlePageClick(e, `/${locale}`)}>
                 <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
             </Link>
             <ul className={`nav-bar__list`} onMouseLeave={() => setIsOpenSubMenu({})}>
@@ -64,7 +70,7 @@ const DesktopHeader = ({session, filteredMenu}: any) => {
                     <React.Fragment key={`${menu.rout}_${index + index + index}`}>
                         <li className={`menu-item item-hover`}
                             onMouseEnter={() => subMenuToggle(index)}>
-                            <HoverLink rout={`/${locale}/${menu.rout}`}>
+                            <HoverLink rout={`/${locale}${menu.rout}`}>
                                 {locale === "en" ? menu.nameEn : menu.nameUa}
                                 {menu?.subMenu.length > 0 &&
                                     <button

@@ -8,13 +8,25 @@ import MobileMenu from "@/components/Header/MobileHeader/MobileMenu/MobileMenu";
 import Image from "next/image";
 import LanguageChange from "@/components/LanguageChange/LanguageChange";
 import ThemeChange from "@/components/ThemeChange/ThemeChange";
+import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
+import {useLocale} from "@/hooks/useLocale";
 
 const MobileHeader = ({session, filteredMenu}: any) => {
+    const triggerAnimation = useGsapPageTransition();
+    const {locale} = useLocale();
+
     const [isOpenMenu, setIsOpenMenu] = useState(false);
 
     const menuToggle = () => {
         setIsOpenMenu((prev) => !prev);
     };
+
+
+    const handleLogoClick = (e: React.MouseEvent, rout: string) => {
+        e.preventDefault();
+        triggerAnimation(".page-transition", rout);
+    };
+
 
     return (
         <div className="container-header-mobile">
@@ -27,7 +39,7 @@ const MobileHeader = ({session, filteredMenu}: any) => {
                 closeMenu={setIsOpenMenu}
                 filteredMenu={filteredMenu}
             />
-            <Link href="/" className="logo">
+            <Link href="/" className="logo" onClick={(e) => handleLogoClick(e, `/${locale}`)}>
                 <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
             </Link>
             <div className="nav-bar-toggle">

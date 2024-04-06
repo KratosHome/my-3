@@ -1,6 +1,7 @@
 import {Viewport} from 'next'
 import React, {lazy} from "react";
 import ContainerModel from "@/components/ContainerModel/ContainerModel";
+import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
 
 const HeroSection = lazy(() => import('@/components/home/HeroSection/HeroSection'));
 const WrapperRequest = lazy(() => import('@/components/home/WrapperRequest/WrapperRequest'));
@@ -107,29 +108,31 @@ export async function generateMetadata({params}: any) {
 
 export default function Home() {
     return (
-        <main>
-            <ContainerModel/>
-            <section id="section1" className="hero-section">
-                <HeroSection/>
-            </section>
-            <section id="about" className="about-section">
-                <AboutMe/>
-            </section>
-            <section id="projects" className="project-section">
-                <Projects/>
-            </section>
-            <section id="services" className="hide-model">
-                <Services/>
-            </section>
-            <section id="experience">
-                <Experience/>
-            </section>
-            <section id="trustedBy">
-                <WrapperRequest/>
-            </section>
-            <section id="contact">
-                <Connect/>
-            </section>
-        </main>
+        <AnimatedPage>
+            <main>
+                <ContainerModel/>
+                <section id="section1" className="hero-section">
+                    <HeroSection/>
+                </section>
+                <section id="about" className="about-section">
+                    <AboutMe/>
+                </section>
+                <section id="projects" className="project-section">
+                    <Projects/>
+                </section>
+                <section id="services" className="hide-model">
+                    <Services/>
+                </section>
+                <section id="experience">
+                    <Experience/>
+                </section>
+                <section id="trustedBy">
+                    <WrapperRequest/>
+                </section>
+                <section id="contact">
+                    <Connect/>
+                </section>
+            </main>
+        </AnimatedPage>
     )
 }

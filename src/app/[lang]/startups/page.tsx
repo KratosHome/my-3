@@ -1,3 +1,5 @@
+import InProgress from "@/components/UI/InProgress/InProgress";
+
 const projects = [
     {
         name: "Sharm Beauty",
@@ -19,10 +21,7 @@ export default async function Page() {
 
     return (
         <>
-            <h1>Projects</h1>
-            <div>
-
-            </div>
+            <InProgress/>
         </>
     );
 }

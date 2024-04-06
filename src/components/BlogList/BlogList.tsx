@@ -8,10 +8,12 @@ import {useGSAP} from "@gsap/react";
 import gsap from 'gsap';
 import Avatar from "@/components/UI/Avatar/Avatar";
 import {formatDate} from "@/services/formatDate";
+import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 
 const BlogList = ({item}: any) => {
     const {locale} = useLocale()
     const {contextSafe} = useGSAP();
+    const triggerAnimation = useGsapPageTransition();
     const containerRef = useRef<HTMLAnchorElement>(null);
     const titleRef = useRef<HTMLSpanElement>(null);
     const subTitleRef = useRef<HTMLSpanElement>(null);
@@ -58,6 +60,11 @@ const BlogList = ({item}: any) => {
         gsap.to(userRef.current, {scale: 1, ease: "power1.inOut"});
     })
 
+    const handleClick = (e: React.MouseEvent, rout: string) => {
+        e.preventDefault();
+        triggerAnimation(".page-transition", rout);
+    };
+
     return (
         <Link
             ref={containerRef}
@@ -65,6 +72,7 @@ const BlogList = ({item}: any) => {
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={(e) => handleClick(e, `/${locale}/blog/${item.url}`)}
         >
             <div className="create-at__blog-list">
                 {formatDate(item.createdAt, false)}

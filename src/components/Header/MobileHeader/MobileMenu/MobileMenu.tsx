@@ -9,6 +9,7 @@ import CloseSvg from "@/assets/CloseSvg";
 import Link from "next/link";
 import Image from "next/image";
 import LogOut from "@/components/auth/LogOut/LogOut";
+import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 
 
 const MenuAnimationVariants = {
@@ -52,6 +53,7 @@ const MobileMenu = ({
     closeMenu: (value: boolean) => void;
     filteredMenu: any
 }) => {
+    const triggerAnimation = useGsapPageTransition();
     const pathname = usePathname();
     const locale = pathname.split('/')[1];
     const menuRef = useRef<HTMLDivElement | null>(null);
@@ -76,19 +78,7 @@ const MobileMenu = ({
             opacity: !isOpenSubMenu[index] ? 1 : 0,
         });
     };
-    /*
-       useEffect(() => {
-           if (isOpen) {
-               document.body.style.overflow = 'hidden';
-           } else {
-               document.body.style.overflow = '';
-           }
-           return () => {
-               document.body.style.overflow = '';
-           };
-       }, [isOpen]);
 
-     */
     useGSAP(() => {
         if (isOpen) {
             gsap.timeline()
@@ -107,6 +97,10 @@ const MobileMenu = ({
         }
     }, {dependencies: [isOpen]});
 
+    const handlePageClick = (e: React.MouseEvent, rout: string) => {
+        e.preventDefault();
+        triggerAnimation(".page-transition", rout, () => closeMenu(false));
+    };
 
     return (
         <div
@@ -116,7 +110,7 @@ const MobileMenu = ({
         >
             <div className="mobile-menu__wrapper">
                 <div className="burger-mob-menu-btn">
-                    <Link href="/" className="logo" onClick={() => closeMenu(false)}>
+                    <Link href="/" className="logo" onClick={(e) => handlePageClick(e, "/")}>
                         <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
                     </Link>
                     <button className="sub-menu-btn" onClick={() => closeMenu(false)}>
@@ -127,7 +121,7 @@ const MobileMenu = ({
                     {filteredMenu.map((menu: any, index: number) =>
                         <React.Fragment key={`${menu.rout}_${index + index + index}`}>
                             <li className="mobile-menu__item">
-                                <HoverLink rout={`/${locale}/${menu.rout}`} click={() => closeMenu(false)}>
+                                <HoverLink rout={`/${locale}/${menu.rout}`} click={() => closeMenu(false)} >
                                     {locale === "en" ? menu.nameEn : menu.nameUa}
                                 </HoverLink>
                                 {menu?.subMenu.length > 0 &&

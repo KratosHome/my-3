@@ -1,16 +1,11 @@
-import React from 'react';
+import "./BlockPageTransition.scss"
+import Loader2 from "@/components/UI/loaders/Loader2/Loader2";
 
 const BlockPageTransition = () => {
     return (
-        <div className="page-transition" style={{
-            position: 'fixed',
-            top: 0,
-            left: '-100%',
-            width: '100vw',
-            height: '100vh',
-            backgroundColor: 'black',
-            zIndex: 9999,
-        }}/>
+        <div className="page-transition">
+            <Loader2/>
+        </div>
     );
 };
 
