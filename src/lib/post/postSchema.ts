@@ -18,7 +18,7 @@ const postSchema = new mongoose.Schema(
         url: {
             type: String,
             required: true,
-            unique: true,
+            unique: false,
         },
         local: {
             type: String,

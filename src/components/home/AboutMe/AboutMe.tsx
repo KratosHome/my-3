@@ -256,9 +256,9 @@ const AboutMe = () => {
             </div>
             <a
                 ref={refA}
-                className="download-pdf-about-me"
-                href={"/Front-End-React-Developerр-Oleg-Tkach.pdf"}
-                download={'Front-End-React-Developerр-Oleg-Tkach'}
+                href={"https://drive.google.com/file/d/1Q4PgAvuOPih8iE-Jw0XZxnKMpqCACF-N/view?usp=share_link"}
+                target="_blank"
+                rel="noopener noreferrer"
             >
                 {pathName === "/ua" ? "Завантажити резюме" : "Download resume"}
                 <Image

@@ -10,5 +10,11 @@ export const navBarPostsList = [
         nameEn: "my posts",
         url: "/profile/my-posts/posts",
         role: ["all"]
+    },
+    {
+        nameUa: "всі пости",
+        nameEn: "all posts",
+        url: "/profile/my-posts/all-posts",
+        role: ["admin"]
     }
 ]

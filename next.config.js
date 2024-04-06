@@ -15,7 +15,7 @@ module.exports = {
         ];
     },
     images: {
-        domains: ['res.cloudinary.com', "avatars.githubusercontent.com"],
+        domains: ['res.cloudinary.com', "avatars.githubusercontent.com", "drive.google.com"],
     },
     env: {
         NEXT_MONGO_DB: process.env.NEXT_MONGO_DB,
