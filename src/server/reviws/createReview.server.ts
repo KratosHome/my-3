@@ -1,7 +1,7 @@
 'use server'
 import TelegramBot from "node-telegram-bot-api";
-import {connectToDb} from "@/utils/connectToDb";
 import {Reviews} from "@/server/reviws/reviewsSchema";
+import {connectToDb} from "@/server/connectToDb";
 
 export const createReviewAction = async (formData: any) => {
 

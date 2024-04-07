@@ -1,13 +1,11 @@
 "use server"
 import {redirect} from "next/navigation";
-import {getDictionary} from "@/utils/dictionary";
 import {auth} from "@/server/users/auth";
 import {getUsers} from "@/server/users/userController";
 import PaginationControl from "@/components/PaginationControl/PaginationControl";
 import UsersWrapper from "@/components/admin/UsersWrapper/UsersWrapper";
 
 export default async function Page({params: {lang}, searchParams}: any) {
-    const dict = await getDictionary(lang)
     const session: any = await auth();
 
     const page = searchParams["page"] ?? "1"

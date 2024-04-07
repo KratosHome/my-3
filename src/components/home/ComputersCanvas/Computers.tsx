@@ -1,15 +1,13 @@
 "use client"
 import React from 'react';
 import {useGLTF} from "@react-three/drei";
-import {useSelector} from "react-redux";
-import {RootState} from "@/store/store";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 
-
 const Computers = ({isMobile, rotation, refComputer}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
-    const {theme} = useSelector((state: RootState) => state.theme);
+    // change theme
+    const theme = "light"
 
     useGSAP(() => {
 

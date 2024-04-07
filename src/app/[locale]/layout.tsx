@@ -1,5 +1,4 @@
 import './globals.css'
-import ReduxProvider from "@/app/[locale]/provider";
 import GoogleTagManager from "@/components/GoogleTagManager/GoogleTagManager";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import Footer from "@/components/Footer/Footer";
@@ -19,6 +18,7 @@ export default async function LocaleLayout({
     children: React.ReactNode;
     params: { locale: string };
 }) {
+    const session = await auth();
 
     const serviceNames = {
         en: {
@@ -72,9 +72,6 @@ export default async function LocaleLayout({
         "openingHours": "Mo-Fr 09:00-17:00",
     }
 
-    const session = await auth();
-
-    console.log("locale", locale)
 
     return (
         <html lang={locale}>
@@ -87,17 +84,15 @@ export default async function LocaleLayout({
         </Head>
         <GoogleTagManager/>
         <MyThemeProvider>
-            <ReduxProvider>
-                <SessionWrapper>
-                    <body>
-                    <BlockPageTransition/>
-                    <Header session={session}/>
-                    <StarsCanvas/>
-                    {children}
-                    </body>
-                    <Footer/>
-                </SessionWrapper>
-            </ReduxProvider>
+            <SessionWrapper>
+                <body>
+                <BlockPageTransition/>
+                <Header session={session}/>
+                <StarsCanvas/>
+                {children}
+                </body>
+                <Footer/>
+            </SessionWrapper>
         </MyThemeProvider>
         </html>
     )

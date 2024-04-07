@@ -1,5 +1,5 @@
-import {connectToDb} from "../../../utils/connectToDb";
 import {Reviews} from "../../../server/reviws/reviewsSchema";
+import {connectToDb} from "../../../server/connectToDb";
 
 export async function GET() {
     try {
