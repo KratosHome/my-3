@@ -8,7 +8,7 @@ import {AdapterUser} from "@auth/core/adapters";
 
 const login = async (credentials: any) => {
     try {
-        connectToDb();
+        await connectToDb();
         const user = await User.findOne({email: credentials.email});
         if (!user) throw new Error("Wrong credentials!");
         const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
@@ -49,12 +49,12 @@ export const {
         async signIn({user, account, profile}) {
             return true;
         },
-        async session({ session, token, user }) {
+        async session({session, token, user}) {
 
             session.user = token.user as AdapterUser;
             return session;
         },
-        async jwt({ token, user, account }) {
+        async jwt({token, user, account}) {
             if (user) {
                 token.user = user;
             }
