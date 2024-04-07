@@ -1,5 +1,6 @@
 import NavBarAdmin from "@/components/admin/NavBarAdmin/NavBarAdmin";
 import "./admin.scss"
+export const dynamic = 'force-dynamic';
 
 export default function RootLayout({
                                        children,

@@ -13,6 +13,7 @@ import Header from "@/components/Header/Header";
 import SessionWrapper from "@/components/SessionWrapper/SessionWrapper";
 import BlockPageTransition from "@/components/animationTransition/BlockPageTransition/BlockPageTransition";
 
+export const dynamic = 'force-dynamic';
 
 export default async function RootLayout({
                                              children,
