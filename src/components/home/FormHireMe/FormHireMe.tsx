@@ -1,11 +1,11 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
 import "./FormHireMe.scss";
-import {telegramAction} from "@/services/telegram.server";
+import {telegramAction} from "@/utils/telegram.server";
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 import ReCAPTCHA from "react-google-recaptcha"
 import {useRef, useState} from "react"
-import {verifyCaptcha} from "@/services/ServerActions";
+import {verifyCaptcha} from "@/utils/ServerActions";
 import InputMask from 'react-input-mask';
 import {motion, AnimatePresence} from 'framer-motion';
 import {usePathname} from "next/navigation";

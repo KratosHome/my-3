@@ -3,10 +3,10 @@ import React, {useRef, useState} from 'react';
 import {usePathname} from "next/navigation";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useForm} from "react-hook-form";
-import {verifyCaptcha} from "@/services/ServerActions";
+import {verifyCaptcha} from "@/utils/ServerActions";
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 import {motion, AnimatePresence} from "framer-motion";
-import {createReviewAction} from "@/services/createReview.server";
+import {createReviewAction} from "@/utils/createReview.server";
 
 
 const FormHLeaveReview = ({setOpen}: {

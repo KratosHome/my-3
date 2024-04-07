@@ -1,24 +1,31 @@
-import {NextRequest, NextResponse} from "next/server";
+import createMiddleware from "next-intl/middleware";
+import {NextRequest} from "next/server";
 
-export async function middleware(request: NextRequest) {
-    const url = request.nextUrl.clone()
 
+export default function middleware(request: NextRequest) {
+    return createMiddleware({
+        locales: ['en', 'ua'],
+        localeDetection: true,
+        localePrefix: "always",
+        defaultLocale: 'en'
+    })(request);
 }
 
+export const config = {
+    matcher: ['/', '/(ua|en)/:path*']
+};
 
 /*
+    const pathWithoutLocale = request.nextUrl.pathname.replace(/^\/(ua|en|ru)/, '');
 
-    const isProfileUsers = url.pathname.includes('/profile/users');
-    const local =  url.pathname.split('/')[1]
-
-
-    if (url.pathname.startsWith('/profile') && !session) {
-        return NextResponse.redirect(new URL('/', request.url));
+    if(protectedRoutes.includes(pathWithoutLocale)) {
+        if (role?.value === "") {
+            console.log("work")
+            const url = new URL("", request.nextUrl.origin);
+            return NextResponse.redirect(url);
+        }
     }
 
-    if (isProfileUsers && session.user.isAdmin !== true) {
-        return NextResponse.redirect(new URL(`${local}/profile`, request.url));
-    }
-
-    return NextResponse.next();
+    console.log("role", role?.value === "user")
+    console.log("request.nextUrl.pathname", request.nextUrl.pathname)
  */

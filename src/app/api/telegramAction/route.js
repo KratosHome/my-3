@@ -1,4 +1,4 @@
-import {formatDate} from "../../../services/formatDate";
+import {formatDate} from "../../../utils/formatDate";
 import TelegramBot from "node-telegram-bot-api";
 
 

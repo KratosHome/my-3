@@ -2,7 +2,7 @@ import React from 'react';
 import "./GitHubButton.scss"
 import Button from "@/components/UI/Button/Button";
 import GitHub from "@/assets/GitHub";
-import {signIn} from "@/lib/users/auth";
+import {signIn} from "@/server/users/auth";
 
 const GitHubButton = () => {
     const handleLogin = async () => {

@@ -1,9 +1,7 @@
 import {NextRequest, NextResponse} from "next/server";
-import {connectToDb} from "@/lib/connectToDb";
-import {User} from "@/lib/users/userSchema";
+import {connectToDb} from "@/server/connectToDb";
+import {User} from "@/server/users/userSchema";
 import bcrypt from "bcryptjs";
-import {v4 as uuidv4} from "uuid";
-import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
     if (request.method !== 'POST') return NextResponse.json({error: 'Method not allowed'}, {status: 405});

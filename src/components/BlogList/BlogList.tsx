@@ -7,7 +7,7 @@ import {useLocale} from "@/hooks/useLocale";
 import {useGSAP} from "@gsap/react";
 import gsap from 'gsap';
 import Avatar from "@/components/UI/Avatar/Avatar";
-import {formatDate} from "@/services/formatDate";
+import {formatDate} from "@/utils/formatDate";
 import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 
 const BlogList = ({item}: any) => {

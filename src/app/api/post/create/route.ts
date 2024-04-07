@@ -1,8 +1,8 @@
 import {NextRequest, NextResponse} from "next/server";
-import {connectToDb} from "@/lib/connectToDb";
-import {Post} from "@/lib/post/postSchema";
+import {connectToDb} from "@/server/connectToDb";
+import {Post} from "@/server/post/postSchema";
 import {revalidatePath} from "next/cache";
-import cloudinary from "@/lib/cloudinaryConfig";
+import cloudinary from "@/server/cloudinaryConfig";
 
 export async function POST(request: NextRequest) {
     if (request.method !== 'POST') return NextResponse.json({error: 'Method not allowed'}, {status: 405});

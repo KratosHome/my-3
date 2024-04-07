@@ -1,4 +1,4 @@
-import {handlers} from "@/lib/users/auth";
+import {handlers} from "@/server/users/auth";
 
 
 export const {GET, POST} = handlers
