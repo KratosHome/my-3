@@ -48,6 +48,13 @@ export const menuDate = [
         rout: "/blog",
         subMenu: []
     },
+  /*
+    {
+        nameUa: "блог",
+        nameEn: "blog",
+        rout: "/blog",
+        subMenu: []
+    },
     {
         nameUa: "cтартапи",
         nameEn: "startups",
@@ -72,6 +79,7 @@ export const menuDate = [
         rout: "/faq",
         subMenu: []
     },
+   */
     {
         nameUa: "увійти",
         nameEn: "login",
