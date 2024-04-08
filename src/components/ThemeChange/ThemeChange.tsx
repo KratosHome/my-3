@@ -4,7 +4,7 @@ import "./ThemeChange.scss";
 import {useTheme} from "next-themes";
 import {useGSAP} from "@gsap/react";
 import {gsap} from 'gsap';
-import {handleHover} from "@/components/UIA/Hover/hover";
+import {handleHover} from "@/components/UI/Hover/hover";
 
 const ThemeChange = () => {
     const {theme, setTheme} = useTheme()

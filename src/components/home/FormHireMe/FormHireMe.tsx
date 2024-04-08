@@ -2,7 +2,7 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import "./FormHireMe.scss";
 import {telegramAction} from "@/server/telegram/telegram.server";
-import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
+import ButtonAnimation from "@/components/UI/ButtonAnimation/ButtonAnimation";
 import ReCAPTCHA from "react-google-recaptcha"
 import {useRef, useState} from "react"
 import {verifyCaptcha} from "@/server/users/verifyCaptcha";

@@ -4,7 +4,7 @@ import FormHireMe from "@/components/home/FormHireMe/FormHireMe";
 import "./Connect.scss";
 import {usePathname} from "next/navigation";
 import Button from "@/components/UI/Button/Button";
-import FadeInAnimation from "@/components/UIA/FadeInAnimation/FadeInAnimation";
+import FadeInAnimation from "@/components/UI/FadeInAnimation/FadeInAnimation";
 import {useH2Animation} from "@/animation/useH2Animation";
 
 const Connect = () => {

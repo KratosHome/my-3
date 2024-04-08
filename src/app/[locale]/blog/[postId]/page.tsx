@@ -6,8 +6,8 @@ import Avatar from "@/components/UI/Avatar/Avatar";
 import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
 
 
-export default async function Page({params: {lang, postId}}: any) {
-    const posts: any = await getPostByUrl(postId, lang)
+export default async function Page({params: {locale, postId}}: any) {
+    const posts: any = await getPostByUrl(postId, locale)
 
     return (
         <AnimatedPage>

@@ -5,9 +5,9 @@ import PaginationControl from "@/components/PaginationControl/PaginationControl"
 import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
 
 
-export default async function Page({params: {lang}, searchParams}: any) {
+export default async function Page({params: {locale}, searchParams}: any) {
     const page = searchParams["page"] ?? "1"
-    const posts = await getPosts(page, 10, lang)
+    const posts = await getPosts(page, 10, locale)
     const totalPages = posts.totalPages
 
     return (

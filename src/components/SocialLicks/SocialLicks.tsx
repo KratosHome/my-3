@@ -1,6 +1,6 @@
 import React from 'react';
 import "./SocialLicks.scss"
-import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
+import ButtonAnimation from "@/components/UI/ButtonAnimation/ButtonAnimation";
 
 const SocialLicks = ({isAbsolute = true, refLinks}: any) => {
     return (

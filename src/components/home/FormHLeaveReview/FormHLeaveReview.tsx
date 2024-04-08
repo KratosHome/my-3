@@ -4,7 +4,7 @@ import {usePathname} from "next/navigation";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useForm} from "react-hook-form";
 import {verifyCaptcha} from "@/server/users/verifyCaptcha";
-import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
+import ButtonAnimation from "@/components/UI/ButtonAnimation/ButtonAnimation";
 import {motion, AnimatePresence} from "framer-motion";
 import {createReviewAction} from "@/server/reviws/createReview.server";
 

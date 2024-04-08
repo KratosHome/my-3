@@ -1,7 +1,7 @@
 'use client'
 import React, {FC} from 'react';
 import st from "./Button.module.scss";
-import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
+import ButtonAnimation from "@/components/UI/ButtonAnimation/ButtonAnimation";
 
 interface ButtonType {
     children: React.ReactNode;

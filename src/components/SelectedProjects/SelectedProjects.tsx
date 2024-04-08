@@ -5,7 +5,7 @@ import {motion, AnimatePresence} from "framer-motion";
 import Image from 'next/image'
 import {usePathname} from "next/navigation";
 import ShowMoreText from "@/components/UI/ShowMoreText/ShowMoreText";
-import FadeInAnimation from "@/components/UIA/FadeInAnimation/FadeInAnimation";
+import FadeInAnimation from "@/components/UI/FadeInAnimation/FadeInAnimation";
 import {dateProjects} from "@/mokDate/dateProjects";
 import ForwardArrow from "@/assets/aboutMe/ForwardArrow.svg";
 

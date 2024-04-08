@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import "./ShowMoreText.scss";
 import {usePathname} from "next/navigation";
-import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
+import ButtonAnimation from "@/components/UI/ButtonAnimation/ButtonAnimation";
 
 type ShowMoreTextProps = {
     text: string;

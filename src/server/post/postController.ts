@@ -6,7 +6,6 @@ import {User} from "@/server/users/userSchema";
 
 export const getPosts = async (page: string = "1", limit: number = 10, lang: string, userId?: string) => {
     try {
-        console.log("userId", userId);
         await connectToDb();
         const matchQuery = userId ? {local: lang, userId: userId} : {isPublished: true, local: lang};
         const total = await Post.countDocuments(matchQuery);
