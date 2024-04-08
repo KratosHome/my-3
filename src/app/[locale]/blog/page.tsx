@@ -10,6 +10,8 @@ export default async function Page({params: {locale}, searchParams}: any) {
     const t = await getTranslations('page.blog');
     const page = searchParams["page"] ?? "1"
 
+    const posts = await getPosts(page, 10, locale)
+
     return (
         <AnimatedPage>
             <div className="blog__container">
