@@ -20,7 +20,9 @@ export default async function Page({params: {locale}, searchParams}: any) {
             <div className="blog__container">
                 <h1>{t('title')}</h1>
                 <div className="blog-list__wrapper">
-                    <BlogList item={data}/>
+                    {data.data.map((item: any) =>
+                        <BlogList key={item.title} item={item}/>
+                    )}
                     <PaginationControl totalPages={totalPages}/>
                 </div>
             </div>
