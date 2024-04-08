@@ -142,7 +142,7 @@ const MobileMenu = ({
                             </ul>
                         </React.Fragment>
                     )}
-                    {session ? <LogOut/> : null}
+                    {session.user ? <LogOut/> : null}
                 </ul>
             </div>
         </div>

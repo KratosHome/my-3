@@ -94,7 +94,7 @@ const DesktopHeader = ({session, filteredMenu}: any) => {
                         )}
                     </React.Fragment>
                 )}
-                {session ? <LogOut/> : null}
+                {session.user ? <LogOut/> : null}
             </ul>
             <div className="nav-bar-toggle">
                 <LanguageChange/>
