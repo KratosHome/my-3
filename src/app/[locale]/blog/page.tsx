@@ -6,24 +6,26 @@ import AnimatedPage from "@/components/animationTransition/AnimatedPage/Animated
 
 
 export default async function Page({params: {locale}, searchParams}: any) {
+    const page = searchParams["page"] ?? "1"
 
-    const posts = await getPosts("1", 10, locale)
+    const posts = await getPosts(page, 10, locale)
+    const totalPages = posts.totalPages
+
+    console.log("posts", posts)
 
 
     return (
         <AnimatedPage>
             <div className="blog__container">
-                {posts.data.map((item) =>
-                    <BlogList key={item.title} item={item}/>
-                )}
+        fvsfdv
+                <PaginationControl totalPages={totalPages}/>
             </div>
         </AnimatedPage>
     );
 }
 
 /*
-    const page = searchParams["page"] ?? "1"
-    const totalPages = posts.totalPages
+
 
 
     <PaginationControl totalPages={totalPages}/>
