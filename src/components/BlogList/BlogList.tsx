@@ -64,7 +64,6 @@ const BlogList = ({item}: any) => {
         e.preventDefault();
         triggerAnimation(".page-transition", rout);
     };
-//    {formatDate(item.createdAt, false)}
     return (
         <Link
             ref={containerRef}
@@ -75,7 +74,7 @@ const BlogList = ({item}: any) => {
             onClick={(e) => handleClick(e, `/${locale}/blog/${item.url}`)}
         >
             <div className="create-at__blog-list">
-            data
+                {formatDate(item.createdAt, false)}
             </div>
             <div className="wrapper__blog-list">
                 <span ref={titleRef}>{item.title}</span>
