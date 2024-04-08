@@ -3,13 +3,18 @@ import BlogList from "@/components/BlogList/BlogList";
 import {getPosts} from "@/server/post/postController";
 import PaginationControl from "@/components/PaginationControl/PaginationControl";
 import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import {getTranslations} from "next-intl/server";
 
 
 export default async function Page({params: {locale}, searchParams}: any) {
+    const t = await getTranslations('page.blog');
+    const page = searchParams["page"] ?? "1"
 
     return (
         <AnimatedPage>
-vsdfvsd
+            <div className="blog__container">
+                <h1>{t('title')}</h1>
+            </div>
         </AnimatedPage>
     );
 }
@@ -17,7 +22,7 @@ vsdfvsd
 /*
 
 
-   const page = searchParams["page"] ?? "1"
+const page = searchParams["page"] ?? "1"
 
     const posts = await getPosts(page, 10, locale)
     const totalPages = posts.totalPages
