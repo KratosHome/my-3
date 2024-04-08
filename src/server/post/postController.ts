@@ -5,6 +5,7 @@ import {User} from "@/server/users/userSchema";
 
 
 export const getPosts = async (page: string = "1", limit: number = 10, lang: string, userId?: string) => {
+    "use server"
     try {
         await connectToDb();
         const matchQuery = userId ? {local: lang, userId: userId} : {isPublished: true, local: lang};
@@ -81,7 +82,7 @@ export const getPost = async (postId: any, local: string) => {
 export const getPostByUrl = async (url: any, local: string) => {
     try {
         await connectToDb();
-        const post: any = await Post.find({url: { $regex: url, $options: 'i' }, local: local})
+        const post: any = await Post.find({url: {$regex: url, $options: 'i'}, local: local})
         const user = await User.find(post.userId).select('email username img').lean();
         const resultUser = user[0];
         const resultPost = post[0];
