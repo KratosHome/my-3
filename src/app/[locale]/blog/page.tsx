@@ -1,3 +1,4 @@
+"use server"
 import "./blog.scss"
 import BlogList from "@/components/BlogList/BlogList";
 import {getPosts} from "@/server/post/postController";

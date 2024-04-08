@@ -3,9 +3,12 @@ import React, {useState, useEffect} from 'react';
 import './MainTitle.scss';
 import {Typewriter} from 'react-simple-typewriter';
 import {usePathname} from "next/navigation";
+import {useTranslations} from "next-intl";
 
 
 const MainTitle = ({refH2, refH1}: any) => {
+  //  const t = useTranslations('page.home.HeroSection');
+    // {t('checkEmail')}
     const pathName = usePathname();
 
     const [showReactText, setShowReactText] = useState(false);
