@@ -5,8 +5,13 @@ export default function robots(): MetadataRoute.Robots {
         rules: [
             {
                 userAgent: '*',
-                allow: '/',
-                disallow: ['/*?*sort=', '/*?*new='],
+                disallow: [
+                    '/*?*sort=',
+                    '/*?*new=',
+                    '/blog/*?*filter=',
+                    '/articles/*?*comments='
+                ],
+                allow: ['/', '/blog/', '/blog/*'],
             },
         ],
         sitemap: 'https://codecraftmaster.com/sitemap.xml',

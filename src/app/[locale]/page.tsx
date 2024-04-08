@@ -29,7 +29,6 @@ export async function generateMetadata({params}: any) {
 
 
 export default function Home({params: {locale}}: any) {
-
     return (
         <>
             <MainSchem locale={locale}/>

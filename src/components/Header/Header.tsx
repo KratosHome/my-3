@@ -12,8 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 const Header = ({session}: any) => {
 
     const filteredMenu = menuDate.filter(item => {
-        if (session.user && item.rout === "/login") return false;
-        if (!session.user && item.rout === "/profile") return false;
+        if (session?.user && item.rout === "/login") return false;
+        if (!session?.user && item.rout === "/profile") return false;
         return true;
     });
 

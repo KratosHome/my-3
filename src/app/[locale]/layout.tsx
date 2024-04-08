@@ -18,7 +18,7 @@ export default async function LocaleLayout({
     children: React.ReactNode;
     params: { locale: string };
 }) {
-    const session = await auth();
+    const session: any = await auth();
 
     return (
         <html lang={locale}>
