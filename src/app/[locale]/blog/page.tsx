@@ -18,7 +18,6 @@ export default async function Page({params: {locale}, searchParams}: any) {
                     <BlogList key={item.title} item={item}/>
                 )}
             </div>
-            <PaginationControl totalPages={totalPages}/>
         </>
     );
 }
