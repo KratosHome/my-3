@@ -18,6 +18,7 @@ const Header = ({session}: any) => {
         return true;
     });
 
+    console.log(session);
     return (
         <>
             <ScrollToTop/>

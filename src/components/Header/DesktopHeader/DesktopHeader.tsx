@@ -18,7 +18,7 @@ import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 const DesktopHeader = ({session, filteredMenu}: any) => {
     const triggerAnimation = useGsapPageTransition();
     const {locale} = useLocale();
-
+    console.log("session", session);
     const [isOpenSubMenu, setIsOpenSubMenu] = useState<{ [key: number]: boolean; }>({});
 
     const subMenuToggle = (index: number) => {
