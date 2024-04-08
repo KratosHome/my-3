@@ -12,13 +12,13 @@ export default async function Page({params: {locale}, searchParams}: any) {
     const totalPages = posts.totalPages
 
     return (
-        <AnimatedPage>
+        <>
             <div className="blog__container">
                 {posts.data.map((item) =>
                     <BlogList key={item.title} item={item}/>
                 )}
             </div>
             <PaginationControl totalPages={totalPages}/>
-        </AnimatedPage>
+        </>
     );
 }

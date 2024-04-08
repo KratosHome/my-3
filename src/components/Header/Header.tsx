@@ -11,13 +11,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Header = ({session}: any) => {
 
-
     const filteredMenu = menuDate.filter(item => {
-        if (session) return item.nameEn !== "login";
-        return item.nameEn !== "profile";
+        if (session.user && item.rout === "/login") return false;
+        if (!session.user && item.rout === "/profile") return false;
+        return true;
     });
 
-    console.log(session);
     return (
         <>
             <ScrollToTop/>
