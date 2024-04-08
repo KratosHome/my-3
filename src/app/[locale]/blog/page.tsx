@@ -10,7 +10,7 @@ import {getTranslations} from "next-intl/server";
 export default async function Page({params: {locale}, searchParams}: any) {
     const t = await getTranslations('page.blog');
     const page = searchParams["page"] ?? "1"
-    const posts = await fetch(`${process.env.NEXT_URL}/api/post/getPosts?lang=${locale}&page=${page}&limit=${10}`, {method: 'GET'});
+    const posts = await fetch(`/api/post/getPosts?lang=${locale}&page=${page}&limit=${10}`, {method: 'GET'});
     const data = await posts.json();
     const totalPages = data.totalPages
     console.log("data.data", data.data)
