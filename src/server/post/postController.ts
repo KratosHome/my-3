@@ -1,3 +1,4 @@
+"use server"
 import {connectToDb} from "@/server/connectToDb";
 import {Post} from "@/server/post/postSchema";
 import {revalidatePath} from "next/cache";
