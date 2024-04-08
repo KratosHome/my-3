@@ -7,7 +7,7 @@ import AnimatedPage from "@/components/animationTransition/AnimatedPage/Animated
 
 export default async function Page({params: {locale}, searchParams}: any) {
 
-    const posts = await getPosts(1, 10, locale)
+    const posts = await getPosts("1", 10, locale)
 
 
     return (
