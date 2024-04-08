@@ -27,12 +27,8 @@ export async function generateMetadata({params}: any) {
     return mainMetadata({lang})
 }
 
-export default function Home({
-                                 params: {locale}
-                             }: {
-    children: React.ReactNode;
-    params: { locale: string };
-}) {
+
+export default function Home({params: {locale}}: any) {
 
     return (
         <>

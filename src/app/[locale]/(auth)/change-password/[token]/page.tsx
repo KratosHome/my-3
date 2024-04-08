@@ -5,16 +5,16 @@ import React from "react";
 import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
 import СhangePasswordWrapper from "@/components/auth/СhangePasswordWrapper/СhangePasswordWrapper";
 
-export default async function Page({params: {lang}}: any) {
+export default async function Page({params: {locale}}: any) {
     const session = await auth();
 
     if (session?.user) {
         await createUsers(session)
-        redirect(`/${lang}/profile`);
+        redirect(`/${locale}/profile`);
     }
     return (
         <AnimatedPage>
-            <СhangePasswordWrapper lang={lang} dict={{}}/>
+            <СhangePasswordWrapper lang={locale}/>
         </AnimatedPage>
     );
 }

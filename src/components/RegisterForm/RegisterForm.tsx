@@ -4,8 +4,10 @@ import "./RegisterForm.scss";
 import MyInput from "@/components/UI/MyInput/MyInput";
 import Button from "@/components/UI/Button/Button";
 import Warning from "@/components/UI/Warning/Warning";
+import {useTranslations} from "next-intl";
 
-const RegisterForm = ({dict}: any) => {
+const RegisterForm = () => {
+    const t = useTranslations('page.login');
     const [error, setError] = useState('');
 
     const handleSubmit = async (event: any) => {
@@ -35,11 +37,11 @@ const RegisterForm = ({dict}: any) => {
     return (
         <div className="register-form__container">
             <form onSubmit={handleSubmit}>
-                <MyInput type={"text"} placeholder={dict.page.login.username} name={"username"}/>
-                <MyInput type={"text"} placeholder={dict.page.login.email} name={"email"}/>
-                <MyInput type={"password"} placeholder={dict.page.login.password} name={"password"}/>
-                <MyInput type={"password"} placeholder={dict.page.login.repeatPassword} name={"passwordRepeat"}/>
-                <Button>{dict.page.login.submit}</Button>
+                <MyInput type={"text"} placeholder={t('username')} name={"username"}/>
+                <MyInput type={"text"} placeholder={t('email')} name={"email"}/>
+                <MyInput type={"password"} placeholder={t('password')} name={"password"}/>
+                <MyInput type={"password"} placeholder={t('repeatPassword')} name={"passwordRepeat"}/>
+                <Button>{t('submit')}</Button>
             </form>
             {error && <Warning color={"error"}>{error}</Warning>}
         </div>

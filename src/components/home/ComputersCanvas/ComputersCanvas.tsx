@@ -74,5 +74,5 @@ const ComputersCanvas = React.memo(() => {
         </Canvas>
     );
 });
-
+ComputersCanvas.displayName = 'ComputersCanvas';
 export default ComputersCanvas;

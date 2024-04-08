@@ -1,30 +1,29 @@
 import {createUsers} from "@/server/users/userController";
 import {auth} from "@/server/users/auth";
 import RegisterForm from "@/components/RegisterForm/RegisterForm";
-import React from "react";
-import {getDictionary} from "@/utils/dictionary";
 import {redirect} from "next/navigation";
 import "./SingUp.scss"
 import GitHubButton from "@/components/UI/GitHubButton/GitHubButton";
 import OrLine from "@/components/UI/OrLine/OrLine";
 import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import {getTranslations} from "next-intl/server";
 
-export default async function Page({params: {lang}}: any) {
-    const dict = await getDictionary(lang)
+export default async function Page({params: {locale}}: any) {
     const session = await auth();
+    const t = await getTranslations('page.login');
 
     if (session?.user) {
         await createUsers(session)
-        redirect(`/${lang}/profile`);
+        redirect(`/${locale}/profile`);
     }
     return (
         <AnimatedPage>
             <div className="sign-up__container">
                 <div>
-                    <h1>Sing Up</h1>
+                    <h1>{t('sing up')}</h1>
                     <GitHubButton/>
-                    <OrLine>{dict.page.login.or}</OrLine>
-                    <RegisterForm dict={dict}/>
+                    <OrLine>{t('or')}</OrLine>
+                    <RegisterForm/>
                 </div>
             </div>
         </AnimatedPage>

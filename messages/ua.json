@@ -56,7 +56,11 @@
         "username": "ім'я користувача",
         "repeatPassword": "повторіть пароль",
         "submit": "Підтвердити",
-        "forgotPassword": "Забули пароль?"
+        "forgotPassword": "Забули пароль?",
+        "sing up": "Зареєструватися",
+        "checkEmail": "Перевірте електронну пошту",
+        "err": "Помилка запроса",
+        "passwordChanged": "Пароль змінено"
       }
     },
     "warnings": {
@@ -65,3 +69,4 @@
       "passwordChanged": "Пароль змінено"
     }
   }
+}

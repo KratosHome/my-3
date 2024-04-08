@@ -6,8 +6,10 @@ import MyInput from "@/components/UI/MyInput/MyInput";
 import Button from "@/components/UI/Button/Button";
 import Loading from "@/components/UI/loaders/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
+import {useTranslations} from "next-intl";
 
-const СhangePasswordWrapper = ({dict, lang}: any) => {
+const СhangePasswordWrapper = ({lang}: any) => {
+    const t = useTranslations('page.login');
     const params = useParams()
     const router = useRouter()
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -67,13 +69,13 @@ const СhangePasswordWrapper = ({dict, lang}: any) => {
     return (
         <div className="change-password_container">
             {loading && <Loading/>}
-            {submitSuccess && <Warning color={"ok"}> {dict.warnings.passwordChanged} </Warning>}
+            {submitSuccess && <Warning color={"ok"}>{t('passwordChanged')}</Warning>}
             {error && <Warning color={"error"}> {error} </Warning>}
-            <h1>{dict.page.login.forgotPassword}</h1>
+            <h1>{t('forgotPassword')}</h1>
             <form onSubmit={handleSubmit}>
-                <MyInput type={"password"} placeholder={dict.page.login.password} name={"password"}/>
-                <MyInput type={"password"} placeholder={dict.page.login.repeatPassword} name={"repeatPassword"}/>
-                <Button disabled={isSubmitting}>{dict.page.login.submit}</Button>
+                <MyInput type={"password"} placeholder={t('password')} name={"password"}/>
+                <MyInput type={"password"} placeholder={t('repeatPassword')} name={"repeatPassword"}/>
+                <Button disabled={isSubmitting}>{t('submit')}</Button>
             </form>
         </div>
     );

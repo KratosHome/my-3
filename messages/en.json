@@ -55,7 +55,11 @@
       "username": "user name",
       "repeatPassword": "repeat password",
       "submit": "submit",
-      "forgotPassword": "Forgot your password"
+      "forgotPassword": "Forgot your password",
+      "ding up": "Sing Up",
+      "checkEmail": "check your email",
+      "err": "Something went wrong",
+      "passwordChanged": "Password changed"
     },
     "warnings": {
       "checkEmail": "check your email",

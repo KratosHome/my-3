@@ -5,45 +5,45 @@ import "./LoginPage.scss"
 import MyInput from "@/components/UI/MyInput/MyInput";
 import Button from "@/components/UI/Button/Button";
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
-import React from "react";
-import {getDictionary} from "@/utils/dictionary";
 import {redirect} from "next/navigation";
 import GitHubButton from "@/components/UI/GitHubButton/GitHubButton";
 import OrLine from "@/components/UI/OrLine/OrLine";
 import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import {getTranslations} from "next-intl/server";
 
 export const metadata: Metadata = {
     title: 'My Page Title',
 }
 
-export default async function LoginPage({params: {lang}}: any) {
-    const dict = await getDictionary(lang)
+export default async function LoginPage({params: {locale}}: any) {
     const session = await auth();
+    const t = await getTranslations('page.login');
+
 
     if (session?.user) {
         await createUsers(session)
-        redirect(`/${lang}/profile`);
+        redirect(`/${locale}/profile`);
     }
     return (
         <AnimatedPage>
             <div className="login-page__container">
                 <div>
-                    <h1>{dict.page.login.h1}</h1>
+                    <h1>{t('h1')}</h1>
                     <GitHubButton/>
-                    <OrLine>{dict.page.login.or}</OrLine>
+                    <OrLine>{t('or')}</OrLine>
                     <form className="login-form__container" action={login}>
                         <div>
-                            <MyInput type={"text"} placeholder={dict.page.login.email} name={"email"}/>
-                            <MyInput type={"password"} placeholder={dict.page.login.password} name={"password"}/>
+                            <MyInput type={"text"} placeholder={t('email')} name={"email"}/>
+                            <MyInput type={"password"} placeholder={t('password')} name={"password"}/>
                         </div>
                         <div className="btn-login__action">
-                            <HoverLink rout={`/${lang}/forgot-password`}>{dict.page.login.forgotYour}</HoverLink>
-                            <Button>{dict.page.login.login}</Button>
+                            <HoverLink rout={`/${locale}/forgot-password`}>{t('forgotYour')}</HoverLink>
+                            <Button>{t('login')}</Button>
                         </div>
                     </form>
                     <div className="login-sing-up__actions">
-                        <span>{dict.page.login.isYourNew} </span>
-                        <HoverLink rout={`/${lang}/sign-up`}>{dict.page.login.signUp}</HoverLink>
+                        <span>{t('isYourNew')}</span>
+                        <HoverLink rout={`/${locale}/sign-up`}>{t('signUp')}</HoverLink>
                     </div>
                 </div>
             </div>

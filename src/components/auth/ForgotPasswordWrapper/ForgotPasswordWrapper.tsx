@@ -6,8 +6,10 @@ import Button from "@/components/UI/Button/Button";
 import Warning from "@/components/UI/Warning/Warning";
 import Loading from "@/components/UI/loaders/Loading/Loading";
 import {useFetchData} from "@/hooks/useFetchData";
+import {useTranslations} from 'next-intl';
 
-const ForgotPasswordWrapper = ({dict}: any) => {
+const ForgotPasswordWrapper = () => {
+    const t = useTranslations('page.login');
     const {data, error, isLoading, fetchData} = useFetchData<{ error?: string }>();
 
     const handleSubmit = (e: any) => {
@@ -22,13 +24,13 @@ const ForgotPasswordWrapper = ({dict}: any) => {
     return (
         <div className="forget-password__container">
             {isLoading && <Loading/>}
-            {data && <Warning color={"ok"}> {dict.warnings.checkEmail} </Warning>}
+            {data && <Warning color={"ok"}>{t('checkEmail')}</Warning>}
             {error && <Warning color={"error"}> {error} </Warning>}
             <div>
-                <h1>{dict.page.login.forgotPassword}</h1>
+                <h1>{t('forgotPassword')}</h1>
                 <form className="login-form__container" onSubmit={handleSubmit}>
-                    <MyInput type={"text"} placeholder={dict.page.login.email} name={"email"}/>
-                    <Button disabled={isLoading || data?.success}>{dict.page.login.submit}</Button>
+                    <MyInput type={"text"} placeholder={t('email')} name={"email"}/>
+                    <Button disabled={isLoading || data?.success}>{t('submit')}</Button>
                 </form>
             </div>
         </div>
