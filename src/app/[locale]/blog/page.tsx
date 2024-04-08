@@ -9,9 +9,11 @@ import {getTranslations} from "next-intl/server";
 export default async function Page({params: {locale}, searchParams}: any) {
     const t = await getTranslations('page.blog');
     const page = searchParams["page"] ?? "1"
+// process.env.NEXT_URL
+    const posts = await fetch(`${process.env.NEXT_URL}/api/post/getPosts?lang=${locale}&page=${page}&limit=${10}`, {method: 'GET'});
 
-    const posts = await getPosts(page, 10, locale)
-
+    const data = await posts.json();
+    console.log(data)
     return (
         <AnimatedPage>
             <div className="blog__container">
