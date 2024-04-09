@@ -1,10 +1,10 @@
 "use client";
 import "./header.scss";
-import DesktopHeader from "@/components/Header/DesktopHeader/DesktopHeader";
+import DesktopHeader from "@/components/bloks/Header/DesktopHeader/DesktopHeader";
 import {gsap} from "gsap";
-import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
+import ScrollToTop from "@/components/bloks/ScrollToTop/ScrollToTop";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import MobileHeader from "@/components/Header/MobileHeader/MobileHeader";
+import MobileHeader from "@/components/bloks/Header/MobileHeader/MobileHeader";
 import {menuDate} from "@/mokDate/menuDate";
 
 gsap.registerPlugin(ScrollTrigger);

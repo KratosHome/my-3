@@ -2,7 +2,7 @@
 import React from 'react';
 import "./Footer.scss";
 import {usePathname} from "next/navigation";
-import SocialLicks from "@/components/SocialLicks/SocialLicks";
+import SocialLicks from "@/components/home/SocialLicks/SocialLicks";
 
 const Footer = () => {
     const pathName = usePathname();

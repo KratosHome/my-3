@@ -1,6 +1,6 @@
 "use server"
 import {getPosts} from "@/server/post/postController";
-import PaginationControl from "@/components/PaginationControl/PaginationControl";
+import PaginationControl from "@/components/UI/PaginationControl/PaginationControl";
 import {auth} from "@/server/users/auth";
 import WrapperPosts from "@/components/admin/WrapperPosts/WrapperPosts";
 

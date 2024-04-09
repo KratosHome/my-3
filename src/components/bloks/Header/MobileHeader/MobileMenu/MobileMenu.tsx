@@ -110,7 +110,7 @@ const MobileMenu = ({
         >
             <div className="mobile-menu__wrapper">
                 <div className="burger-mob-menu-btn">
-                    <Link href="/" className="logo" onClick={(e) => handlePageClick(e, "/")}>
+                    <Link href="/public" className="logo" onClick={(e) => handlePageClick(e, "/")}>
                         <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
                     </Link>
                     <button className="sub-menu-btn" onClick={() => closeMenu(false)}>

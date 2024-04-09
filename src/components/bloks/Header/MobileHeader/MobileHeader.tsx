@@ -4,10 +4,10 @@ import "./MobileHeader.scss";
 import Link from "next/link";
 import CloseSvg from "@/assets/CloseSvg";
 import BurgerMenuSvg from "@/assets/BurgerMenuSvg";
-import MobileMenu from "@/components/Header/MobileHeader/MobileMenu/MobileMenu";
+import MobileMenu from "@/components/bloks/Header/MobileHeader/MobileMenu/MobileMenu";
 import Image from "next/image";
-import LanguageChange from "@/components/LanguageChange/LanguageChange";
-import ThemeChange from "@/components/ThemeChange/ThemeChange";
+import LanguageChange from "@/components/bloks/LanguageChange/LanguageChange";
+import ThemeChange from "@/components/bloks/ThemeChange/ThemeChange";
 import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 import {useLocale} from "@/hooks/useLocale";
 
@@ -39,7 +39,7 @@ const MobileHeader = ({session, filteredMenu}: any) => {
                 closeMenu={setIsOpenMenu}
                 filteredMenu={filteredMenu}
             />
-            <Link href="/" className="logo" onClick={(e) => handleLogoClick(e, `/${locale}`)}>
+            <Link href="/public" className="logo" onClick={(e) => handleLogoClick(e, `/${locale}`)}>
                 <Image title="logo" src={"/logo.png"} alt={"logo"} width={50} height={50}/>
             </Link>
             <div className="nav-bar-toggle">

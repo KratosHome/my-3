@@ -2,7 +2,7 @@ import {auth} from "@/server/users/auth";
 import {createUsers} from "@/server/users/userController";
 import {redirect} from "next/navigation";
 import React from "react";
-import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import СhangePasswordWrapper from "@/components/auth/СhangePasswordWrapper/СhangePasswordWrapper";
 
 export default async function Page({params: {locale}}: any) {

@@ -1,8 +1,8 @@
 "use server"
 import "./blog.scss"
-import BlogList from "@/components/BlogList/BlogList";
-import PaginationControl from "@/components/PaginationControl/PaginationControl";
-import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import BlogList from "@/components/blog/BlogList/BlogList";
+import PaginationControl from "@/components/UI/PaginationControl/PaginationControl";
+import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import {getTranslations} from "next-intl/server";
 import blogdata from "@/components/metadata/blogMetadata";
 import BlogSchem from "@/components/metadata/BlogSchem";

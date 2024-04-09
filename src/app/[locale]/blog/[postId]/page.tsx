@@ -3,7 +3,7 @@ import {getPostByUrl} from "@/server/post/postController";
 import {formatDate} from "@/utils/formatDate";
 import React from "react";
 import Avatar from "@/components/UI/Avatar/Avatar";
-import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import BlogItemSchem from "@/components/metadata/BlogItetmSchem";
 import blogItemMetadata from "@/components/metadata/blogItemMetadata";
 

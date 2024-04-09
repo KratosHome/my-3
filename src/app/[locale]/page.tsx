@@ -1,14 +1,14 @@
 import {Viewport} from 'next'
 import React, {lazy} from "react";
-import ContainerModel from "@/components/ContainerModel/ContainerModel";
-import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import ContainerModel from "@/components/UI/ContainerModel/ContainerModel";
+import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import MainSchem from "@/components/metadata/MainSchem";
 import mainMetadata from "@/components/metadata/mainMetadata";
 
 const HeroSection = lazy(() => import('@/components/home/HeroSection/HeroSection'));
 const WrapperRequest = lazy(() => import('@/components/home/WrapperRequest/WrapperRequest'));
 const AboutMe = lazy(() => import('@/components/home/AboutMe/AboutMe'));
-const Connect = lazy(() => import('@/components/Connect/Connect'));
+const Connect = lazy(() => import('@/components/home/Connect/Connect'));
 const Services = lazy(() => import('@/components/home/Services/Services'));
 const Experience = lazy(() => import('@/components/home/Experience/Experience'));
 const Projects = lazy(() => import('@/components/home/Projects/Projects'));

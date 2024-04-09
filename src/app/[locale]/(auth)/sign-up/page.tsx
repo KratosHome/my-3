@@ -1,11 +1,11 @@
 import {createUsers} from "@/server/users/userController";
 import {auth} from "@/server/users/auth";
-import RegisterForm from "@/components/RegisterForm/RegisterForm";
+import RegisterForm from "@/components/UI/RegisterForm/RegisterForm";
 import {redirect} from "next/navigation";
 import "./SingUp.scss"
 import GitHubButton from "@/components/UI/GitHubButton/GitHubButton";
 import OrLine from "@/components/UI/OrLine/OrLine";
-import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import {getTranslations} from "next-intl/server";
 
 export default async function Page({params: {locale}}: any) {

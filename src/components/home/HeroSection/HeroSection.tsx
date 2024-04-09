@@ -1,11 +1,11 @@
 "use client"
 import React, {useRef, useState} from 'react';
-import MainTitle from "@/components/MainTitle/MainTitle";
+import MainTitle from "@/components/home/MainTitle/MainTitle";
 import "./HeroSection.scss";
 import MyModal from "@/components/UI/MyModal/MyModal";
 import FormHireMe from "@/components/home/FormHireMe/FormHireMe";
 import {usePathname} from "next/navigation";
-import SocialLicks from "@/components/SocialLicks/SocialLicks";
+import SocialLicks from "@/components/home/SocialLicks/SocialLicks";
 import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
 import {useGSAP} from "@gsap/react";

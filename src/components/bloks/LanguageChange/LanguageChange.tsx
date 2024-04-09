@@ -6,7 +6,7 @@ import {usePathname} from 'next/navigation';
 import Image from "next/image";
 import {useGSAP} from "@gsap/react";
 import {handleHover} from "@/components/UI/Hover/hover";
-import arrow from "../../assets/icons/arrow.svg"
+import arrow from "../../../assets/icons/arrow.svg"
 
 export default function LanguageChange() {
     const router = useRouter();

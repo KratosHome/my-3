@@ -3,7 +3,7 @@ import {createUsers} from "@/server/users/userController";
 import {redirect} from "next/navigation";
 import React from "react";
 import ForgotPasswordWrapper from "@/components/auth/ForgotPasswordWrapper/ForgotPasswordWrapper";
-import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 
 export default async function Page({params: {locale}}: any) {
     const session = await auth();

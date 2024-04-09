@@ -2,7 +2,7 @@
 import {redirect} from "next/navigation";
 import {auth} from "@/server/users/auth";
 import {getUsers} from "@/server/users/userController";
-import PaginationControl from "@/components/PaginationControl/PaginationControl";
+import PaginationControl from "@/components/UI/PaginationControl/PaginationControl";
 import UsersWrapper from "@/components/admin/UsersWrapper/UsersWrapper";
 
 export default async function Page({params: {lang}, searchParams}: any) {

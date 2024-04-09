@@ -9,7 +9,7 @@ import {a} from "@react-spring/three";
 export const createUsers = async (session: any) => {
     "use server"
     try {
-        connectToDb();
+        await connectToDb();
 
         const user = await User.findOne({email: session.user.email.toLowerCase()});
         if (!user) {
@@ -65,7 +65,7 @@ export const addUser = async (prevState: any, formData: any) => {
     const {username, email, password, img} = Object.fromEntries(formData);
 
     try {
-        connectToDb();
+        await connectToDb();
         const newUser = new User({
             username,
             email: email.toLowerCase(),
@@ -87,7 +87,7 @@ export const deleteUser = async (formData: any) => {
     const {id} = Object.fromEntries(formData);
 
     try {
-        connectToDb();
+        await connectToDb();
 
         await Post.deleteMany({userId: id});
         await User.findByIdAndDelete(id);
@@ -105,7 +105,7 @@ export const register = async (formData: any) => {
     if (password !== passwordRepeat) return {error: "Passwords do not match"};
 
     try {
-        connectToDb();
+        await connectToDb();
         const user = await User.findOne({email: email.toLowerCase()});
         if (user) return {error: "Username already exists"};
 

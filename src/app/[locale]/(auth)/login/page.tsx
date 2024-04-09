@@ -8,7 +8,7 @@ import HoverLink from "@/components/UI/HoverLink/HoverLink";
 import {redirect} from "next/navigation";
 import GitHubButton from "@/components/UI/GitHubButton/GitHubButton";
 import OrLine from "@/components/UI/OrLine/OrLine";
-import AnimatedPage from "@/components/animationTransition/AnimatedPage/AnimatedPage";
+import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import {getTranslations} from "next-intl/server";
 
 export const metadata: Metadata = {

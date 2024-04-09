@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
                 <div style="max-width: 600px; margin: 20px auto; border: 1px solid #ddd; padding: 20px; font-family: Arial, sans-serif;">
                     <h2 style="color: #333;">Password Reset Request</h2>
                     <p>If you requested to reset your password, click the button below:</p>
-                    <a href="http://localhost:3000/en/change-password/${resetToken}" target="_blank" style="background-color: #007bff; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;">Reset Password</a>
+                    <a href="${process.env.NEXT_URL}/en/change-password/${resetToken}" target="_blank" style="background-color: #007bff; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;">Reset Password</a>
                     <p style="color: #666;">If you did not request a password reset, please ignore this email.</p>
                 </div>
             </body>
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
             from: process.env.EMAIL_USERNAME,
             to: email,
             subject: "Password Reset Request",
-            text: `To reset your password, please click on this link: http://localhost:3000/en/reset-password/${resetToken}`,
+            text: `To reset your password, please click on this link: ${process.env.NEXT_URL}/en/reset-password/${resetToken}`,
             html: emailTemplate,
         });
 
