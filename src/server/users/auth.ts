@@ -31,14 +31,13 @@ export const {
 } = NextAuth({
     providers: [
         GitHub({
-            clientId: "2afbd85ae93e3876b62e",
-            clientSecret: "f4fd9880dc254e50474f334d7623ad100984d9d6",
+            clientId: process.env.GITHUB_ID,
+            clientSecret: process.env.GITHUB_SECRET,
         }),
         CredentialsProvider({
             async authorize(credentials) {
                 try {
-                    const user = await login(credentials);
-                    return user;
+                    return await login(credentials);
                 } catch (err) {
                     return null;
                 }
