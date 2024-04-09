@@ -16,7 +16,6 @@ const nextConfig = {
         TELEGRAM_BOT_CHAT_ID: process.env.TELEGRAM_BOT_CHAT_ID,
         TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
         RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY,
-        NEXT_CAPTCHA_SECRET_KEY: process.env.NEXT_CAPTCHA_SECRET_KEY,
         NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
         AUTH_SECRET: process.env.AUTH_SECRET,
         GITHUB_ID: process.env.GITHUB_ID,
@@ -27,7 +26,6 @@ const nextConfig = {
         CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
         CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
         CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
-
     },
 };
 

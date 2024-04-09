@@ -16,6 +16,7 @@ const Header = ({session}: any) => {
         if (!session?.user && item.rout === "/profile") return false;
         return true;
     });
+    console.log("filteredMenu", process.env.GITHUB_ID)
 
     return (
         <>
