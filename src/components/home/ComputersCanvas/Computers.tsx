@@ -17,8 +17,8 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
-             //   pin: true,
-                pinSpacing: true,
+                pin: ".main",
+                pinSpacing: false,
             }
         })
 
@@ -68,3 +68,19 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
     );
 };
 export default Computers;
+
+/*
+
+gsap.registerPlugin(ScrollTrigger);
+
+    useGSAP(() => {
+
+        ScrollTrigger.create({
+            trigger: ".about-section",
+            start: "top center",
+            end: "bottom center",
+            pin: ".main",
+        })
+
+    }, {dependencies: [refComputer]});
+ */

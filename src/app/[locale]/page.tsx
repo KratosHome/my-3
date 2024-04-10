@@ -33,16 +33,18 @@ export default function Home({params: {locale}}: any) {
         <>
             <MainSchem locale={locale}/>
             <AnimatedPage>
-                <ContainerModel/>
-                <section id="section1" className="hero-section">
-                    <HeroSection/>
-                </section>
-                <section id="about" className="about-section">
-                    <AboutMe/>
-                </section>
-                <section id="projects" className="project-section">
-                    <Projects/>
-                </section>
+                <div className="wrapper-fixed-computer">
+                    <ContainerModel/>
+                    <section id="section1" className="hero-section">
+                        <HeroSection/>
+                    </section>
+                    <section id="about" className="about-section">
+                        <AboutMe/>
+                    </section>
+                    <section id="projects" className="project-section">
+                        <Projects/>
+                    </section>
+                </div>
                 <section id="services" className="hide-model">
                     <Services/>
                 </section>
