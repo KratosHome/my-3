@@ -1,0 +1,13 @@
+.not-found__container {
+  height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+
+  a {
+    border-radius: 10px;
+    box-shadow: var(--link-box-shadow);
+  }
+}

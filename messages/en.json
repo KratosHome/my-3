@@ -1,5 +1,10 @@
 {
   "page": {
+    "not-found": {
+      "title": "Oops what happened?",
+      "description": "Page Not Found - 404",
+      "link": "Go to home page"
+    },
     "footer": {
       "Oleg Tkach": "Oleg Tkach",
       "design by": "design by",

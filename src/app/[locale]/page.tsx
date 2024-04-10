@@ -33,30 +33,28 @@ export default function Home({params: {locale}}: any) {
         <>
             <MainSchem locale={locale}/>
             <AnimatedPage>
-                <main>
-                    <ContainerModel/>
-                    <section id="section1" className="hero-section">
-                        <HeroSection/>
-                    </section>
-                    <section id="about" className="about-section">
-                        <AboutMe/>
-                    </section>
-                    <section id="projects" className="project-section">
-                        <Projects/>
-                    </section>
-                    <section id="services" className="hide-model">
-                        <Services/>
-                    </section>
-                    <section id="experience">
-                        <Experience/>
-                    </section>
-                    <section id="trustedBy">
-                        <WrapperRequest/>
-                    </section>
-                    <section id="contact">
-                        <Connect/>
-                    </section>
-                </main>
+                <ContainerModel/>
+                <section id="section1" className="hero-section">
+                    <HeroSection/>
+                </section>
+                <section id="about" className="about-section">
+                    <AboutMe/>
+                </section>
+                <section id="projects" className="project-section">
+                    <Projects/>
+                </section>
+                <section id="services" className="hide-model">
+                    <Services/>
+                </section>
+                <section id="experience">
+                    <Experience/>
+                </section>
+                <section id="trustedBy">
+                    <WrapperRequest/>
+                </section>
+                <section id="contact">
+                    <Connect/>
+                </section>
             </AnimatedPage>
         </>
     )

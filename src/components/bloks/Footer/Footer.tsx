@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="footer-sociale">
                 <SocialLicks isAbsolute={false}/>
             </div>
-            <div> {pathName === "/ua" ? "Дизайн зроблений " : "Design by"}
+            <div> {pathName === "/ua" ? "Дизайн зроблений " : "Design by "}
                 <a
                     href="https://www.linkedin.com/in/tetiana-kucherak/"
                     target="_blank"

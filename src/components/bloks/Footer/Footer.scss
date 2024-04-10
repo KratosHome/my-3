@@ -1,10 +1,9 @@
 .container-footer {
+  max-height: 80px;
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  height: 120px;
 
   .footer-sociale {
     div {

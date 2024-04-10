@@ -22,10 +22,10 @@ const Header = ({session}: any) => {
             <ScrollToTop/>
             <div className="container-background-main">
                 <div className="inner-container"/>
-                <header className="container-header-client">
+                <div className="container-header-client">
                     <MobileHeader filteredMenu={filteredMenu} session={session}/>
                     <DesktopHeader filteredMenu={filteredMenu} session={session}/>
-                </header>
+                </div>
             </div>
         </>
     );

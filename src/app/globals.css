@@ -40,6 +40,7 @@
     --blog-background-color: rgba(90, 38, 155, 0.8);
 
     --background-color-transition: rgba(108, 52, 177, 0.95);
+    --link-box-shadow: 15px 25px 50px 20px rgba(196, 52, 52, 0.5);
 }
 
 [data-theme="dark"] {
@@ -86,6 +87,7 @@
     --blog-txt-color-next: #907474;
     --blog-background-color: rgba(79, 69, 69, 0.3);
     --background-color-transition: rgba(22, 21, 50, 0.9);
+    --link-box-shadow: 15px 25px 50px 20px rgba(185, 216, 80, 0.5);
 }
 
 /*  font-size: calc(var(--index) * 1); */
@@ -110,8 +112,12 @@ body {
 
     display: flex;
     flex-direction: column;
-    min-height: 85vh;
+    min-height: 100svh;
     max-width: 1700px;
+}
+
+main {
+    flex: 1;
 }
 
 a, span {

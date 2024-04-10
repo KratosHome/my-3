@@ -1,9 +1,22 @@
 import React from 'react';
+import "./not-found.scss";
+import {getTranslations} from "next-intl/server";
+import HoverLink from "@/components/UI/HoverLink/HoverLink";
 
-const NotFound = () => {
+const NotFound = async () => {
+    const t = await getTranslations('page.not-found');
+
     return (
-        <div>
-            NotFound   404
+        <div className="not-found__container">
+            <h1>
+                {t('title')}
+            </h1>
+            <h2>
+                {t('description')}
+            </h2>
+            <HoverLink rout={"/"}>
+                {t('link')}
+            </HoverLink>
         </div>
     );
 };
