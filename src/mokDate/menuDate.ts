@@ -79,7 +79,6 @@ export const menuDate = [
         rout: "/faq",
         subMenu: []
     },
-   */
     {
         nameUa: "увійти",
         nameEn: "login",
@@ -92,4 +91,5 @@ export const menuDate = [
         rout: "/profile",
         subMenu: []
     }
+       */
 ]
