@@ -6,8 +6,8 @@ import {useGSAP} from "@gsap/react";
 
 const Computers = ({isMobile, rotation, refComputer}: any) => {
     const computer = useGLTF("./desktop_pc/scene.gltf");
-    // change theme
     const theme = "light"
+
 
     useGSAP(() => {
 
@@ -17,7 +17,8 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
-                pin: true,
+             //   pin: true,
+                pinSpacing: true,
             }
         })
 
@@ -42,7 +43,8 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
                 duration: 1.5,
             })
 
-    });
+    }, {dependencies: [refComputer]});
+
 
     return (
         <mesh rotation={[0, rotation, 0]}>

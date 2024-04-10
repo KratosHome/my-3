@@ -7,7 +7,7 @@ import {useTranslations} from "next-intl";
 
 
 const MainTitle = ({refH2, refH1}: any) => {
-  //  const t = useTranslations('page.home.HeroSection');
+    const t = useTranslations('page.home.HeroSection');
     // {t('checkEmail')}
     const pathName = usePathname();
 
@@ -64,7 +64,7 @@ const MainTitle = ({refH2, refH1}: any) => {
                     />
                 )}
             </h1>
-            <h2 ref={refH2}>{pathName === "/ua" ? "Код як мистецтво: Інженерія, що дарує функціональну красу" : "Code as Art: Engineering Functional Beauty"}</h2>
+            <h2 ref={refH2}>{t('description')}</h2>
         </div>
     );
 };

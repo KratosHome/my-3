@@ -28,7 +28,7 @@ const ComputersCanvas = React.memo(() => {
     useEffect(() => {
         if (isMobile) {
             const interval = setInterval(() => {
-                setRotation((prev) => prev + 0.005); // Змінити швидкість обертання тут
+                setRotation((prev) => prev + 0.005);
             }, 16); // ~60 кадрів в секунду
             return () => clearInterval(interval);
         }

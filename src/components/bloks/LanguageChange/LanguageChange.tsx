@@ -7,18 +7,18 @@ import Image from "next/image";
 import {useGSAP} from "@gsap/react";
 import {handleHover} from "@/components/UI/Hover/hover";
 import arrow from "../../../assets/icons/arrow.svg"
+import {useLocale} from "@/hooks/useLocale";
 
 export default function LanguageChange() {
-    const router = useRouter();
-    const pathName = usePathname();
-    const locale = pathName.split('/')[1];
-
+    const {locale} = useLocale();
     const ref = useRef(null);
     const {contextSafe} = useGSAP();
+    const pathname = usePathname();
+    const router = useRouter();
 
-    const redirectedPathName = (locale: string) => {
-        const newPath = pathName.replace(/^\/[a-z]{2}/, `/${locale}`);
-        router.push(newPath);
+    const redirectedPathName = (sendLocale: string) => {
+        const newPathname = `/${sendLocale}/${pathname.split("/").slice(2).join("/")}`;
+        router.push(`${newPathname}`);
     }
 
     const handleMouseEnter = contextSafe(() => {
@@ -34,7 +34,7 @@ export default function LanguageChange() {
         >
             <span>{locale === "ua" ? "en" : "ua"}</span>
             <Image
-                title={pathName === "/ua" ? "перемикання мови" : "switch language"}
+                title={locale === "ua" ? "перемикання мови" : "switch language"}
                 src={arrow}
                 width={10}
                 height={10}

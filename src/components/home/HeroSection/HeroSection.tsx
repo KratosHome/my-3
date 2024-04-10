@@ -123,7 +123,6 @@ const HeroSection = () => {
                 />
                 <SocialLicks refLinks={refLinks}/>
             </div>
-
         </div>
     );
 };

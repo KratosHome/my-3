@@ -8,6 +8,7 @@ import {auth} from "@/server/users/auth";
 import Header from "@/components/bloks/Header/Header";
 import SessionWrapper from "@/components/bloks/SessionWrapper/SessionWrapper";
 import BlockPageTransition from "@/components/animation/BlockPageTransition/BlockPageTransition";
+import NextIntProvider from "@/components/NextIntProvider";
 
 export const dynamic = 'force-dynamic';
 
@@ -25,17 +26,19 @@ export default async function LocaleLayout({
         <GoogleTagManager/>
         <MyThemeProvider>
             <SessionWrapper>
-                <body>
-                <header>
-                    <BlockPageTransition/>
-                    <Header/>
-                    <StarsCanvas/>
-                </header>
-                <main>
-                    {children}
-                </main>
-                <Footer/>
-                </body>
+                <NextIntProvider locale={locale}>
+                    <body>
+                    <header>
+                        <BlockPageTransition/>
+                        <Header/>
+                        <StarsCanvas/>
+                    </header>
+                    <main>
+                        {children}
+                    </main>
+                    <Footer/>
+                    </body>
+                </NextIntProvider>
             </SessionWrapper>
         </MyThemeProvider>
         </html>
