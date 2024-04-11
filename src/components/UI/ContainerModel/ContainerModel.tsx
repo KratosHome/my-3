@@ -1,6 +1,6 @@
 "use client"
 import "./ContainerModel.scss";
-import Swim from "@/components/UI/Swim/Swim";
+import Swim from "@/components/animation/Swim/Swim";
 import React, {Suspense, useEffect, useState} from 'react';
 
 const ComputersCanvas = React.lazy(() => import("@/components/home/ComputersCanvas/ComputersCanvas"));

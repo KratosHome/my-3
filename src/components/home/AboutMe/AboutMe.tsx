@@ -2,7 +2,7 @@
 import React, {useRef} from 'react';
 import "./AboutMe.scss";
 import Image from "next/image";
-import Swim from "@/components/UI/Swim/Swim";
+import Swim from "@/components/animation/Swim/Swim";
 import {usePathname} from "next/navigation";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
