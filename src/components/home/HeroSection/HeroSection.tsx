@@ -10,9 +10,12 @@ import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
 import {useGSAP} from "@gsap/react";
 import ContainerModel from "@/components/UI/ContainerModel/ContainerModel";
+import {useTranslations} from "next-intl";
 
 
 const HeroSection = () => {
+ //   const t = useTranslations('page.home.HeroSection');
+ //   {t('hire-me')}
     const pathName = usePathname();
     const refH1 = useRef(null);
     const refH2 = useRef(null);
@@ -121,7 +124,7 @@ const HeroSection = () => {
                             </Btn>
                         }
                         childrenModal={<FormHireMe/>}
-                        layoutId={"2334342"}
+                        layoutId={"head-hire-me"}
                     />
                     <SocialLicks refLinks={refLinks}/>
                 </div>
