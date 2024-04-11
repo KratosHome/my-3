@@ -1,24 +1,19 @@
-import React from 'react';
-import "./not-found.scss";
-import {getTranslations} from "next-intl/server";
+'use client';
+import "./not-found.scss"
+import Error from 'next/error';
 import HoverLink from "@/components/UI/HoverLink/HoverLink";
+import Link from "next/link";
 
-const NotFound = async () => {
-    const t = await getTranslations('page.not-found');
-
+export default function NotFound() {
     return (
-        <div className="not-found__container">
-            <h1>
-                {t('title')}
-            </h1>
-            <h2>
-                {t('description')}
-            </h2>
-            <HoverLink rout={"/"}>
-                {t('link')}
-            </HoverLink>
-        </div>
+        <html lang="en">
+        <body className="not-found__container">
+        <h1>Such a language does not exist</h1>
+        <HoverLink rout="/">
+            Go to the main page
+        </HoverLink>
+        <Error statusCode={404}/>
+        </body>
+        </html>
     );
-};
-
-export default NotFound;
+}
