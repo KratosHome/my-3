@@ -16,16 +16,16 @@ const ContainerModel = () => {
     }, []);
 
     return (
-        <section className="main">
+        <div className="computer__container">
             <Swim className="computer">
                 <div className="test"></div>
                 {showModel && (
                     <Suspense fallback={<></>}>
-                        <ComputersCanvas />
+                        <ComputersCanvas/>
                     </Suspense>
                 )}
             </Swim>
-        </section>
+        </div>
     );
 };
 

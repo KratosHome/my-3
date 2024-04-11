@@ -13,11 +13,11 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
 
         let tl = gsap.timeline({
             scrollTrigger: {
-                trigger: ".main",
+                trigger: ".computer__container",
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
-                pin: ".main",
+                pin: ".computer__container",
                 pinSpacing: false,
             }
         })
@@ -28,14 +28,14 @@ const Computers = ({isMobile, rotation, refComputer}: any) => {
             scale: 0.5,
             x: 220,
         })
-            .to(".main", {
+            .to(".computer__container", {
                 x: -400,
                 y: 0,
                 z: 0,
                 ease: "Power0.out",
                 duration: 1.5,
             })
-            .to(".main", {
+            .to(".computer__container", {
                 x: 0,
                 y: -110,
                 z: 0,

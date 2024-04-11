@@ -3,9 +3,6 @@
   margin-top: calc(var(--index) * 4);
   position: relative;
 
-  @media(max-width: 400px) {
-    margin-top: 100px;
-  }
 
   .wrapper-hire-me {
     position: absolute;

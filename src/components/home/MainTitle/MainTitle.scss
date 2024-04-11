@@ -2,40 +2,36 @@
   min-height: calc(var(--index) * 13);
 
   h1 {
-    div {
-      display: flex;
-
-      @media (max-width: 768px) {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-
-    @media(max-width: 335px) {
-      margin-top: 80px;
+    word-spacing: -20px;
+    @media (max-width: 400px) {
+      word-spacing: -10px;
     }
 
     span {
+      width: max-content;
+      display: flex;
+      color: var(--text-color);
       text-transform: uppercase;
       font-size: calc(var(--index) * 3.9);
       font-style: normal;
       font-weight: bold;
       line-height: 90%;
-      letter-spacing: 3.2px;
+      letter-spacing: 1.2px;
 
       &:last-child {
-        padding-left: 10px;
+        color: var(--brand-violet-primary);
       }
-    }
-
-    > span {
-      color: var(--brand-violet-primary);
 
       @media (max-width: 768px) {
-        text-align: center;
+        font-size: calc(var(--index) * 2.9);
       }
     }
 
+    .line-1 {
+      border-right: 2px solid rgba(255, 255, 255, .75);
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 
   h2 {
@@ -56,7 +52,6 @@
 
   @media (max-width: 768px) {
     min-height: calc(var(--index) * 18);
-    text-align: center;
   }
 }
 

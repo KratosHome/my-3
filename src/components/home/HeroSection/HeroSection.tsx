@@ -9,6 +9,7 @@ import SocialLicks from "@/components/home/SocialLicks/SocialLicks";
 import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
 import {useGSAP} from "@gsap/react";
+import ContainerModel from "@/components/UI/ContainerModel/ContainerModel";
 
 
 const HeroSection = () => {
@@ -108,22 +109,25 @@ const HeroSection = () => {
 
 
     return (
-        <div className="container-3d">
-            <MainTitle refH1={refH1} refH2={refH2}/>
-            <div className="wrapper-hire-me">
-                <div></div>
-                <MyModal
-                    childrenOpen={
-                        <Btn refProps={refButton}>
-                            {pathName === "/ua" ? "Найняти мене" : "Hire me"}
-                        </Btn>
-                    }
-                    childrenModal={<FormHireMe/>}
-                    layoutId={"2334342"}
-                />
-                <SocialLicks refLinks={refLinks}/>
+        <>
+            <div className="container-3d">
+                <MainTitle refH1={refH1} refH2={refH2}/>
+                <div className="wrapper-hire-me">
+                    <div></div>
+                    <MyModal
+                        childrenOpen={
+                            <Btn refProps={refButton}>
+                                {pathName === "/ua" ? "Найняти мене" : "Hire me"}
+                            </Btn>
+                        }
+                        childrenModal={<FormHireMe/>}
+                        layoutId={"2334342"}
+                    />
+                    <SocialLicks refLinks={refLinks}/>
+                </div>
             </div>
-        </div>
+            <ContainerModel/>
+        </>
     );
 };
 
