@@ -4,7 +4,6 @@ import MainTitle from "@/components/home/MainTitle/MainTitle";
 import "./HeroSection.scss";
 import MyModal from "@/components/UI/MyModal/MyModal";
 import FormHireMe from "@/components/home/FormHireMe/FormHireMe";
-import {usePathname} from "next/navigation";
 import SocialLicks from "@/components/home/SocialLicks/SocialLicks";
 import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
@@ -14,9 +13,7 @@ import {useTranslations} from "next-intl";
 
 
 const HeroSection = () => {
- //   const t = useTranslations('page.home.HeroSection');
- //   {t('hire-me')}
-    const pathName = usePathname();
+   const t = useTranslations('page.home.HeroSection');
     const refH1 = useRef(null);
     const refH2 = useRef(null);
     const refButton = useRef(null);
@@ -120,7 +117,7 @@ const HeroSection = () => {
                     <MyModal
                         childrenOpen={
                             <Btn refProps={refButton}>
-                                {pathName === "/ua" ? "Найняти мене" : "Hire me"}
+                                {t('hire-me')}
                             </Btn>
                         }
                         childrenModal={<FormHireMe/>}
