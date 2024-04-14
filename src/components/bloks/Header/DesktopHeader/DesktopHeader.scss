@@ -15,24 +15,6 @@
     .menu-item {
       opacity: 0;
       font-size: 30px;
-
-
-      .sub-menu__btn {
-        position: absolute;
-        background-color: transparent;
-        top: 17px;
-        right: -20px;
-      }
-
-      .sub-menu__btn {
-        display: flex;
-        transition: transform 0.5s ease;
-        transform-origin: center;
-      }
-
-      .sub-menu__btn--open {
-        transform: rotate(180deg);
-      }
     }
   }
 

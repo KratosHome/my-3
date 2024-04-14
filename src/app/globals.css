@@ -31,16 +31,18 @@
     --experience-background-open: #e7e7fa;
     --experience-background-hover: rgba(109, 36, 201, 1);
     --safe-area-inset-top: env(safe-area-inset-top);
-    --sub-menu-background: rgba(90, 38, 155, 0.8);
+    --sub-menu-background: rgba(195, 194, 208, 0.9);
     --sub-menu-color: #F7F7F7;
     --link-color: #4648d7;
-
+    --link-color-background: rgba(59, 75, 155, 0.9);
     --blog-txt-color: #f1eded;
     --blog-txt-color-next: #bbb4b4;
     --blog-background-color: rgba(90, 38, 155, 0.8);
 
     --background-color-transition: rgba(108, 52, 177, 0.95);
     --link-box-shadow: 15px 25px 50px 20px rgba(196, 52, 52, 0.5);
+
+
 }
 
 [data-theme="dark"] {
@@ -79,10 +81,9 @@
     --experience-background-open: rgba(14, 14, 16, 0.5);
     --experience-background-hover: rgba(109, 36, 201, 0.5);
     --safe-area-inset-top: env(safe-area-inset-top);
-    --sub-menu-background: rgba(90, 38, 155, 0.8);
+    --sub-menu-background: rgba(58, 124, 152, 0.8);
     --sub-menu-color: #F7F7F7;
     --link-color: #d8e3ae;
-
     --blog-txt-color: #e9d9d9;
     --blog-txt-color-next: #907474;
     --blog-background-color: rgba(79, 69, 69, 0.3);

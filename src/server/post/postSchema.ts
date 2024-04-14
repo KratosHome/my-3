@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import {v4 as uuidv4} from 'uuid';
 
 const postSchema = new mongoose.Schema(
     {
@@ -17,8 +16,8 @@ const postSchema = new mongoose.Schema(
         },
         url: {
             type: String,
-            required: true,
             unique: false,
+            sparse: true,
         },
         local: {
             type: String,
@@ -32,17 +31,18 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        postId: {
-            type: String,
-            required: true,
-            default: function () {
-                return uuidv4()
-            }
+        keywords: {
+            type: [String],
+            default: []
         },
         isPublished: {
             type: Boolean,
             required: true,
             default: false,
+        },
+        postId: {
+            type: String,
+            required: true
         }
     },
     {timestamps: true}

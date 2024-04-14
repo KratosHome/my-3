@@ -4,15 +4,17 @@ import "./HoverLink.scss"
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
+import ArrowDownSvg from "@/assets/ArrowDownSvg";
 
 
 interface activeLinkType {
     children: ReactNode;
     rout: string
     click?: () => void
+    isSub?: boolean
 }
 
-const HoverLink: FC<activeLinkType> = ({children, rout, click}) => {
+const HoverLink: FC<activeLinkType> = ({children, rout, click, isSub}) => {
     const pathName = usePathname()
     const isActive = pathName === rout;
     const triggerAnimation = useGsapPageTransition();
@@ -23,11 +25,12 @@ const HoverLink: FC<activeLinkType> = ({children, rout, click}) => {
     };
 
     return (
-        <Link className={`container-link ${isActive ? "active-link" : "animate-link"}`}
+        <Link className={`container-link ${isActive ? "active-link " : "animate-link"}`}
               href={rout}
               onClick={handleClick}
         >
             {children}
+            {isSub ? <ArrowDownSvg/> : false}
         </Link>
     );
 };

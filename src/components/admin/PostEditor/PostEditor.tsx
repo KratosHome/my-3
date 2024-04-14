@@ -204,6 +204,25 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
                 />
                 <MyInput
                     type="text"
+                    placeholder="key words"
+                    name="subTitle"
+                    register={{
+                        ...register('subTitle', {
+                            required: 'This field is required',
+                            minLength: {
+                                value: 6,
+                                message: 'Name must be at least 6 characters',
+                            },
+                            maxLength: {
+                                value: 100,
+                                message: 'Name cannot be more than 100 characters',
+                            }
+                        })
+                    }}
+                    error={errors.subTitle?.message}
+                />
+                <MyInput
+                    type="text"
                     placeholder="url"
                     name="url"
                     register={{

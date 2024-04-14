@@ -68,21 +68,10 @@ const DesktopHeader = ({session, filteredMenu}: any) => {
             <ul className={`nav-bar__list`} onMouseLeave={() => setIsOpenSubMenu({})}>
                 {filteredMenu.map((menu: any, index: number) =>
                     <React.Fragment key={`${menu.rout}_${index + index + index}`}>
-                        <li className={`menu-item item-hover`}
+                        <li className={`menu-item`}
                             onMouseEnter={() => subMenuToggle(index)}>
-                            <HoverLink rout={`/${locale}${menu.rout}`}>
+                            <HoverLink rout={`/${locale}${menu.rout}`} isSub={menu?.subMenu.length}>
                                 {locale === "en" ? menu.nameEn : menu.nameUa}
-                                {menu?.subMenu.length > 0 &&
-                                    <button
-                                        className={`sub-menu__btn ${isOpenSubMenu[index] ? "sub-menu__btn--open" : ""}`}
-                                        onClick={() => setIsOpenSubMenu((prev) => ({
-                                            ...prev,
-                                            [index]: !prev[index],
-                                        }))}
-                                    >
-                                        <ArrowDownSvg/>
-                                    </button>
-                                }
                             </HoverLink>
                         </li>
                         {menu?.subMenu.length > 0 && (
