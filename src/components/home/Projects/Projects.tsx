@@ -61,7 +61,7 @@ const Projects = () => {
                 scrollTrigger: {
                     trigger: heRef.current,
                     start: "bottom bottom-=250",
-                    end: "top top-=80",
+                    end: "top top-=320",
                     toggleActions: "play reverse play reverse",
                 },
                 delay: 0.5,
@@ -82,7 +82,7 @@ const Projects = () => {
                 scrollTrigger: {
                     trigger: heRef.current,
                     start: "bottom bottom-=250",
-                    end: "top top-=80",
+                    end: "top top-=320",
                     toggleActions: "play reverse play reverse",
                 },
                 delay: 0.5,

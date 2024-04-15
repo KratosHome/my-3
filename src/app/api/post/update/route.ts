@@ -8,21 +8,20 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const id = formData.get('id')
 
+    const local = formData.get('local')
     const title = formData.get('title')
-    const desc = formData.get('desc')
-
-    const url = formData.get('url')
     const subTitle = formData.get('subTitle')
+    const desc = formData.get('desc')
+    const keyWords = formData.get('keyWords')
+    const url = formData.get('url')
     const image = formData.get('image') as File | null
 
     try {
         await connectToDb();
-        console.log("id", id)
-        const existingPost = await Post.findById(id);
+        const existingPost = await Post.findOne({url: url, local: local});
         let imgURL;
 
         if (image !== null) {
-            console.log("image", image)
             imgURL = existingPost.img;
         } else {
             imgURL = existingPost.img;
@@ -32,8 +31,9 @@ export async function POST(request: NextRequest) {
             title,
             desc,
             img: imgURL,
-            url: url,
+            postId: url,
             subTitle: subTitle,
+            keyWords: keyWords
         };
 
         await Post.findByIdAndUpdate(id, updatedData, {new: true});
@@ -41,10 +41,7 @@ export async function POST(request: NextRequest) {
         revalidatePath("/blog");
         revalidatePath("/profile");
 
-        return NextResponse.json(
-            {
-                success: true,
-            }, {status: 201});
+        return NextResponse.json({success: true}, {status: 201});
     } catch (err) {
         console.error(err);
         return NextResponse.json({error: "Something went wrong!"}, {status: 500});

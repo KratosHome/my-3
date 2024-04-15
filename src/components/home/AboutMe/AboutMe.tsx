@@ -255,6 +255,7 @@ const AboutMe = () => {
                 </div>
             </div>
             <a
+                className="download-pdf-about-me"
                 ref={refA}
                 href={"https://drive.google.com/file/d/1Q4PgAvuOPih8iE-Jw0XZxnKMpqCACF-N/view?usp=share_link"}
                 target="_blank"

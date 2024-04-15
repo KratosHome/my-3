@@ -13,11 +13,12 @@ const postSchema = new mongoose.Schema(
         desc: {
             type: String,
             required: true,
+            unique: false,
         },
         url: {
             type: String,
-            unique: false,
             sparse: true,
+            unique: false,
         },
         local: {
             type: String,
@@ -31,7 +32,7 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        keywords: {
+        keyWords: {
             type: [String],
             default: []
         },
@@ -39,10 +40,6 @@ const postSchema = new mongoose.Schema(
             type: Boolean,
             required: true,
             default: false,
-        },
-        postId: {
-            type: String,
-            required: true
         }
     },
     {timestamps: true}

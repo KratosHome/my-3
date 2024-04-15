@@ -35,6 +35,7 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
     const [image, setImage] = useState<any>(null);
     const title = watch("title");
     const url = watch("url");
+    const keyWords = watch("keyWords");
     const subTitle = watch("subTitle");
 
     useEffect(() => {
@@ -48,8 +49,21 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
     }, [post]);
 
     useEffect(() => {
+        if (postId) {
+            setDesc('');
+            reset({
+                title: "",
+                desc: "",
+                subTitle: "",
+                keyWords: "",
+                url: data.url,
+            });
+        }
+    }, [postId]);
+
+    useEffect(() => {
         if (data) {
-            setPostId(data.postId);
+            setPostId(data.url);
         }
     }, [data]);
 
@@ -103,30 +117,30 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
     };
 
 
+
     const cretePost = () => {
         const formData = new FormData();
         const userId = (session?.user as any)?._id;
+        const newKeyWords = keyWords.split(',').map((item: any) => item.trim());
+
         formData.append('userId', userId);
         formData.append('title', title);
         formData.append('desc', desc);
         formData.append('image', image);
         formData.append('subTitle', subTitle);
+        formData.append('keyWords', newKeyWords);
+        formData.append('url', url);
 
         if (postId) {
             formData.append('local', locale === "ua" ? "en" : "ua");
         } else {
             formData.append('local', locale);
         }
-        formData.append('url', url);
 
         if (postId) {
             formData.append('postId', postId);
         }
         fetchData('/api/post/create', formData, true)
-
-        setDesc('');
-        setImage(null);
-        reset()
 
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
@@ -140,19 +154,25 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
 
     const updatePost = () => {
         const formData = new FormData();
+        const newKeyWords = keyWords.split(',').map((item: any) => item.trim());
+        formData.append('local', locale);
         formData.append('id', post._id);
-
-
         formData.append('title', title);
         formData.append('desc', desc);
         formData.append('image', image);
         formData.append('subTitle', subTitle);
-        formData.append('url', url);
+        formData.append('keyWords', newKeyWords);
 
         fetchData('/api/post/update', formData, true)
-
     }
 
+    const generateUrl = () => {
+        const text = title.toLowerCase().trim().replace(/\s+/g, '-');
+        reset({url: text,});
+    };
+    console.log("data", data)
+    console.log("postId", postId)
+    console.log("error", error)
     return (
         <>
             {isLoading && <Loading/>}
@@ -205,9 +225,9 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
                 <MyInput
                     type="text"
                     placeholder="key words"
-                    name="subTitle"
+                    name="keyWords"
                     register={{
-                        ...register('subTitle', {
+                        ...register('keyWords', {
                             required: 'This field is required',
                             minLength: {
                                 value: 6,
@@ -221,6 +241,7 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
                     }}
                     error={errors.subTitle?.message}
                 />
+                <span>слова через зяпятаую postId </span>
                 <MyInput
                     type="text"
                     placeholder="url"
@@ -238,8 +259,12 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
                             }
                         })
                     }}
+                    disabled={postId}
                     error={errors.url?.message}
                 />
+                <button onClick={generateUrl}>
+                    create url
+                </button>
                 <div>
                     <input
                         className="file-input__create-post"

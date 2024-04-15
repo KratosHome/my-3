@@ -29,6 +29,7 @@ export const useFetchData = <T>({initialState}: UseFetchDataProps<T> = {}): UseF
 
         fetch(url, fetchOptions)
             .then(response => {
+                console.log("response", response)
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

@@ -13,9 +13,10 @@ interface myInputProps {
     error?: string | any;
     value?: any
     onChange?: (e: any) => void
+    disabled?: boolean
 }
 
-const MyInput: FC<myInputProps> = ({type, placeholder, register, error, label, name, value, onChange}) => {
+const MyInput: FC<myInputProps> = ({type, placeholder, register, error, label, name, value, onChange, disabled}) => {
     const [inputType, setInputType] = useState<string>(type);
 
     const toggleShowPassword = () => {
@@ -32,6 +33,7 @@ const MyInput: FC<myInputProps> = ({type, placeholder, register, error, label, n
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
+                    disabled={disabled}
                     {...register}
                 />
                 {type === "password" && <HidePass click={toggleShowPassword}/>}

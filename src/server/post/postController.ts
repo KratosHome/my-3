@@ -83,7 +83,7 @@ export const getPost = async (postId: any, local: string) => {
 export const getPostByUrl = async (url: any, local: string) => {
     try {
         await connectToDb();
-        const post: any = await Post.find({url: {$regex: url, $options: 'i'}, local: local})
+        const post: any = await Post.find({url: url, local: local})
         const user = await User.find(post.userId).select('email username img').lean();
         const resultUser = user[0];
         const resultPost = post[0];

@@ -12,7 +12,6 @@ export async function GET(request: NextRequest) {
     const page = parseInt(url.searchParams.get('page') || '1', 10);
     const limit = parseInt(url.searchParams.get('limit') || '10', 10);
 
-    console.log('lang', lang);
     try {
         await connectToDb();
         const matchQuery = {isPublished: true, local: lang};
