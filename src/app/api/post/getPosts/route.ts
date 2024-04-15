@@ -19,8 +19,9 @@ export async function GET(request: NextRequest) {
         const totalPages = Math.ceil(total / limit);
         const startIndex = (+page - 1) * limit;
 
-        const postsQuery = [
+        const postsQuery: any = [
             {$match: matchQuery},
+            {$sort: {createdAt: -1}},
             {$limit: limit},
             {$skip: startIndex},
             {

@@ -117,7 +117,6 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
     };
 
 
-
     const cretePost = () => {
         const formData = new FormData();
         const userId = (session?.user as any)?._id;
@@ -170,9 +169,6 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
         const text = title.toLowerCase().trim().replace(/\s+/g, '-');
         reset({url: text,});
     };
-    console.log("data", data)
-    console.log("postId", postId)
-    console.log("error", error)
     return (
         <>
             {isLoading && <Loading/>}
