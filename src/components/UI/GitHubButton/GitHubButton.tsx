@@ -7,7 +7,7 @@ import {signIn} from "@/server/users/auth";
 const GitHubButton = () => {
     const handleLogin = async () => {
         "use server"
-        await signIn("gitHub");
+        await signIn("github");
     }
 
     return (
