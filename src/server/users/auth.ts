@@ -50,7 +50,6 @@ export const {
             return true;
         },
         async session({session, token, user}) {
-
             session.user = token.user as AdapterUser;
             return session;
         },
