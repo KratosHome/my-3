@@ -8,10 +8,11 @@ function blogItemMetadata({lang, posts}: bolgItemMetadataProps) {
     const postUrl = `https://codecraftmaster.com/${lang}/blog/${resultPost.url}`;
     const imageUrl = resultPost.img;
 
+    console.log("resultPost", resultPost.keyWords)
     return {
         title: resultPost.title + ' | CodeCraftMaster Blog',
         description: resultPost.subTitle,
-        keywords: ['job search', 'interviews', 'IT careers', 'software development', 'coding interviews'],
+        keywords: resultPost.keyWords,
         author: resultUser.username,
         image: imageUrl,
         url: postUrl,

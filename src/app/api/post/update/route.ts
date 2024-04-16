@@ -19,6 +19,8 @@ export async function POST(request: NextRequest) {
     try {
         await connectToDb();
         const existingPost = await Post.findOne({url: url, local: local});
+        if (!existingPost) return NextResponse.json({error: 'post not found'}, {status: 404});
+        console.log("existingPost", existingPost);
         let imgURL;
 
         if (image !== null) {
@@ -30,7 +32,7 @@ export async function POST(request: NextRequest) {
         const updatedData: any = {
             title,
             desc,
-            img: imgURL,
+            img: existingPost.img,
             postId: url,
             subTitle: subTitle,
             keyWords: keyWords

@@ -11,6 +11,7 @@ import {useRouter} from "next/navigation";
 const WrapperPosts = ({posts}: any) => {
     const router = useRouter();
 
+
     const columns = [
         {
             id: 'published',
@@ -31,10 +32,10 @@ const WrapperPosts = ({posts}: any) => {
             headerName: 'edit',
             width: 100,
             render: (item: any) => <button
-                disabled={item.isPublished}
+                // disabled={item.isPublished}
                 className="svg-icons__wrapper-posts"
                 onClick={() => {
-                    router.push(`posts/${item.postId}`);
+                    router.push(`posts/${item.url}`);
                 }}>
                 <Edit/>
             </button>,

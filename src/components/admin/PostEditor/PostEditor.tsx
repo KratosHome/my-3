@@ -43,7 +43,8 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
             reset({
                 title: post.title,
                 url: post.url,
-                subTitle: post.subTitle
+                subTitle: post.subTitle,
+                keyWords: post.keyWords
             });
         }
     }, [post]);
@@ -154,6 +155,7 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
     const updatePost = () => {
         const formData = new FormData();
         const newKeyWords = keyWords.split(',').map((item: any) => item.trim());
+        formData.append('url', post.url);
         formData.append('local', locale);
         formData.append('id', post._id);
         formData.append('title', title);
@@ -167,8 +169,9 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
 
     const generateUrl = () => {
         const text = title.toLowerCase().trim().replace(/\s+/g, '-');
-        reset({url: text,});
+        reset({url: text});
     };
+
     return (
         <>
             {isLoading && <Loading/>}
@@ -255,7 +258,7 @@ const PostEditor: FC<CreatePostProps> = ({post}) => {
                             }
                         })
                     }}
-                    disabled={postId}
+                    disabled={postId || post}
                     error={errors.url?.message}
                 />
                 <button onClick={generateUrl}>

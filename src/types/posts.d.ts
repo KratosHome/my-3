@@ -33,6 +33,7 @@ interface Post {
     updatedAt: Date;
     __v: number;
     subTitle: string;
+    keyWords: string[]
 }
 
 interface User {

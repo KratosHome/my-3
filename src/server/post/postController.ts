@@ -69,10 +69,10 @@ export const getPosts = async (page: string = "1", limit: number = 10, lang: str
     }
 };
 
-export const getPost = async (postId: any, local: string) => {
+export const getPost = async (url: any, local: string) => {
     try {
         await connectToDb();
-        const post: any = await Post.find({postId: postId, local: local});
+        const post: any = await Post.find({url: url, local: local});
         return post;
     } catch (err) {
         console.log(err);
