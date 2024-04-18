@@ -24,7 +24,7 @@ export default async function LoginPage({params: {locale}}: any) {
         await createUsers(session)
         redirect(`/${locale}/profile`);
     }
-    // ff
+    // ff3
     return (
         <AnimatedPage>
             <div className="login-page__container">
