@@ -19,7 +19,7 @@ export default async function LocaleLayout({
     children: React.ReactNode;
     params: { locale: string };
 }) {
-    //   const session: any = await auth();
+       const session: any = await auth();
 
     return (
         <html lang={locale}>
@@ -30,7 +30,7 @@ export default async function LocaleLayout({
                     <body>
                     <header>
                         <BlockPageTransition/>
-                        <Header/>
+                        <Header session={session}/>
                         <StarsCanvas/>
                     </header>
                     <main>

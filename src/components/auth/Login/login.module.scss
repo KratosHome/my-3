@@ -1,25 +1,17 @@
-.login-page__container {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   h1 {
-    margin: 50px 0 100px 0;
+    margin: 7svh 0 8svh 0;
     text-align: center;
   }
 
-  .login-form__container {
+  .login_form {
 
-    > div {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .btn-login__action {
+    .btn_login {
       display: flex;
       flex-direction: column;
 
@@ -32,16 +24,29 @@
 
       button {
         width: 100%;
+        margin: 20px 0;
       }
     }
   }
 
-  .login-sing-up__actions {
-    margin-top: 10px;
+  .sing_up {
+
     a {
       text-align: right;
       width: 100%;
       background-color: var(--link-color);
     }
+  }
+}
+
+.password_strength {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2px;
+
+  .strength_bar {
+
+    height: 2px;
+    width: 40px;
   }
 }

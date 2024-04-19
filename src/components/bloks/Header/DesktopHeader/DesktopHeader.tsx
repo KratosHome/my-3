@@ -3,7 +3,6 @@ import "./DesktopHeader.scss";
 import Link from "next/link";
 import React, {useState} from "react";
 import {menuDate} from "@/mokDate/menuDate";
-import ArrowDownSvg from "@/assets/ArrowDownSvg";
 import SubNav from "@/components/bloks/Header/DesktopHeader/SubNav/SubNav";
 import Image from "next/image";
 import LanguageChange from "@/components/bloks/LanguageChange/LanguageChange";
@@ -18,7 +17,6 @@ import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 const DesktopHeader = ({session, filteredMenu}: any) => {
     const triggerAnimation = useGsapPageTransition();
     const {locale} = useLocale();
-    console.log("session", session);
     const [isOpenSubMenu, setIsOpenSubMenu] = useState<{ [key: number]: boolean; }>({});
 
     const subMenuToggle = (index: number) => {
@@ -68,8 +66,7 @@ const DesktopHeader = ({session, filteredMenu}: any) => {
             <ul className={`nav-bar__list`} onMouseLeave={() => setIsOpenSubMenu({})}>
                 {filteredMenu.map((menu: any, index: number) =>
                     <React.Fragment key={`${menu.rout}_${index + index + index}`}>
-                        <li className={`menu-item`}
-                            onMouseEnter={() => subMenuToggle(index)}>
+                        <li className={`menu-item`} onMouseEnter={() => subMenuToggle(index)}>
                             <HoverLink rout={`/${locale}${menu.rout}`} isSub={menu?.subMenu.length}>
                                 {locale === "en" ? menu.nameEn : menu.nameUa}
                             </HoverLink>

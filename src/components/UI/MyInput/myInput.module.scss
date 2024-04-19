@@ -1,5 +1,5 @@
 
-.container-my-input {
+.container {
   width: 100%;
   margin-bottom: 20px;
 
@@ -11,7 +11,7 @@
     margin-bottom: 15px;
   }
 
-  .wrapper-my-input {
+  .wrapper_input {
     position: relative;
 
 
@@ -33,11 +33,12 @@
       cursor: pointer;
     }
 
-    .error-my-input {
+    .error_input {
+      white-space: nowrap;
       position: absolute;
       top: 180%;
-      left: 35%;
-      transform: translate(-35%, -180%);
+      left: 50%;
+      transform: translate(-50%, -180%);
       color: red;
     }
   }

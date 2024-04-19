@@ -6,12 +6,13 @@ import ScrollToTop from "@/components/bloks/ScrollToTop/ScrollToTop";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import MobileHeader from "@/components/bloks/Header/MobileHeader/MobileHeader";
 import {menuDate} from "@/mokDate/menuDate";
+import {useSession} from "next-auth/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Header = ({session}: any) => {
+   // const { data: session, status } = useSession()
 
-    console.log("session", session)
     const filteredMenu = menuDate.filter(item => {
         if (session?.user && item.rout === "/login") return false;
         if (!session?.user && item.rout === "/profile") return false;

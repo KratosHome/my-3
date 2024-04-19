@@ -68,7 +68,12 @@
       "ding up": "Sing Up",
       "checkEmail": "check your email",
       "err": "Something went wrong",
-      "passwordChanged": "Password changed"
+      "passwordChanged": "Password changed",
+      "No such user exists": "No such user exists",
+      "This field is required": "This field is required",
+      "This is not an email": "This is not an email",
+      "Minimum number of characters": "Minimum number of characters",
+      "Maximum number of characters": "Maximum number of characters"
     },
     "warnings": {
       "checkEmail": "check your email",

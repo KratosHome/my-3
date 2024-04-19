@@ -1,17 +1,16 @@
 import React from 'react';
-import "./GitHubButton.scss"
+import st from "./gitHubButton.module.scss"
 import Button from "@/components/UI/Button/Button";
 import GitHub from "@/assets/GitHub";
-import {signIn} from "@/server/users/auth";
+import {loginGitHubAction} from "@/server/auth/loginGitHub.server";
 
 const GitHubButton = () => {
     const handleLogin = async () => {
-        "use server"
-        await signIn("gitHub");
+        await loginGitHubAction()
     }
 
     return (
-        <form className="button-gitHub__button" action={handleLogin}>
+        <form className={st.container} onSubmit={handleLogin}>
             <Button><GitHub/>GitHub</Button>
         </form>
     );
