@@ -1,5 +1,5 @@
 "use client";
-import "./header.scss";
+import st from "./header.module.scss";
 import DesktopHeader from "@/components/bloks/Header/DesktopHeader/DesktopHeader";
 import {gsap} from "gsap";
 import ScrollToTop from "@/components/bloks/ScrollToTop/ScrollToTop";
@@ -20,8 +20,8 @@ const Header = ({session}: any) => {
     return (
         <>
             <ScrollToTop/>
-            <div className="container-background-main">
-                <div className="inner-container"/>
+            <div className={st.container}>
+                <div className={st.background}/>
                 <div className="container-header-client">
                     <MobileHeader filteredMenu={filteredMenu} session={session}/>
                     <DesktopHeader filteredMenu={filteredMenu} session={session}/>

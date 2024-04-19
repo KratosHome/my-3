@@ -1,17 +1,19 @@
 
-.container-background-main {
+.container {
   margin-top: -10px;
   height: 80px;
 
-  .inner-container {
+  .background {
     z-index: -1;
     position: absolute;
     right: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
     width: 100vw;
     background-image: url('https://res.cloudinary.com/dfreocjfu/image/upload/v1712065939/main/js8jxgtovi7gmddxaucg.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
     height: 100svh;
   }
 
