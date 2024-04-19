@@ -12,6 +12,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {loginAction} from "@/server/auth/login.server";
 import Loading from "@/components/UI/loaders/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
+import {useRouter} from "next/navigation";
 
 interface LoginFormValues {
     email: string;
@@ -20,9 +21,9 @@ interface LoginFormValues {
 
 const Login = () => {
     const locale = useLocale();
+    const router = useRouter();
     const t = useTranslations('page.login');
     const {register, handleSubmit, formState: {errors}, watch} = useForm<LoginFormValues>();
-    const password = watch("password");
 
     const [errorAction, setErrorAction] = useState<boolean | undefined>(false);
     const [loading, setLoading] = useState<boolean | undefined>(false);
@@ -34,33 +35,16 @@ const Login = () => {
         setLoading(false)
         setErrorAction(result?.error)
         setSuccess(result?.success)
+
+        if (result?.success) {
+            router.refresh();
+        }
     };
-
-    const getPasswordStrength = (password: string) => {
-        if (!password) return 0;
-        if (password.length < 6) return 1;
-        if (password.length >= 6 && /\d+/.test(password) && /[a-zA-Z]+/.test(password)) return 2;
-        if (password.length >= 8 && /\d+/.test(password) && /[a-zA-Z]+/.test(password) && /[^a-zA-Z\d]+/.test(password)) return 3;
-        return 0;
-    };
-
-    const passwordStrengthLevel = getPasswordStrength(password);
-
-    const renderPasswordStrengthBar = (level: number) => {
-        return (
-            <div className={st.password_strength}>
-                <div className={st.strength_bar} style={{backgroundColor: level >= 1 ? 'lightgrey' : 'red'}}></div>
-                <div className={st.strength_bar} style={{backgroundColor: level >= 2 ? 'lightgrey' : 'red'}}></div>
-                <div className={st.strength_bar} style={{backgroundColor: level >= 3 ? 'lightgrey' : 'red'}}></div>
-            </div>
-        );
-    };
-
 
     return (
         <>
             {loading && <Loading/>}
-            {success && <Warning color={"ok"}>{t('passwordChanged')}</Warning>}
+            {success && <Warning color={"ok"}>{t('success')}</Warning>}
             {errorAction && <Warning color={"error"}>{t('No such user exists')}</Warning>}
             <div className={st.container}>
                 <div>
@@ -104,7 +88,6 @@ const Login = () => {
                                 error={errors.password?.message}
                             />
                         </div>
-                        {renderPasswordStrengthBar(passwordStrengthLevel)}
                         <div className={st.btn_login}>
                             <HoverLink rout={`/${locale}/forgot-password`}>{t('forgotYour')}</HoverLink>
                             <Button>{t('login')}</Button>

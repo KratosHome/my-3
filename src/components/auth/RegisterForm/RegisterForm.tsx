@@ -1,6 +1,6 @@
 "use client"
 import st from "./registerForm.module.scss"
-import  {useState} from 'react';
+import React, {useState} from 'react';
 import MyInput from "@/components/UI/MyInput/MyInput";
 import Button from "@/components/UI/Button/Button";
 import Warning from "@/components/UI/Warning/Warning";
@@ -51,6 +51,27 @@ const RegisterForm = () => {
         setErrorAction(null);
         setLoading(false)
     };
+
+    const getPasswordStrength = (password: string) => {
+        if (!password) return 0;
+        if (password.length < 6) return 1;
+        if (password.length >= 6 && /\d+/.test(password) && /[a-zA-Z]+/.test(password)) return 2;
+        if (password.length >= 8 && /\d+/.test(password) && /[a-zA-Z]+/.test(password) && /[^a-zA-Z\d]+/.test(password)) return 3;
+        return 0;
+    };
+
+    const passwordStrengthLevel = getPasswordStrength(password);
+
+    const renderPasswordStrengthBar = (level: number) => {
+        return (
+            <div className={st.password_strength}>
+                <div className={st.strength_bar} style={{backgroundColor: level >= 1 ? 'lightgrey' : 'red'}}></div>
+                <div className={st.strength_bar} style={{backgroundColor: level >= 2 ? 'lightgrey' : 'red'}}></div>
+                <div className={st.strength_bar} style={{backgroundColor: level >= 3 ? 'lightgrey' : 'red'}}></div>
+            </div>
+        );
+    };
+
 
     return (
         <>
@@ -111,6 +132,7 @@ const RegisterForm = () => {
                         }}
                         error={errors.password?.message}
                     />
+                    {renderPasswordStrengthBar(passwordStrengthLevel)}
                     <MyInput
                         type={"password"}
                         placeholder={t('repeatPassword')}

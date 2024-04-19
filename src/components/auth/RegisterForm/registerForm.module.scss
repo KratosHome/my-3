@@ -9,3 +9,15 @@
     width: 350px;
   }
 }
+
+.password_strength {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2px;
+
+  .strength_bar {
+
+    height: 2px;
+    width: 40px;
+  }
+}

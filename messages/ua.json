@@ -73,7 +73,8 @@
       "This field is required": "Це поле є обов'язковим",
       "This is not an email": "Це не електронна пошта",
       "Minimum number of characters": "Мінімальна кількість символів",
-      "Maximum number of characters": "Максимальна кількість символів"
+      "Maximum number of characters": "Максимальна кількість символів",
+      "success": "успіх"
     }
   },
   "warnings": {
