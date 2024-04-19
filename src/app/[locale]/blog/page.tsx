@@ -1,5 +1,5 @@
 "use server"
-import "./blog.scss"
+import st from "./blog.module.scss"
 import BlogList from "@/components/blog/BlogList/BlogList";
 import PaginationControl from "@/components/UI/PaginationControl/PaginationControl";
 import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
@@ -10,7 +10,6 @@ import BlogSchem from "@/components/metadata/BlogSchem";
 
 export async function generateMetadata({params}: any) {
     const lang = params.locale === "en";
-
     return blogdata({lang})
 }
 
@@ -25,9 +24,9 @@ export default async function Page({params: {locale}, searchParams}: any) {
         <>
             <BlogSchem locale={locale}/>
             <AnimatedPage>
-                <div className="blog__container">
+                <div className={st.container}>
                     <h1>{t('title')}</h1>
-                    <div className="blog-list__wrapper">
+                    <div className={st.list}>
                         {data.data.map((item: any) =>
                             <BlogList key={item.title} item={item}/>
                         )}

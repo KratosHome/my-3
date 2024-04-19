@@ -8,6 +8,7 @@ import Loading from "@/components/UI/loaders/Loading/Loading";
 import Warning from "@/components/UI/Warning/Warning";
 import {useTranslations} from "next-intl";
 import {SubmitHandler, useForm} from "react-hook-form";
+import {useLocale} from "use-intl";
 
 interface changePasswordFormValues {
     password: string;
@@ -15,6 +16,7 @@ interface changePasswordFormValues {
 }
 
 const ChangePassword = () => {
+    const locale = useLocale();
     const t = useTranslations('page.login');
     const params = useParams()
     const router = useRouter()
@@ -48,7 +50,7 @@ const ChangePassword = () => {
             .then(async (response) => {
                 const data = await response.json();
                 if (!response.ok) {
-                    serError(data.error);
+                    setErrorAction(data.error);
                     setSubmitSuccess(false);
                 } else {
                     setSubmitSuccess(true);
@@ -68,7 +70,7 @@ const ChangePassword = () => {
     useEffect(() => {
         if (submitSuccess) {
             const timer = setTimeout(() => {
-                router.push(`/${lang}/login`);
+                router.push(`/${locale}/login`);
             }, 1000);
             return () => clearTimeout(timer);
         }
