@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import st from "./gitHubButton.module.scss"
 import Button from "@/components/UI/Button/Button";

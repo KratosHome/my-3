@@ -1,8 +1,8 @@
 import {createUsers} from "@/server/users/userController";
 import {auth} from "@/server/users/auth";
-import RegisterForm from "@/components/UI/RegisterForm/RegisterForm";
+import RegisterForm from "@/components/auth/RegisterForm/RegisterForm";
 import {redirect} from "next/navigation";
-import "./SingUp.scss"
+import st from "./singUp.module.scss"
 import GitHubButton from "@/components/UI/GitHubButton/GitHubButton";
 import OrLine from "@/components/UI/OrLine/OrLine";
 import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
@@ -18,7 +18,7 @@ export default async function Page({params: {locale}}: any) {
     }
     return (
         <AnimatedPage>
-            <div className="sign-up__container">
+            <div className={st.container}>
                 <div>
                     <h1>{t('sing up')}</h1>
                     <GitHubButton/>
