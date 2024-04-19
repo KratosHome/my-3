@@ -4,13 +4,12 @@ import PaginationControl from "@/components/UI/PaginationControl/PaginationContr
 import {auth} from "@/server/users/auth";
 import WrapperPosts from "@/components/admin/WrapperPosts/WrapperPosts";
 
-export default async function Page({params: {lang}, searchParams}: any) {
+export default async function Page({params: {locale}, searchParams}: any) {
     const page = searchParams["page"] ?? "1"
     const session: any = await auth();
-    const posts = await getPosts(page, 10, lang, session.user._id)
+    const posts = await getPosts(page, 10, locale, session.user._id)
     const totalPages = posts.totalPages
 
-// f
     return (
         <>
             <WrapperPosts posts={posts.data}/>

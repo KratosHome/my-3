@@ -10,7 +10,7 @@ import {menuDate} from "@/mokDate/menuDate";
 gsap.registerPlugin(ScrollTrigger);
 
 const Header = ({session}: any) => {
-   // const { data: session, status } = useSession()
+    // const { data: session, status } = useSession()
 
     const filteredMenu = menuDate.filter(item => {
         if (session?.user && item.rout === "/login") return false;
@@ -23,10 +23,8 @@ const Header = ({session}: any) => {
             <ScrollToTop/>
             <div className={st.container}>
                 <div className={st.background}/>
-                <div className="container-header-client">
-                    <MobileHeader filteredMenu={filteredMenu} session={session}/>
-                    <DesktopHeader filteredMenu={filteredMenu} session={session}/>
-                </div>
+                <MobileHeader filteredMenu={filteredMenu} session={session}/>
+                <DesktopHeader filteredMenu={filteredMenu} session={session}/>
             </div>
         </>
     );

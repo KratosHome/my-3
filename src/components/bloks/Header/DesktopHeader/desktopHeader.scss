@@ -1,8 +1,13 @@
 .container-desktop-menu {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  padding-top: 32px;
+  padding-bottom: 32px;
   position: relative;
+
+  .logo {
+    opacity: 0;
+  }
 
   ul {
     display: flex;
@@ -15,12 +20,17 @@
     .menu-item {
       opacity: 0;
       font-size: 30px;
+
+      a{
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 30px;
+        letter-spacing: 0.8px;
+      }
     }
   }
 
-  .logo {
-    opacity: 0;
-  }
 
   .nav-bar-toggle {
     opacity: 0;

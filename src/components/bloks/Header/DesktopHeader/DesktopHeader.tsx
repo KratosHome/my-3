@@ -1,5 +1,5 @@
 "use client";
-import "./DesktopHeader.scss";
+import "./desktopHeader.scss";
 import Link from "next/link";
 import React, {useState} from "react";
 import {menuDate} from "@/mokDate/menuDate";
