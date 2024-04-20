@@ -47,9 +47,6 @@ export default function Home({params: {locale}}: any) {
                 <section id="experience">
                     <Experience/>
                 </section>
-                <section id="trustedBy">
-                    <WrapperRequest/>
-                </section>
                 <section id="contact">
                     <Connect/>
                 </section>
@@ -59,9 +56,7 @@ export default function Home({params: {locale}}: any) {
 }
 
 /*
- <section id="section1" className="hero-section">
-                    <HeroSection/>
-                </section>
+
 
 
             <section id="trustedBy">
