@@ -8,6 +8,7 @@
   .inner-container {
     z-index: -1;
     position: absolute;
+    overflow: hidden;
     width: 100vw;
     background-image: url('https://res.cloudinary.com/dfreocjfu/image/upload/v1712065234/main/background2.png');
     background-size: cover;
