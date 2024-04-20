@@ -2,9 +2,12 @@
   position: absolute;
   top: 80px;
   left: 50px;
-  width: 80vw;
+  width: 50vw;
   height: 240svh;
   z-index: -1;
+  @media(max-width: 1024px) {
+    top: 235px;
+  }
 
   .computer {
     cursor: grab;
@@ -15,5 +18,8 @@
     left: 0;
     right: 0;
     z-index: 999999;
+    @media(max-width: 1024px) {
+      width: 80vw;
+    }
   }
 }

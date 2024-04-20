@@ -9,6 +9,9 @@
   svg {
     position: relative;
   }
+  @media(max-width: 1024px) {
+    top: 690px;
+  }
 }
 
 .container,

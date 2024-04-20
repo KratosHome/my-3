@@ -102,8 +102,8 @@ body {
     transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
     background: var(--background-color);
     color: var(--text-color);
-    padding-left: calc(var(--index) * 5);
-    padding-right: calc(var(--index) * 5);
+    padding-left: 120px;
+    padding-right: 120px;
     overscroll-behavior: none;
     margin: 0 auto;
     font-optical-sizing: auto;
@@ -114,6 +114,11 @@ body {
     flex-direction: column;
     min-height: 100svh;
     max-width: 1920px;
+
+    @media(max-width: 1024px) {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 }
 
 main {

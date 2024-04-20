@@ -6,7 +6,8 @@ import GitHub from "@/assets/GitHub";
 import {loginGitHubAction} from "@/server/auth/loginGitHub.server";
 
 const GitHubButton = () => {
-    const handleLogin = async () => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         await loginGitHubAction()
     }
 

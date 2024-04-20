@@ -1,10 +1,16 @@
 .container {
   height: calc(100svh - 125px);
   padding-top: 100px;
+  @media(max-width: 1024px) {
+    padding-top: 32px;
+  }
 
   .hire_me {
     margin-top: 48px;
     width: max-content;
+    @media(max-width: 1024px) {
+      margin-top: 36px;
+    }
   }
 
 }

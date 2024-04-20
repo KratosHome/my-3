@@ -1,4 +1,4 @@
-import '../globals.css'
+import '../globals.scss'
 import GoogleTagManager from "@/components/bloks/GoogleTagManager/GoogleTagManager";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import Footer from "@/components/bloks/Footer/Footer";

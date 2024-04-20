@@ -1,6 +1,6 @@
 "use client"
 import React, {useRef} from 'react';
-import './MainTitle.scss';
+import st from './mainTitle.module.scss';
 import {useTranslations} from "next-intl";
 import {gsap} from 'gsap';
 import {useGSAP} from "@gsap/react";
@@ -26,12 +26,12 @@ const MainTitle = ({refH2, refH1}: any) => {
 
 
     return (
-        <div className="container-main-title">
+        <div className={st.container}>
             <h1 ref={refH1}>
-                <span ref={textRef} className="line-1">
+                <span ref={textRef} className={st.line}>
                     FRONT-END REACT
                 </span>
-                <span ref={textRef2} className="line-1">
+                <span ref={textRef2} className={st.line}>
                     DEVELOPER
                 </span>
             </h1>

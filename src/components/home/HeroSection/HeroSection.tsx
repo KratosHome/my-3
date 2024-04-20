@@ -1,6 +1,6 @@
 "use client"
 import React, {useRef, useState} from 'react';
-import MainTitle from "@/components/home/MainTitle/MainTitle";
+import MainTitle from "@/components/home/HeroSection/MainTitle/MainTitle";
 import st from "./heroSection.module.scss";
 import MyModal from "@/components/UI/MyModal/MyModal";
 import FormHireMe from "@/components/home/FormHireMe/FormHireMe";
