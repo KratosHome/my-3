@@ -1,6 +1,5 @@
 import {Viewport} from 'next'
 import React, {lazy} from "react";
-import ContainerModel from "@/components/UI/ContainerModel/ContainerModel";
 import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import MainSchem from "@/components/metadata/MainSchem";
 import mainMetadata from "@/components/metadata/mainMetadata";

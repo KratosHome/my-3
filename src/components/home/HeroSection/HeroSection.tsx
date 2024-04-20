@@ -1,14 +1,14 @@
 "use client"
 import React, {useRef, useState} from 'react';
 import MainTitle from "@/components/home/MainTitle/MainTitle";
-import "./HeroSection.scss";
+import st from "./heroSection.module.scss";
 import MyModal from "@/components/UI/MyModal/MyModal";
 import FormHireMe from "@/components/home/FormHireMe/FormHireMe";
 import SocialLicks from "@/components/home/SocialLicks/SocialLicks";
 import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
 import {useGSAP} from "@gsap/react";
-import ContainerModel from "@/components/UI/ContainerModel/ContainerModel";
+import ContainerModel from "@/components/home/HeroSection/ContainerModel/ContainerModel";
 import {useTranslations} from "next-intl";
 
 
@@ -110,10 +110,9 @@ const HeroSection = () => {
 
     return (
         <>
-            <div className="container-3d">
+            <div className={st.container}>
                 <MainTitle refH1={refH1} refH2={refH2}/>
-                <div className="wrapper-hire-me">
-                    <div></div>
+                <div className={st.hire_me}>
                     <MyModal
                         childrenOpen={
                             <Btn refProps={refButton}>

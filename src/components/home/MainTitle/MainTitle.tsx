@@ -18,7 +18,7 @@ const MainTitle = ({refH2, refH1}: any) => {
         tl.fromTo(textRef.current, {width: "0"}, {width: width1, duration: 2, ease: "steps(37)"}, 0)
             .to(textRef.current, {borderRight: "none", duration: 0.1}, `+=2.1`);
 
-        tl.fromTo(textRef2.current, {width: "0"}, {width: width2, duration: 2, ease: "steps(37)"}, "+=0.5")
+        tl.fromTo(textRef2.current, {width: "0"}, {width: width2, duration: 1, ease: "steps(37)"}, "-=2")
             .to(textRef2.current, {borderRight: "none", duration: 0.1}, `+=2.6`);
 
         tl.play();

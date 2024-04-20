@@ -2,7 +2,6 @@ import '../globals.css'
 import GoogleTagManager from "@/components/bloks/GoogleTagManager/GoogleTagManager";
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import Footer from "@/components/bloks/Footer/Footer";
-import Head from "next/head";
 import MyThemeProvider from "@/components/bloks/MyThemeProvider/MyThemeProvider";
 import {auth} from "@/server/users/auth";
 import Header from "@/components/bloks/Header/Header";
@@ -19,7 +18,7 @@ export default async function LocaleLayout({
     children: React.ReactNode;
     params: { locale: string };
 }) {
-       const session: any = await auth();
+    const session: any = await auth();
 
     return (
         <html lang={locale}>

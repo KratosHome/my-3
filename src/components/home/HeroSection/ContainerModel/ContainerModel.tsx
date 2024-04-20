@@ -1,5 +1,5 @@
 "use client"
-import "./ContainerModel.scss";
+import "./containerModel.scss";
 import Swim from "@/components/animation/Swim/Swim";
 import React, {Suspense, useEffect, useState} from 'react';
 

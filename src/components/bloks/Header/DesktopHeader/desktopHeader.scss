@@ -5,6 +5,7 @@
   padding-bottom: 32px;
   position: relative;
 
+
   .logo {
     opacity: 0;
   }
@@ -14,7 +15,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
-    margin-top: -10px;
+    margin-top: -15px;
     color: var(--text-color);
 
     .menu-item {
@@ -33,6 +34,7 @@
 
 
   .nav-bar-toggle {
+    margin-top: -15px;
     opacity: 0;
   }
 

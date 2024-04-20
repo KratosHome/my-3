@@ -1,0 +1,19 @@
+.computer__container {
+  position: absolute;
+  top: 80px;
+  left: 50px;
+  width: 100vw;
+  height: 240svh;
+  z-index: -1;
+
+  .computer {
+    cursor: grab;
+    position: absolute;
+    height: 60vh;
+    width: 95vw;
+    top: 25vh;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+  }
+}

@@ -1,8 +1,8 @@
-.container-social-links-isAbsolute {
+.container_isAbsolute {
   opacity: 0;
   position: absolute;
-  top: 120%;
-  left: 10px;
+  top: 766px;
+  left: 36px;
   z-index: 1;
   flex-direction: column;
 
@@ -11,8 +11,8 @@
   }
 }
 
-.container-social-links,
-.container-social-links-isAbsolute {
+.container,
+.container_isAbsolute {
   display: flex;
 
   svg {
