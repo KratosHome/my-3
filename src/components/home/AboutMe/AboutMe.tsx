@@ -1,6 +1,6 @@
 "use client"
 import React, {useRef} from 'react';
-import "./AboutMe.scss";
+import st from "./aboutMe.module.scss";
 import Image from "next/image";
 import Swim from "@/components/animation/Swim/Swim";
 import {usePathname} from "next/navigation";
@@ -114,8 +114,8 @@ const AboutMe = () => {
     });
 
     return (
-        <div className="container-about-me">
-            <h2 className="h2-amimate" ref={heRef}>
+        <div className={st.container}>
+            <h2 ref={heRef}>
                 {pathName === "/ua" ? "Про мене" : "About me"}
             </h2>
             <div>
@@ -125,7 +125,7 @@ const AboutMe = () => {
                     </Swim>
                 </div>
                 <div ref={refRight}>
-                    <div className="icons-about-me">
+                    <div className={st.icons}>
                         <Swim isFast={true} delay={0.2}>
                             <Image
                                 title={pathName === "/ua" ? "React логотип" : "React Logo"}
@@ -255,7 +255,7 @@ const AboutMe = () => {
                 </div>
             </div>
             <a
-                className="download-pdf-about-me"
+                className={st.download}
                 ref={refA}
                 href={"https://drive.google.com/file/d/1Q4PgAvuOPih8iE-Jw0XZxnKMpqCACF-N/view?usp=share_link"}
                 target="_blank"

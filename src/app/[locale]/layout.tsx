@@ -8,8 +8,24 @@ import Header from "@/components/bloks/Header/Header";
 import SessionWrapper from "@/components/bloks/SessionWrapper/SessionWrapper";
 import BlockPageTransition from "@/components/animation/BlockPageTransition/BlockPageTransition";
 import NextIntProvider from "@/components/NextIntProvider";
+import localFont from 'next/font/local'
 
 export const dynamic = 'force-dynamic';
+
+const myFont = localFont({
+    src: [
+        {
+            path: '../../components/fonts/Consolas.ttf',
+            weight: '300',
+            style: 'normal',
+        },
+        {
+            path: '../../components/fonts/Consolas-Bold.ttf',
+            weight: '700',
+            style: 'normal',
+        },
+    ],
+})
 
 export default async function LocaleLayout({
                                                children,
@@ -26,7 +42,7 @@ export default async function LocaleLayout({
         <MyThemeProvider>
             <SessionWrapper>
                 <NextIntProvider locale={locale}>
-                    <body>
+                    <body className={myFont.className}>
                     <header>
                         <BlockPageTransition/>
                         <Header session={session}/>

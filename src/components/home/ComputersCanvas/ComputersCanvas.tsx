@@ -10,7 +10,7 @@ const ComputersCanvas = React.memo(() => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia("(max-width: 767px)");
+        const mediaQuery = window.matchMedia("(max-width: 1024px)");
         setIsMobile(mediaQuery.matches);
 
         const handleMediaQueryChange = (event: any) => {

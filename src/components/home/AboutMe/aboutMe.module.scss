@@ -1,4 +1,4 @@
-.container-about-me {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,6 +10,14 @@
   h2 {
     width: 100%;
     text-align: right;
+    color: #FFF;
+    font-family: var(myFont);
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 67px;
+    letter-spacing: 2.24px;
+    text-transform: uppercase;
   }
 
 
@@ -25,12 +33,13 @@
     margin-top: 80px;
     gap: 20px;
 
+
     @media(max-width: 700px) {
       display: block;
     }
   }
 
-  .icons-about-me {
+  .icons {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -47,18 +56,20 @@
     margin-top: -120px;
   }
 
-  .download-pdf-about-me {
+  .download {
+    font-family: var(myFont);
     display: flex;
     align-items: center;
     width: 100%;
     color: var(--violet-light);
     font-size: 28px;
     font-style: normal;
-    font-weight: bold;
     margin-top: 40px;
     margin-bottom: 20px;
     text-align: left;
     transition: color 0.3s, background-color 0.3s, text-shadow 0.3s;
+    font-weight: 700;
+    line-height: 33px;
 
     &:hover {
       text-shadow: 0 0 2px var(--violet-light);
