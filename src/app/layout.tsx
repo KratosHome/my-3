@@ -12,6 +12,7 @@ export default async function LocaleLayout({
     return (
         <>
             {children}
+            <Analytics />
         </>
     )
 }
