@@ -1,0 +1,36 @@
+.container_swiper {
+  position: relative;
+
+  .banner-gallery__services {
+    overflow: hidden;
+    flex: 1;
+  }
+
+  .button-next__swiper,
+  .button-prev__swiper {
+    position: absolute;
+    border-radius: 8px;
+    border: 2px solid #606686;
+    background: var(--background, #0E0E10);
+    display: inline-flex;
+    padding: 8px;
+    align-items: flex-start;
+    gap: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    svg {
+      stroke: white;
+    }
+  }
+
+  .button-next__swiper {
+    right: -25px;
+    transform: rotate(180deg);
+  }
+
+  .button-prev__swiper {
+    left: -25px;
+  }
+
+}

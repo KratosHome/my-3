@@ -1,5 +1,5 @@
 .container-connect {
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   display: flex;
   align-items: stretch;
@@ -7,6 +7,11 @@
   justify-content: center;
   overflow: hidden;
 
+
+  h2 {
+    text-align: left;
+    width: 100%;
+  }
 
   .head-block {
     display: flex;
@@ -22,8 +27,14 @@
 
   a,
   .name {
-    font-size: 56px;
+    font-family: var(myFont);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 1.92px;
     text-transform: uppercase;
+
     @media(max-width: 900px) {
       font-size: calc(var(--index) * 2);
     }
@@ -33,9 +44,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    .container-image{
+    .container-image {
       min-height: 450px;
     }
+
     @media(max-width: 1024px) {
       grid-template-columns: 1fr;
       .container-image {

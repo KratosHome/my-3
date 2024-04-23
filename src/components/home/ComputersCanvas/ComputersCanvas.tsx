@@ -1,12 +1,12 @@
 "use client"
-import React, {Suspense, useEffect, useState} from "react";
+import {memo, Suspense, useEffect, useRef, useState} from "react";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload} from "@react-three/drei";
 import Loader from "@/components/UI/loaders/Loader/Loader";
 import Computers from "@/components/home/ComputersCanvas/Computers";
 
-const ComputersCanvas = React.memo(() => {
-    const refComputer = React.useRef(null);
+const ComputersCanvas = memo(() => {
+    const refComputer = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {

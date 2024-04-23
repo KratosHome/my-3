@@ -1,6 +1,6 @@
 "use client"
 import React, {useRef, useState} from 'react';
-import "./Projects.scss"
+import st from "./projects.module.scss"
 import {usePathname} from "next/navigation";
 import Image from "next/image";
 import ShowMoreText from "@/components/UI/ShowMoreText/ShowMoreText";
@@ -102,52 +102,46 @@ const Projects = () => {
 
 
     return (
-        <div className="container-projects" ref={ref}>
-            <h2 ref={heRef}
-                className="title-block h2-animate"
-            >
+        <div className={st.container} ref={ref}>
+            <h2 ref={heRef} className="title-block h2-animate">
                 {pathName === "/ua" ? "Мої проєкти" : "My projects"}
             </h2>
-            <div className="wrapper-container">
-                <div className="container-map-project" ref={refLeft}>
-                    <span className={"script"}>{"<project>"}</span>
+            <div className={st.wrapper}>
+                <div ref={refLeft}>
+                    <span className={st.script}>{"<project>"}</span>
                     {dateProjects.map((project: any) => (
                         <div
                             key={project.id}
-                            className={"wrapper-select-project"}
+                            className={st.select_project}
                             onMouseEnter={() => handleMouseEnter(project.id)}
                             onClick={() => selectProject(project)}>
-                            <span className="enumeration">0{project.id}</span>
+                            <span className={st.enumeration}>0{project.id}</span>
                             <div
-                                className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}>
-                                <div className={`wrapper-project-list hover-clas-${project.id}`} ref={refHover}>
+                                className={project.id === 1 ? st.list_first_border : st.project_list_first_border}>
+                                <div className={`${st.project_list} hover-clas-${project.id}`} ref={refHover}>
                                     <span
-                                        className={project.id === selectedTab.id ? "name" : "name chose-name-color"}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
+                                        className={project.id === selectedTab.id ? st.name : `${st.name} ${st.chose_name}`}>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
                                 </div>
                             </div>
                         </div>
                     ))}
-                    <span className={"script"}>{"</project>"}</span>
+                    <span className={st.script}>{"</project>"}</span>
                 </div>
-                <div className="continer-resilt" ref={refRight}>
+                <div className={st.result} ref={refRight}>
                     <ShowMoreText
                         text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
                         maxLength={200}
                     />
                     {
-                        selectedTab.link === null
-                            ?
-                            <span
-                                className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
-                                        </span>
-                            :
+                        selectedTab.link === null ? <span
+                                className={st.open_project}>{pathName === "/ua" ? "В процесі..." : "In progress..."}</span> :
                             <a
-                                className="openProject"
+                                className={st.open_project}
                                 href={selectedTab.link}
                                 target="_blank"
                                 title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
                             >
-                                {pathName === "/ua" ? `Переглянути проект` : `View the project`}
+                                {pathName === "/ua" ? `перейти до проекту` : `view project`}
                                 <Image
                                     src={ForwardArrow}
                                     alt={"ForwardArrow"}

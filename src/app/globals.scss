@@ -129,7 +129,6 @@ a, span {
     font-family: "JetBrains Mono", monospace;
     color: var(--text-color);
     text-decoration: none;
-    text-transform: capitalize;
     font-size: 20px;
     font-style: normal;
     font-weight: 800;
@@ -142,6 +141,7 @@ ul {
 
 h2 {
     font-weight: 700;
+    margin-bottom: 120px;
 }
 
 

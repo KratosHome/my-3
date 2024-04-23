@@ -253,23 +253,24 @@ const AboutMe = () => {
                         </Swim>
                     </div>
                 </div>
+
+                <a
+                    className={st.download}
+                    ref={refA}
+                    href={"https://drive.google.com/file/d/1Q4PgAvuOPih8iE-Jw0XZxnKMpqCACF-N/view?usp=share_link"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {pathName === "/ua" ? "резюме" : "resume"}
+                    <Image
+                        title={pathName === "/ua" ? "Стрілка вперед" : "Forward Arrow"}
+                        src={ForwardArrow}
+                        alt={"arrow-resume"}
+                        width={20}
+                        height={20}
+                    />
+                </a>
             </div>
-            <a
-                className={st.download}
-                ref={refA}
-                href={"https://drive.google.com/file/d/1Q4PgAvuOPih8iE-Jw0XZxnKMpqCACF-N/view?usp=share_link"}
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                {pathName === "/ua" ? "Завантажити резюме" : "Download resume"}
-                <Image
-                    title={pathName === "/ua" ? "Стрілка вперед" : "Forward Arrow"}
-                    src={ForwardArrow}
-                    alt={"arrow-resume"}
-                    width={20}
-                    height={20}
-                />
-            </a>
         </div>
     );
 };
