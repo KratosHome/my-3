@@ -3,15 +3,16 @@
   padding-top: 100px;
   @media(max-width: 1024px) {
     padding-top: 32px;
+    margin-bottom: 20px;
   }
 
   .hire_me {
     margin-top: 48px;
     width: max-content;
     @media(max-width: 1024px) {
-      height: calc(100svh);
+      height: 100svh;
       position: relative;
-      margin-top: 36px;
+      margin-top: 26px;
     }
   }
 
