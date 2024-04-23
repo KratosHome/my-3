@@ -1,6 +1,6 @@
 "use client"
-import React, {useRef} from 'react';
-import "./BlogList.scss";
+import {FC, useRef} from 'react';
+import st from "./blogList.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import {useLocale} from "@/hooks/useLocale";
@@ -10,7 +10,12 @@ import Avatar from "@/components/UI/Avatar/Avatar";
 import {formatDate} from "@/utils/formatDate";
 import {useGsapPageTransition} from "@/hooks/useGsapPageTransition";
 
-const BlogList = ({item}: any) => {
+interface blogListType {
+    item: postItemType;
+}
+
+const BlogList: FC<blogListType> = ({ item }) => {
+
     const {locale} = useLocale()
     const {contextSafe} = useGSAP();
     const triggerAnimation = useGsapPageTransition();
@@ -67,26 +72,27 @@ const BlogList = ({item}: any) => {
     return (
         <Link
             ref={containerRef}
-            href={`/${locale}/blog/${item.url}`} className="container-blog-list"
+            href={`/${locale}/blog/${item.url}`}
+            className={st.container}
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={(e) => handleClick(e, `/${locale}/blog/${item.url}`)}
         >
-            <div className="create-at__blog-list">
+            <div className={st.create_at}>
                 {formatDate(item.createdAt, false)}
             </div>
-            <div className="wrapper__blog-list">
+            <div className={st.wrapper}>
                 <span ref={titleRef}>{item.title}</span>
                 <span ref={subTitleRef}>
                  {item.subTitle}
                 </span>
-                <div className="img-container__blog-list" ref={imgRef}>
+                <div className={st.img} ref={imgRef}>
                     <Image src={item.img} alt={item.title} fill={true}/>
                 </div>
-                <div className="user__blog-list" ref={userRef}>
+                <div className={st.user} ref={userRef}>
                     <Avatar src={item.userDetails.img} alt={item.userDetails.username} size={"small"}/>
-                    <div className="user-name__blog-list">
+                    <div className={st.user_name}>
                         {item.userDetails.username}
                     </div>
                 </div>

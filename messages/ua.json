@@ -68,7 +68,13 @@
       "sing up": "Зареєструватися",
       "checkEmail": "Перевірте електронну пошту",
       "err": "Помилка запроса",
-      "passwordChanged": "Пароль змінено"
+      "passwordChanged": "Пароль змінено",
+      "No such user exists": "Такого користувача не існує",
+      "This field is required": "Це поле є обов'язковим",
+      "This is not an email": "Це не електронна пошта",
+      "Minimum number of characters": "Мінімальна кількість символів",
+      "Maximum number of characters": "Максимальна кількість символів",
+      "success": "успіх"
     }
   },
   "warnings": {

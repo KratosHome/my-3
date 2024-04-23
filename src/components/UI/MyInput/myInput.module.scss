@@ -1,0 +1,48 @@
+
+.container {
+  width: 100%;
+  margin-bottom: 20px;
+
+  label {
+    display: inline-block;
+    color: var(--text-lavel);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .wrapper_input {
+    position: relative;
+
+
+    input {
+      border: 1.2px solid var(--border-primary);
+      border-radius: 6px;
+      padding: 13px 11px;
+      width: 100%;
+
+      &::placeholder {
+        color: var(--input-placegolder);
+      }
+    }
+
+    svg {
+      position: absolute;
+      margin-top: 14px;
+      margin-left: -30px;
+      cursor: pointer;
+    }
+
+    .error_input {
+      white-space: nowrap;
+      position: absolute;
+      top: 180%;
+      left: 50%;
+      transform: translate(-50%, -180%);
+      color: red;
+    }
+  }
+
+}
+
+

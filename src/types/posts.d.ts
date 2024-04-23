@@ -48,3 +48,22 @@ interface postsTypesItem {
     resultUser: User;
 }
 
+interface UserDetails {
+    email: string;
+    img: string;
+    username: string;
+    userId: string;
+}
+
+interface postItemType {
+    createdAt: string;
+    img: string;
+    isPublished: boolean;
+    local: string;
+    subTitle: string;
+    title: string;
+    url: string;
+    userDetails: UserDetails;
+    id: string;
+}
+

@@ -1,6 +1,5 @@
 import {Viewport} from 'next'
-import React, {lazy} from "react";
-import ContainerModel from "@/components/UI/ContainerModel/ContainerModel";
+import {lazy} from "react";
 import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import MainSchem from "@/components/metadata/MainSchem";
 import mainMetadata from "@/components/metadata/mainMetadata";
@@ -9,9 +8,9 @@ const HeroSection = lazy(() => import('@/components/home/HeroSection/HeroSection
 const WrapperRequest = lazy(() => import('@/components/home/WrapperRequest/WrapperRequest'));
 const AboutMe = lazy(() => import('@/components/home/AboutMe/AboutMe'));
 const Connect = lazy(() => import('@/components/home/Connect/Connect'));
-const Services = lazy(() => import('@/components/home/Services/Services'));
 const Experience = lazy(() => import('@/components/home/Experience/Experience'));
 const Projects = lazy(() => import('@/components/home/Projects/Projects'));
+const ServicesNew = lazy(() => import('@/components/home/ServicesNew/ServicesNew'));
 
 
 export const viewport: Viewport = {
@@ -43,7 +42,7 @@ export default function Home({params: {locale}}: any) {
                     <Projects/>
                 </section>
                 <section id="services" className="hide-model">
-                    <Services/>
+                    <ServicesNew/>
                 </section>
                 <section id="experience">
                     <Experience/>
@@ -58,3 +57,5 @@ export default function Home({params: {locale}}: any) {
         </>
     )
 }
+
+

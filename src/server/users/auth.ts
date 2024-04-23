@@ -14,7 +14,6 @@ const login = async (credentials: any) => {
         const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
         if (!isPasswordCorrect) throw new Error("Wrong credentials!");
 
-        console.log("user", user)
         return user;
     } catch (err) {
         console.log(err);
@@ -29,7 +28,7 @@ export const {
     signIn,
     signOut,
 } = NextAuth({
-   // secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         GitHub({
             clientId: process.env.GITHUB_ID,
@@ -50,7 +49,6 @@ export const {
             return true;
         },
         async session({session, token, user}) {
-
             session.user = token.user as AdapterUser;
             return session;
         },

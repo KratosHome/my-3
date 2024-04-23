@@ -1,6 +1,6 @@
 "use client"
 import React, {useRef} from 'react';
-import "./LanguageChange.scss"
+import st from "./languageChange.module.scss"
 import {useRouter} from 'next/navigation';
 import {usePathname} from 'next/navigation';
 import Image from "next/image";
@@ -29,7 +29,7 @@ export default function LanguageChange() {
         <div
             ref={ref}
             onMouseEnter={handleMouseEnter}
-            className={"container-language-change"}
+            className={st.container}
             onClick={() => redirectedPathName(locale === "ua" ? "en" : "ua")}
         >
             <span>{locale === "ua" ? "en" : "ua"}</span>

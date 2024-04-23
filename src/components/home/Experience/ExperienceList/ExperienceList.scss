@@ -63,6 +63,9 @@
   .additional-content {
     margin-top: 20px;
     width: 100%;
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

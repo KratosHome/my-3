@@ -49,6 +49,25 @@ export const menuDate = [
         subMenu: []
     },
     {
+        nameUa: "увійти",
+        nameEn: "login",
+        rout: "/login",
+        subMenu: []
+    },
+    {
+        nameUa: "кабіент",
+        nameEn: "profile",
+        rout: "/profile",
+        subMenu: []
+    }
+  /*
+    {
+        nameUa: "блог",
+        nameEn: "blog",
+        rout: "/blog",
+        subMenu: []
+    },
+    {
         nameUa: "cтартапи",
         nameEn: "startups",
         rout: "/startups",
@@ -64,12 +83,6 @@ export const menuDate = [
         nameUa: "ментори",
         nameEn: "mentors",
         rout: "/mentors",
-        subMenu: []
-    },
-    {
-        nameUa: "правила",
-        nameEn: "rules",
-        rout: "/rules",
         subMenu: []
     },
     {
@@ -91,4 +104,5 @@ export const menuDate = [
         subMenu: []
     }
 
+       */
 ]

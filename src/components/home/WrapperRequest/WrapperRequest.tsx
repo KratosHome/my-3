@@ -1,21 +1,10 @@
-"use client"
-import React, {useEffect, useState} from 'react';
 import TrustedBy from "@/components/home/TrustedBy/TrustedBy";
 
-export default function WrapperRequest() {
-    const [reviews, setReviews] = useState([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('/api/reviews');
-            const data = await response.json();
-            setReviews(data.reverse());
-        }
-
-        fetchData();
-    }, []);
+export default async function WrapperRequest() {
+    const response = await fetch(`${process.env.NEXT_URL}/api/reviews`);
+    const data = await response.json();
 
     return (
-        <TrustedBy reviews={reviews}/>
+        <TrustedBy reviews={data}/>
     );
 };

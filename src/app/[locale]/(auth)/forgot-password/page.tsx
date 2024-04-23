@@ -2,7 +2,7 @@ import {auth} from "@/server/users/auth";
 import {createUsers} from "@/server/users/userController";
 import {redirect} from "next/navigation";
 import React from "react";
-import ForgotPasswordWrapper from "@/components/auth/ForgotPasswordWrapper/ForgotPasswordWrapper";
+import ForgotPassword from "@/components/auth/ForgotPassword/ForgotPassword";
 import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 
 export default async function Page({params: {locale}}: any) {
@@ -14,7 +14,7 @@ export default async function Page({params: {locale}}: any) {
     }
     return (
         <AnimatedPage>
-            <ForgotPasswordWrapper/>
+            <ForgotPassword/>
         </AnimatedPage>
     );
 }

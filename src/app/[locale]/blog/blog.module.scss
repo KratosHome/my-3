@@ -1,0 +1,15 @@
+.container {
+  h1 {
+    text-align: center;
+    margin-bottom: 120px;
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+}

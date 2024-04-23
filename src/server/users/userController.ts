@@ -1,3 +1,4 @@
+"use server"
 import {connectToDb} from "@/server/connectToDb";
 import {User} from "@/server/users/userSchema";
 import {revalidatePath, unstable_noStore as noStore} from "next/cache";
@@ -127,20 +128,5 @@ export const register = async (formData: any) => {
     }
 };
 
-
-export const login = async (formData: any) => {
-    "use server"
-    const {email, password} = Object.fromEntries(formData);
-
-    try {
-        await signIn("credentials", {
-            email: email.toLowerCase(),
-            password
-        });
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
-};
 
 

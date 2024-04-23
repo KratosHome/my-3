@@ -21,8 +21,8 @@ export const services = [
         id: 3,
         nameUa: "Застосунок для iOS та Android",
         nameEn: "App Development for iOS & Android",
-        descriptionEn: "Using React Native, I specialize in creating mobile applications that function excellently on both iOS and Android platforms. My applications not only look and feel native but also stand out for their high performance and optimal adaptation to user needs. I ensure a smooth integration with the features of each platform, ensuring that the applications are efficient and convenient to use.",
-        descriptionUa: "Використовуючи React Native, я спеціалізуюся на створенні мобільних додатків, які відмінно функціонують на обох iOS та Android платформах. Мої додатки не тільки виглядають і відчуваються як нативні, але й вирізняються високою продуктивністю та оптимальною адаптацією до потреб користувача. Я забезпечую плавну інтеграцію з особливостями кожної платформи, гарантуючи, що додатки будуть ефективними та зручними у використанні.",
+        descriptionEn: "Using React Native, I specialize in creating mobile applications that function excellently on both iOS and Android platforms. My applications not only look and feel native but also stand out for their high performance and optimal adaptation to user needs.",
+        descriptionUa: "Використовуючи React Native, я спеціалізуюся на створенні мобільних додатків, які відмінно функціонують на обох iOS та Android платформах. Мої додатки не тільки виглядають і відчуваються як нативні, але й вирізняються високою продуктивністю та оптимальною адаптацією до потреб користувача.",
         icon: "https://res.cloudinary.com/dfreocjfu/image/upload/v1712068328/services/phone.svg",
     },
     {
