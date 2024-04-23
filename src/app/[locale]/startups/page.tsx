@@ -1,16 +1,17 @@
-import InProgress from "@/components/UI/InProgress/InProgress";
 
 const projects = [
     {
         name: "Sharm Beauty",
-        desc: "vsfdv",
+        desc: "e-comers проект, косметики та парфюмерії",
         img: "",
+        technologies: ["React", "Redux", "Node.js", "MongoDB"],
+        status: "active",
         team: [
             {
-                name: "Oleg Tkach",
-                role: "Frontend Developer",
+                username: "Oleg Tkach",
+                roles: ["frontend", "backend"],
                 img: "",
-                url: ""
+                technologies: ["React", "Redux"]
             }
         ]
     }
@@ -21,6 +22,7 @@ export default async function Page() {
 
     return (
         <>
+            <button>створити ідею</button>
 
         </>
     );

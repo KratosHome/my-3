@@ -55,19 +55,6 @@ export const menuDate = [
         subMenu: []
     },
     {
-        nameUa: "кабіент",
-        nameEn: "profile",
-        rout: "/profile",
-        subMenu: []
-    }
-  /*
-    {
-        nameUa: "блог",
-        nameEn: "blog",
-        rout: "/blog",
-        subMenu: []
-    },
-    {
         nameUa: "cтартапи",
         nameEn: "startups",
         rout: "/startups",
@@ -102,7 +89,5 @@ export const menuDate = [
         nameEn: "profile",
         rout: "/profile",
         subMenu: []
-    }
-
-       */
+    },
 ]

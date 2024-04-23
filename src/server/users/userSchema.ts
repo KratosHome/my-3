@@ -27,6 +27,19 @@ const userSchema = new mongoose.Schema(
             default: false,
         },
         resetPasswordToken: String,
+        roles: {
+            type: [String],
+            enum: ['mentor', 'QA', 'frontend', 'backend', "full stack", "devops", "project manager", "product manager", "product owner", "HR", "UI/UX", "QA", "designer", "marketing", "sales", "finance"],
+            default: []
+        },
+        technologies: {
+            type: [String],
+            default: []
+        },
+        reviewsId: {
+            type: [String],
+            default: []
+        }
     },
     {timestamps: true}
 );
