@@ -8,6 +8,7 @@ import SocialLicks from "@/components/home/SocialLicks/SocialLicks";
 import gsap from "gsap";
 import Btn from "@/components/UI/Btn/Btn";
 import {useGSAP} from "@gsap/react";
+import ContainerModel from "@/components/home/HeroSection/ContainerModel/ContainerModel";
 import {useTranslations} from "next-intl";
 
 
@@ -124,6 +125,7 @@ const HeroSection = () => {
                     <SocialLicks refLinks={refLinks}/>
                 </div>
             </div>
+            <ContainerModel/>
         </>
     );
 };
