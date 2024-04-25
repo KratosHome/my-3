@@ -1,4 +1,4 @@
-import {auth} from "@/server/users/auth";
+import {auth} from "@/server/auth/auth";
 import {createUsers} from "@/server/users/userController";
 import {redirect} from "next/navigation";
 import React from "react";

@@ -4,7 +4,7 @@ import {User} from "@/server/users/userSchema";
 import {revalidatePath, unstable_noStore as noStore} from "next/cache";
 import {Post} from "@/server/post/postSchema";
 import bcrypt from "bcrypt";
-import {signIn} from "@/server/users/auth";
+import {signIn} from "@/server/auth/auth";
 import {a} from "@react-spring/three";
 
 export const createUsers = async (session: any) => {

@@ -3,7 +3,7 @@ import GoogleTagManager from "@/components/bloks/GoogleTagManager/GoogleTagManag
 import StarsCanvas from "@/components/UI/StarBackground/StarBackground";
 import Footer from "@/components/bloks/Footer/Footer";
 import MyThemeProvider from "@/components/bloks/MyThemeProvider/MyThemeProvider";
-import {auth} from "@/server/users/auth";
+import {auth} from "@/server/auth/auth";
 import Header from "@/components/bloks/Header/Header";
 import SessionWrapper from "@/components/bloks/SessionWrapper/SessionWrapper";
 import BlockPageTransition from "@/components/animation/BlockPageTransition/BlockPageTransition";

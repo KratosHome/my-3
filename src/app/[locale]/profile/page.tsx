@@ -1,5 +1,5 @@
 import {redirect} from "next/navigation";
-import {auth} from "@/server/users/auth";
+import {auth} from "@/server/auth/auth";
 import AnimatedPage from "@/components/animation/AnimatedPage/AnimatedPage";
 import InProgress from "@/components/UI/InProgress/InProgress";
 
