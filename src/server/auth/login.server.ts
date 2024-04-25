@@ -1,5 +1,5 @@
 "use server"
-import {signIn} from "@/server/users/auth";
+import {signIn} from "@/server/auth/auth";
 
 export const loginAction = async (data: { email: string; password: string; }) => {
 

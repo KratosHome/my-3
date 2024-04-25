@@ -1,5 +1,5 @@
 import {createUsers} from "@/server/users/userController";
-import {auth} from "@/server/users/auth";
+import {auth} from "@/server/auth/auth";
 import RegisterForm from "@/components/auth/RegisterForm/RegisterForm";
 import {redirect} from "next/navigation";
 import st from "./singUp.module.scss"

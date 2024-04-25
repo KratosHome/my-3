@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import {connectToDb} from "@/server/connectToDb";
-import {signIn} from "@/server/users/auth";
+import {signIn} from "@/server/auth/auth";
 
 export async function POST(request: NextRequest) {
     if (request.method !== 'POST') return NextResponse.json({error: 'Method not allowed'}, {status: 405});
