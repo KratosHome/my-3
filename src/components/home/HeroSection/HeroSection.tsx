@@ -76,13 +76,7 @@ const HeroSection = () => {
                 x: 0,
                 duration: 1.3,
                 ease: "power3.out",
-                scrollTrigger: {
-                    trigger: refButton.current,
-                    start: "bottom bottom-=100",
-                    end: "top top-=10",
-                    toggleActions: "play reverse play reverse",
-                },
-                delay: animationPlayed ? 4 : 0,
+                delay: animationPlayed ? 3 : 0,
                 stagger: 0.1,
             })
 
@@ -95,12 +89,6 @@ const HeroSection = () => {
                 x: 0,
                 duration: 1,
                 ease: "power3.out",
-                scrollTrigger: {
-                    trigger: refButton.current,
-                    start: "bottom bottom-=100",
-                    end: "top top-=10",
-                    toggleActions: "play reverse play reverse",
-                },
                 delay: animationPlayed ? 4.3 : 0,
                 stagger: 0.4,
                 onComplete: () => setAnimationPlayed(false)
