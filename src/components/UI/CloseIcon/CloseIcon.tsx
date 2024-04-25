@@ -64,12 +64,7 @@ const CloseIcon = () => {
     }, []);
 
     useEffect(() => {
-        if (isMobile) {
             scrollYProgressMV.set(1);
-        } else {
-            scrollYProgressMV.set(0);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMobile]);
 
 
