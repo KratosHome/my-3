@@ -25,7 +25,7 @@ const AnimationVariants = {
 
 const SubNavAnimationVariants = {
     open: {
-        y: "99%",
+        y: "65%",
         opacity: 1,
         ease: "power1.out",
         duration: 1,
