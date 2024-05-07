@@ -28,6 +28,9 @@ export const {
     signIn,
     signOut,
 } = NextAuth({
+    theme: {
+        logo: "/logo.png",
+    },
     secret: process.env.NEXTAUTH_SECRET,
     providers: [
         GitHub({

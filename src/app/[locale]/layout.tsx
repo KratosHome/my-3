@@ -9,6 +9,7 @@ import SessionWrapper from "@/components/bloks/SessionWrapper/SessionWrapper";
 import BlockPageTransition from "@/components/animation/BlockPageTransition/BlockPageTransition";
 import NextIntProvider from "@/components/NextIntProvider";
 import localFont from 'next/font/local'
+import {SpeedInsights} from '@vercel/speed-insights/next';
 
 export const dynamic = 'force-dynamic';
 
@@ -56,6 +57,7 @@ export default async function LocaleLayout({
                 </NextIntProvider>
             </SessionWrapper>
         </MyThemeProvider>
+        <SpeedInsights/>
         </html>
     )
 }
