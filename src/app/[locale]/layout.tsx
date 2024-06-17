@@ -50,7 +50,7 @@ export default async function LocaleLayout({
                         <StarsCanvas/>
                     </header>
                     <main>
-                        {children}
+                        { /* children */}
                     </main>
                     <Footer/>
                     </body>
