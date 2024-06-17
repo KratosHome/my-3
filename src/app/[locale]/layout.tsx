@@ -44,13 +44,13 @@ export default async function LocaleLayout({
             <SessionWrapper>
                 <NextIntProvider locale={locale}>
                     <body className={myFont.className}>
-                    <header>
+                    <header className="w-full h-full">
                         <BlockPageTransition/>
                         <Header session={session}/>
                         <StarsCanvas/>
                     </header>
                     <main>
-                        {children}
+                        { /* children */}
                     </main>
                     <Footer/>
                     </body>
