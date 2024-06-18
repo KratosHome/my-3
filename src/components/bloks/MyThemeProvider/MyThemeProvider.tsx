@@ -1,17 +1,19 @@
-"use client"
-import React, {FC, ReactNode} from 'react';
-import {ThemeProvider} from "next-themes";
+'use client'
 
-interface MyThemeProviderProps {
-    children: ReactNode;
+import * as React from 'react'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { type ThemeProviderProps } from 'next-themes/dist/types'
+
+export function MyThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return (
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+      {...props}
+    >
+      {children}
+    </NextThemesProvider>
+  )
 }
-
-const MyThemeProvider: FC<MyThemeProviderProps> = ({children}) => {
-    return (
-        <ThemeProvider>
-            {children}
-        </ThemeProvider>
-    );
-};
-
-export default MyThemeProvider;
