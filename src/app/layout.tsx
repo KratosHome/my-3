@@ -1,20 +1,17 @@
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react'
+import { ReactNode } from 'react'
 
-export const dynamic = 'force-dynamic';
-
+export const dynamic = 'force-dynamic'
 
 export default async function LocaleLayout({
-                                               children,
-                                           }: {
-    children: React.ReactNode;
+  children,
+}: {
+  children: ReactNode
 }) {
-
-    return (
-        <>
-            {children}
-            <Analytics />
-        </>
-    )
+  return (
+    <>
+      {children}
+      <Analytics />
+    </>
+  )
 }
-
-

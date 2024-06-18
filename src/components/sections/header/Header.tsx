@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="flex justify-between z-10">
+      <nav className="z-10 flex justify-between">
         <Link
           href={`/${locale}`}
           className="logo"

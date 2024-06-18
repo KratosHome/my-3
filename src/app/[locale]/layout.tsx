@@ -39,20 +39,20 @@ export default async function LocaleLayout({
   // const session: any = await auth()
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <GoogleTagManager />
       <SpeedInsights />
       <body
-        className={`${myFont.className}  bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 dark:from-slate-950 dark:via-bg-black dark:bg-black h-full`}
+        className={`${myFont.className} dark:from-slate-750 h-full bg-gradient-to-b from-purple-50 via-purple-200 to-purple-300 dark:bg-black dark:from-slate-950`}
       >
-        <div className="bg-custom-hero bg-cover bg-center w-full h-screen absolute -z-10" />
+        <div className="absolute -z-10 h-screen w-full bg-custom-hero bg-cover bg-center" />
         <MyThemeProvider>
           <SessionWrapper>
             <NextIntProvider locale={locale}>
               <ScrollToTop />
               <StarsCanvas />
               <Header />
-              <main className="min-h-[90vh] ">{/* children */}</main>
+              <main className="min-h-[90vh]">{/* children */}</main>
               <Footer />
             </NextIntProvider>
           </SessionWrapper>
