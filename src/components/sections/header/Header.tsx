@@ -8,9 +8,9 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
-import HoverLink from '@/components/UI/HoverLink/HoverLink'
+import HoverLink from '@/components/UI/hover-link/hover-link'
 import SubNav from '@/components/sections/header/DesktopHeader/SubNav/SubNav'
-import LogOut from '@/components/auth/LogOut/LogOut'
+import LogOut from '@/components/sections/auth/LogOut/LogOut'
 import LanguageChange from '@/components/bloks/LanguageChange/LanguageChange'
 import ThemeChange from '@/components/bloks/ThemeChange/ThemeChange'
 import { useLocale } from 'use-intl'
@@ -29,10 +29,9 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="z-10 flex justify-between">
+      <nav className="z-10 flex justify-between px-5 py-5">
         <Link
           href={`/${locale}`}
-          className="logo"
           // onClick={(e) => handlePageClick(e, `/${locale}`)}
         >
           <Image
@@ -44,14 +43,13 @@ const Header = () => {
           />
         </Link>
         <ul
-          className={`nav-bar__list`}
+          className={`flex items-center gap-10`}
           // onMouseLeave={() => setIsOpenSubMenu({})}
         >
           {filteredMenu.map((menu: any, index: number) => (
             <React.Fragment key={`${menu.rout}_${index + index + index}`}>
               <li
-                className={`menu-item`}
-                //  onMouseEnter={() => subMenuToggle(index)}
+              //  onMouseEnter={() => subMenuToggle(index)}
               >
                 <HoverLink
                   rout={`/${locale}${menu.rout}`}
@@ -64,7 +62,7 @@ const Header = () => {
           ))}
           {session?.user ? <LogOut /> : null}
         </ul>
-        <div className="nav-bar-toggle">
+        <div className="flex items-center gap-5">
           <LanguageChange />
           <ThemeChange />
         </div>
