@@ -43,6 +43,12 @@ export const menuDate = [
     ],
   },
   {
+    nameUa: 'проекти',
+    nameEn: 'projects',
+    rout: '/projects',
+    subMenu: [],
+  },
+  {
     nameUa: 'блог',
     nameEn: 'blog',
     rout: '/blog',

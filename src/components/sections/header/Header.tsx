@@ -14,6 +14,7 @@ import LogOut from '@/components/sections/auth/LogOut/LogOut'
 import LanguageChange from '@/components/bloks/LanguageChange/LanguageChange'
 import ThemeChange from '@/components/bloks/ThemeChange/ThemeChange'
 import { useLocale } from 'use-intl'
+import MobileMenu from '@/components/bloks/mobile-menu/mobile-menu'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -28,7 +29,7 @@ const Header = () => {
   })
 
   return (
-    <header>
+    <header className="relative overflow-hidden">
       <nav className="z-10 flex justify-between px-5 py-5">
         <Link
           href={`/${locale}`}
@@ -43,7 +44,7 @@ const Header = () => {
           />
         </Link>
         <ul
-          className={`flex items-center gap-10`}
+          className={`hidden items-center gap-10 lg:flex`}
           // onMouseLeave={() => setIsOpenSubMenu({})}
         >
           {filteredMenu.map((menu: any, index: number) => (
@@ -62,9 +63,10 @@ const Header = () => {
           ))}
           {session?.user ? <LogOut /> : null}
         </ul>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-10 lg:gap-5">
           <LanguageChange />
           <ThemeChange />
+          <MobileMenu menu={filteredMenu} />
         </div>
       </nav>
     </header>

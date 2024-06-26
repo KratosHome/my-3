@@ -43,7 +43,7 @@ export default async function LocaleLayout({
       <GoogleTagManager />
       <SpeedInsights />
       <body
-        className={`${myFont.className} dark:from-slate-750 h-full bg-gradient-to-b from-purple-50 via-purple-200 to-purple-300 dark:bg-black dark:from-slate-950`}
+        className={`${myFont.className} dark:from-slate-750 relative h-full overflow-hidden bg-gradient-to-b from-purple-50 via-purple-200 to-purple-300 dark:bg-black dark:from-slate-950`}
       >
         <div className="absolute -z-10 h-screen w-full bg-custom-hero bg-cover bg-center" />
         <MyThemeProvider>
