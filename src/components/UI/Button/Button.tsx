@@ -1,30 +1,20 @@
 'use client'
-import React, {FC} from 'react';
-import st from "./Button.module.scss";
-import ButtonAnimation from "@/components/UI/ButtonAnimation/ButtonAnimation";
+import React, { FC } from 'react'
 
 interface ButtonType {
-    children: React.ReactNode;
-    onClick?: () => void;
-    disabled?: boolean
+  children: React.ReactNode
+  onClick?: () => void
+  disabled?: boolean
 }
 
-const Button: FC<ButtonType> = ({children, onClick, disabled}: any) => {
+const Button: FC<ButtonType> = ({ children, onClick, disabled }) => {
+  const buttonClasses = `text-white  group duration-300 hover:scale-105 active:scale-95 h-[62px] w-[169px] rounded-[8px] bg-primary-light dark:bg-brand-violet-primary-dark text-[20px] font-bold leading-normal tracking-[0.8px] uppercase ${disabled ? 'bg-[#7d7c7c]' : ''} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`
 
-    const buttonClasses = `${st.containerButton} ${disabled ? st.disabledButton : ''}`;
+  return (
+    <button className={buttonClasses} onClick={onClick} disabled={disabled}>
+      {children}
+    </button>
+  )
+}
 
-
-    return (
-        <ButtonAnimation
-            isPulse={false}
-            as="button"
-            className={buttonClasses}
-            onClick={onClick}
-            disabled={disabled}
-        >
-            {children}
-        </ButtonAnimation>
-    );
-};
-
-export default Button;
+export default Button

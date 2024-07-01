@@ -52,7 +52,7 @@ export default async function LocaleLayout({
               <ScrollToTop />
               <StarsCanvas />
               <Header />
-              <main className="min-h-[90vh]">{/* children */}</main>
+              <main className="min-h-[90vh]">{children}</main>
               <Footer />
             </NextIntProvider>
           </SessionWrapper>

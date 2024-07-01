@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC } from 'react'
 import HoverLink from '@/components/UI/hover-link/hover-link'
 import { useLocale } from 'use-intl'
 import Link from 'next/link'
-import SocialLicks from '@/components/sections/home/SocialLicks/SocialLicks'
+import SocialLicks from '@/components/sections/main/SocialLicks/SocialLicks'
 
 interface MobileMenuProps {
   menu: any
@@ -24,7 +24,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ menu }) => {
   const menuClasses = `pl-5 z-20 w-[300px] -mt-[80px] absolute flex flex-col justify-between h-[95svh] top-[80px] z-22 block bg-black pb-12 transition-all duration-500 ease-in ${
     opened ? 'right-0' : 'right-[-100vw]'
   }`
-  const overlayClasses = `fixed inset-0 bg-gray-500 bg-opacity-15 z-10 transition-opacity top-[80px] duration-500 ease-in ${
+  const overlayClasses = `fixed inset-0 bg-gray-500 bg-opacity-0 z-10 transition-opacity top-[80px] duration-500 ease-in ${
     opened ? 'opacity-100' : 'opacity-0 pointer-events-none'
   }`
 
