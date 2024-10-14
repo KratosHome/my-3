@@ -1,20 +1,22 @@
-"use server"
-import {signIn} from "@/server/auth/auth";
+'use server'
+import { signIn } from '@/server/auth/auth.server'
 
-export const loginAction = async (data: { email: string; password: string; }) => {
+export const loginAction = async (data: {
+  email: string
+  password: string
+}) => {
+  try {
+    await signIn('credentials', {
+      email: data.email.toLowerCase(),
+      password: data.password,
+      redirect: false,
+    })
 
-    try {
-        await signIn("credentials", {
-            email: data.email.toLowerCase(),
-            password: data.password,
-            redirect: false
-        });
-        return {
-            success: true,
-            error: false
-        };
-    } catch (e) {
-        console.log("vfsvdfvdsfvsdfvd", e);
-        return {error: true};
+    return {
+      success: true,
+      error: false,
     }
+  } catch (e) {
+    return { error: true, success: false }
+  }
 }

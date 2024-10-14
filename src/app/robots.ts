@@ -1,19 +1,28 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-    return {
-        rules: [
-            {
-                userAgent: '*',
-                disallow: [
-                    '/*?*sort=',
-                    '/*?*new=',
-                    '/blog/*?*filter=',
-                    '/articles/*?*comments='
-                ],
-                allow: ['/', '/blog/', '/blog/*'],
-            },
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        disallow: [
+          '/*?sort=*',
+          '/*?new=*',
+          '/*?filters=*',
+          '/*?comments=*',
+          '/*?technologies',
+          '/*?authors',
         ],
-        sitemap: 'https://codecraftmaster.com/sitemap.xml',
-    }
+        allow: [
+          '/',
+          '/*/privacy-policy/',
+          '/*/blog/',
+          '/*/blog/*',
+          '/*/community/projects*',
+          '/*/community/members*',
+        ],
+      },
+    ],
+    sitemap: 'https://codecraftmaster.com/sitemap.xml',
+  }
 }

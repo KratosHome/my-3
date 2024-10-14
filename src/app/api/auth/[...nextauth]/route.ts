@@ -1,4 +1,4 @@
-import {handlers} from "@/server/auth/auth";
-export const {GET, POST} = handlers
+import { handlers } from '@/server/auth/auth.server'
+export const { GET, POST } = handlers
 
-export const runtime = "edge"
+export const runtime = 'edge'
