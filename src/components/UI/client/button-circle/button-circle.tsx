@@ -6,12 +6,6 @@ import { useTranslations } from 'next-intl'
 import { FC, useEffect, useState } from 'react'
 import { cn } from '@/utils/cn'
 import { useTheme } from 'next-themes'
-import gitHub from '@/assets/icons/github.svg'
-import linkedin from '@/assets/icons/linkedin.svg'
-import telegram from '@/assets/icons/telegram.svg'
-import gitHubLight from '@/assets/icons/githubLight.svg'
-import linkedinLight from '@/assets/icons/linkedinLight.svg'
-import telegramLight from '@/assets/icons/telegramLight.svg'
 
 interface ButtonCircleProps {
   title: string
